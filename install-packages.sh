@@ -32,6 +32,9 @@ sudo curl -fsSLo /usr/local/sbin/vscodium-json-updater.sh https://raw.githubuser
 sudo chmod +x /usr/local/sbin/vscodium-json-updater.sh
 sudo /usr/local/sbin/vscodium-json-updater.sh
 
+echo "Installing Nemo action for VSCodium..."
+sudo wget https://raw.githubusercontent.com/AlessandroPerazzetta/nemo-actions-vscodium-launcher/main/codium.nemo_action -O ~/.local/share/nemo/actions/codium.nemo_action
+
 echo "Installing DBeaver..."
 sudo curl -fsSLo /tmp/dbeaver-ce_latest_amd64.deb https://dbeaver.io/files/dbeaver-ce_latest_amd64.deb
 sudo dpkg -i /tmp/dbeaver-ce_latest_amd64.deb
