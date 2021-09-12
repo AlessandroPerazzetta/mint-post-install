@@ -44,6 +44,10 @@ echo "Installing SmartGit..."
 sudo curl -fsSLo /tmp/smartgit-20_2_5.deb https://www.syntevo.com/downloads/smartgit/smartgit-20_2_5.deb
 sudo dpkg -i /tmp/smartgit-20_2_5.deb
 
+echo "Installing Nevim resources..."
+mkdir -p ~/.config/nvim/
+curl -fsSLo ~/.config/nvim/init.vim https://raw.githubusercontent.com/AlessandroPerazzetta/neovim-res/main/.config/nvim/init.vim
+
 cat > ~/.bash_aliases<< EOF
 alias l='ls -lah'
 alias cls='clear'
