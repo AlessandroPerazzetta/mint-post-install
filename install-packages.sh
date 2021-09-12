@@ -63,6 +63,12 @@ sudo wget -q https://www.virtualbox.org/download/oracle_vbox_2016.asc -O- | sudo
 echo "deb [arch=amd64] http://download.virtualbox.org/virtualbox/debian focal contrib" | sudo tee /etc/apt/sources.list.d/virtualbox.list
 sudo apt update
 sudo apt -y install virtualbox
+echo "--------------------------------------------------------------------------------"
+echo "Please download VirtualBox Oracle VM VirtualBox Extension Pack from here: "
+echo "https://www.virtualbox.org/wiki/Downloads"
+echo "and install manually from VirtualBox under File > Preferences > Extensions"
+echo "--------------------------------------------------------------------------------"
+read -n 1 -s -r -p "Press any key to continue"
 
 echo "Installing Neovim resources..."
 mkdir -p ~/.config/nvim/
