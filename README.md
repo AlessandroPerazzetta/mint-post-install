@@ -5,7 +5,7 @@ wget -O - https://raw.githubusercontent.com/AlessandroPerazzetta/mint-post-insta
 
 # List installed packages:
 
-- bwm-ng
+- bwm-ng 
 - screen
 - neovim 
 - filezilla 
@@ -23,6 +23,9 @@ wget -O - https://raw.githubusercontent.com/AlessandroPerazzetta/mint-post-insta
 - codium
 - dbeaver-ce_latest_amd64
 - smartgit-20_2_5
+- keepassxc
+- qownnotes
+- virtualbox
 
 # List uninstalled packages:
 
@@ -32,3 +35,7 @@ wget -O - https://raw.githubusercontent.com/AlessandroPerazzetta/mint-post-insta
 # List installed scripts:
 
 vscodium-json-updater.sh
+
+# Extra:
+
+- add user to dialout group
