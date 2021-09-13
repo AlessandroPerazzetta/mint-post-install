@@ -8,7 +8,7 @@ sudo apt update
 sudo apt upgrade
 
 echo "Install some packages..."
-sudo apt -y install bwm-ng screen neovim filezilla meld vlc git htop jq
+sudo apt -y install bwm-ng screen neovim filezilla meld vlc git htop jq python3-serial
 sudo apt -y install apt-transport-https curl
 
 update-alternatives --config editor
@@ -70,6 +70,10 @@ echo "https://www.virtualbox.org/wiki/Downloads"
 echo "and install manually from VirtualBox under File > Preferences > Extensions"
 echo "--------------------------------------------------------------------------------"
 read -n 1 -s -r -p "Press any key to continue"
+
+echo "Installing Telegram..."
+curl -fsSLo /tmp/Telegram.xz https://telegram.org/dl/desktop/linux
+sudo tar -xf Telegram.xz -C /opt/
 
 echo "Installing Neovim resources..."
 mkdir -p ~/.config/nvim/
