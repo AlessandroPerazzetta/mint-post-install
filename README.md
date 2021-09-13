@@ -26,6 +26,7 @@ wget -O - https://raw.githubusercontent.com/AlessandroPerazzetta/mint-post-insta
 - keepassxc
 - qownnotes
 - virtualbox
+- telegram
 
 # List uninstalled packages:
 
