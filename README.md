@@ -1,6 +1,6 @@
 # Mint post install flavour packages
 
-wget -O - https://raw.githubusercontent.com/AlessandroPerazzetta/mint-post-install/main/install-packages.sh | sudo bash
+wget -O - https://raw.githubusercontent.com/AlessandroPerazzetta/mint-post-install/main/install-packages.sh | bash
 
 
 # List installed packages:
@@ -34,7 +34,7 @@ wget -O - https://raw.githubusercontent.com/AlessandroPerazzetta/mint-post-insta
 
 # List installed scripts:
 
-vscodium-json-updater.sh
+- vscodium-json-updater.sh
 
 # Extra:
 
