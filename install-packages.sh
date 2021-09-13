@@ -16,7 +16,7 @@ sudo apt -y remove nano ed
     
 echo "Installing Brave..."
 sudo curl -fsSLo /usr/share/keyrings/brave-browser-archive-keyring.gpg https://brave-browser-apt-release.s3.brave.com/brave-browser-archive-keyring.gpg
-echo "deb [signed-by=/usr/share/keyrings/brave-browser-archive-keyring.gpg arch=amd64] https://brave-browser-apt-release.s3.brave.com/ stable main"|sudo tee /etc/apt/sources.list.d/brave-br
+echo "deb [signed-by=/usr/share/keyrings/brave-browser-archive-keyring.gpg arch=amd64] https://brave-browser-apt-release.s3.brave.com/ stable main"|sudo tee /etc/apt/sources.list.d/brave-browser.list
 sudo apt update    
 sudo apt -y install brave-browser    
 
@@ -55,14 +55,15 @@ sudo apt -y install keepassxc
 
 echo "Installing QOwnNotes..."
 sudo add-apt-repository ppa:pbek/qownnotes
-sudo apt-get update
-sudo apt-get install qownnotes
+sudo apt update
+sudo apt -y install qownnotes
 
 echo "Installing VirtualBox..."
 sudo wget -q https://www.virtualbox.org/download/oracle_vbox_2016.asc -O- | sudo apt-key add -
 echo "deb [arch=amd64] http://download.virtualbox.org/virtualbox/debian focal contrib" | sudo tee /etc/apt/sources.list.d/virtualbox.list
 sudo apt update
 sudo apt -y install virtualbox
+
 echo "--------------------------------------------------------------------------------"
 echo "Please download VirtualBox Oracle VM VirtualBox Extension Pack from here: "
 echo "https://www.virtualbox.org/wiki/Downloads"
