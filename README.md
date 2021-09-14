@@ -39,4 +39,6 @@ wget -O - https://raw.githubusercontent.com/AlessandroPerazzetta/mint-post-insta
 
 # Extra:
 
+- install neovim res
+- install xed theme
 - add user to dialout group
