@@ -105,6 +105,10 @@ printf "${YELLOW}Installing Neovim resources...\n${NC}"
 mkdir -p ~/.config/nvim/
 curl -fsSLo ~/.config/nvim/init.vim https://raw.githubusercontent.com/AlessandroPerazzetta/neovim-res/main/.config/nvim/init.vim
 
+printf "${YELLOW}Installing Xed resources...\n${NC}"
+mkdir -p ~/.local/share/xed/styles/
+curl -fsSLo ~/.local/share/xed/styles/kat-ng.xml https://raw.githubusercontent.com/AlessandroPerazzetta/xed-themes/main/kat-ng.xml
+
 cat > ~/.bash_aliases<< EOF
 alias l='ls -lah'
 alias cls='clear'
