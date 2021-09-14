@@ -109,6 +109,10 @@ printf "${YELLOW}Installing Xed resources...\n${NC}"
 mkdir -p ~/.local/share/xed/styles/
 curl -fsSLo ~/.local/share/xed/styles/kat-ng.xml https://raw.githubusercontent.com/AlessandroPerazzetta/xed-themes/main/kat-ng.xml
 
+printf "${YELLOW}Installing VLC Media Library...\n${NC}"
+mkdir -p ~/.local/share/vlc/
+curl -fsSLo ~/.local/share/vlc/ml.xspf https://raw.githubusercontent.com/AlessandroPerazzetta/vlc-media-library/main/ml.xspf
+
 cat > ~/.bash_aliases<< EOF
 alias l='ls -lah'
 alias cls='clear'
