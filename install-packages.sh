@@ -47,8 +47,8 @@ sudo curl -fsSLo /tmp/dbeaver-ce_latest_amd64.deb https://dbeaver.io/files/dbeav
 sudo dpkg -i /tmp/dbeaver-ce_latest_amd64.deb
 
 echo "Installing SmartGit..."
-sudo curl -fsSLo /tmp/smartgit-20_2_5.deb https://www.syntevo.com/downloads/smartgit/smartgit-20_2_5.deb
-sudo dpkg -i /tmp/smartgit-20_2_5.deb
+sudo curl -fsSLo /tmp/smartgit-21_1_1.deb https://www.syntevo.com/downloads/smartgit/smartgit-21_1_1.deb
+sudo dpkg -i /tmp/smartgit-21_1_1.deb
 
 echo "Installing KeePassXC..."
 sudo add-apt-repository ppa:phoerious/keepassxc
