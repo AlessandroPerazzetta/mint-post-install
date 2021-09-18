@@ -101,6 +101,11 @@ printf "${YELLOW}Installing Telegram...\n${NC}"
 curl -fsSLo /tmp/Telegram.xz https://telegram.org/dl/desktop/linux
 sudo tar -xf Telegram.xz -C /opt/
 
+printf "${YELLOW}Installing KiCad...\n${NC}"
+sudo add-apt-repository --yes ppa:kicad/kicad-5.1-releases
+sudo apt update
+sudo apt -y install --install-recommends kicad
+
 printf "${YELLOW}Installing Neovim resources...\n${NC}"
 mkdir -p ~/.config/nvim/
 curl -fsSLo ~/.config/nvim/init.vim https://raw.githubusercontent.com/AlessandroPerazzetta/neovim-res/main/.config/nvim/init.vim
