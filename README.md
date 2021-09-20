@@ -38,6 +38,9 @@ wget -O - https://raw.githubusercontent.com/AlessandroPerazzetta/mint-post-insta
 
 - vscodium-json-updater.sh
 
+# List installed languagess:
+- rust
+
 # Extra:
 
 - install neovim res
