@@ -26,7 +26,7 @@ sudo apt update
 sudo apt upgrade
 
 printf "${YELLOW}Install some packages...\n${NC}"
-sudo apt -y install bwm-ng screen neovim filezilla meld vlc git htop jq python3-serial
+sudo apt -y install bwm-ng screen neovim filezilla meld vlc git htop jq python3-serial build-essential
 sudo apt -y install apt-transport-https curl
 
 printf "${YELLOW}Set default editor...\n${NC}"
