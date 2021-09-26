@@ -26,8 +26,10 @@ wget -O - https://raw.githubusercontent.com/AlessandroPerazzetta/mint-post-insta
 - keepassxc
 - qownnotes
 - virtualbox
-- telegram
 - kicad
+- telegram
+- rust
+- python 3.6.15 (source install)
 
 # List uninstalled packages:
 
@@ -47,3 +49,4 @@ wget -O - https://raw.githubusercontent.com/AlessandroPerazzetta/mint-post-insta
 - install xed theme
 - install VLC Media Library
 - add user to dialout group
+- add bash aliases
