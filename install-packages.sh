@@ -173,7 +173,8 @@ then
                 echo "deb [arch=amd64] http://download.virtualbox.org/virtualbox/debian focal contrib" | sudo tee /etc/apt/sources.list.d/virtualbox.list
                 sudo apt update
                 sudo apt -y install virtualbox
-
+                sudo adduser $CURRENT_USER vboxusers
+                
                 printf "${LCYAN}--------------------------------------------------------------------------------\n${LRED}"
                 printf "Please download virtualbox extension pack from here: \n"
                 printf "https://www.virtualbox.org/wiki/Downloads\n"
