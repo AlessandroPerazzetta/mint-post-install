@@ -30,6 +30,7 @@ wget -O - https://raw.githubusercontent.com/AlessandroPerazzetta/mint-post-insta
 - telegram
 - rust
 - python 3.6.15 (source install)
+- qtcreator + qt5 + qt5 lib + cmake
 
 # List uninstalled packages:
 
