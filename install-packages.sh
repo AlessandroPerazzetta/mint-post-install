@@ -175,6 +175,7 @@ then
                 sudo apt update
                 sudo apt -y install virtualbox
                 sudo adduser $CURRENT_USER vboxusers
+                sudo adduser $CURRENT_USER disk
                 
                 printf "${LCYAN}--------------------------------------------------------------------------------\n${LRED}"
                 printf "Please download virtualbox extension pack from here: \n"
