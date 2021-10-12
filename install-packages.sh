@@ -139,9 +139,10 @@ then
                 sudo apt update && sudo apt -y install codium jq
 
                 printf "${YELLOW}Installing vscodium extension gallery updater...\n${NC}"
-                sudo curl -fsSLo /usr/local/sbin/vscodium-json-updater.sh https://raw.githubusercontent.com/AlessandroPerazzetta/vscodium-json-updater/main/update.sh
-                sudo chmod +x /usr/local/sbin/vscodium-json-updater.sh
-                sudo /usr/local/sbin/vscodium-json-updater.sh
+                cd /usr/local/sbin/
+                sudo git clone https://github.com/AlessandroPerazzetta/vscodium-json-updater
+                cd -
+                sudo /usr/local/sbin/vscodium-json-updater/update.sh
 
                 printf "${YELLOW}Installing nemo action for vscodium...\n${NC}"
                 sudo wget https://raw.githubusercontent.com/AlessandroPerazzetta/nemo-actions-vscodium-launcher/main/codium.nemo_action -O ~/.local/share/nemo/actions/codium.nemo_action
