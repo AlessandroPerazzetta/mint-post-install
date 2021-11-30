@@ -51,3 +51,4 @@ wget -O - https://raw.githubusercontent.com/AlessandroPerazzetta/mint-post-insta
 - install VLC Media Library
 - add user to dialout group
 - add bash aliases
+- install imwheel
