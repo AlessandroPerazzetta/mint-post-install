@@ -43,7 +43,8 @@ options=(
 18 "telegram" on
 19 "rust" on
 20 "python 3.6.15 (src install)" off
-21 "qtcreator + qt5" off)
+21 "qtcreator + qt5" off
+22 "imwheel" on)
 
 choices=$("${cmd[@]}" "${options[@]}" 2>&1 >/dev/tty)
 clear
@@ -218,6 +219,13 @@ then
             21)
                 printf "${YELLOW}Installing qtcreator, qt5 and related stuff, cmake...\n${NC}"
                 sudo apt -y install cmake qtcreator qt5-default libqt5svg5* libqt5qml* libqt5xml* qtdeclarative5-dev
+                ;;
+            22)
+                printf "${YELLOW}Installing imwheel...\n${NC}"
+                sudo apt -y install imwheel
+                curl -fsSLo ~/mousewheel.sh https://github.com/AlessandroPerazzetta/imwheel/blob/main/mousewheel.sh
+                chmod +x mousewheel.sh
+                ./mousewheel.sh
                 ;;
         esac
     done
