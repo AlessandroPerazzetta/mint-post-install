@@ -22,7 +22,7 @@ wget -O - https://raw.githubusercontent.com/AlessandroPerazzetta/mint-post-insta
 - remmina-plugin-secret
 - codium
 - dbeaver-ce_latest_amd64
-- smartgit-21_1_1
+- smartgit-21_2_0
 - keepassxc
 - qownnotes
 - virtualbox
