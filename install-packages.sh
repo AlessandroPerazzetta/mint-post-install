@@ -155,8 +155,8 @@ then
                 ;;
             13)
                 printf "${YELLOW}Installing smartgit...\n${NC}"
-                sudo curl -fsSLo /tmp/smartgit-21_1_1.deb https://www.syntevo.com/downloads/smartgit/smartgit-21_1_1.deb
-                sudo dpkg -i /tmp/smartgit-21_1_1.deb
+                sudo curl -fsSLo /tmp/smartgit-21_2_0.deb https://www.syntevo.com/downloads/smartgit/smartgit-21_2_0.deb
+                sudo dpkg -i /tmp/smartgit-21_2_0.deb
                 ;;
             14)
                 printf "${YELLOW}Installing keepassxc...\n${NC}"
