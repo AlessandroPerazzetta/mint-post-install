@@ -204,7 +204,7 @@ then
                 ;;
             20)
                 printf "${YELLOW}Installing python 3.6.15 (src install)...\n${NC}"
-                sudo apt -y install build-essential checkinstall
+                sudo apt -y install build-essential checkinstall virtualenv
                 sudo apt -y install libreadline-gplv2-dev libncursesw5-dev libssl-dev libsqlite3-dev tk-dev libgdbm-dev libc6-dev libbz2-dev libffi-dev zlib1g-dev
                 cd /tmp
                 sudo wget https://www.python.org/ftp/python/3.6.15/Python-3.6.15.tgz
