@@ -42,6 +42,18 @@ wget -O - https://raw.githubusercontent.com/AlessandroPerazzetta/mint-post-insta
 
 - vscodium-json-updater.sh
 
+# List installed codium extensions:
+
+- Arduino (Arduino for Visual Studio Code)
+- Better TOML (Better TOML Language support)
+- C/C++ (C/C++ IntelliSense, debugging, and code browsing)
+- CodeLLDB (A native debugger powered by LLDB. Debug C++, Rust and other compiled languages)
+- crates (Helps Rust developers managing dependencies with Cargo.toml. Only works with dependencies from crates.io)
+- Error Lens (Improve highlighting of errors, warnings and other language diagnostic)
+- Pylance (A performant, feature-rich language server for Python in VS Code)
+- Python (IntelliSense (Pylance), Linting, Debugging (multi-threaded, remote), Jupyter Notebooks, code formatting, refactoring, unit tests, and more)
+- rust-analyzer (An alternative rust language server to the RLS)
+
 # List installed languagess:
 - rust
 
