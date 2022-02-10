@@ -21,6 +21,7 @@ wget -O - https://raw.githubusercontent.com/AlessandroPerazzetta/mint-post-insta
 - remmina-plugin-rdp
 - remmina-plugin-secret
 - codium
+- codium extensions
 - dbeaver-ce_latest_amd64
 - smartgit-21_2_0
 - keepassxc
