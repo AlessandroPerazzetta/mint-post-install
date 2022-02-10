@@ -155,9 +155,6 @@ then
                 codium --install-extension matklad.rust-analyzer
                 codium --install-extension ms-python.python
                 codium --install-extension ms-python.vscode-pylance
-                codium --install-extension ms-toolsai.jupyter
-                codium --install-extension ms-toolsai.jupyter-keymap
-                codium --install-extension ms-toolsai.jupyter-renderers
                 codium --install-extension ms-vscode.cpptools
                 codium --install-extension serayuzgur.crates
                 codium --install-extension usernamehw.errorlens
