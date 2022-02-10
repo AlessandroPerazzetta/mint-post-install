@@ -34,17 +34,18 @@ options=(
 9 "brave-browser" on
 10 "remmina" on
 11 "vscodium" on
-12 "dbeaver" on
-13 "smartgit" on
-14 "keepassxc" on
-15 "qownnotes" on
-16 "virtualbox" on
-17 "kicad" on
-18 "telegram" on
-19 "rust" on
-20 "python 3.6.15 (src install)" off
-21 "qtcreator + qt5" off
-22 "imwheel" on)
+12 "vscodium extensions" on
+13 "dbeaver" on
+14 "smartgit" on
+15 "keepassxc" on
+16 "qownnotes" on
+17 "virtualbox" on
+18 "kicad" on
+19 "telegram" on
+20 "rust" on
+21 "python 3.6.15 (src install)" off
+22 "qtcreator + qt5" off
+23 "imwheel" on)
 
 choices=$("${cmd[@]}" "${options[@]}" 2>&1 >/dev/tty)
 clear
@@ -145,6 +146,10 @@ then
                 cd -
                 sudo /usr/local/sbin/vscodium-json-updater/update.sh
 
+                printf "${YELLOW}Installing nemo action for vscodium...\n${NC}"
+                sudo wget https://raw.githubusercontent.com/AlessandroPerazzetta/nemo-actions-vscodium-launcher/main/codium.nemo_action -O ~/.local/share/nemo/actions/codium.nemo_action
+                ;;
+            12)
                 printf "${YELLOW}Installing vscodium extensions ...\n${NC}"
                 codium --install-extension bungcip.better-toml
                 codium --install-extension matklad.rust-analyzer
@@ -158,33 +163,30 @@ then
                 codium --install-extension usernamehw.errorlens
                 codium --install-extension vadimcn.vscode-lldb
                 codium --install-extension vsciot-vscode.vscode-arduino
-
-                printf "${YELLOW}Installing nemo action for vscodium...\n${NC}"
-                sudo wget https://raw.githubusercontent.com/AlessandroPerazzetta/nemo-actions-vscodium-launcher/main/codium.nemo_action -O ~/.local/share/nemo/actions/codium.nemo_action
                 ;;
-            12)
+            13)
                 printf "${YELLOW}Installing dbeaver...\n${NC}"
                 sudo curl -fsSLo /tmp/dbeaver-ce_latest_amd64.deb https://dbeaver.io/files/dbeaver-ce_latest_amd64.deb
                 sudo dpkg -i /tmp/dbeaver-ce_latest_amd64.deb
                 ;;
-            13)
+            14)
                 printf "${YELLOW}Installing smartgit...\n${NC}"
                 sudo curl -fsSLo /tmp/smartgit-21_2_0.deb https://www.syntevo.com/downloads/smartgit/smartgit-21_2_0.deb
                 sudo dpkg -i /tmp/smartgit-21_2_0.deb
                 ;;
-            14)
+            15)
                 printf "${YELLOW}Installing keepassxc...\n${NC}"
                 sudo apt-add-repository -y ppa:phoerious/keepassxc
                 sudo apt update
                 sudo apt -y install keepassxc
                 ;;
-            15)
+            16)
                 printf "${YELLOW}Installing qownnotes...\n${NC}"
                 sudo apt-add-repository -y ppa:pbek/qownnotes
                 sudo apt update
                 sudo apt -y install qownnotes
                 ;;
-            16)
+            17)
                 printf "${YELLOW}Installing virtualbox...\n${NC}"
                 sudo wget -q https://www.virtualbox.org/download/oracle_vbox_2016.asc -O- | sudo apt-key add -
                 echo "deb [arch=amd64] http://download.virtualbox.org/virtualbox/debian focal contrib" | sudo tee /etc/apt/sources.list.d/virtualbox.list
@@ -201,22 +203,22 @@ then
                 read -n 1 -s -r -p "Press any key to continue"
                 printf "\n${NC}"
                 ;;
-            17)
+            18)
                 printf "${YELLOW}Installing kicad...\n${NC}"
                 sudo apt-add-repository -y ppa:kicad/kicad-5.1-releases
                 sudo apt update
                 sudo apt -y install --install-recommends kicad
                 ;;
-            18)
+            19)
                 printf "${YELLOW}Installing telegram...\n${NC}"
                 curl -fsSLo /tmp/Telegram.xz https://telegram.org/dl/desktop/linux
                 sudo tar -xf /tmp/Telegram.xz -C /opt/
                 ;;
-            19)
+            20)
                 printf "${YELLOW}Installing rust...\n${NC}"
                 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
                 ;;
-            20)
+            21)
                 printf "${YELLOW}Installing python 3.6.15 (src install)...\n${NC}"
                 sudo apt -y install build-essential checkinstall virtualenv
                 sudo apt -y install libreadline-gplv2-dev libncursesw5-dev libssl-dev libsqlite3-dev tk-dev libgdbm-dev libc6-dev libbz2-dev libffi-dev zlib1g-dev
@@ -230,11 +232,11 @@ then
                 sudo update-alternatives --install /usr/bin/python3 python3 /usr/bin/python3.8 1
                 sudo update-alternatives --install /usr/bin/python3.6 python3.6 /usr/local/bin/python3.6 2
                 ;;
-            21)
+            22)
                 printf "${YELLOW}Installing qtcreator, qt5 and related stuff, cmake...\n${NC}"
                 sudo apt -y install cmake qtcreator qt5-default libqt5svg5* libqt5qml* libqt5xml* qtdeclarative5-dev
                 ;;
-            22)
+            23)
                 printf "${YELLOW}Installing imwheel...\n${NC}"
                 sudo apt -y install imwheel
                 curl -fsSLo ~/mousewheel.sh https://github.com/AlessandroPerazzetta/imwheel/blob/main/mousewheel.sh
