@@ -61,8 +61,12 @@ then
     sleep 1
     sudo apt -y install build-essential apt-transport-https curl python3-serial
 
-    printf "${YELLOW}Add user to dialout group (ref: /dev/ttyUSBx Error opening serial port)...\n${NC}"
-    sudo usermod -a -G dialout $CURRENT_USER
+    if id -nG "$CURRENT_USER" | grep -qw "dialout"; then
+        printf "${YELLOW}User is already in dialout group (ref: /dev/ttyUSBx Error opening serial port)...\n${NC}"
+    else
+        printf "${YELLOW}Add user to dialout group (ref: /dev/ttyUSBx Error opening serial port)...\n${NC}"
+        sudo usermod -a -G dialout $CURRENT_USER
+    fi
 
     for choice in $choices
     do
