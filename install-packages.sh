@@ -45,7 +45,8 @@ options=(
 20 "rust" on
 21 "python 3.6.15 (src install)" off
 22 "qtcreator + qt5" off
-23 "imwheel" on)
+23 "imwheel" on
+24 "bt-restart" on)
 
 choices=$("${cmd[@]}" "${options[@]}" 2>&1 >/dev/tty)
 clear
@@ -243,6 +244,11 @@ then
                 curl -fsSLo ~/mousewheel.sh https://github.com/AlessandroPerazzetta/imwheel/blob/main/mousewheel.sh
                 chmod +x ~/mousewheel.sh
                 ~/mousewheel.sh
+                ;;
+            24)
+                printf "${YELLOW}Installing bt-restart...\n${NC}"
+                sudo curl -fsSLo /lib/systemd/system-sleep/bt https://raw.githubusercontent.com/AlessandroPerazzetta/bt-restart/main/bt
+                sudo chmod +x /lib/systemd/system-sleep/bt
                 ;;
         esac
     done
