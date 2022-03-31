@@ -253,8 +253,12 @@ then
                 ;;
             25)
                 printf "${YELLOW}Installing ssh alive settings...\n${NC}"
-                sudo sed -i -e "s/ServerAliveInterval 240/ServerAliveInterval 30/g" ssh_config
-                sudo bash -c 'echo "    ServerAliveCountMax=1" >> ssh_config'
+                printf "${LCYAN}--------------------------------------------------------------------------------\n${LRED}"
+                printf "Original copy of ssh_config is available in /etc/ssh/ssh_config.ORIGINAL\n"
+                printf "${LCYAN}--------------------------------------------------------------------------------\n${NC}"                
+                sudo cp /etc/ssh/ssh_config /etc/ssh/ssh_config.ORIGINAL
+                sudo sed -i -e "s/ServerAliveInterval 240/ServerAliveInterval 30/g" /etc/ssh/ssh_config
+                sudo bash -c 'echo "    ServerAliveCountMax=1" >> /etc/ssh/ssh_config'
                 ;;
         esac
     done
