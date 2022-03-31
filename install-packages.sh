@@ -46,7 +46,8 @@ options=(
 21 "python 3.6.15 (src install)" off
 22 "qtcreator + qt5" off
 23 "imwheel" on
-24 "bt-restart" on)
+24 "bt-restart" on
+25 "ssh-alive-settings" on)
 
 choices=$("${cmd[@]}" "${options[@]}" 2>&1 >/dev/tty)
 clear
@@ -249,6 +250,11 @@ then
                 printf "${YELLOW}Installing bt-restart...\n${NC}"
                 sudo curl -fsSLo /lib/systemd/system-sleep/bt https://raw.githubusercontent.com/AlessandroPerazzetta/bt-restart/main/bt
                 sudo chmod +x /lib/systemd/system-sleep/bt
+                ;;
+            25)
+                printf "${YELLOW}Installing ssh alive settings...\n${NC}"
+                sudo sed -i -e "s/ServerAliveInterval 240/ServerAliveInterval 30/g" ssh_config
+                sudo bash -c 'echo "    ServerAliveCountMax=1" >> ssh_config'
                 ;;
         esac
     done
