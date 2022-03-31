@@ -33,7 +33,7 @@ wget -O - https://raw.githubusercontent.com/AlessandroPerazzetta/mint-post-insta
 - python 3.6.15 (source install)
 - qtcreator + qt5 + qt5 lib + cmake
 - Bluetooth restart after sleep
-- SSH Alive interval and count
+- SSH Alive interval (30) and count (1)
 
 # List uninstalled packages:
 
