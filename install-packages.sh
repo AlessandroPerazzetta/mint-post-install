@@ -41,13 +41,14 @@ options=(
 16 "qownnotes" on
 17 "virtualbox" on
 18 "kicad" on
-19 "telegram" on
-20 "rust" on
-21 "python 3.6.15 (src install)" off
-22 "qtcreator + qt5" off
-23 "imwheel" on
-24 "bt-restart" on
-25 "ssh-alive-settings" on)
+19 "freecad" on
+20 "telegram" on
+21 "rust" on
+22 "python 3.6.15 (src install)" off
+23 "qtcreator + qt5" off
+24 "imwheel" on
+25 "bt-restart" on
+26 "ssh-alive-settings" on)
 
 choices=$("${cmd[@]}" "${options[@]}" 2>&1 >/dev/tty)
 clear
@@ -213,15 +214,21 @@ then
                 sudo apt -y install --install-recommends kicad
                 ;;
             19)
+                printf "${YELLOW}Installing freecad...\n${NC}"
+                sudo add-apt-repository -y ppa:freecad-maintainers/freecad-stable
+                sudo apt update
+                sudo apt -y install freecad
+                ;;
+            20)
                 printf "${YELLOW}Installing telegram...\n${NC}"
                 curl -fsSLo /tmp/Telegram.xz https://telegram.org/dl/desktop/linux
                 sudo tar -xf /tmp/Telegram.xz -C /opt/
                 ;;
-            20)
+            21)
                 printf "${YELLOW}Installing rust...\n${NC}"
                 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
                 ;;
-            21)
+            22)
                 printf "${YELLOW}Installing python 3.6.15 (src install)...\n${NC}"
                 sudo apt -y install build-essential checkinstall virtualenv
                 sudo apt -y install libreadline-gplv2-dev libncursesw5-dev libssl-dev libsqlite3-dev tk-dev libgdbm-dev libc6-dev libbz2-dev libffi-dev zlib1g-dev
@@ -235,23 +242,23 @@ then
                 sudo update-alternatives --install /usr/bin/python3 python3 /usr/bin/python3.8 1
                 sudo update-alternatives --install /usr/bin/python3.6 python3.6 /usr/local/bin/python3.6 2
                 ;;
-            22)
+            23)
                 printf "${YELLOW}Installing qtcreator, qt5 and related stuff, cmake...\n${NC}"
                 sudo apt -y install cmake qtcreator qt5-default libqt5svg5* libqt5qml* libqt5xml* qtdeclarative5-dev
                 ;;
-            23)
+            24)
                 printf "${YELLOW}Installing imwheel...\n${NC}"
                 sudo apt -y install imwheel
                 curl -fsSLo ~/mousewheel.sh https://github.com/AlessandroPerazzetta/imwheel/blob/main/mousewheel.sh
                 chmod +x ~/mousewheel.sh
                 ~/mousewheel.sh
                 ;;
-            24)
+            25)
                 printf "${YELLOW}Installing bt-restart...\n${NC}"
                 sudo curl -fsSLo /lib/systemd/system-sleep/bt https://raw.githubusercontent.com/AlessandroPerazzetta/bt-restart/main/bt
                 sudo chmod +x /lib/systemd/system-sleep/bt
                 ;;
-            25)
+            26)
                 printf "${YELLOW}Installing ssh alive settings...\n${NC}"
                 printf "${LCYAN}--------------------------------------------------------------------------------\n${LRED}"
                 printf "Original copy of ssh_config is available in /etc/ssh/ssh_config.ORIGINAL\n"
