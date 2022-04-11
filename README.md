@@ -59,6 +59,7 @@ wget -O - https://raw.githubusercontent.com/AlessandroPerazzetta/mint-post-insta
 
 # List installed languagess:
 - rust
+- python 3.6
 
 # Extra:
 
