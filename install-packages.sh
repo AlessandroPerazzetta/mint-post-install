@@ -249,7 +249,7 @@ then
             24)
                 printf "${YELLOW}Installing imwheel...\n${NC}"
                 sudo apt -y install imwheel
-                curl -fsSLo ~/mousewheel.sh https://github.com/AlessandroPerazzetta/imwheel/blob/main/mousewheel.sh
+                curl -fsSLo ~/mousewheel.sh https://raw.githubusercontent.com/AlessandroPerazzetta/imwheel/main/mousewheel.sh
                 chmod +x ~/mousewheel.sh
                 ~/mousewheel.sh
                 ;;
