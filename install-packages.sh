@@ -187,6 +187,21 @@ then
                 curl -s https://api.github.com/repos/thomasnordquist/MQTT-Explorer/releases/latest |grep "browser_download_url.*AppImage" |grep -Ewv 'armv7l|i386' |cut -d : -f 2,3 |tr -d \"| xargs -n 1 sudo curl -L -o /opt/mqtt-explorer/mqtt-explorer
                 sudo chmod +x /opt/mqtt-explorer/mqtt-explorer
                 sudo curl -L https://raw.githubusercontent.com/thomasnordquist/MQTT-Explorer/master/icon.png -o /opt/mqtt-explorer/icon.png
+                sudo bash -c 'cat <<EOT >> /usr/share/applications/mqtt-explorer.desktop
+                [Desktop Entry]
+                Name=MQTT Explorer
+                GenericName=MQTT client
+                Comment=An all-round MQTT client that provides a structured topic overview
+                Categories=Development;
+                Terminal=false
+                Type=Application
+                Path=/opt/mqtt-explorer/
+                Exec=/opt/mqtt-explorer/mqtt-explorer
+                StartupWMClass=mqtt-explorer
+                StartupNotify=true
+                Keywords=MQTT
+                Icon=/opt/mqtt-explorer/icon.png
+                EOT'
                 ;;
             16)
                 printf "${YELLOW}Installing keepassxc...\n${NC}"
