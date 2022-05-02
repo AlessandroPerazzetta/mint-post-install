@@ -181,9 +181,11 @@ then
                 ;;
             15)
                 printf "${YELLOW}Installing MQTT-Explorer...\n${NC}"
-                sudo mkdir -p /opt/mqtt-explorer/ && cd /opt/mqtt-explorer/
-                curl -s https://api.github.com/repos/thomasnordquist/MQTT-Explorer/releases/latest |grep "browser_download_url.*AppImage" |grep -Ewv 'armv7l|i386' |cut -d : -f 2,3 |tr -d \"| xargs -n 1 sudo curl -O -L
-                sudo chmod +x *.AppImage
+                sudo mkdir -p /opt/mqtt-explorer/
+                #curl -s https://api.github.com/repos/thomasnordquist/MQTT-Explorer/releases/latest |grep "browser_download_url.*AppImage" |grep -Ewv 'armv7l|i386' |cut -d : -f 2,3 |tr -d \"| xargs -n 1 sudo curl -O -L
+                #sudo chmod +x *.AppImage
+                curl -s https://api.github.com/repos/thomasnordquist/MQTT-Explorer/releases/latest |grep "browser_download_url.*AppImage" |grep -Ewv 'armv7l|i386' |cut -d : -f 2,3 |tr -d \"| xargs -n 1 sudo curl -L -o /opt/mqtt-explorer/mqtt-explorer
+                sudo chmod +x /opt/mqtt-explorer/mqtt-explorer
                 ;;
             16)
                 printf "${YELLOW}Installing keepassxc...\n${NC}"
