@@ -49,7 +49,9 @@ options=(
 24 "qtcreator + qt5" off
 25 "imwheel" on
 26 "bt-restart" on
-27 "ssh-alive-settings" on)
+27 "ssh-alive-settings" on
+28 "borgbackup + vorta gui" on
+29 "spotify + spicetify" off)
 
 choices=$("${cmd[@]}" "${options[@]}" 2>&1 >/dev/tty)
 clear
@@ -291,6 +293,19 @@ then
                 sudo cp /etc/ssh/ssh_config /etc/ssh/ssh_config.ORIGINAL
                 sudo sed -i -e "s/ServerAliveInterval 240/ServerAliveInterval 15/g" /etc/ssh/ssh_config
                 sudo bash -c 'echo "    ServerAliveCountMax=1" >> /etc/ssh/ssh_config'
+                ;;
+            28)
+                printf "${YELLOW}Installing borgbackup and vorta gui...\n${NC}"
+                sudo apt -y install borgbackup
+                sudo pip3 install vorta
+                ;;
+            29)
+                printf "${YELLOW}Installing borgbackup and vorta gui...\n${NC}"
+                curl -sS https://download.spotify.com/debian/pubkey_7A3A762FAFD4A51F.gpg | sudo gpg --dearmor --yes -o /etc/apt/trusted.gpg.d/spotify.gpg
+                echo "deb http://repository.spotify.com stable non-free" | sudo tee /etc/apt/sources.list.d/spotify.list
+                sudo apt-get update && sudo apt-get install spotify-client
+                curl -fsSL https://raw.githubusercontent.com/spicetify/spicetify-cli/master/install.sh | sh
+                curl -fsSL https://raw.githubusercontent.com/spicetify/spicetify-marketplace/main/resources/install.sh | sh
                 ;;
         esac
     done
