@@ -301,10 +301,11 @@ then
                 ;;
             29)
                 printf "${YELLOW}Installing spotify and spicetify...\n${NC}"
+                cd ~
                 curl -sS https://download.spotify.com/debian/pubkey_7A3A762FAFD4A51F.gpg | sudo gpg --dearmor --yes -o /etc/apt/trusted.gpg.d/spotify.gpg
                 echo "deb http://repository.spotify.com stable non-free" | sudo tee /etc/apt/sources.list.d/spotify.list
                 sudo apt-get update && sudo apt-get -y install spotify-client
-                spotify && sleep 5 && killall spotify
+                spotify --no-zygote && sleep 3 && killall spotify
                 curl -fsSL https://raw.githubusercontent.com/spicetify/spicetify-cli/master/install.sh | sh
                 curl -fsSL https://raw.githubusercontent.com/spicetify/spicetify-marketplace/main/resources/install.sh | sh
                 printf "${LCYAN}--------------------------------------------------------------------------------\n${LRED}"
