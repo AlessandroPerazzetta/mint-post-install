@@ -47,8 +47,8 @@ options=(
 22 "rust" on
 23 "python 3.6.15 (src install)" off
 24 "qtcreator + qt5" off
-25 "imwheel" on
-26 "bt-restart" on
+25 "imwheel" off
+26 "bt-restart" off
 27 "ssh-alive-settings" on
 28 "borgbackup + vorta gui" on
 29 "spotify + spicetify" off)
