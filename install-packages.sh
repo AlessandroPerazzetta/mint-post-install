@@ -308,6 +308,7 @@ then
                 # https://community.spotify.com/t5/Desktop-Linux/The-app-crashes-on-Debian-due-to-HW-acceleration/td-p/5049188
                 # https://codereview.chromium.org/2384163002
                 # spotify --no-zygote
+                spotify && killall spotify
                 curl -fsSL https://raw.githubusercontent.com/spicetify/spicetify-cli/master/install.sh | sh
                 curl -fsSL https://raw.githubusercontent.com/spicetify/spicetify-marketplace/main/resources/install.sh | sh
                 printf "${LCYAN}--------------------------------------------------------------------------------\n${LRED}"
