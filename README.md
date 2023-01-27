@@ -36,6 +36,8 @@ wget -O - https://raw.githubusercontent.com/AlessandroPerazzetta/mint-post-insta
 - qtcreator + qt5 + qt5 lib + cmake
 - bluetooth restart after sleep
 - SSH alive interval (15) and count (1)
+- borgbackup + vorta gui
+- spotify + spicetify
 
 # List uninstalled packages:
 
