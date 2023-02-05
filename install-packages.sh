@@ -50,8 +50,9 @@ options=(
 25 "imwheel" off
 26 "bt-restart" off
 27 "ssh-alive-settings" on
-28 "borgbackup + vorta gui" on
-29 "spotify + spicetify" off)
+28 "solaar" on
+29 "borgbackup + vorta gui" on
+30 "spotify + spicetify" off)
 
 choices=$("${cmd[@]}" "${options[@]}" 2>&1 >/dev/tty)
 clear
@@ -295,11 +296,15 @@ then
                 sudo bash -c 'echo "    ServerAliveCountMax=1" >> /etc/ssh/ssh_config'
                 ;;
             28)
+                printf "${YELLOW}Installing solaar (Logitech mouse support)...\n${NC}"
+                sudo apt -y install solaar
+                ;;
+            29)
                 printf "${YELLOW}Installing borgbackup and vorta gui...\n${NC}"
                 sudo apt -y install borgbackup
                 sudo pip3 install vorta
                 ;;
-            29)
+            30)
                 printf "${YELLOW}Installing spotify and spicetify...\n${NC}"
                 cd ~
                 curl -sS https://download.spotify.com/debian/pubkey_7A3A762FAFD4A51F.gpg | sudo gpg --dearmor --yes -o /etc/apt/trusted.gpg.d/spotify.gpg
