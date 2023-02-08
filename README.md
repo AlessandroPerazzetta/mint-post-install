@@ -2,6 +2,9 @@
 
 wget -O - https://raw.githubusercontent.com/AlessandroPerazzetta/mint-post-install/main/install-packages.sh | bash
 
+# List system tweaks:
+
+- mount/umount: allow all user to run commands without pass
 
 # List installed packages:
 
