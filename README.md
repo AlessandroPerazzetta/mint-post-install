@@ -41,6 +41,7 @@ wget -O - https://raw.githubusercontent.com/AlessandroPerazzetta/mint-post-insta
 - SSH alive interval (15) and count (1)
 - borgbackup + vorta gui
 - spotify + spicetify
+- fancontrol (with custom config)
 
 # List uninstalled packages:
 
