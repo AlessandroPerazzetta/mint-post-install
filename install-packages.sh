@@ -351,7 +351,8 @@ then
                 FCFANS=hwmon1/device/pwm2=hwmon1/device/fan2_input hwmon1/device/pwm1=hwmon1/device/fan1_input
                 MINTEMP=hwmon1/device/pwm2=20 hwmon1/device/pwm1=20
                 MAXTEMP=hwmon1/device/pwm2=60 hwmon1/device/pwm1=60MINSTART=hwmon1/device/pwm2=150 hwmon1/device/pwm1=30
-                MINSTOP=hwmon1/device/pwm2=0 hwmon1/device/pwm1=16'
+                MINSTOP=hwmon1/device/pwm2=0 hwmon1/device/pwm1=16                
+                EOT'
                 ;;
         esac
     done
