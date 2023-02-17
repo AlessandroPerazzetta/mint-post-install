@@ -93,8 +93,7 @@ then
                 sudo bash -c "cat <<-'EOF' > /etc/sudoers.d/mountumount
                 # Allow any user to mount umount without requiring user authentication.
                 ALL ALL = NOPASSWD:/usr/bin/mount
-                ALL ALL = NOPASSWD:/usr/bin/umount
-                EOF"
+                ALL ALL = NOPASSWD:/usr/bin/umount"
                 ;;
             2)
                 printf "${YELLOW}Installing bwm-ng...\n${NC}"
@@ -213,8 +212,7 @@ then
                 StartupWMClass=mqtt-explorer
                 StartupNotify=true
                 Keywords=MQTT
-                Icon=/opt/mqtt-explorer/icon.png
-                EOF"
+                Icon=/opt/mqtt-explorer/icon.png"
                 ;;
             17)
                 printf "${YELLOW}Installing keepassxc...\n${NC}"
@@ -312,7 +310,7 @@ then
             30)
                 printf "${YELLOW}Installing borgbackup and vorta gui...\n${NC}"
                 sudo apt -y install borgbackup
-                sudo pip3 install vorta
+                sudo -H pip3 install vorta
                 ;;
             31)
                 printf "${YELLOW}Installing spotify and spicetify...\n${NC}"
@@ -351,8 +349,7 @@ then
                 FCFANS=hwmon1/device/pwm2=hwmon1/device/fan2_input hwmon1/device/pwm1=hwmon1/device/fan1_input
                 MINTEMP=hwmon1/device/pwm2=20 hwmon1/device/pwm1=20
                 MAXTEMP=hwmon1/device/pwm2=60 hwmon1/device/pwm1=60MINSTART=hwmon1/device/pwm2=150 hwmon1/device/pwm1=30
-                MINSTOP=hwmon1/device/pwm2=0 hwmon1/device/pwm1=16                
-                EOF"
+                MINSTOP=hwmon1/device/pwm2=0 hwmon1/device/pwm1=16"
                 ;;
         esac
     done
