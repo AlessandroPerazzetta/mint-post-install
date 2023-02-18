@@ -26,7 +26,7 @@ wget -O - https://raw.githubusercontent.com/AlessandroPerazzetta/mint-post-insta
 - codium
 - codium extensions
 - dbeaver-ce_latest_amd64
-- smartgit-21_2_0
+- smartgit-22_1_3
 - MQTT-Explorer
 - keepassxc
 - qownnotes
