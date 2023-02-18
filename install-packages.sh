@@ -93,7 +93,8 @@ then
                 sudo bash -c "cat <<-'EOF' > /etc/sudoers.d/mountumount
                 # Allow any user to mount umount without requiring user authentication.
                 ALL ALL = NOPASSWD:/usr/bin/mount
-                ALL ALL = NOPASSWD:/usr/bin/umount"
+                ALL ALL = NOPASSWD:/usr/bin/umount
+                EOF"
                 ;;
             2)
                 printf "${YELLOW}Installing bwm-ng...\n${NC}"
@@ -112,7 +113,7 @@ then
                 curl -fsSLo ~/.config/nvim/init.vim https://raw.githubusercontent.com/AlessandroPerazzetta/neovim-res/main/.config/nvim/init.vim
 
                 printf "${YELLOW}Set nvim as default editor...\n${NC}"
-                update-alternatives --set editor /usr/bin/nvim
+                sudo update-alternatives --set editor /usr/bin/nvim
 
                 printf "${YELLOW}Remove others editor...\n${NC}"
                 sudo apt -y remove nano ed
@@ -212,7 +213,8 @@ then
                 StartupWMClass=mqtt-explorer
                 StartupNotify=true
                 Keywords=MQTT
-                Icon=/opt/mqtt-explorer/icon.png"
+                Icon=/opt/mqtt-explorer/icon.png
+                EOF"
                 ;;
             17)
                 printf "${YELLOW}Installing keepassxc...\n${NC}"
@@ -349,7 +351,8 @@ then
                 FCFANS=hwmon1/device/pwm2=hwmon1/device/fan2_input hwmon1/device/pwm1=hwmon1/device/fan1_input
                 MINTEMP=hwmon1/device/pwm2=20 hwmon1/device/pwm1=20
                 MAXTEMP=hwmon1/device/pwm2=60 hwmon1/device/pwm1=60MINSTART=hwmon1/device/pwm2=150 hwmon1/device/pwm1=30
-                MINSTOP=hwmon1/device/pwm2=0 hwmon1/device/pwm1=16"
+                MINSTOP=hwmon1/device/pwm2=0 hwmon1/device/pwm1=16
+                EOF"
                 ;;
         esac
     done
