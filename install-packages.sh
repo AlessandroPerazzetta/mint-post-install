@@ -47,14 +47,15 @@ options=(
 22 "telegram" on
 23 "rust" on
 24 "python 3.6.15 (src install)" off
-25 "qtcreator + qt5" off
-26 "imwheel" off
-27 "bt-restart" off
-28 "ssh-alive-settings" on
-29 "solaar" on
-30 "borgbackup + vorta gui" on
-31 "spotify + spicetify" off
-32 "fancontrol + config" off)
+25 "python 3.8 (pkg install)" off
+26 "qtcreator + qt5" off
+27 "imwheel" off
+28 "bt-restart" off
+29 "ssh-alive-settings" on
+30 "solaar" on
+31 "borgbackup + vorta gui" on
+32 "spotify + spicetify" off
+33 "fancontrol + config" off)
 
 choices=$("${cmd[@]}" "${options[@]}" 2>&1 >/dev/tty)
 clear
@@ -281,22 +282,32 @@ then
                 sudo update-alternatives --install /usr/bin/python3.6 python3.6 /usr/local/bin/python3.6 2
                 ;;
             25)
+                printf "${YELLOW}Installing python 3.8 (pkg install)...\n${NC}"
+                sudo apt -y install python3.8{-distutils,-venv}
+                printf "${YELLOW}Installing multiple python...\n${NC}"
+                sudo update-alternatives --install /usr/bin/python python /usr/bin/python3.8 1
+                printf "${YELLOW}Installing last pip...\n${NC}"
+                curl https://bootstrap.pypa.io/get-pip.py --output /tmp/get-pip.py
+                sudo -H python /tmp/get-pip.py 
+                sudo ln -s /usr/local/bin/pip3 /usr/bin/pip3
+                ;;
+            26)
                 printf "${YELLOW}Installing qtcreator, qt5 and related stuff, cmake...\n${NC}"
                 sudo apt -y install cmake qtcreator qt5-default libqt5svg5* libqt5qml* libqt5xml* qtdeclarative5-dev
                 ;;
-            26)
+            27)
                 printf "${YELLOW}Installing imwheel...\n${NC}"
                 sudo apt -y install imwheel
                 curl -fsSLo ~/mousewheel.sh https://raw.githubusercontent.com/AlessandroPerazzetta/imwheel/main/mousewheel.sh
                 chmod +x ~/mousewheel.sh
                 ~/mousewheel.sh
                 ;;
-            27)
+            28)
                 printf "${YELLOW}Installing bt-restart...\n${NC}"
                 sudo curl -fsSLo /lib/systemd/system-sleep/bt https://raw.githubusercontent.com/AlessandroPerazzetta/bt-restart/main/bt
                 sudo chmod +x /lib/systemd/system-sleep/bt
                 ;;
-            28)
+            29)
                 printf "${YELLOW}Installing ssh alive settings...\n${NC}"
                 printf "${LCYAN}--------------------------------------------------------------------------------\n${LRED}"
                 printf "Original copy of ssh_config is available in /etc/ssh/ssh_config.ORIGINAL\n"
@@ -305,16 +316,16 @@ then
                 sudo sed -i -e "s/ServerAliveInterval 240/ServerAliveInterval 15/g" /etc/ssh/ssh_config
                 sudo bash -c 'echo "    ServerAliveCountMax=1" >> /etc/ssh/ssh_config'
                 ;;
-            29)
+            30)
                 printf "${YELLOW}Installing solaar (Logitech mouse support)...\n${NC}"
                 sudo apt -y install solaar
                 ;;
-            30)
+            31)
                 printf "${YELLOW}Installing borgbackup and vorta gui...\n${NC}"
                 sudo apt -y install borgbackup
                 sudo -H pip3 install vorta
                 ;;
-            31)
+            32)
                 printf "${YELLOW}Installing spotify and spicetify...\n${NC}"
                 cd ~
                 curl -sS https://download.spotify.com/debian/pubkey_7A3A762FAFD4A51F.gpg | sudo gpg --dearmor --yes -o /etc/apt/trusted.gpg.d/spotify.gpg
@@ -331,7 +342,7 @@ then
                 printf "spicetify backup apply\n"
                 printf "${LCYAN}--------------------------------------------------------------------------------\n${GREEN}"
                 ;;
-            32)
+            33)
                 printf "${YELLOW}Installing fancontrol and config...\n${NC}"
                 printf "${LCYAN}--------------------------------------------------------------------------------\n${LRED}"
                 printf "Original copy of fancontrol config if exist is available in /etc/fancontrol.ORIGINAL\n"
