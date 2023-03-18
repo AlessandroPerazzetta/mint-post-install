@@ -70,7 +70,7 @@ then
 
     printf "${YELLOW}Install required packages...\n${NC}"
     sleep 1
-    sudo apt -y install build-essential apt-transport-https curl python3-serial python3-pip
+    sudo apt -y install build-essential apt-transport-https curl python3-serial python3-pip sshfs
 
     if id -nG "$CURRENT_USER" | grep -qw "dialout"; then
         printf "${YELLOW}User is already in dialout group (ref: /dev/ttyUSBx Error opening serial port)...\n${NC}"
