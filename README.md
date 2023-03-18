@@ -20,6 +20,15 @@ wget -O - https://raw.githubusercontent.com/AlessandroPerazzetta/mint-post-insta
 - apt-transport-https
 - curl
 - brave-browser
+- brave-browser extensions
+    * bypass-adblock-detection
+    * hls-downloader
+    * i-dont-care-about-cookies
+    * keepassxc-browser
+    * session-buddy
+    * the-marvellous-suspender
+    * url-tracking-stripper-red
+    * video-downloader-plus
 - remmina
 - remmina-plugin-rdp
 - remmina-plugin-secret

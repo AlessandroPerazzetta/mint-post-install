@@ -33,29 +33,30 @@ options=(
 8 "git" on
 9 "htop" on
 10 "brave-browser" on
-11 "remmina" on
-12 "vscodium" on
-13 "vscodium extensions" on
-14 "dbeaver" on
-15 "smartgit" on
-16 "mqtt-explorer" on
-17 "keepassxc" on
-18 "qownnotes" on
-19 "virtualbox" on
-20 "kicad" on
-21 "freecad" on
-22 "telegram" on
-23 "rust" on
-24 "python 3.6.15 (src install)" off
-25 "python 3.8 (pkg install)" off
-26 "qtcreator + qt5" off
-27 "imwheel" off
-28 "bt-restart" off
-29 "ssh-alive-settings" on
-30 "solaar" on
-31 "borgbackup + vorta gui" on
-32 "spotify + spicetify" off
-33 "fancontrol + config" off)
+11 "brave-browser extensions" on
+12 "remmina" on
+13 "vscodium" on
+14 "vscodium extensions" on
+15 "dbeaver" on
+16 "smartgit" on
+17 "mqtt-explorer" on
+18 "keepassxc" on
+19 "qownnotes" on
+20 "virtualbox" on
+21 "kicad" on
+22 "freecad" on
+23 "telegram" on
+24 "rust" on
+25 "python 3.6.15 (src install)" off
+26 "python 3.8 (pkg install)" off
+27 "qtcreator + qt5" off
+28 "imwheel" off
+29 "bt-restart" off
+30 "ssh-alive-settings" on
+31 "solaar" on
+32 "borgbackup + vorta gui" on
+33 "spotify + spicetify" off
+34 "fancontrol + config" off)
 
 choices=$("${cmd[@]}" "${options[@]}" 2>&1 >/dev/tty)
 clear
@@ -151,12 +152,41 @@ then
                 sudo apt -y install brave-browser
                 ;;
             11)
+                printf "${YELLOW}Installing brave-browser extensions...\n${NC}"
+                BRAVE_PATH="/opt/brave.com/brave"
+                BRAVE_EXTENSIONS_PATH="$BRAVE_PATH/extensions"
+                if [ -d "$BRAVE_PATH" ]
+                then
+                    sudo mkdir -p ${BRAVE_EXTENSIONS_PATH}
+                    declare -A EXTlist=(
+                        ["bypass-adblock-detection"]="lppagnomjcaohgkfljlebenbmbdmbkdj"
+                        ["hls-downloader"]="hkbifmjmkohpemgdkknlbgmnpocooogp"
+                        ["i-dont-care-about-cookies"]="fihnjjcciajhdojfnbdddfaoknhalnja"
+                        ["keepassxc-browser"]="oboonakemofpalcgghocfoadofidjkkk"
+                        ["session-buddy"]="edacconmaakjimmfgnblocblbcdcpbko"
+                        ["the-marvellous-suspender"]="noogafoofpebimajpfpamcfhoaifemoa"
+                        ["url-tracking-stripper-red"]="flnagcobkfofedknnnmofijmmkbgfamf"
+                        ["video-downloader-plus"]="njgehaondchbmjmajphnhlojfnbfokng"
+                    )
+                    for i in "${!EXTlist[@]}"; do
+                        # echo "Key: $i value: ${EXTlist[$i]}"
+                        # echo '{"external_update_url": "https://clients2.google.com/service/update2/crx"}' > /opt/google/chrome/extensions/${EXTlist[$i]}.json
+                        sudo bash -c "echo -e '{ \"external_update_url\": \"https://clients2.google.com/service/update2/crx\" }' > ${BRAVE_EXTENSIONS_PATH}/${EXTlist[$i]}.json"
+                        
+                    done
+                else
+                    printf "${LCYAN}--------------------------------------------------------------------------------\n${LRED}"
+                    printf "ERROR Brave path not found, extensions not installed !!!"
+                    printf "${LCYAN}--------------------------------------------------------------------------------\n${NC}"
+                fi
+                ;;
+            12)
                 printf "${YELLOW}Installing remmina...\n${NC}"
                 sudo apt-add-repository -y ppa:remmina-ppa-team/remmina-next
                 sudo apt update
                 sudo apt -y install remmina remmina-plugin-rdp remmina-plugin-secret
                 ;;
-            12)
+            13)
                 printf "${YELLOW}Installing vscodium...\n${NC}"
                 wget -qO - https://gitlab.com/paulcarroty/vscodium-deb-rpm-repo/-/raw/master/pub.gpg | gpg --dearmor | sudo dd of=/etc/apt/trusted.gpg.d/vscodium.gpg
                 echo 'deb https://paulcarroty.gitlab.io/vscodium-deb-rpm-repo/debs/ vscodium main' | sudo tee /etc/apt/sources.list.d/vscodium.list
@@ -171,7 +201,7 @@ then
                 printf "${YELLOW}Installing nemo action for vscodium...\n${NC}"
                 sudo wget https://raw.githubusercontent.com/AlessandroPerazzetta/nemo-actions-vscodium-launcher/main/codium.nemo_action -O ~/.local/share/nemo/actions/codium.nemo_action
                 ;;
-            13)
+            14)
                 printf "${YELLOW}Installing vscodium extensions ...\n${NC}"
                 codium --install-extension bungcip.better-toml
                 codium --install-extension rust-lang.rust-analyzer
@@ -183,17 +213,17 @@ then
                 codium --install-extension vadimcn.vscode-lldb
                 codium --install-extension vsciot-vscode.vscode-arduino
                 ;;
-            14)
+            15)
                 printf "${YELLOW}Installing dbeaver...\n${NC}"
                 sudo curl -fsSLo /tmp/dbeaver-ce_latest_amd64.deb https://dbeaver.io/files/dbeaver-ce_latest_amd64.deb
                 sudo dpkg -i /tmp/dbeaver-ce_latest_amd64.deb
                 ;;
-            15)
+            16)
                 printf "${YELLOW}Installing smartgit...\n${NC}"
                 sudo curl -fsSLo /tmp/smartgit-22_1_3.deb https://www.syntevo.com/downloads/smartgit/smartgit-22_1_3.deb
                 sudo dpkg -i /tmp/smartgit-22_1_3.deb
                 ;;
-            16)
+            17)
                 printf "${YELLOW}Installing MQTT-Explorer...\n${NC}"
                 sudo mkdir -p /opt/mqtt-explorer/
                 #curl -s https://api.github.com/repos/thomasnordquist/MQTT-Explorer/releases/latest |grep "browser_download_url.*AppImage" |grep -Ewv 'armv7l|i386' |cut -d : -f 2,3 |tr -d \"| xargs -n 1 sudo curl -O -L
@@ -217,19 +247,19 @@ then
                 # Icon=/opt/mqtt-explorer/icon.png
                 sudo bash -c "echo -e '[Desktop Entry]\nName=MQTT Explorer\nGenericName=MQTT client\nComment=An all-round MQTT client that provides a structured topic overviewCategories=Development;\nTerminal=false\nType=Application\nPath=/opt/mqtt-explorer/\nExec=/opt/mqtt-explorer/mqtt-explorer\nStartupWMClass=mqtt-explorer\nStartupNotify=true\nKeywords=MQTT\nIcon=/opt/mqtt-explorer/icon.png' >> /usr/share/applications/mqtt-explorer.desktop"
                 ;;
-            17)
+            18)
                 printf "${YELLOW}Installing keepassxc...\n${NC}"
                 sudo apt-add-repository -y ppa:phoerious/keepassxc
                 sudo apt update
                 sudo apt -y install keepassxc
                 ;;
-            18)
+            19)
                 printf "${YELLOW}Installing qownnotes...\n${NC}"
                 sudo apt-add-repository -y ppa:pbek/qownnotes
                 sudo apt update
                 sudo apt -y install qownnotes
                 ;;
-            19)
+            20)
                 printf "${YELLOW}Installing virtualbox...\n${NC}"
                 sudo wget -q https://www.virtualbox.org/download/oracle_vbox_2016.asc -O- | sudo apt-key add -
                 echo "deb [arch=amd64] http://download.virtualbox.org/virtualbox/debian focal contrib" | sudo tee /etc/apt/sources.list.d/virtualbox.list
@@ -246,28 +276,28 @@ then
                 read -n 1 -s -r -p "Press any key to continue"
                 printf "\n${NC}"
                 ;;
-            20)
+            21)
                 printf "${YELLOW}Installing kicad...\n${NC}"
                 sudo apt-add-repository -y ppa:kicad/kicad-5.1-releases
                 sudo apt update
                 sudo apt -y install --install-recommends kicad
                 ;;
-            21)
+            22)
                 printf "${YELLOW}Installing freecad...\n${NC}"
                 sudo add-apt-repository -y ppa:freecad-maintainers/freecad-stable
                 sudo apt update
                 sudo apt -y install freecad
                 ;;
-            22)
+            23)
                 printf "${YELLOW}Installing telegram...\n${NC}"
                 curl -fsSLo /tmp/Telegram.xz https://telegram.org/dl/desktop/linux
                 sudo tar -xf /tmp/Telegram.xz -C /opt/
                 ;;
-            23)
+            24)
                 printf "${YELLOW}Installing rust...\n${NC}"
                 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
                 ;;
-            24)
+            25)
                 printf "${YELLOW}Installing python 3.6.15 (src install)...\n${NC}"
                 sudo apt -y install build-essential checkinstall virtualenv
                 sudo apt -y install libreadline-gplv2-dev libncursesw5-dev libssl-dev libsqlite3-dev tk-dev libgdbm-dev libc6-dev libbz2-dev libffi-dev zlib1g-dev
@@ -281,7 +311,7 @@ then
                 sudo update-alternatives --install /usr/bin/python3 python3 /usr/bin/python3.8 1
                 sudo update-alternatives --install /usr/bin/python3.6 python3.6 /usr/local/bin/python3.6 2
                 ;;
-            25)
+            26)
                 printf "${YELLOW}Installing python 3.8 (pkg install)...\n${NC}"
                 sudo apt -y install python3.8{-distutils,-venv}
                 printf "${YELLOW}Installing multiple python...\n${NC}"
@@ -291,23 +321,23 @@ then
                 sudo -H python /tmp/get-pip.py 
                 sudo ln -s /usr/local/bin/pip3 /usr/bin/pip3
                 ;;
-            26)
+            27)
                 printf "${YELLOW}Installing qtcreator, qt5 and related stuff, cmake...\n${NC}"
                 sudo apt -y install cmake qtcreator qt5-default libqt5svg5* libqt5qml* libqt5xml* qtdeclarative5-dev
                 ;;
-            27)
+            28)
                 printf "${YELLOW}Installing imwheel...\n${NC}"
                 sudo apt -y install imwheel
                 curl -fsSLo ~/mousewheel.sh https://raw.githubusercontent.com/AlessandroPerazzetta/imwheel/main/mousewheel.sh
                 chmod +x ~/mousewheel.sh
                 ~/mousewheel.sh
                 ;;
-            28)
+            29)
                 printf "${YELLOW}Installing bt-restart...\n${NC}"
                 sudo curl -fsSLo /lib/systemd/system-sleep/bt https://raw.githubusercontent.com/AlessandroPerazzetta/bt-restart/main/bt
                 sudo chmod +x /lib/systemd/system-sleep/bt
                 ;;
-            29)
+            30)
                 printf "${YELLOW}Installing ssh alive settings...\n${NC}"
                 printf "${LCYAN}--------------------------------------------------------------------------------\n${LRED}"
                 printf "Original copy of ssh_config is available in /etc/ssh/ssh_config.ORIGINAL\n"
@@ -316,16 +346,16 @@ then
                 sudo sed -i -e "s/ServerAliveInterval 240/ServerAliveInterval 15/g" /etc/ssh/ssh_config
                 sudo bash -c 'echo "    ServerAliveCountMax=1" >> /etc/ssh/ssh_config'
                 ;;
-            30)
+            31)
                 printf "${YELLOW}Installing solaar (Logitech mouse support)...\n${NC}"
                 sudo apt -y install solaar
                 ;;
-            31)
+            32)
                 printf "${YELLOW}Installing borgbackup and vorta gui...\n${NC}"
                 sudo apt -y install borgbackup
                 sudo -H pip3 install vorta
                 ;;
-            32)
+            33)
                 printf "${YELLOW}Installing spotify and spicetify...\n${NC}"
                 cd ~
                 curl -sS https://download.spotify.com/debian/pubkey_7A3A762FAFD4A51F.gpg | sudo gpg --dearmor --yes -o /etc/apt/trusted.gpg.d/spotify.gpg
@@ -342,7 +372,7 @@ then
                 printf "spicetify backup apply\n"
                 printf "${LCYAN}--------------------------------------------------------------------------------\n${GREEN}"
                 ;;
-            33)
+            34)
                 printf "${YELLOW}Installing fancontrol and config...\n${NC}"
                 printf "${LCYAN}--------------------------------------------------------------------------------\n${LRED}"
                 printf "Original copy of fancontrol config if exist is available in /etc/fancontrol.ORIGINAL\n"
