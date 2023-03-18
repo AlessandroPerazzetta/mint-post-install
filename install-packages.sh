@@ -172,12 +172,13 @@ then
                         # echo "Key: $i value: ${EXTlist[$i]}"
                         # echo '{"external_update_url": "https://clients2.google.com/service/update2/crx"}' > /opt/google/chrome/extensions/${EXTlist[$i]}.json
                         sudo bash -c "echo -e '{ \"external_update_url\": \"https://clients2.google.com/service/update2/crx\" }' > ${BRAVE_EXTENSIONS_PATH}/${EXTlist[$i]}.json"
-                        
                     done
                 else
                     printf "${LCYAN}--------------------------------------------------------------------------------\n${LRED}"
-                    printf "ERROR Brave path not found, extensions not installed !!!"
-                    printf "${LCYAN}--------------------------------------------------------------------------------\n${NC}"
+                    printf "ERROR Brave path not found, extensions not installed !!!\n"
+                    printf "${LCYAN}--------------------------------------------------------------------------------\n${GREEN}"
+                    read -n 1 -s -r -p "Press any key to continue"
+                    printf "\n${NC}"
                 fi
                 ;;
             12)
