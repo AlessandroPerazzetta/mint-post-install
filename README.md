@@ -6,7 +6,16 @@ wget -O - https://raw.githubusercontent.com/AlessandroPerazzetta/mint-post-insta
 
 - mount/umount: allow all user to run commands without pass
 
-# List installed packages:
+# List of required installed packages:
+
+- build-essential
+- apt-transport-https
+- curl
+- python3-serial
+- python3-pip
+- sshfs
+ 
+# List of selectable installed packages:
 
 - bwm-ng 
 - screen
