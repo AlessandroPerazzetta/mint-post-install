@@ -206,6 +206,8 @@ then
                 printf "${YELLOW}Installing vscodium extensions ...\n${NC}"
                 codium --install-extension bungcip.better-toml
                 codium --install-extension rust-lang.rust-analyzer
+                codium --install-extension jinxdash.prettier-rust
+                codium --install-extension kogia-sima.vscode-sailfish
                 codium --install-extension ms-python.python
                 codium --install-extension ms-python.vscode-pylance
                 codium --install-extension ms-vscode.cpptools

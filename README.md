@@ -43,6 +43,17 @@ wget -O - https://raw.githubusercontent.com/AlessandroPerazzetta/mint-post-insta
 - remmina-plugin-secret
 - codium
 - codium extensions
+    * bungcip.better-toml
+    * rust-lang.rust-analyzer
+    * jinxdash.prettier-rust
+    * kogia-sima.vscode-sailfish
+    * ms-python.python
+    * ms-python.vscode-pylance
+    * ms-vscode.cpptools
+    * serayuzgur.crates
+    * usernamehw.errorlens
+    * vadimcn.vscode-lldb
+    * vsciot-vscode.vscode-arduino
 - dbeaver-ce_latest_amd64
 - smartgit-22_1_4
 - MQTT-Explorer
