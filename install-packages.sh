@@ -208,6 +208,7 @@ then
 
                 printf "${YELLOW}Installing nemo action for vscodium...\n${NC}"
                 #sudo wget https://raw.githubusercontent.com/AlessandroPerazzetta/nemo-actions-vscodium-launcher/main/codium.nemo_action -O ~/.local/share/nemo/actions/codium.nemo_action
+                mkdir -p ~/.local/share/nemo/actions/
                 curl -fsSLo ~/.local/share/nemo/actions/codium.nemo_action https://raw.githubusercontent.com/AlessandroPerazzetta/nemo-actions-vscodium-launcher/main/codium.nemo_action
                 ;;
             14)
