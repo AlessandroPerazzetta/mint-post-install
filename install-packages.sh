@@ -207,7 +207,8 @@ then
                 sudo /usr/local/sbin/vscodium-json-updater/update.sh
 
                 printf "${YELLOW}Installing nemo action for vscodium...\n${NC}"
-                sudo wget https://raw.githubusercontent.com/AlessandroPerazzetta/nemo-actions-vscodium-launcher/main/codium.nemo_action -O ~/.local/share/nemo/actions/codium.nemo_action
+                #sudo wget https://raw.githubusercontent.com/AlessandroPerazzetta/nemo-actions-vscodium-launcher/main/codium.nemo_action -O ~/.local/share/nemo/actions/codium.nemo_action
+                curl -fsSLo ~/.local/share/nemo/actions/codium.nemo_action https://raw.githubusercontent.com/AlessandroPerazzetta/nemo-actions-vscodium-launcher/main/codium.nemo_action
                 ;;
             14)
                 printf "${YELLOW}Installing vscodium extensions ...\n${NC}"
