@@ -228,6 +228,7 @@ then
                     codium --install-extension usernamehw.errorlens
                     codium --install-extension vadimcn.vscode-lldb
                     codium --install-extension vsciot-vscode.vscode-arduino
+                    codium --install-extension ahmadawais.shades-of-purple
                 fi
                 ;;
             15)
