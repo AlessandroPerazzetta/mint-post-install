@@ -213,17 +213,22 @@ then
                 ;;
             14)
                 printf "${YELLOW}Installing vscodium extensions ...\n${NC}"
-                codium --install-extension bungcip.better-toml
-                codium --install-extension rust-lang.rust-analyzer
-                codium --install-extension jinxdash.prettier-rust
-                codium --install-extension kogia-sima.vscode-sailfish
-                codium --install-extension ms-python.python
-                codium --install-extension ms-python.vscode-pylance
-                codium --install-extension ms-vscode.cpptools
-                codium --install-extension serayuzgur.crates
-                codium --install-extension usernamehw.errorlens
-                codium --install-extension vadimcn.vscode-lldb
-                codium --install-extension vsciot-vscode.vscode-arduino
+                if ! command -v codium &> /dev/null
+                then
+                    printf "${RED}Installing vscodium extensions failed, codium could not be found...\n${NC}"
+                else
+                    codium --install-extension bungcip.better-toml
+                    codium --install-extension rust-lang.rust-analyzer
+                    codium --install-extension jinxdash.prettier-rust
+                    codium --install-extension kogia-sima.vscode-sailfish
+                    codium --install-extension ms-python.python
+                    codium --install-extension ms-python.vscode-pylance
+                    codium --install-extension ms-vscode.cpptools
+                    codium --install-extension serayuzgur.crates
+                    codium --install-extension usernamehw.errorlens
+                    codium --install-extension vadimcn.vscode-lldb
+                    codium --install-extension vsciot-vscode.vscode-arduino
+                fi
                 ;;
             15)
                 printf "${YELLOW}Installing dbeaver...\n${NC}"
