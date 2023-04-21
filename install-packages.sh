@@ -313,7 +313,12 @@ then
                 ;;
             24)
                 printf "${YELLOW}Installing rust...\n${NC}"
-                curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+                if ! command -v rustc &> /dev/null
+                then
+                    curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+                else
+                    printf "${RED}Installing rust, rustc found. Rust already present...\n${NC}"
+                fi
                 ;;
             25)
                 printf "${YELLOW}Installing python 3.6.15 (src install)...\n${NC}"
