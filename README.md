@@ -55,7 +55,7 @@ wget -O - https://raw.githubusercontent.com/AlessandroPerazzetta/mint-post-insta
     * vadimcn.vscode-lldb
     * vsciot-vscode.vscode-arduino
 - dbeaver-ce_latest_amd64
-- smartgit-22_1_4
+- smartgit-22_1_5
 - MQTT-Explorer
 - keepassxc
 - qownnotes
