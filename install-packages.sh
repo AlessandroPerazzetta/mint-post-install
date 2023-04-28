@@ -212,11 +212,12 @@ then
                 curl -fsSLo ~/.local/share/nemo/actions/codium.nemo_action https://raw.githubusercontent.com/AlessandroPerazzetta/nemo-actions-vscodium-launcher/main/codium.nemo_action
                 ;;
             14)
-                printf "${YELLOW}Installing vscodium extensions ...\n${NC}"
+                printf "${YELLOW}VSCodium extensions ...\n${NC}"
                 if ! command -v codium &> /dev/null
                 then
-                    printf "${RED}Installing vscodium extensions failed, codium could not be found...\n${NC}"
+                    printf "${RED}Installing/Uninstalling vscodium extensions failed, codium could not be found...\n${NC}"
                 else
+                    printf "${YELLOW}Installing vscodium extensions ...\n${NC}"
                     codium --install-extension bungcip.better-toml
                     codium --install-extension rust-lang.rust-analyzer
                     codium --install-extension jinxdash.prettier-rust
@@ -229,6 +230,12 @@ then
                     codium --install-extension vadimcn.vscode-lldb
                     codium --install-extension vsciot-vscode.vscode-arduino
                     codium --install-extension ahmadawais.shades-of-purple
+                    printf "${YELLOW}Uninstalling vscodium extensions ...\n${NC}"
+                    codium --uninstall-extension ms-toolsai.jupyter
+                    codium --uninstall-extension ms-toolsai.jupyter-keymap
+                    codium --uninstall-extension ms-toolsai.jupyter-renderers
+                    codium --uninstall-extension ms-toolsai.vscode-jupyter-cell-tags
+                    codium --uninstall-extension ms-toolsai.vscode-jupyter-slideshow
                 fi
                 ;;
             15)
@@ -388,6 +395,8 @@ then
                 # https://codereview.chromium.org/2384163002
                 # spotify --no-zygote
                 spotify && killall spotify
+                sudo chmod a+wr /usr/share/spotify
+                sudo chmod a+wr /usr/share/spotify/Apps -R
                 curl -fsSL https://raw.githubusercontent.com/spicetify/spicetify-cli/master/install.sh | sh
                 curl -fsSL https://raw.githubusercontent.com/spicetify/spicetify-marketplace/main/resources/install.sh | sh
                 printf "${LCYAN}--------------------------------------------------------------------------------\n${LRED}"

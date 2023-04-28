@@ -42,7 +42,7 @@ wget -O - https://raw.githubusercontent.com/AlessandroPerazzetta/mint-post-insta
 - remmina-plugin-rdp
 - remmina-plugin-secret
 - codium
-- codium extensions
+- codium extensions installed
     * bungcip.better-toml
     * rust-lang.rust-analyzer
     * jinxdash.prettier-rust
@@ -54,6 +54,12 @@ wget -O - https://raw.githubusercontent.com/AlessandroPerazzetta/mint-post-insta
     * usernamehw.errorlens
     * vadimcn.vscode-lldb
     * vsciot-vscode.vscode-arduino
+- codium extensions uninstalled
+    * ms-toolsai.jupyter
+    * ms-toolsai.jupyter-keymap
+    * ms-toolsai.jupyter-renderers
+    * ms-toolsai.vscode-jupyter-cell-tags
+    * ms-toolsai.vscode-jupyter-slideshow
 - dbeaver-ce_latest_amd64
 - smartgit-22_1_5
 - MQTT-Explorer
