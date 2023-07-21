@@ -183,6 +183,7 @@ then
                         ["the-marvellous-suspender"]="noogafoofpebimajpfpamcfhoaifemoa"
                         ["url-tracking-stripper-red"]="flnagcobkfofedknnnmofijmmkbgfamf"
                         ["video-downloader-plus"]="njgehaondchbmjmajphnhlojfnbfokng"
+                        ["adblock-for-twitch"]="mdomkpjejpboocpojfikalapgholajdc"
                         
                     )
                     for i in "${!EXTlist[@]}"; do
