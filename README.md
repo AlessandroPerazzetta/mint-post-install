@@ -38,6 +38,7 @@ wget -O - https://raw.githubusercontent.com/AlessandroPerazzetta/mint-post-insta
     * the-marvellous-suspender
     * url-tracking-stripper-red
     * video-downloader-plus
+    * adblock-for-twitch"
 - remmina
 - remmina-plugin-rdp
 - remmina-plugin-secret
