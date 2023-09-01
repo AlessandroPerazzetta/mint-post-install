@@ -240,6 +240,7 @@ then
                     codium --install-extension usernamehw.errorlens
                     codium --install-extension vadimcn.vscode-lldb
                     codium --install-extension vsciot-vscode.vscode-arduino
+                    codium --install-extension jeff-hykin.better-cpp-syntax
                     codium --install-extension ahmadawais.shades-of-purple
                     printf "${YELLOW}Uninstalling vscodium extensions ...\n${NC}"
                     codium --uninstall-extension ms-toolsai.jupyter

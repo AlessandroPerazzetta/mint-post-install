@@ -54,6 +54,7 @@ wget -O - https://raw.githubusercontent.com/AlessandroPerazzetta/mint-post-insta
     * serayuzgur.crates
     * usernamehw.errorlens
     * vadimcn.vscode-lldb
+    * jeff-hykin.better-cpp-syntax
     * vsciot-vscode.vscode-arduino
 - codium extensions uninstalled
     * ms-toolsai.jupyter
