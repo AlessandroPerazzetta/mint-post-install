@@ -257,8 +257,8 @@ then
                 ;;
             18)
                 printf "${YELLOW}Installing smartgit...\n${NC}"
-                sudo curl -fsSLo /tmp/smartgit-22_1_5.deb https://www.syntevo.com/downloads/smartgit/smartgit-22_1_5.deb
-                sudo dpkg -i /tmp/smartgit-22_1_5.deb
+                sudo curl -fsSLo /tmp/smartgit-23_1-preview-12.deb https://www.syntevo.com/downloads/smartgit/smartgit-23_1-preview-12.deb
+                sudo dpkg -i /tmp/smartgit-23_1-preview-12.deb
                 ;;
             19)
                 printf "${YELLOW}Installing MQTT-Explorer...\n${NC}"
