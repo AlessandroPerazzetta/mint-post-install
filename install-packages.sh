@@ -58,7 +58,8 @@ options=(
 33 "solaar" on
 34 "borgbackup + vorta gui" on
 35 "spotify + spicetify" off
-36 "fancontrol + config" off)
+36 "spotube" off
+37 "fancontrol + config" off)
 
 choices=$("${cmd[@]}" "${options[@]}" 2>&1 >/dev/tty)
 clear
@@ -418,6 +419,29 @@ then
                 printf "${LCYAN}--------------------------------------------------------------------------------\n${GREEN}"
                 ;;
             36)
+                printf "${YELLOW}Installing spotube...\n${NC}"
+                sudo mkdir -p /opt/spotube
+                sudo chmod a+wr /opt/spotube
+                sudo curl -fsSLo /opt/spotube/Spotube-linux-x86_64.AppImage https://github.com/KRTirtho/spotube/releases/latest/download/Spotube-linux-x86_64.AppImage
+                sudo chmod +x /opt/spotube/Spotube-linux-x86_64.AppImage                
+                curl -fsSLo /opt/spotube/Spotube-linux-x86_64.png https://github.com/KRTirtho/spotube/blob/master/assets/spotube-logo.png?raw=true
+                # ----> OUT
+                # [Desktop Entry]
+                # Name=Spotube
+                # GenericName=Spotube
+                # Comment=A music streaming app combining the power of Spotify & YouTube
+                # Categories=Audio;Music;Player;AudioVideo;
+                # Terminal=false
+                # Type=Application
+                # Path=/opt/spotube/
+                # Exec=/opt/spotube/Spotube-linux-x86_64.AppImage
+                # StartupWMClass=Spotube-linux-x86_64.AppImage
+                # StartupNotify=true
+                # Keywords=Spotube
+                # Icon=/opt/spotube/Spotube-linux-x86_64.png
+                sudo bash -c "echo -e '[Desktop Entry]\nName=Spotube\nGenericName=Spotube\nComment=A music streaming app combining the power of Spotify & YouTube\nCategories=Audio;Music;Player;AudioVideo;\nTerminal=false\nType=Application\nPath=/opt/spotube/\nExec=/opt/spotube/Spotube-linux-x86_64.AppImage\nStartupWMClass=Spotube-linux-x86_64.AppImage\nStartupNotify=true\nKeywords=Spotube\nIcon=/opt/spotube/Spotube-linux-x86_64.png'  >> /usr/share/applications/spotube.desktop"
+                ;;     
+            37)
                 printf "${YELLOW}Installing fancontrol and config...\n${NC}"
                 printf "${LCYAN}--------------------------------------------------------------------------------\n${LRED}"
                 printf "Original copy of fancontrol config if exist is available in /etc/fancontrol.ORIGINAL\n"
