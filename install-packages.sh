@@ -39,27 +39,29 @@ options=(
 14 "remmina" on
 15 "vscodium" on
 16 "vscodium extensions" on
-17 "dbeaver" on
-18 "smartgit" on
-19 "mqtt-explorer" on
-20 "keepassxc" on
-21 "qownnotes" on
-22 "virtualbox" on
-23 "kicad" on
-24 "freecad" on
-25 "telegram" on
-26 "rust" on
-27 "python 3.6.15 (src install)" off
-28 "python 3.8 (pkg install)" off
-29 "qtcreator + qt5" off
-30 "imwheel" off
-31 "bt-restart" off
-32 "ssh-alive-settings" on
-33 "solaar" on
-34 "borgbackup + vorta gui" on
-35 "spotify + spicetify" off
-36 "spotube" off
-37 "fancontrol + config" off)
+17 "marktext" on
+18 "dbeaver" on
+19 "smartgit" on
+20 "mqtt-explorer" on
+21 "arduino-cli" on
+22 "keepassxc" on
+23 "qownnotes" on
+24 "virtualbox" on
+25 "kicad" on
+26 "freecad" on
+27 "telegram" on
+28 "rust" on
+29 "python 3.6.15 (src install)" off
+30 "python 3.8 (pkg install)" off
+31 "qtcreator + qt5" off
+32 "imwheel" off
+33 "bt-restart" off
+34 "ssh-alive-settings" on
+35 "solaar" on
+36 "borgbackup + vorta gui" on
+37 "spotify + spicetify" off
+38 "spotube" off
+39 "fancontrol + config" off)
 
 choices=$("${cmd[@]}" "${options[@]}" 2>&1 >/dev/tty)
 clear
@@ -305,18 +307,24 @@ then
                 sudo bash -c "echo -e '[Desktop Entry]\nName=MQTT Explorer\nGenericName=MQTT client\nComment=An all-round MQTT client that provides a structured topic overviewCategories=Development;\nTerminal=false\nType=Application\nPath=/opt/mqtt-explorer/\nExec=/opt/mqtt-explorer/mqtt-explorer\nStartupWMClass=mqtt-explorer\nStartupNotify=true\nKeywords=MQTT\nIcon=/opt/mqtt-explorer/icon.png' >> /usr/share/applications/mqtt-explorer.desktop"
                 ;;
             21)
+                printf "${YELLOW}Installing arduino-cli...\n${NC}"
+                sudo mkdir -p /opt/arduino-cli/
+                sudo chown "$CURRENT_USER":"$CURRENT_USER" /opt/arduino-cli
+                curl -fsSL https://raw.githubusercontent.com/arduino/arduino-cli/master/install.sh | BINDIR=/opt/arduino-cli sh
+                ;;                
+            22)
                 printf "${YELLOW}Installing keepassxc...\n${NC}"
                 sudo apt-add-repository -y ppa:phoerious/keepassxc
                 sudo apt update
                 sudo apt -y install keepassxc
                 ;;
-            22)
+            23)
                 printf "${YELLOW}Installing qownnotes...\n${NC}"
                 sudo apt-add-repository -y ppa:pbek/qownnotes
                 sudo apt update
                 sudo apt -y install qownnotes
                 ;;
-            23)
+            24)
                 printf "${YELLOW}Installing virtualbox...\n${NC}"
                 sudo wget -q https://www.virtualbox.org/download/oracle_vbox_2016.asc -O- | sudo apt-key add -
                 echo "deb [arch=amd64] http://download.virtualbox.org/virtualbox/debian focal contrib" | sudo tee /etc/apt/sources.list.d/virtualbox.list
@@ -333,24 +341,24 @@ then
                 read -n 1 -s -r -p "Press any key to continue"
                 printf "\n${NC}"
                 ;;
-            24)
+            25)
                 printf "${YELLOW}Installing kicad...\n${NC}"
                 sudo apt-add-repository -y ppa:kicad/kicad-5.1-releases
                 sudo apt update
                 sudo apt -y install --install-recommends kicad
                 ;;
-            25)
+            26)
                 printf "${YELLOW}Installing freecad...\n${NC}"
                 sudo add-apt-repository -y ppa:freecad-maintainers/freecad-stable
                 sudo apt update
                 sudo apt -y install freecad
                 ;;
-            26)
+            27)
                 printf "${YELLOW}Installing telegram...\n${NC}"
                 curl -fsSLo /tmp/Telegram.xz https://telegram.org/dl/desktop/linux
                 sudo tar -xf /tmp/Telegram.xz -C /opt/
                 ;;
-            27)
+            28)
                 printf "${YELLOW}Installing rust...\n${NC}"
                 if ! command -v rustc &> /dev/null
                 then
@@ -359,7 +367,7 @@ then
                     printf "${RED}Installing rust, rustc found. Rust already present...\n${NC}"
                 fi
                 ;;
-            28)
+            29)
                 printf "${YELLOW}Installing python 3.6.15 (src install)...\n${NC}"
                 sudo apt -y install build-essential checkinstall virtualenv
                 sudo apt -y install libreadline-gplv2-dev libncursesw5-dev libssl-dev libsqlite3-dev tk-dev libgdbm-dev libc6-dev libbz2-dev libffi-dev zlib1g-dev
@@ -373,7 +381,7 @@ then
                 sudo update-alternatives --install /usr/bin/python3 python3 /usr/bin/python3.8 1
                 sudo update-alternatives --install /usr/bin/python3.6 python3.6 /usr/local/bin/python3.6 2
                 ;;
-            29)
+            30)
                 printf "${YELLOW}Installing python 3.8 (pkg install)...\n${NC}"
                 sudo apt -y install python3.8{-distutils,-venv}
                 printf "${YELLOW}Installing multiple python...\n${NC}"
@@ -383,23 +391,23 @@ then
                 sudo -H python /tmp/get-pip.py 
                 sudo ln -s /usr/local/bin/pip3 /usr/bin/pip3
                 ;;
-            30)
+            31)
                 printf "${YELLOW}Installing qtcreator, qt5 and related stuff, cmake...\n${NC}"
                 sudo apt -y install cmake qtcreator qt5-default libqt5svg5* libqt5qml* libqt5xml* qtdeclarative5-dev
                 ;;
-            31)
+            32)
                 printf "${YELLOW}Installing imwheel...\n${NC}"
                 sudo apt -y install imwheel
                 curl -fsSLo ~/mousewheel.sh https://raw.githubusercontent.com/AlessandroPerazzetta/imwheel/main/mousewheel.sh
                 chmod +x ~/mousewheel.sh
                 ~/mousewheel.sh
                 ;;
-            32)
+            33)
                 printf "${YELLOW}Installing bt-restart...\n${NC}"
                 sudo curl -fsSLo /lib/systemd/system-sleep/bt https://raw.githubusercontent.com/AlessandroPerazzetta/bt-restart/main/bt
                 sudo chmod +x /lib/systemd/system-sleep/bt
                 ;;
-            33)
+            34)
                 printf "${YELLOW}Installing ssh alive settings...\n${NC}"
                 printf "${LCYAN}--------------------------------------------------------------------------------\n${LRED}"
                 printf "Original copy of ssh_config is available in /etc/ssh/ssh_config.ORIGINAL\n"
@@ -408,16 +416,16 @@ then
                 sudo sed -i -e "s/ServerAliveInterval 240/ServerAliveInterval 15/g" /etc/ssh/ssh_config
                 sudo bash -c 'echo "    ServerAliveCountMax=1" >> /etc/ssh/ssh_config'
                 ;;
-            34)
+            35)
                 printf "${YELLOW}Installing solaar (Logitech mouse support)...\n${NC}"
                 sudo apt -y install solaar
                 ;;
-            35)
+            36)
                 printf "${YELLOW}Installing borgbackup and vorta gui...\n${NC}"
                 sudo apt -y install borgbackup
                 sudo -H pip3 install vorta
                 ;;
-            36)
+            37)
                 printf "${YELLOW}Installing spotify and spicetify...\n${NC}"
                 cd ~
                 curl -sS https://download.spotify.com/debian/pubkey_7A3A762FAFD4A51F.gpg | sudo gpg --dearmor --yes -o /etc/apt/trusted.gpg.d/spotify.gpg
@@ -436,7 +444,7 @@ then
                 printf "spicetify backup apply\n"
                 printf "${LCYAN}--------------------------------------------------------------------------------\n${GREEN}"
                 ;;
-            37)
+            38)
                 printf "${YELLOW}Installing spotube...\n${NC}"
                 sudo mkdir -p /opt/spotube
                 sudo chmod a+wr /opt/spotube
@@ -459,7 +467,7 @@ then
                 # Icon=/opt/spotube/Spotube-linux-x86_64.png
                 sudo bash -c "echo -e '[Desktop Entry]\nName=Spotube\nGenericName=Spotube\nComment=A music streaming app combining the power of Spotify & YouTube\nCategories=Audio;Music;Player;AudioVideo;\nTerminal=false\nType=Application\nPath=/opt/spotube/\nExec=/opt/spotube/Spotube-linux-x86_64.AppImage\nStartupWMClass=Spotube-linux-x86_64.AppImage\nStartupNotify=true\nKeywords=Spotube\nIcon=/opt/spotube/Spotube-linux-x86_64.png'  >> /usr/share/applications/spotube.desktop"
                 ;;     
-            38)
+            39)
                 printf "${YELLOW}Installing fancontrol and config...\n${NC}"
                 printf "${LCYAN}--------------------------------------------------------------------------------\n${LRED}"
                 printf "Original copy of fancontrol config if exist is available in /etc/fancontrol.ORIGINAL\n"
