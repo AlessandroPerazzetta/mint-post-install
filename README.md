@@ -101,15 +101,33 @@ wget -O - https://raw.githubusercontent.com/AlessandroPerazzetta/mint-post-insta
 
 # List installed codium extensions:
 
-- Arduino (Arduino for Visual Studio Code)
-- Better TOML (Better TOML Language support)
-- C/C++ (C/C++ IntelliSense, debugging, and code browsing)
+- Better TOML Language support
+  * bungcip.better-toml
+- Rust language support for Visual Studio Code
+  * rust-lang.rust-analyzer
+- Prettier Rust is a code formatter that autocorrects bad syntax
+  * jinxdash.prettier-rust
+- Syntax Highlighting for Sailfish Templates in VSCode
+  * kogia-sima.vscode-sailfish
+- Python extension for Visual Studio Code
+  * ms-python.python
+  * ~~ms-python.vscode-pylance~~
+- C/C++ for Visual Studio Code
+  * ms-vscode.cpptools
+- Helps Rust developers managing dependencies with Cargo.toml.
+  * serayuzgur.crates
+- Improve highlighting of errors, warnings and other language diagnostics.
+  * usernamehw.errorlens
 - CodeLLDB (A native debugger powered by LLDB. Debug C++, Rust and other compiled languages)
-- crates (Helps Rust developers managing dependencies with Cargo.toml. Only works with dependencies from crates.io)
-- Error Lens (Improve highlighting of errors, warnings and other language diagnostic)
-- Pylance (A performant, feature-rich language server for Python in VS Code)
-- Python (IntelliSense (Pylance), Linting, Debugging (multi-threaded, remote), Jupyter Notebooks, code formatting, refactoring, unit tests, and more)
-- rust-analyzer (An alternative rust language server to the RLS)
+  * vadimcn.vscode-lldb
+- The bleeding edge of the C++ syntax
+  * jeff-hykin.better-cpp-syntax
+- Improve your code commenting by annotating with alert, informational, TODOs, and more!
+  * aaron-bond.better-comments
+- Arduino for Visual Studio Code
+  * vsciot-vscode.vscode-arduino
+- A vscode extension to help visualize css colors in files.
+  * kamikillerto.vscode-colorize
 
 # List installed languagess:
 
