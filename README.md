@@ -70,6 +70,7 @@ wget -O - https://raw.githubusercontent.com/AlessandroPerazzetta/mint-post-insta
 - dbeaver-ce_latest_amd64
 - smartgit-23_1-preview-12
 - MQTT-Explorer
+- arduino-cli
 - keepassxc
 - qownnotes
 - virtualbox
