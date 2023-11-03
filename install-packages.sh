@@ -259,16 +259,28 @@ then
                 fi
                 ;;
             17)
+                printf "${YELLOW}Installing Marktext editor...\n${NC}"
+                sudo mkdir -p /opt/marktext/
+                curl -s https://api.github.com/repos/marktext/marktext/releases/latest |grep "browser_download_url.*AppImage" |cut -d : -f 2,3 |tr -d \"| xargs -n 1 sudo curl -L -o /opt/marktext/marktext
+                #sudo curl -fsSLo /opt/marktext/logo.png https://github.com/marktext/marktext/blob/b75895cdd1a51638f2e67b222b266ff8b9cb9d69/static/logo-96px.png
+                sudo chmod +x /opt/marktext/marktext
+                sudo bash -c "echo -e '[Desktop Entry]\nName=M\nGenericName=MQTT client\nComment=An all-round MQTT client that provides a structured topic overviewCategories=Development;\nTerminal=false\nType=Application\nPath=/opt/mqtt-explorer/\nExec=/opt/mqtt-explorer/mqtt-explorer\nStartupWMClass=mqtt-explorer\nStartupNotify=true\nKeywords=MQTT\nIcon=/opt/mqtt-explorer/icon.png' >> /usr/share/applications/mqtt-explorer.desktop"
+                curl -L https://raw.githubusercontent.com/marktext/marktext/develop/resources/linux/marktext.desktop -o ~/.local/share/applications/marktext.desktop
+                sed -i -e "s/Exec=marktext/Exec=\/opt\/marktext\/marktext/g" ~/.local/share/applications/marktext.desktop
+                sed -i -e "s/Icon=marktext/Icon=\/opt\/marktext\/marktext/g" ~/.local/share/applications/marktext.desktop
+                update-desktop-database ~/.local/share/applications/
+                ;;
+            18)
                 printf "${YELLOW}Installing dbeaver...\n${NC}"
                 sudo curl -fsSLo /tmp/dbeaver-ce_latest_amd64.deb https://dbeaver.io/files/dbeaver-ce_latest_amd64.deb
                 sudo dpkg -i /tmp/dbeaver-ce_latest_amd64.deb
                 ;;
-            18)
+            19)
                 printf "${YELLOW}Installing smartgit...\n${NC}"
                 sudo curl -fsSLo /tmp/smartgit-23_1-preview-12.deb https://www.syntevo.com/downloads/smartgit/smartgit-23_1-preview-12.deb
                 sudo dpkg -i /tmp/smartgit-23_1-preview-12.deb
                 ;;
-            19)
+            20)
                 printf "${YELLOW}Installing MQTT-Explorer...\n${NC}"
                 sudo mkdir -p /opt/mqtt-explorer/
                 #curl -s https://api.github.com/repos/thomasnordquist/MQTT-Explorer/releases/latest |grep "browser_download_url.*AppImage" |grep -Ewv 'armv7l|i386' |cut -d : -f 2,3 |tr -d \"| xargs -n 1 sudo curl -O -L
@@ -292,19 +304,19 @@ then
                 # Icon=/opt/mqtt-explorer/icon.png
                 sudo bash -c "echo -e '[Desktop Entry]\nName=MQTT Explorer\nGenericName=MQTT client\nComment=An all-round MQTT client that provides a structured topic overviewCategories=Development;\nTerminal=false\nType=Application\nPath=/opt/mqtt-explorer/\nExec=/opt/mqtt-explorer/mqtt-explorer\nStartupWMClass=mqtt-explorer\nStartupNotify=true\nKeywords=MQTT\nIcon=/opt/mqtt-explorer/icon.png' >> /usr/share/applications/mqtt-explorer.desktop"
                 ;;
-            20)
+            21)
                 printf "${YELLOW}Installing keepassxc...\n${NC}"
                 sudo apt-add-repository -y ppa:phoerious/keepassxc
                 sudo apt update
                 sudo apt -y install keepassxc
                 ;;
-            21)
+            22)
                 printf "${YELLOW}Installing qownnotes...\n${NC}"
                 sudo apt-add-repository -y ppa:pbek/qownnotes
                 sudo apt update
                 sudo apt -y install qownnotes
                 ;;
-            22)
+            23)
                 printf "${YELLOW}Installing virtualbox...\n${NC}"
                 sudo wget -q https://www.virtualbox.org/download/oracle_vbox_2016.asc -O- | sudo apt-key add -
                 echo "deb [arch=amd64] http://download.virtualbox.org/virtualbox/debian focal contrib" | sudo tee /etc/apt/sources.list.d/virtualbox.list
@@ -321,24 +333,24 @@ then
                 read -n 1 -s -r -p "Press any key to continue"
                 printf "\n${NC}"
                 ;;
-            23)
+            24)
                 printf "${YELLOW}Installing kicad...\n${NC}"
                 sudo apt-add-repository -y ppa:kicad/kicad-5.1-releases
                 sudo apt update
                 sudo apt -y install --install-recommends kicad
                 ;;
-            24)
+            25)
                 printf "${YELLOW}Installing freecad...\n${NC}"
                 sudo add-apt-repository -y ppa:freecad-maintainers/freecad-stable
                 sudo apt update
                 sudo apt -y install freecad
                 ;;
-            25)
+            26)
                 printf "${YELLOW}Installing telegram...\n${NC}"
                 curl -fsSLo /tmp/Telegram.xz https://telegram.org/dl/desktop/linux
                 sudo tar -xf /tmp/Telegram.xz -C /opt/
                 ;;
-            26)
+            27)
                 printf "${YELLOW}Installing rust...\n${NC}"
                 if ! command -v rustc &> /dev/null
                 then
@@ -347,7 +359,7 @@ then
                     printf "${RED}Installing rust, rustc found. Rust already present...\n${NC}"
                 fi
                 ;;
-            27)
+            28)
                 printf "${YELLOW}Installing python 3.6.15 (src install)...\n${NC}"
                 sudo apt -y install build-essential checkinstall virtualenv
                 sudo apt -y install libreadline-gplv2-dev libncursesw5-dev libssl-dev libsqlite3-dev tk-dev libgdbm-dev libc6-dev libbz2-dev libffi-dev zlib1g-dev
@@ -361,7 +373,7 @@ then
                 sudo update-alternatives --install /usr/bin/python3 python3 /usr/bin/python3.8 1
                 sudo update-alternatives --install /usr/bin/python3.6 python3.6 /usr/local/bin/python3.6 2
                 ;;
-            28)
+            29)
                 printf "${YELLOW}Installing python 3.8 (pkg install)...\n${NC}"
                 sudo apt -y install python3.8{-distutils,-venv}
                 printf "${YELLOW}Installing multiple python...\n${NC}"
@@ -371,23 +383,23 @@ then
                 sudo -H python /tmp/get-pip.py 
                 sudo ln -s /usr/local/bin/pip3 /usr/bin/pip3
                 ;;
-            29)
+            30)
                 printf "${YELLOW}Installing qtcreator, qt5 and related stuff, cmake...\n${NC}"
                 sudo apt -y install cmake qtcreator qt5-default libqt5svg5* libqt5qml* libqt5xml* qtdeclarative5-dev
                 ;;
-            30)
+            31)
                 printf "${YELLOW}Installing imwheel...\n${NC}"
                 sudo apt -y install imwheel
                 curl -fsSLo ~/mousewheel.sh https://raw.githubusercontent.com/AlessandroPerazzetta/imwheel/main/mousewheel.sh
                 chmod +x ~/mousewheel.sh
                 ~/mousewheel.sh
                 ;;
-            31)
+            32)
                 printf "${YELLOW}Installing bt-restart...\n${NC}"
                 sudo curl -fsSLo /lib/systemd/system-sleep/bt https://raw.githubusercontent.com/AlessandroPerazzetta/bt-restart/main/bt
                 sudo chmod +x /lib/systemd/system-sleep/bt
                 ;;
-            32)
+            33)
                 printf "${YELLOW}Installing ssh alive settings...\n${NC}"
                 printf "${LCYAN}--------------------------------------------------------------------------------\n${LRED}"
                 printf "Original copy of ssh_config is available in /etc/ssh/ssh_config.ORIGINAL\n"
@@ -396,16 +408,16 @@ then
                 sudo sed -i -e "s/ServerAliveInterval 240/ServerAliveInterval 15/g" /etc/ssh/ssh_config
                 sudo bash -c 'echo "    ServerAliveCountMax=1" >> /etc/ssh/ssh_config'
                 ;;
-            33)
+            34)
                 printf "${YELLOW}Installing solaar (Logitech mouse support)...\n${NC}"
                 sudo apt -y install solaar
                 ;;
-            34)
+            35)
                 printf "${YELLOW}Installing borgbackup and vorta gui...\n${NC}"
                 sudo apt -y install borgbackup
                 sudo -H pip3 install vorta
                 ;;
-            35)
+            36)
                 printf "${YELLOW}Installing spotify and spicetify...\n${NC}"
                 cd ~
                 curl -sS https://download.spotify.com/debian/pubkey_7A3A762FAFD4A51F.gpg | sudo gpg --dearmor --yes -o /etc/apt/trusted.gpg.d/spotify.gpg
@@ -424,7 +436,7 @@ then
                 printf "spicetify backup apply\n"
                 printf "${LCYAN}--------------------------------------------------------------------------------\n${GREEN}"
                 ;;
-            36)
+            37)
                 printf "${YELLOW}Installing spotube...\n${NC}"
                 sudo mkdir -p /opt/spotube
                 sudo chmod a+wr /opt/spotube
@@ -447,7 +459,7 @@ then
                 # Icon=/opt/spotube/Spotube-linux-x86_64.png
                 sudo bash -c "echo -e '[Desktop Entry]\nName=Spotube\nGenericName=Spotube\nComment=A music streaming app combining the power of Spotify & YouTube\nCategories=Audio;Music;Player;AudioVideo;\nTerminal=false\nType=Application\nPath=/opt/spotube/\nExec=/opt/spotube/Spotube-linux-x86_64.AppImage\nStartupWMClass=Spotube-linux-x86_64.AppImage\nStartupNotify=true\nKeywords=Spotube\nIcon=/opt/spotube/Spotube-linux-x86_64.png'  >> /usr/share/applications/spotube.desktop"
                 ;;     
-            37)
+            38)
                 printf "${YELLOW}Installing fancontrol and config...\n${NC}"
                 printf "${LCYAN}--------------------------------------------------------------------------------\n${LRED}"
                 printf "Original copy of fancontrol config if exist is available in /etc/fancontrol.ORIGINAL\n"
