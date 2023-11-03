@@ -212,12 +212,17 @@ then
                 echo 'deb https://paulcarroty.gitlab.io/vscodium-deb-rpm-repo/debs/ vscodium main' | sudo tee /etc/apt/sources.list.d/vscodium.list
                 sudo apt update && sudo apt -y install codium jq
 
-                printf "${YELLOW}Installing vscodium extension gallery updater...\n${NC}"
-                cd /usr/local/sbin/
-                sudo git clone https://github.com/AlessandroPerazzetta/vscodium-json-updater
-                cd -
-                sudo /usr/local/sbin/vscodium-json-updater/update.sh
+                # OLD Script to replace marketplace in extensionsGallery on products.json
+                # printf "${YELLOW}Installing vscodium extension gallery updater...\n${NC}"
+                # cd /usr/local/sbin/
+                # sudo git clone https://github.com/AlessandroPerazzetta/vscodium-json-updater
+                # cd -
+                # sudo /usr/local/sbin/vscodium-json-updater/update.sh
 
+                # NEW Script to replace marketplace in extensionsGallery on products.json (local user config)
+                # bash -c "echo -e '"extensionsGallery": {\n"serviceUrl": "https://marketplace.visualstudio.com/_apis/public/gallery",\n"cacheUrl": "https://vscode.blob.core.windows.net/gallery/index",\n"itemUrl": "https://marketplace.visualstudio.com/items"\n}\n' > ~/.config/VSCodium/product.json"
+                bash -c "echo -e '{\n  \"nameShort\": \"Visual Studio Code\",\n  \"nameLong\": \"Visual Studio Code\",\n  \"extensionsGallery\": {\n    \"serviceUrl\": \"https://marketplace.visualstudio.com/_apis/public/gallery\",\n    \"cacheUrl\": \"https://vscode.blob.core.windows.net/gallery/index\",\n    \"itemUrl\": \"https://marketplace.visualstudio.com/items\"\n  }\n}\n' > ~/.config/VSCodium/product.json"
+  
                 printf "${YELLOW}Installing nemo action for vscodium...\n${NC}"
                 #sudo wget https://raw.githubusercontent.com/AlessandroPerazzetta/nemo-actions-vscodium-launcher/main/codium.nemo_action -O ~/.local/share/nemo/actions/codium.nemo_action
                 mkdir -p ~/.local/share/nemo/actions/
@@ -244,6 +249,7 @@ then
                     codium --install-extension jeff-hykin.better-cpp-syntax
                     codium --install-extension aaron-bond.better-comments
                     codium --install-extension ahmadawais.shades-of-purple
+                    codium --install-extension kamikillerto.vscode-colorize
                     printf "${YELLOW}Uninstalling vscodium extensions ...\n${NC}"
                     codium --uninstall-extension ms-toolsai.jupyter
                     codium --uninstall-extension ms-toolsai.jupyter-keymap

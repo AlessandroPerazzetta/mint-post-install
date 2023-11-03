@@ -43,6 +43,7 @@ wget -O - https://raw.githubusercontent.com/AlessandroPerazzetta/mint-post-insta
 - remmina-plugin-rdp
 - remmina-plugin-secret
 - codium
+- codium marketplace replacement (local config)
 - codium extensions installed
     * bungcip.better-toml
     * rust-lang.rust-analyzer
@@ -57,6 +58,7 @@ wget -O - https://raw.githubusercontent.com/AlessandroPerazzetta/mint-post-insta
     * jeff-hykin.better-cpp-syntax
     * aaron-bond.better-comments
     * vsciot-vscode.vscode-arduino
+    * kamikillerto.vscode-colorize
 - codium extensions uninstalled
     * ms-toolsai.jupyter
     * ms-toolsai.jupyter-keymap
