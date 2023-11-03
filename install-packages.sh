@@ -220,7 +220,7 @@ then
                 # sudo /usr/local/sbin/vscodium-json-updater/update.sh
 
                 # NEW Script to replace marketplace in extensionsGallery on products.json (local user config)
-                # bash -c "echo -e '"extensionsGallery": {\n"serviceUrl": "https://marketplace.visualstudio.com/_apis/public/gallery",\n"cacheUrl": "https://vscode.blob.core.windows.net/gallery/index",\n"itemUrl": "https://marketplace.visualstudio.com/items"\n}\n' > ~/.config/VSCodium/product.json"
+                mkdir -p ~/.config/VSCodium/
                 bash -c "echo -e '{\n  \"nameShort\": \"Visual Studio Code\",\n  \"nameLong\": \"Visual Studio Code\",\n  \"extensionsGallery\": {\n    \"serviceUrl\": \"https://marketplace.visualstudio.com/_apis/public/gallery\",\n    \"cacheUrl\": \"https://vscode.blob.core.windows.net/gallery/index\",\n    \"itemUrl\": \"https://marketplace.visualstudio.com/items\"\n  }\n}\n' > ~/.config/VSCodium/product.json"
   
                 printf "${YELLOW}Installing nemo action for vscodium...\n${NC}"
