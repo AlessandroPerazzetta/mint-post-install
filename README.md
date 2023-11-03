@@ -4,6 +4,7 @@ wget -O - https://raw.githubusercontent.com/AlessandroPerazzetta/mint-post-insta
 
 # List system tweaks:
 
+- system Serial permission for user
 - mount/umount: allow all user to run commands without pass
 
 # List of required installed packages:
