@@ -61,7 +61,7 @@ options=(
 36 "solaar" on
 37 "borgbackup + vorta gui" on
 38 "spotify + spicetify" off
-38 "spotube" off
+39 "spotube" off
 40 "fancontrol + config" off)
 
 choices=$("${cmd[@]}" "${options[@]}" 2>&1 >/dev/tty)
@@ -287,8 +287,8 @@ then
                 ;;
             20)
                 printf "${YELLOW}Installing smartgit...\n${NC}"
-                sudo curl -fsSLo /tmp/smartgit-23_1-preview-12.deb https://www.syntevo.com/downloads/smartgit/smartgit-23_1-preview-12.deb
-                sudo dpkg -i /tmp/smartgit-23_1-preview-12.deb
+                sudo curl -fsSLo /tmp/smartgit-23_1_1.deb https://www.syntevo.com/downloads/smartgit/smartgit-23_1_1.deb
+                sudo dpkg -i /tmp/smartgit-23_1_1.deb
                 ;;
             21)
                 printf "${YELLOW}Installing MQTT-Explorer...\n${NC}"

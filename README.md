@@ -68,7 +68,7 @@ wget -O - https://raw.githubusercontent.com/AlessandroPerazzetta/mint-post-insta
   * ms-toolsai.vscode-jupyter-slideshow
 - marktext
 - dbeaver-ce_latest_amd64
-- smartgit-23_1-preview-12
+- smartgit-23_1_1
 - MQTT-Explorer
 - arduino-cli
 - keepassxc
