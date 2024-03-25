@@ -431,6 +431,7 @@ then
             37)
                 printf "${YELLOW}Installing borgbackup and vorta gui...\n${NC}"
                 sudo apt -y install borgbackup
+                sudo apt -y install libxcb-cursor0
                 sudo -H pip3 install vorta
                 ;;
             38)
