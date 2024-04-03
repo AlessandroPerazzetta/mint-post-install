@@ -260,6 +260,8 @@ then
                     codium --install-extension aaron-bond.better-comments
                     codium --install-extension ahmadawais.shades-of-purple
                     codium --install-extension kamikillerto.vscode-colorize
+                    codium --install-extension oderwat.indent-rainbow
+                    codium --install-extension eamodio.gitlens
                     printf "${YELLOW}Uninstalling vscodium extensions ...\n${NC}"
                     codium --uninstall-extension ms-toolsai.jupyter
                     codium --uninstall-extension ms-toolsai.jupyter-keymap

@@ -60,6 +60,8 @@ wget -O - https://raw.githubusercontent.com/AlessandroPerazzetta/mint-post-insta
   * aaron-bond.better-comments
   * vsciot-vscode.vscode-arduino
   * kamikillerto.vscode-colorize
+  * oderwat.indent-rainbow
+  * eamodio.gitlens
 - codium extensions uninstalled
   * ms-toolsai.jupyter
   * ms-toolsai.jupyter-keymap
