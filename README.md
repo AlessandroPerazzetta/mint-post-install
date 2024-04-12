@@ -126,10 +126,11 @@ wget -O - https://raw.githubusercontent.com/AlessandroPerazzetta/mint-post-insta
 - A vscode extension to help visualize css colors in files.
   * kamikillerto.vscode-colorize
 
-# List installed languages:
+# List selectable programming languages:
 
 - rust
-- python 3.6
+- python 3.6.15
+- python 3.8.19
 
 # Extra:
 
