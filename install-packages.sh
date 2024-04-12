@@ -51,7 +51,7 @@ telegram "telegram" on
 rust "rust" on
 py_36 "python 3.6.15 (src install)" off
 py_38 "python 3.8.19 (src install)" off
-latest_pip "latest python pip" off
+latest_pip "latest python pip" on
 qt_stuff "qtcreator + qt5" off
 imwheel "imwheel" off
 bt_restart "bt-restart" off
