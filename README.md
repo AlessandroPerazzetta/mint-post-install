@@ -70,7 +70,7 @@ wget -O - https://raw.githubusercontent.com/AlessandroPerazzetta/mint-post-insta
   * ms-toolsai.vscode-jupyter-slideshow
 - marktext
 - dbeaver-ce_latest_amd64
-- smartgit-23_1_1
+- smartgit-23_1_2
 - MQTT-Explorer
 - arduino-cli
 - keepassxc
@@ -81,7 +81,7 @@ wget -O - https://raw.githubusercontent.com/AlessandroPerazzetta/mint-post-insta
 - telegram
 - rust
 - python 3.6.15 (source install)
-- python 3.8 (package install)
+- python 3.8.19 (source install)
 - qtcreator + qt5 + qt5 lib + cmake
 - bluetooth restart after sleep
 - SSH alive interval (15) and count (1)
@@ -131,7 +131,7 @@ wget -O - https://raw.githubusercontent.com/AlessandroPerazzetta/mint-post-insta
 - A vscode extension to help visualize css colors in files.
   * kamikillerto.vscode-colorize
 
-# List installed languagess:
+# List installed languages:
 
 - rust
 - python 3.6
