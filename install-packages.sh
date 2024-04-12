@@ -447,26 +447,8 @@ then
                 ;;
             spotube)
                 printf "${YELLOW}Installing spotube...\n${NC}"
-                sudo mkdir -p /opt/spotube
-                sudo chmod a+wr /opt/spotube
-                sudo curl -fsSLo /opt/spotube/Spotube-linux-x86_64.AppImage https://github.com/KRTirtho/spotube/releases/latest/download/Spotube-linux-x86_64.AppImage
-                sudo chmod +x /opt/spotube/Spotube-linux-x86_64.AppImage                
-                curl -fsSLo /opt/spotube/Spotube-linux-x86_64.png https://github.com/KRTirtho/spotube/blob/master/assets/spotube-logo.png?raw=true
-                # ----> OUT
-                # [Desktop Entry]
-                # Name=Spotube
-                # GenericName=Spotube
-                # Comment=A music streaming app combining the power of Spotify & YouTube
-                # Categories=Audio;Music;Player;AudioVideo;
-                # Terminal=false
-                # Type=Application
-                # Path=/opt/spotube/
-                # Exec=/opt/spotube/Spotube-linux-x86_64.AppImage
-                # StartupWMClass=Spotube-linux-x86_64.AppImage
-                # StartupNotify=true
-                # Keywords=Spotube
-                # Icon=/opt/spotube/Spotube-linux-x86_64.png
-                sudo bash -c "echo -e '[Desktop Entry]\nName=Spotube\nGenericName=Spotube\nComment=A music streaming app combining the power of Spotify & YouTube\nCategories=Audio;Music;Player;AudioVideo;\nTerminal=false\nType=Application\nPath=/opt/spotube/\nExec=/opt/spotube/Spotube-linux-x86_64.AppImage\nStartupWMClass=Spotube-linux-x86_64.AppImage\nStartupNotify=true\nKeywords=Spotube\nIcon=/opt/spotube/Spotube-linux-x86_64.png'  >> /usr/share/applications/spotube.desktop"
+                sudo curl -fsSLo /tmp/Spotube-linux-x86_64.deb https://github.com/KRTirtho/spotube/releases/download/v3.5.0/Spotube-linux-x86_64.deb
+                sudo dpkg -i /tmp/Spotube-linux-x86_64.deb
                 ;;     
             fancontrol)
                 printf "${YELLOW}Installing fancontrol and config...\n${NC}"
