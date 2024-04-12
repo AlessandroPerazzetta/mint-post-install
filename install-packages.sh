@@ -25,13 +25,13 @@ options=(
 personal_res "Personal resources" on
 sys_serial "System Serial permission" on
 xed_res "Xed theme resources" on
-gedit_res "Gedit theme resources" off
+gedit_res "Gedit theme resources" on
 sys_tweaks "System tewaks" on
 sys_utils "System utils" on
 neovim "neovim" on
 filezilla "filezilla" on
 meld "meld" on
-vls "vlc" on
+vlc "vlc" on
 brave "brave-browser" on
 brave_ext "brave-browser extensions" on
 remmina "remmina" on
