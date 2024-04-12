@@ -15,20 +15,15 @@ wget -O - https://raw.githubusercontent.com/AlessandroPerazzetta/mint-post-insta
 - python3-serial
 - python3-pip
 - sshfs
+- git
 
 # List of selectable installed packages:
 
-- bwm-ng 
-- screen
+- bwm-ng, screen, htop
 - neovim 
 - filezilla 
 - meld 
 - vlc 
-- git 
-- htop 
-- jq
-- apt-transport-https
-- curl
 - brave-browser
 - brave-browser extensions
   * bypass-adblock-detection
