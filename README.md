@@ -35,6 +35,7 @@ wget -O - https://raw.githubusercontent.com/AlessandroPerazzetta/mint-post-insta
   * url-tracking-stripper-red
   * video-downloader-plus
   * stream-cleaner
+  * youtube-nonstop
 - remmina
 - remmina-plugin-rdp
 - remmina-plugin-secret
