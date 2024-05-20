@@ -15,20 +15,15 @@ wget -O - https://raw.githubusercontent.com/AlessandroPerazzetta/mint-post-insta
 - python3-serial
 - python3-pip
 - sshfs
+- git
 
 # List of selectable installed packages:
 
-- bwm-ng 
-- screen
+- bwm-ng, screen, htop
 - neovim 
 - filezilla 
 - meld 
 - vlc 
-- git 
-- htop 
-- jq
-- apt-transport-https
-- curl
 - brave-browser
 - brave-browser extensions
   * bypass-adblock-detection
@@ -40,6 +35,7 @@ wget -O - https://raw.githubusercontent.com/AlessandroPerazzetta/mint-post-insta
   * url-tracking-stripper-red
   * video-downloader-plus
   * stream-cleaner
+  * youtube-nonstop
 - remmina
 - remmina-plugin-rdp
 - remmina-plugin-secret
@@ -70,7 +66,7 @@ wget -O - https://raw.githubusercontent.com/AlessandroPerazzetta/mint-post-insta
   * ms-toolsai.vscode-jupyter-slideshow
 - marktext
 - dbeaver-ce_latest_amd64
-- smartgit-23_1_1
+- smartgit-23_1_2
 - MQTT-Explorer
 - arduino-cli
 - keepassxc
@@ -81,7 +77,7 @@ wget -O - https://raw.githubusercontent.com/AlessandroPerazzetta/mint-post-insta
 - telegram
 - rust
 - python 3.6.15 (source install)
-- python 3.8 (package install)
+- python 3.8.19 (source install)
 - qtcreator + qt5 + qt5 lib + cmake
 - bluetooth restart after sleep
 - SSH alive interval (15) and count (1)
@@ -131,10 +127,11 @@ wget -O - https://raw.githubusercontent.com/AlessandroPerazzetta/mint-post-insta
 - A vscode extension to help visualize css colors in files.
   * kamikillerto.vscode-colorize
 
-# List installed languagess:
+# List selectable programming languages:
 
 - rust
-- python 3.6
+- python 3.6.15
+- python 3.8.19
 
 # Extra:
 
