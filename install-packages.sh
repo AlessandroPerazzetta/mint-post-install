@@ -316,10 +316,13 @@ then
                 ;;
             virtualbox)
                 printf "${YELLOW}Installing virtualbox...\n${NC}"
-                sudo wget -q https://www.virtualbox.org/download/oracle_vbox_2016.asc -O- | sudo apt-key add -
-                echo "deb [arch=amd64] http://download.virtualbox.org/virtualbox/debian focal contrib" | sudo tee /etc/apt/sources.list.d/virtualbox.list
+                # sudo wget -q https://www.virtualbox.org/download/oracle_vbox_2016.asc -O- | sudo apt-key add -
+                curl -fSsL https://www.virtualbox.org/download/oracle_vbox_2016.asc | gpg --dearmor | sudo tee /usr/share/keyrings/virtualbox.gpg > /dev/null
+                # echo "deb [arch=amd64] http://download.virtualbox.org/virtualbox/debian focal contrib" | sudo tee /etc/apt/sources.list.d/virtualbox.list
+                echo "deb [arch=amd64 signed-by=/usr/share/keyrings/virtualbox.gpg] https://download.virtualbox.org/virtualbox/debian jammy contrib" | sudo tee /etc/apt/sources.list.d/virtualbox.list
                 sudo apt update
-                sudo apt -y install virtualbox
+                # sudo apt -y install virtualbox
+                sudo apt -y install virtualbox-7.0
                 sudo adduser $CURRENT_USER vboxusers
                 sudo adduser $CURRENT_USER disk
                 
