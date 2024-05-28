@@ -58,6 +58,7 @@ wget -O - https://raw.githubusercontent.com/AlessandroPerazzetta/mint-post-insta
   * kamikillerto.vscode-colorize
   * oderwat.indent-rainbow
   * eamodio.gitlens
+  * evgeniypeshkov.syntax-highlighter
 - codium extensions uninstalled
   * ms-toolsai.jupyter
   * ms-toolsai.jupyter-keymap
@@ -126,6 +127,12 @@ wget -O - https://raw.githubusercontent.com/AlessandroPerazzetta/mint-post-insta
   * vsciot-vscode.vscode-arduino
 - A vscode extension to help visualize css colors in files.
   * kamikillerto.vscode-colorize
+- A simple extension to make indentation more readable
+  * oderwat.indent-rainbow
+- Git supercharged
+  * eamodio.gitlens
+- Syntax highlighting based on Tree-sitter
+  * evgeniypeshkov.syntax-highlighter
 
 # List selectable programming languages:
 
