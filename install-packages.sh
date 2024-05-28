@@ -204,12 +204,14 @@ then
                 wget -qO - https://gitlab.com/paulcarroty/vscodium-deb-rpm-repo/-/raw/master/pub.gpg | gpg --dearmor | sudo dd of=/etc/apt/trusted.gpg.d/vscodium.gpg
                 echo 'deb https://paulcarroty.gitlab.io/vscodium-deb-rpm-repo/debs/ vscodium main' | sudo tee /etc/apt/sources.list.d/vscodium.list
                 sudo apt update && sudo apt -y install codium jq
+                # --------------------------------------------------------------------------------------------------
                 # OLD Script to replace marketplace in extensionsGallery on products.json
                 # printf "${YELLOW}Installing vscodium extension gallery updater...\n${NC}"
                 # cd /usr/local/sbin/
                 # sudo git clone https://github.com/AlessandroPerazzetta/vscodium-json-updater
                 # cd -
                 # sudo /usr/local/sbin/vscodium-json-updater/update.sh
+                # --------------------------------------------------------------------------------------------------
                 # NEW Script to replace marketplace in extensionsGallery on products.json (local user config)
                 mkdir -p ~/.config/VSCodium/
                 bash -c "echo -e '{\n  \"nameShort\": \"Visual Studio Code\",\n  \"nameLong\": \"Visual Studio Code\",\n  \"extensionsGallery\": {\n    \"serviceUrl\": \"https://marketplace.visualstudio.com/_apis/public/gallery\",\n    \"cacheUrl\": \"https://vscode.blob.core.windows.net/gallery/index\",\n    \"itemUrl\": \"https://marketplace.visualstudio.com/items\"\n  }\n}\n' > ~/.config/VSCodium/product.json"
