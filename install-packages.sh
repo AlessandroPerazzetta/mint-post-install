@@ -39,7 +39,7 @@ vscodium "vscodium" on
 vscodium_ext "vscodium extensions" on
 marktext "marktext" on
 dbeaver "dbeaver" on
-smartgit "smartgit" on
+smartgit "smartgit" off
 mqtt_explorer "mqtt-explorer" on
 arduino_cli "arduino-cli" on
 keepassxc "keepassxc" on
