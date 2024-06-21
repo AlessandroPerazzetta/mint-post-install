@@ -39,7 +39,7 @@ vscodium "vscodium" on
 vscodium_ext "vscodium extensions" on
 marktext "marktext" on
 dbeaver "dbeaver" on
-smartgit "smartgit" on
+smartgit "smartgit" off
 mqtt_explorer "mqtt-explorer" on
 arduino_cli "arduino-cli" on
 keepassxc "keepassxc" on
@@ -204,12 +204,14 @@ then
                 wget -qO - https://gitlab.com/paulcarroty/vscodium-deb-rpm-repo/-/raw/master/pub.gpg | gpg --dearmor | sudo dd of=/etc/apt/trusted.gpg.d/vscodium.gpg
                 echo 'deb https://paulcarroty.gitlab.io/vscodium-deb-rpm-repo/debs/ vscodium main' | sudo tee /etc/apt/sources.list.d/vscodium.list
                 sudo apt update && sudo apt -y install codium jq
+                # --------------------------------------------------------------------------------------------------
                 # OLD Script to replace marketplace in extensionsGallery on products.json
                 # printf "${YELLOW}Installing vscodium extension gallery updater...\n${NC}"
                 # cd /usr/local/sbin/
                 # sudo git clone https://github.com/AlessandroPerazzetta/vscodium-json-updater
                 # cd -
                 # sudo /usr/local/sbin/vscodium-json-updater/update.sh
+                # --------------------------------------------------------------------------------------------------
                 # NEW Script to replace marketplace in extensionsGallery on products.json (local user config)
                 mkdir -p ~/.config/VSCodium/
                 bash -c "echo -e '{\n  \"nameShort\": \"Visual Studio Code\",\n  \"nameLong\": \"Visual Studio Code\",\n  \"extensionsGallery\": {\n    \"serviceUrl\": \"https://marketplace.visualstudio.com/_apis/public/gallery\",\n    \"cacheUrl\": \"https://vscode.blob.core.windows.net/gallery/index\",\n    \"itemUrl\": \"https://marketplace.visualstudio.com/items\"\n  }\n}\n' > ~/.config/VSCodium/product.json"
@@ -242,6 +244,8 @@ then
                     codium --install-extension kamikillerto.vscode-colorize
                     codium --install-extension oderwat.indent-rainbow
                     codium --install-extension eamodio.gitlens
+                    codium --install-extension evgeniypeshkov.syntax-highlighter
+                    codium --install-extension shd101wyy.markdown-preview-enhanced
                     printf "${YELLOW}Uninstalling vscodium extensions ...\n${NC}"
                     codium --uninstall-extension ms-toolsai.jupyter
                     codium --uninstall-extension ms-toolsai.jupyter-keymap
@@ -316,10 +320,13 @@ then
                 ;;
             virtualbox)
                 printf "${YELLOW}Installing virtualbox...\n${NC}"
-                sudo wget -q https://www.virtualbox.org/download/oracle_vbox_2016.asc -O- | sudo apt-key add -
-                echo "deb [arch=amd64] http://download.virtualbox.org/virtualbox/debian focal contrib" | sudo tee /etc/apt/sources.list.d/virtualbox.list
+                # sudo wget -q https://www.virtualbox.org/download/oracle_vbox_2016.asc -O- | sudo apt-key add -
+                curl -fSsL https://www.virtualbox.org/download/oracle_vbox_2016.asc | gpg --dearmor | sudo tee /usr/share/keyrings/virtualbox.gpg > /dev/null
+                # echo "deb [arch=amd64] http://download.virtualbox.org/virtualbox/debian focal contrib" | sudo tee /etc/apt/sources.list.d/virtualbox.list
+                echo "deb [arch=amd64 signed-by=/usr/share/keyrings/virtualbox.gpg] https://download.virtualbox.org/virtualbox/debian jammy contrib" | sudo tee /etc/apt/sources.list.d/virtualbox.list
                 sudo apt update
-                sudo apt -y install virtualbox
+                # sudo apt -y install virtualbox
+                sudo apt -y install virtualbox-7.0
                 sudo adduser $CURRENT_USER vboxusers
                 sudo adduser $CURRENT_USER disk
                 
