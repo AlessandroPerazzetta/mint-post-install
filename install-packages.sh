@@ -245,6 +245,7 @@ then
                     codium --install-extension oderwat.indent-rainbow
                     codium --install-extension eamodio.gitlens
                     codium --install-extension evgeniypeshkov.syntax-highlighter
+                    codium --install-extension shd101wyy.markdown-preview-enhanced
                     printf "${YELLOW}Uninstalling vscodium extensions ...\n${NC}"
                     codium --uninstall-extension ms-toolsai.jupyter
                     codium --uninstall-extension ms-toolsai.jupyter-keymap
