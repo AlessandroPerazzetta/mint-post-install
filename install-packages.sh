@@ -32,6 +32,7 @@ neovim "neovim" on
 filezilla "filezilla" on
 meld "meld" on
 vlc "vlc" on
+kitty "kitty" on
 brave "brave-browser" on
 brave_ext "brave-browser extensions" on
 remmina "remmina" on
@@ -153,6 +154,18 @@ then
                 printf "${YELLOW}Installing vlc media library...\n${NC}"
                 mkdir -p ~/.local/share/vlc/
                 curl -fsSLo ~/.local/share/vlc/ml.xspf https://raw.githubusercontent.com/AlessandroPerazzetta/vlc-media-library/main/ml.xspf
+                ;;
+            kitty)
+                printf "${YELLOW}Installing kitty...\n${NC}"
+                sudo apt -y install kitty
+                
+                printf "${YELLOW}Installing kitty conf...\n${NC}"
+                mkdir -p ~/.config/kitty/
+                curl -fsSLo ~/.config/kitty/kitty.conf https://raw.githubusercontent.com/AlessandroPerazzetta/endeavouros-bspwm/main/.config/kitty/kitty.conf
+                curl -fsSLo ~/.config/kitty/current-theme.conf https://raw.githubusercontent.com/AlessandroPerazzetta/endeavouros-bspwm/main/.config/kitty/current-theme.conf
+
+                printf "${YELLOW}Set kitty as default terminal on cinnamon...\n${NC}"
+                dconf write /org/cinnamon/desktop/applications/terminal/exec "'/usr/bin/kitty'"
                 ;;
             brave)
                 printf "${YELLOW}Installing brave-browser...\n${NC}"
