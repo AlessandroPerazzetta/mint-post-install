@@ -17,6 +17,16 @@ wget -O - https://raw.githubusercontent.com/AlessandroPerazzetta/mint-post-insta
 - sshfs
 - git
 
+# Cinnamon spices
+## Applets
+- QRedShift (Using author official repository)
+- Bash Sensors
+- Sensors Monitor
+
+## Extensions
+- Back to Monitor
+- Cinnamon Dynamic Wallpaper
+
 # List of selectable installed packages:
 
 - bwm-ng, screen, htop, batcat

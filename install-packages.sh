@@ -28,6 +28,7 @@ xed_res "Xed theme resources" on
 gedit_res "Gedit theme resources" on
 sys_tweaks "System tewaks" on
 sys_utils "System utils" on
+cinnamon_spices "cinnamon_spices" on
 neovim "neovim" on
 filezilla "filezilla" on
 meld "meld" on
@@ -61,7 +62,7 @@ solaar "solaar" on
 borgbackup_vorta "borgbackup + vorta gui" on
 spotify_spicetify "spotify + spicetify" off
 spotube "spotube" off
-fancontrol "fancontrol + config" off)
+fancontrol "fancontrol + config" on)
 
 choices=$("${cmd[@]}" "${options[@]}" 2>&1 >/dev/tty)
 clear
@@ -127,6 +128,39 @@ then
             sys_utils)
                 printf "${YELLOW}Installing system utils...\n${NC}"
                 sudo apt -y install bwm-ng screen htop batcat
+                ;;
+            cinnamon_spices)
+                printf "${YELLOW}Installing cinnamon applets and extensions...\n${NC}"
+                # cinnamon applet installer
+                cd ~/.local/share/cinnamon/applets/
+
+                printf "${LCYAN}- Applet QRedShift:\n${NC}"
+                # QRedShift
+                # This version is currently outdated and will no longer receive updates from the original author.
+                # Using author official repository
+                curl https://github.com/raphaelquintao/QRedshiftCinnamon/raw/master/install.sh -sSfL | bash 
+
+                printf "${LCYAN}- Applet Bash Sensors:\n${NC}"
+                # Bash Sensors
+                curl -O https://cinnamon-spices.linuxmint.com/files/applets/bash-sensors@pkkk.zip && unzip bash-sensors@pkkk.zip && rm -rf bash-sensors@pkkk.zip
+
+                printf "${LCYAN}- Applet Sensors Monitor:\n${NC}"
+                # Sensors Monitor
+                curl -O https://cinnamon-spices.linuxmint.com/files/applets/Sensors@claudiux.zip && unzip Sensors@claudiux.zip && rm -rf Sensors@claudiux.zip
+
+                # cinnamon extensions installer
+                cd ~/.local/share/cinnamon/extensions/
+
+                printf "${LCYAN}- Applet Extension Back to Monitor:\n${NC}"
+                # Back to Monitor
+                curl -O https://cinnamon-spices.linuxmint.com/files/extensions/back-to-monitor@nathan818fr.zip && unzip back-to-monitor@nathan818fr.zip && rm -rf back-to-monitor@nathan818fr.zip
+
+                printf "${LCYAN}- Applet Extension Cinnamon Dynamic Wallpaper:\n${NC}"
+                # Cinnamon Dynamic Wallpaper
+                curl -O https://cinnamon-spices.linuxmint.com/files/extensions/cinnamon-dynamic-wallpaper@TobiZog.zip && unzip cinnamon-dynamic-wallpaper@TobiZog.zip && rm -rfc innamon-dynamic-wallpaper@TobiZog.zip
+
+                read -n 1 -s -r -p "Apply settings for spices using dconf or from applet/extension settings.\nPress any key to continue"
+                printf "\n${NC}"
                 ;;
             neovim)
                 printf "${YELLOW}Installing neovim...\n${NC}"
