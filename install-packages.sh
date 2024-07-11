@@ -46,8 +46,8 @@ arduino_cli "arduino-cli" on
 keepassxc "keepassxc" on
 qownnotes "qownnotes" on
 virtualbox "virtualbox" on
-kicad "kicad" on
-freecad "freecad" on
+kicad "kicad" off
+freecad "freecad" off
 telegram "telegram" on
 rust "rust" on
 py_36 "python 3.6.15 (src install)" off
@@ -126,7 +126,7 @@ then
                 ;;
             sys_utils)
                 printf "${YELLOW}Installing system utils...\n${NC}"
-                sudo apt -y install bwm-ng screen htop
+                sudo apt -y install bwm-ng screen htop batcat
                 ;;
             neovim)
                 printf "${YELLOW}Installing neovim...\n${NC}"

@@ -19,7 +19,7 @@ wget -O - https://raw.githubusercontent.com/AlessandroPerazzetta/mint-post-insta
 
 # List of selectable installed packages:
 
-- bwm-ng, screen, htop
+- bwm-ng, screen, htop, batcat
 - neovim 
 - filezilla 
 - meld 
