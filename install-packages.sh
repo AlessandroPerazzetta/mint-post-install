@@ -127,7 +127,9 @@ then
                 ;;
             sys_utils)
                 printf "${YELLOW}Installing system utils...\n${NC}"
-                sudo apt -y install bwm-ng screen htop batcat
+                sudo apt -y install bwm-ng screen htop 
+                mkdir -p ~/.local/bin
+                ln -s /usr/bin/batcat ~/.local/bin/cat
                 ;;
             cinnamon_spices)
                 printf "${YELLOW}Installing cinnamon applets and extensions...\n${NC}"
@@ -144,6 +146,7 @@ then
                 # Bash Sensors
                 curl -O https://cinnamon-spices.linuxmint.com/files/applets/bash-sensors@pkkk.zip && unzip bash-sensors@pkkk.zip && rm -rf bash-sensors@pkkk.zip
                 sudo curl -fsSLo /usr/local/sbin/get-temps.sh https://raw.githubusercontent.com/AlessandroPerazzetta/cinnamon-applet-bash_sensors/main/get-temps.sh
+                sudo chmod +x /usr/local/sbin/get-temps.sh
 
                 printf "${LCYAN}- Applet Sensors Monitor:\n${NC}"
                 # Sensors Monitor
@@ -158,13 +161,13 @@ then
 
                 printf "${LCYAN}- Applet Extension Cinnamon Dynamic Wallpaper:\n${NC}"
                 # Cinnamon Dynamic Wallpaper
-                curl -O https://cinnamon-spices.linuxmint.com/files/extensions/cinnamon-dynamic-wallpaper@TobiZog.zip && unzip cinnamon-dynamic-wallpaper@TobiZog.zip && rm -rfc innamon-dynamic-wallpaper@TobiZog.zip
+                curl -O https://cinnamon-spices.linuxmint.com/files/extensions/cinnamon-dynamic-wallpaper@TobiZog.zip && unzip cinnamon-dynamic-wallpaper@TobiZog.zip && rm -rf innamon-dynamic-wallpaper@TobiZog.zip
 
                 printf "${LCYAN}--------------------------------------------------------------------------------\n${LRED}"
                 printf "Apply settings for spices using dconf or from applet/extension settings.\n\n"
                 printf "\tExample: dconf save: 'dconf dump / > dconf-root.conf'\n"
-                printf "\t\tdump: dconf dump: 'dconf dump / > dconf-root.conf'\n"
-                printf "\t\tload: dconf load: 'dconf dump / < dconf-root.conf'\n"
+                printf "\t- dump: dconf dump: 'dconf dump / > dconf-root.conf'\n"
+                printf "\t- load: dconf load: 'dconf dump / < dconf-root.conf'\n"
                 printf "${LCYAN}--------------------------------------------------------------------------------\n${GREEN}"
                 read -n 1 -s -r -p "Press any key to continue"
                 printf "\n${NC}"
@@ -540,7 +543,7 @@ then
                 printf "${YELLOW}Installing fancontrol and config...\n${NC}"
                 printf "${LCYAN}--------------------------------------------------------------------------------\n${LRED}"
                 printf "Original copy of fancontrol config if exist is available in /etc/fancontrol.ORIGINAL\n"
-                printf "New settings can be made with pwmconfig"
+                printf "New settings can be made with pwmconfig\n"
                 printf "${LCYAN}--------------------------------------------------------------------------------\n${NC}"
                 sudo apt -y install fancontrol
                 if [[ -f /etc/fancontrol ]]; then
@@ -583,6 +586,7 @@ then
                 sudo bash -c "echo -e 'coretemp\nw83627ehf\nnct6775\n' >> /etc/modules"
 
                 printf "${LCYAN}--------------------------------------------------------------------------------\n${LRED}"
+                printf "Copy right version /etc/fancontrol.mint2x to /etc/fancontrol\n"
                 printf "Please restart system and check fancontrol.service\n"
                 printf "If service is not started run: sudo pwmconfig and follow the wizard\n"
                 printf "${LCYAN}--------------------------------------------------------------------------------\n${GREEN}"
