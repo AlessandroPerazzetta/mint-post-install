@@ -160,8 +160,6 @@ then
                 # Cinnamon Dynamic Wallpaper
                 curl -O https://cinnamon-spices.linuxmint.com/files/extensions/cinnamon-dynamic-wallpaper@TobiZog.zip && unzip cinnamon-dynamic-wallpaper@TobiZog.zip && rm -rfc innamon-dynamic-wallpaper@TobiZog.zip
 
-
-
                 printf "${LCYAN}--------------------------------------------------------------------------------\n${LRED}"
                 printf "Apply settings for spices using dconf or from applet/extension settings.\n\n"
                 printf "\tExample: dconf save: 'dconf dump / > dconf-root.conf'\n"
