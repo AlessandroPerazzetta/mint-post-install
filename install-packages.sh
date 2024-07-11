@@ -382,6 +382,7 @@ then
                 sudo mkdir -p /opt/arduino-cli/
                 sudo chown "$CURRENT_USER":"$CURRENT_USER" /opt/arduino-cli
                 curl -fsSL https://raw.githubusercontent.com/arduino/arduino-cli/master/install.sh | BINDIR=/opt/arduino-cli sh
+                sudo ln -s /usr/bin/python3 /usr/bin/python
                 ;;                
             keepassxc)
                 printf "${YELLOW}Installing keepassxc...\n${NC}"
