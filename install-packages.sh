@@ -20,6 +20,20 @@ LGRAY='\033[0;37m'
 WHITE='\033[1;37m'
 NC='\033[0m' # No Color
 
+
+printf "${YELLOW}------------------------------------------------------------------\n${NC}"
+printf "${YELLOW}Starting ...\n${NC}"
+printf "${YELLOW}------------------------------------------------------------------\n${NC}"
+
+printf "${YELLOW}Updating system...\n${NC}"
+sleep 1
+sudo apt update
+sudo apt -y upgrade
+
+printf "${YELLOW}Install required packages...\n${NC}"
+sleep 1
+sudo apt -y install build-essential apt-transport-https curl sshfs dialog git
+
 cmd=(dialog --title "Automated packages installation" --backtitle "Mint Post Install" --no-collapse --separate-output --checklist "Select options:" 22 76 16)
 options=(
 personal_res "Personal resources" on
@@ -70,15 +84,6 @@ clear
 
 if [ ${#choices} -gt 0 ]
 then
-    printf "${YELLOW}Updating system...\n${NC}"
-    sleep 1
-    sudo apt update
-    sudo apt upgrade
-
-    printf "${YELLOW}Install required packages...\n${NC}"
-    sleep 1
-    sudo apt -y install build-essential apt-transport-https curl sshfs dialog git
-
     for choice in $choices
     do
         case $choice in
