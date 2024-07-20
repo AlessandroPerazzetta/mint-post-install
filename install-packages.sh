@@ -53,6 +53,7 @@ telegram "telegram" on
 rust "rust" on
 py_36 "python 3.6.15 (src install)" off
 py_38 "python 3.8.19 (src install)" off
+py_dev_pkgs "python dev packages" on
 latest_pip "latest python pip" on
 qt_stuff "qtcreator + qt5" off
 imwheel "imwheel" off
@@ -76,7 +77,7 @@ then
 
     printf "${YELLOW}Install required packages...\n${NC}"
     sleep 1
-    sudo apt -y install build-essential apt-transport-https curl python3-serial python3-pip sshfs dialog git
+    sudo apt -y install build-essential apt-transport-https curl sshfs dialog git
 
     for choice in $choices
     do
@@ -472,6 +473,11 @@ then
                 printf "${YELLOW}Installing multiple python...\n${NC}"
                 sudo update-alternatives --install /usr/bin/python3 python3 /usr/bin/python3.10 1
                 sudo update-alternatives --install /usr/bin/python3.8 python3.8 /usr/local/bin/python3.8 38
+                ;;
+            py_dev_pkgs)
+                printf "${YELLOW}Installing python dev packages...\n${NC}"
+                sudo apt -y install python3-serial python3-pip python3-venv virtualenv
+                sudo ln -s /usr/bin/python3 /usr/bin/python
                 ;;
             latest_pip)
                 printf "${YELLOW}Installing latest pip...\n${NC}"

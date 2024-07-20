@@ -94,6 +94,7 @@ wget -O - https://raw.githubusercontent.com/AlessandroPerazzetta/mint-post-insta
 - rust
 - python 3.6.15 (source install)
 - python 3.8.19 (source install)
+- python dev packages
 - qtcreator + qt5 + qt5 lib + cmake
 - bluetooth restart after sleep
 - SSH alive interval (15) and count (1)
