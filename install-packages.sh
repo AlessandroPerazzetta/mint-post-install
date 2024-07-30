@@ -27,12 +27,12 @@ printf "${YELLOW}---------------------------------------------------------------
 
 printf "${YELLOW}Updating system...\n${NC}"
 sleep 1
-sudo apt update
-sudo apt -y upgrade
+sudo apt-get update
+sudo apt-get -y upgrade
 
 printf "${YELLOW}Install required packages...\n${NC}"
 sleep 1
-sudo apt -y install build-essential apt-transport-https curl sshfs dialog git
+sudo apt-get -y install build-essential apt-transport-https curl sshfs dialog git
 
 cmd=(dialog --title "Automated packages installation" --backtitle "Mint Post Install" --no-collapse --separate-output --checklist "Select options:" 22 76 16)
 options=(
@@ -133,7 +133,7 @@ then
                 ;;
             sys_utils)
                 printf "${YELLOW}Installing system utils...\n${NC}"
-                sudo apt -y install bwm-ng screen htop 
+                sudo apt-get -y install bwm-ng screen htop 
                 mkdir -p ~/.local/bin
                 ln -s /usr/bin/batcat ~/.local/bin/cat
                 ;;
@@ -180,26 +180,26 @@ then
                 ;;
             neovim)
                 printf "${YELLOW}Installing neovim...\n${NC}"
-                sudo apt -y install neovim
+                sudo apt-get -y install neovim
                 printf "${YELLOW}Installing neovim resources...\n${NC}"
                 mkdir -p ~/.config/nvim/
                 curl -fsSLo ~/.config/nvim/init.vim https://raw.githubusercontent.com/AlessandroPerazzetta/neovim-res/main/.config/nvim/init.vim
                 printf "${YELLOW}Set nvim as default editor...\n${NC}"
                 sudo update-alternatives --set editor /usr/bin/nvim
                 printf "${YELLOW}Remove others editor...\n${NC}"
-                sudo apt -y remove nano ed
+                sudo apt-get -y remove nano ed
                 ;;
             filezilla)
                 printf "${YELLOW}Installing filezilla...\n${NC}"
-                sudo apt -y install filezilla
+                sudo apt-get -y install filezilla
                 ;;
             meld)
                 printf "${YELLOW}Installing meld...\n${NC}"
-                sudo apt -y install meld
+                sudo apt-get -y install meld
                 ;;
             vlc)
                 printf "${YELLOW}Installing vlc...\n${NC}"
-                sudo apt -y install vlc
+                sudo apt-get -y install vlc
                 
                 printf "${YELLOW}Installing vlc media library...\n${NC}"
                 mkdir -p ~/.local/share/vlc/
@@ -207,7 +207,7 @@ then
                 ;;
             kitty)
                 printf "${YELLOW}Installing kitty...\n${NC}"
-                sudo apt -y install kitty
+                sudo apt-get -y install kitty
                 
                 printf "${YELLOW}Installing kitty conf...\n${NC}"
                 mkdir -p ~/.config/kitty/
@@ -221,8 +221,8 @@ then
                 printf "${YELLOW}Installing brave-browser...\n${NC}"
                 sudo curl -fsSLo /usr/share/keyrings/brave-browser-archive-keyring.gpg https://brave-browser-apt-release.s3.brave.com/brave-browser-archive-keyring.gpg
                 echo "deb [signed-by=/usr/share/keyrings/brave-browser-archive-keyring.gpg arch=amd64] https://brave-browser-apt-release.s3.brave.com/ stable main"|sudo tee /etc/apt/sources.list.d/brave-browser.list
-                sudo apt update
-                sudo apt -y install brave-browser
+                sudo apt-get update
+                sudo apt-get -y install brave-browser
                 ;;
             brave_ext)
                 printf "${YELLOW}Installing brave-browser extensions...\n${NC}"
@@ -259,14 +259,14 @@ then
             remmina)
                 printf "${YELLOW}Installing remmina...\n${NC}"
                 sudo apt-add-repository -y ppa:remmina-ppa-team/remmina-next
-                sudo apt update
-                sudo apt -y install remmina remmina-plugin-rdp remmina-plugin-secret
+                sudo apt-get update
+                sudo apt-get -y install remmina remmina-plugin-rdp remmina-plugin-secret
                 ;;
             vscodium)
                 printf "${YELLOW}Installing vscodium...\n${NC}"
                 wget -qO - https://gitlab.com/paulcarroty/vscodium-deb-rpm-repo/-/raw/master/pub.gpg | gpg --dearmor | sudo dd of=/etc/apt/trusted.gpg.d/vscodium.gpg
                 echo 'deb https://paulcarroty.gitlab.io/vscodium-deb-rpm-repo/debs/ vscodium main' | sudo tee /etc/apt/sources.list.d/vscodium.list
-                sudo apt update && sudo apt -y install codium jq
+                sudo apt-get update && sudo apt-get -y install codium jq
                 # --------------------------------------------------------------------------------------------------
                 # OLD Script to replace marketplace in extensionsGallery on products.json
                 # printf "${YELLOW}Installing vscodium extension gallery updater...\n${NC}"
@@ -396,14 +396,14 @@ then
             keepassxc)
                 printf "${YELLOW}Installing keepassxc...\n${NC}"
                 sudo apt-add-repository -y ppa:phoerious/keepassxc
-                sudo apt update
-                sudo apt -y install keepassxc
+                sudo apt-get update
+                sudo apt-get -y install keepassxc
                 ;;
             qownnotes)
                 printf "${YELLOW}Installing qownnotes...\n${NC}"
                 sudo apt-add-repository -y ppa:pbek/qownnotes
-                sudo apt update
-                sudo apt -y install qownnotes
+                sudo apt-get update
+                sudo apt-get -y install qownnotes
                 ;;
             virtualbox)
                 printf "${YELLOW}Installing virtualbox...\n${NC}"
@@ -411,9 +411,9 @@ then
                 curl -fSsL https://www.virtualbox.org/download/oracle_vbox_2016.asc | gpg --dearmor | sudo tee /usr/share/keyrings/virtualbox.gpg > /dev/null
                 # echo "deb [arch=amd64] http://download.virtualbox.org/virtualbox/debian focal contrib" | sudo tee /etc/apt/sources.list.d/virtualbox.list
                 echo "deb [arch=amd64 signed-by=/usr/share/keyrings/virtualbox.gpg] https://download.virtualbox.org/virtualbox/debian jammy contrib" | sudo tee /etc/apt/sources.list.d/virtualbox.list
-                sudo apt update
-                # sudo apt -y install virtualbox
-                sudo apt -y install virtualbox-7.0
+                sudo apt-get update
+                # sudo apt-get -y install virtualbox
+                sudo apt-get -y install virtualbox-7.0
                 sudo adduser $CURRENT_USER vboxusers
                 sudo adduser $CURRENT_USER disk
                 
@@ -428,14 +428,14 @@ then
             kicad)
                 printf "${YELLOW}Installing kicad...\n${NC}"
                 sudo apt-add-repository -y ppa:kicad/kicad-5.1-releases
-                sudo apt update
-                sudo apt -y install --install-recommends kicad
+                sudo apt-get update
+                sudo apt-get -y install --install-recommends kicad
                 ;;
             freecad)
                 printf "${YELLOW}Installing freecad...\n${NC}"
                 sudo add-apt-repository -y ppa:freecad-maintainers/freecad-stable
-                sudo apt update
-                sudo apt -y install freecad
+                sudo apt-get update
+                sudo apt-get -y install freecad
                 ;;
             telegram)
                 printf "${YELLOW}Installing telegram...\n${NC}"
@@ -453,8 +453,8 @@ then
                 ;;
             py_36)
                 printf "${YELLOW}Installing python 3.6.15 (src install)...\n${NC}"
-                sudo apt -y install build-essential checkinstall virtualenv
-                sudo apt -y install libncurses-dev libncursesw5-dev libssl-dev libsqlite3-dev tk-dev libgdbm-dev libc6-dev libbz2-dev libffi-dev zlib1g-dev
+                sudo apt-get -y install build-essential checkinstall virtualenv
+                sudo apt-get -y install libncurses-dev libncursesw5-dev libssl-dev libsqlite3-dev tk-dev libgdbm-dev libc6-dev libbz2-dev libffi-dev zlib1g-dev
                 cd /tmp
                 sudo wget https://www.python.org/ftp/python/3.6.15/Python-3.6.15.tgz
                 sudo tar xzf Python-3.6.15.tgz
@@ -467,8 +467,8 @@ then
                 ;;
             py_38)
                 printf "${YELLOW}Installing python 3.8.19 (src install)...\n${NC}"
-                sudo apt -y install build-essential checkinstall virtualenv
-                sudo apt -y install libncurses-dev libncursesw5-dev libssl-dev libsqlite3-dev tk-dev libgdbm-dev libc6-dev libbz2-dev libffi-dev zlib1g-dev
+                sudo apt-get -y install build-essential checkinstall virtualenv
+                sudo apt-get -y install libncurses-dev libncursesw5-dev libssl-dev libsqlite3-dev tk-dev libgdbm-dev libc6-dev libbz2-dev libffi-dev zlib1g-dev
                 cd /tmp
                 sudo wget https://www.python.org/ftp/python/3.8.19/Python-3.8.19.tgz
                 sudo tar xzf Python-3.8.19.tgz
@@ -481,7 +481,7 @@ then
                 ;;
             py_dev_pkgs)
                 printf "${YELLOW}Installing python dev packages...\n${NC}"
-                sudo apt -y install python3-serial python3-pip python3-venv virtualenv
+                sudo apt-get -y install python3-serial python3-pip python3-venv virtualenv
                 sudo ln -s /usr/bin/python3 /usr/bin/python
                 ;;
             latest_pip)
@@ -492,11 +492,11 @@ then
                 ;;
             qt_stuff)
                 printf "${YELLOW}Installing qtcreator, qt5 and related stuff, cmake...\n${NC}"
-                sudo apt -y install cmake qtcreator qt5-default libqt5svg5* libqt5qml* libqt5xml* qtdeclarative5-dev
+                sudo apt-get -y install cmake qtcreator qt5-default libqt5svg5* libqt5qml* libqt5xml* qtdeclarative5-dev
                 ;;
             imwheel)
                 printf "${YELLOW}Installing imwheel...\n${NC}"
-                sudo apt -y install imwheel
+                sudo apt-get -y install imwheel
                 curl -fsSLo ~/mousewheel.sh https://raw.githubusercontent.com/AlessandroPerazzetta/imwheel/main/mousewheel.sh
                 chmod +x ~/mousewheel.sh
                 ~/mousewheel.sh
@@ -517,12 +517,12 @@ then
                 ;;
             solaar)
                 printf "${YELLOW}Installing solaar (Logitech mouse support)...\n${NC}"
-                sudo apt -y install solaar
+                sudo apt-get -y install solaar
                 ;;
             borgbackup_vorta)
                 printf "${YELLOW}Installing borgbackup and vorta gui...\n${NC}"
-                sudo apt -y install borgbackup
-                sudo apt -y install libxcb-cursor0
+                sudo apt-get -y install borgbackup
+                sudo apt-get -y install libxcb-cursor0
                 sudo -H pip3 install vorta
                 ;;
             spotify_spicetify)
@@ -546,7 +546,7 @@ then
                 ;;
             spotube)
                 printf "${YELLOW}Installing spotube...\n${NC}"
-                sudo apt -y install mpv libjsoncpp25
+                sudo apt-get -y install mpv libjsoncpp25
                 sudo curl -fsSLo /tmp/Spotube-linux-x86_64.deb https://github.com/KRTirtho/spotube/releases/download/v3.5.0/Spotube-linux-x86_64.deb
                 sudo dpkg -i /tmp/Spotube-linux-x86_64.deb
                 ;;     
@@ -556,7 +556,7 @@ then
                 printf "Original copy of fancontrol config if exist is available in /etc/fancontrol.ORIGINAL\n"
                 printf "New settings can be made with pwmconfig\n"
                 printf "${LCYAN}--------------------------------------------------------------------------------\n${NC}"
-                sudo apt -y install fancontrol
+                sudo apt-get -y install fancontrol
                 if [[ -f /etc/fancontrol ]]; then
                     printf "/etc/fancontrol exists. Backup to /etc/fancontrol.ORIGINAL"
                     sudo mv /etc/fancontrol /etc/fancontrol.ORIGINAL
