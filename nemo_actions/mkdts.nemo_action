@@ -1,0 +1,11 @@
+# Custom action to create a dir with current timestamp
+[Nemo Action]
+Name=MKDTS dir here
+Comment=Create a dir with timestamp name
+Exec=bash -c "mkdir %F/$(date +%Y%m%d_%H%M)"
+Icon-Name=inode-directory
+Selection=none
+Extensions=none
+Dependencies=mkdir
+EscapeSpaces=true
+Quote=double
