@@ -28,7 +28,7 @@ wget -O - https://raw.githubusercontent.com/AlessandroPerazzetta/mint-post-insta
 - Cinnamon Dynamic Wallpaper
 
 # Nemo Actions
-- MKDTS: reate a dir with current timestamp
+- MKDTS: create a dir with current timestamp
 
 # List of selectable installed packages:
 
