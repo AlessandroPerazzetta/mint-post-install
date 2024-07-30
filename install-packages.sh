@@ -43,6 +43,7 @@ gedit_res "Gedit theme resources" on
 sys_tweaks "System tewaks" on
 sys_utils "System utils" on
 cinnamon_spices "cinnamon_spices" on
+nemo_actions "nemo_actions" on
 neovim "neovim" on
 filezilla "filezilla" on
 meld "meld" on
@@ -177,6 +178,12 @@ then
                 printf "${LCYAN}--------------------------------------------------------------------------------\n${GREEN}"
                 read -n 1 -s -r -p "Press any key to continue"
                 printf "\n${NC}"
+                ;;
+            nemo_actions)
+                printf "${YELLOW}Installing custom Nemo Actions...\n${NC}"                
+                mkdir -p ~/.local/share/nemo/actions/
+                printf "${LCYAN}- Action: MKDTS\n${NC}"
+                bash -c "echo -e '# Custom action to create a dir with current timestamp\n[Nemo Action]\nName=MKDTS dir here\nComment=Create a dir with timestamp name\nExec=bash -c \"mkdir %F/$(date +%Y%m%d_%H%M)\"\nIcon-Name=inode-directory\nSelection=none\nExtensions=none\nDependencies=mkdir\nEscapeSpaces=true\nQuote=double' >> ~/.local/share/nemo/actions/mkdts.nemo_action"
                 ;;
             neovim)
                 printf "${YELLOW}Installing neovim...\n${NC}"

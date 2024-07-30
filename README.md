@@ -27,6 +27,9 @@ wget -O - https://raw.githubusercontent.com/AlessandroPerazzetta/mint-post-insta
 - Back to Monitor
 - Cinnamon Dynamic Wallpaper
 
+# Nemo Actions
+- MKDTS: reate a dir with current timestamp
+
 # List of selectable installed packages:
 
 - bwm-ng, screen, htop, batcat
