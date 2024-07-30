@@ -171,7 +171,7 @@ then
 
                 printf "${LCYAN}--------------------------------------------------------------------------------\n${LRED}"
                 printf "Apply settings for spices using dconf or from applet/extension settings.\n\n"
-                printf "\tExample: dconf save: 'dconf dump / > dconf-root.conf'\n"
+                printf "\tExample:"
                 printf "\t- dump: dconf dump: 'dconf dump / > dconf-root.conf'\n"
                 printf "\t- load: dconf load: 'dconf load / < dconf-root.conf'\n"
                 printf "${LCYAN}--------------------------------------------------------------------------------\n${GREEN}"
