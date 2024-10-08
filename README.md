@@ -63,7 +63,8 @@ wget -O - https://raw.githubusercontent.com/AlessandroPerazzetta/mint-post-insta
   * ["colorize: A vscode extension to help visualize css colors in files."]="kamikillerto.vscode-colorize"
   * ["indent-rainbow: Makes indentation easier to read"]="oderwat.indent-rainbow"
   * ["Serial Monitor: Send and receive text from serial ports."]="ms-vscode.vscode-serial-monitor"
-  * ["Arduino: Arduino for Visual Studio Code"]="vsciot-vscode.vscode-arduino"
+  * ~~["Arduino: Arduino for Visual Studio Code"]="vsciot-vscode.vscode-arduino"~~
+  * ["Arduino: Arduino for Visual Studio Code Community Edition fork"]="vscode-arduino.vscode-arduino-community"
   * ["isort: Import organization support for Python files using isort."]="ms-python.isort"
   * ["Pylint: Linting support for Python files using Pylint."]="ms-python.pylint"
   * ["Python: Python language support with extension access points for IntelliSense (Pylance), Debugging (Python Debugger), linting, formatting, refactoring, unit tests, "]="ms-python.python"
