@@ -433,13 +433,17 @@ then
                 sudo adduser $CURRENT_USER vboxusers
                 sudo adduser $CURRENT_USER disk
                 
-                printf "${LCYAN}--------------------------------------------------------------------------------\n${LRED}"
-                printf "Please download virtualbox extension pack from here: \n"
-                printf "https://www.virtualbox.org/wiki/Downloads\n"
-                printf "and install manually from VirtualBox under File > Preferences > Extensions\n"
-                printf "${LCYAN}--------------------------------------------------------------------------------\n${GREEN}"
-                read -n 1 -s -r -p "Press any key to continue"
-                printf "\n${NC}"
+                # printf "${LCYAN}--------------------------------------------------------------------------------\n${LRED}"
+                # printf "Please download virtualbox extension pack from here: \n"
+                # printf "https://www.virtualbox.org/wiki/Downloads\n"
+                # printf "and install manually from VirtualBox under File > Preferences > Extensions\n"
+                # printf "${LCYAN}--------------------------------------------------------------------------------\n${GREEN}"
+                # read -n 1 -s -r -p "Press any key to continue"
+                # printf "\n${NC}"
+                
+                printf "${YELLOW}Installing virtualbox extension...\n${NC}"
+                curl -O https://download.virtualbox.org/virtualbox/$(vboxmanage -v | cut -dr -f1)/Oracle_VirtualBox_Extension_Pack-$(vboxmanage -v | cut -dr -f1).vbox-extpack
+                echo "y" | sudo vboxmanage extpack install Oracle_VirtualBox_Extension_Pack-$(vboxmanage -v | cut -dr -f1).vbox-extpack
                 ;;
             kicad)
                 printf "${YELLOW}Installing kicad...\n${NC}"
