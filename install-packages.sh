@@ -537,6 +537,7 @@ then
                 sudo cp /etc/ssh/ssh_config /etc/ssh/ssh_config.ORIGINAL_PRE_HOSTS_CHECKS
                 sudo bash -c 'echo "    StrictHostKeyChecking no" >> /etc/ssh/ssh_config'
                 sudo bash -c 'echo "    UserKnownHostsFile /dev/null" >> /etc/ssh/ssh_config'
+                ;;
             solaar)
                 printf "${YELLOW}Installing solaar (Logitech mouse support)...\n${NC}"
                 sudo apt-get -y install solaar
