@@ -548,7 +548,8 @@ then
                 printf "${YELLOW}Installing borgbackup and vorta gui...\n${NC}"
                 sudo apt-get -y install borgbackup
                 sudo apt-get -y install libxcb-cursor0
-                sudo -H pip3 install vorta
+                # sudo -H pip3 install vorta
+                sudo apt-get -y install vorta
                 ;;
             spotify_spicetify)
                 printf "${YELLOW}Installing spotify and spicetify...\n${NC}"
