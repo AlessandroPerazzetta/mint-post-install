@@ -429,7 +429,7 @@ then
                 echo "deb [arch=amd64 signed-by=/usr/share/keyrings/virtualbox.gpg] https://download.virtualbox.org/virtualbox/debian $(. /etc/os-release && echo "$UBUNTU_CODENAME") contrib" | sudo tee /etc/apt/sources.list.d/virtualbox.list
                 sudo apt-get update
                 # sudo apt-get -y install virtualbox
-                sudo apt-get -y install virtualbox-7.0
+                sudo apt-get -y install virtualbox-7.1
                 sudo adduser $CURRENT_USER vboxusers
                 sudo adduser $CURRENT_USER disk
                 
