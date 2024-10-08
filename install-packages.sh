@@ -74,6 +74,7 @@ qt_stuff "qtcreator + qt5" off
 imwheel "imwheel" off
 bt_restart "bt-restart" off
 ssh_alive "ssh-alive-settings" on
+ssh_skip_hosts_check "ssh-skip-hosts-check-settings" on
 solaar "solaar" on
 borgbackup_vorta "borgbackup + vorta gui" on
 spotify_spicetify "spotify + spicetify" off
@@ -522,12 +523,20 @@ then
             ssh_alive)
                 printf "${YELLOW}Installing ssh alive settings...\n${NC}"
                 printf "${LCYAN}--------------------------------------------------------------------------------\n${LRED}"
-                printf "Original copy of ssh_config is available in /etc/ssh/ssh_config.ORIGINAL\n"
+                printf "Original copy of ssh_config is available in /etc/ssh/ssh_config.ORIGINAL_PRE_ALIVE\n"
                 printf "${LCYAN}--------------------------------------------------------------------------------\n${NC}"
-                sudo cp /etc/ssh/ssh_config /etc/ssh/ssh_config.ORIGINAL
+                sudo cp /etc/ssh/ssh_config /etc/ssh/ssh_config.ORIGINAL_PRE_ALIVE
                 sudo sed -i -e "s/ServerAliveInterval 240/ServerAliveInterval 15/g" /etc/ssh/ssh_config
                 sudo bash -c 'echo "    ServerAliveCountMax=1" >> /etc/ssh/ssh_config'
                 ;;
+            ssh_skip_hosts_check)
+                printf "${YELLOW}Installing ssh skip hosts check settings...\n${NC}"
+                printf "${LCYAN}--------------------------------------------------------------------------------\n${LRED}"
+                printf "Original copy of ssh_config is available in /etc/ssh/ssh_config.ORIGINAL_PRE_HOSTS_CHECKS\n"
+                printf "${LCYAN}--------------------------------------------------------------------------------\n${NC}"
+                sudo cp /etc/ssh/ssh_config /etc/ssh/ssh_config.ORIGINAL_PRE_HOSTS_CHECKS
+                sudo bash -c 'echo "    StrictHostKeyChecking no" >> /etc/ssh/ssh_config'
+                sudo bash -c 'echo "    UserKnownHostsFile /dev/null" >> /etc/ssh/ssh_config'
             solaar)
                 printf "${YELLOW}Installing solaar (Logitech mouse support)...\n${NC}"
                 sudo apt-get -y install solaar
