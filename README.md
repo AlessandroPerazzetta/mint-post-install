@@ -53,6 +53,7 @@ wget -O - https://raw.githubusercontent.com/AlessandroPerazzetta/mint-post-insta
 - remmina-plugin-rdp
 - remmina-plugin-secret
 - codium
+- codium nemo actions
 - codium marketplace replacement (local config)
 - codium extensions installed
   * ["Better Comments: Improve your code commenting by annotating with alert, informational, TODOs, and more!"]="aaron-bond.better-comments"
