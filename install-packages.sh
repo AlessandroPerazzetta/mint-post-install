@@ -131,6 +131,7 @@ then
                 printf "Allow any user to mount umount without requiring user authentication.\n"
                 printf "${LCYAN}--------------------------------------------------------------------------------\n${GREEN}"
                 read -n 1 -s -r -p "Press any key to continue"
+                sleep 3
                 printf "\n${NC}"
                 sudo bash -c "echo -e '# Allow any user to mount umount without requiring user authentication.\nALL ALL = NOPASSWD:/usr/bin/mount\nALL ALL = NOPASSWD:/usr/bin/umount' >> /etc/sudoers.d/mountumount"
                 ;;
@@ -174,11 +175,12 @@ then
 
                 printf "${LCYAN}--------------------------------------------------------------------------------\n${LRED}"
                 printf "Apply settings for spices using dconf or from applet/extension settings.\n\n"
-                printf "\tExample:"
+                printf "\tExample:\n"
                 printf "\t- dump: dconf dump: 'dconf dump / > dconf-root.conf'\n"
                 printf "\t- load: dconf load: 'dconf load / < dconf-root.conf'\n"
                 printf "${LCYAN}--------------------------------------------------------------------------------\n${GREEN}"
                 read -n 1 -s -r -p "Press any key to continue"
+                sleep 3
                 printf "\n${NC}"
                 ;;
             nemo_actions)
@@ -263,6 +265,7 @@ then
                     printf "ERROR Brave path not found, extensions not installed !!!\n"
                     printf "${LCYAN}--------------------------------------------------------------------------------\n${GREEN}"
                     read -n 1 -s -r -p "Press any key to continue"
+                    sleep 3
                     printf "\n${NC}"
                 fi
                 ;;
@@ -645,6 +648,7 @@ then
                 printf "If service is not started run: sudo pwmconfig and follow the wizard\n"
                 printf "${LCYAN}--------------------------------------------------------------------------------\n${GREEN}"
                 read -n 1 -s -r -p "Press any key to continue"
+                sleep 3
                 printf "\n${NC}"
                 ;;
         esac
