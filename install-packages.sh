@@ -40,7 +40,7 @@ command_exists() {
 # Function to check if a command exists using APT
 command_exists_apt() {
     # if apt list --installed | grep -q -w $1; then
-    if apt list $1 2>/dev/null | grep -q -w $1; then
+    if apt list --installed 2>/dev/null | grep -q -w $1; then
         return 0
     else
         return 1
