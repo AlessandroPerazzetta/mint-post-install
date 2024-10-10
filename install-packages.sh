@@ -32,7 +32,36 @@ sudo apt-get -y upgrade
 
 printf "${YELLOW}Install required packages...\n${NC}"
 sleep 1
-sudo apt-get -y install build-essential apt-transport-https curl sshfs dialog git
+
+# Function to check if a command exists
+command_exists() {
+    command -v $1 >/dev/null 2>&1
+}
+# Function to check if a command exists using APT
+command_exists_apt() {
+    # if apt list --installed | grep -q -w $1; then
+    if apt list $1 2>/dev/null | grep -q -w $1; then
+        return 0
+    else
+        return 1
+    fi
+}
+
+# sudo apt-get -y install build-essential apt-transport-https curl sshfs dialog git
+commands_to_check_exist=("build-essential" "apt-transport-https" "curl" "sshfs" "dialog" "git")
+for cmd in "${commands_to_check_exist[@]}"; do
+    # if ! command_exists $cmd; then
+    if ! command_exists $cmd && ! command_exists_apt $cmd; then
+        printf "${LCYAN}Command ${cmd} not found. Installing... \n${NC}"
+        sudo apt-get -y install $cmd
+        printf "\n${NC}"       
+    else
+        printf "${LGREEN}Command ${cmd} is already installed.\n${NC}"
+    fi
+done
+sleep 3
+
+exit
 
 cmd=(dialog --title "Automated packages installation" --backtitle "Mint Post Install" --no-collapse --separate-output --checklist "Select options:" 22 76 16)
 options=(
