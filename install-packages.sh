@@ -61,8 +61,6 @@ for cmd in "${commands_to_check_exist[@]}"; do
 done
 sleep 3
 
-exit
-
 cmd=(dialog --title "Automated packages installation" --backtitle "Mint Post Install" --no-collapse --separate-output --checklist "Select options:" 22 76 16)
 options=(
 personal_res "Personal resources" on
