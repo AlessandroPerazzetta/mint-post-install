@@ -55,9 +55,11 @@ wget -O - https://raw.githubusercontent.com/AlessandroPerazzetta/mint-post-insta
 - codium
 - codium nemo actions
 - codium marketplace replacement (local config)
+- codium marketplace replacement (env variables)
 - codium extensions installed
   * ["Better Comments: Improve your code commenting by annotating with alert, informational, TODOs, and more!"]="aaron-bond.better-comments"
-  * ["Better TOML: Better TOML Language support"]="bungcip.better-toml"
+  * ~~["Better TOML: Better TOML Language support"]="bungcip.better-toml"~~
+  * ["Even Better TOML: Fully-featured TOML support"]="tamasfe.even-better-toml"
   * ["Prettier - Code formatter: Code formatter using prettier"]="esbenp.prettier-vscode"
   * ["Syntax Highlighter: Syntax highlighting based on Tree-sitter"]="evgeniypeshkov.syntax-highlighter"
   * ["Better C++ Syntax: The bleeding edge of the C++ syntax"]="jeff-hykin.better-cpp-syntax"
@@ -74,10 +76,12 @@ wget -O - https://raw.githubusercontent.com/AlessandroPerazzetta/mint-post-insta
   * ["CodeLLDB: A native debugger powered by LLDB. Debug C++, Rust and other compiled languages."]="vadimcn.vscode-lldb"
   * ["Prettier - Code formatter (Rust): Prettier Rust is a code formatter that autocorrects bad syntax"]="jinxdash.prettier-rust"
   * ["rust-analyzer: Rust language support for Visual Studio Code"]="rust-lang.rust-analyzer"
+  * ["Dependi: Empowers developers to efficiently manage dependencies and address vulnerabilities in Rust, Go, JavaScript, Typescript, PHP and Python projects."]="fill-labs.dependi"
   * ["crates: Helps Rust developers managing dependencies with Cargo.toml."]="serayuzgur.crates"
   * ["Markdown Preview Enhanced: Markdown Preview Enhanced ported to vscode"]="shd101wyy.markdown-preview-enhanced"
-  * ["GitLens — Git supercharged: Supercharge Git within VS Code"]="eamodio.gitlens"
+  * ~~["GitLens — Git supercharged: Supercharge Git within VS Code"]="eamodio.gitlens"~~
   * ["Error Lens: Improve highlighting of errors, warnings and other language diagnostics."]="usernamehw.errorlens"
+  * ["Todo Tree: Show TODO, FIXME, etc. comment tags in a tree view"]="Gruntfuggly.todo-tree"
   * ["Shades of Purple: 🦄 A professional theme suite with hand-picked & bold shades of purple for your VS Code editor and terminal apps."]="ahmadawais.shades-of-purple"
 - codium extensions uninstalled
   * ["Jupyter: Jupyter notebook support, interactive programming and computing that supports Intellisense, debugging and more."]="ms-toolsai.jupyter"
@@ -85,6 +89,12 @@ wget -O - https://raw.githubusercontent.com/AlessandroPerazzetta/mint-post-insta
   * ["Jupyter Notebook Renderers: Renderers for Jupyter Notebooks (with plotly, vega, gif, png, svg, jpeg and other such outputs)"]="ms-toolsai.jupyter-renderers"
   * ["Jupyter Cell Tags: Jupyter Cell Tags support for VS Code"]="ms-toolsai.vscode-jupyter-cell-tags"
   * ["Jupyter Slide Show: Jupyter Slide Show support for VS Code"]="ms-toolsai.vscode-jupyter-slideshow"
+- codium extensions replaced/removed
+  * REP>["Arduino: Arduino for Visual Studio Code"]="vsciot-vscode.vscode-arduino"
+  * REP>["Better TOML: Better TOML Language support"]="bungcip.better-toml"
+  * REM>["GitLens — Git supercharged: Supercharge Git within VS Code"]="eamodio.gitlens"
+
+
 - marktext
 - dbeaver-ce_latest_amd64
 - smartgit-23_1_2
