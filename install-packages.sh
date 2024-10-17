@@ -305,7 +305,7 @@ then
             vscodium)
                 printf "${YELLOW}Installing vscodium...\n${NC}"
                 wget -qO - https://gitlab.com/paulcarroty/vscodium-deb-rpm-repo/-/raw/master/pub.gpg | gpg --dearmor | sudo dd of=/etc/apt/trusted.gpg.d/vscodium.gpg
-                echo 'deb https://paulcarroty.gitlab.io/vscodium-deb-rpm-repo/debs/ vscodium main' | sudo tee /etc/apt/sources.list.d/vscodium.list
+                echo 'deb [arch=amd64] https://paulcarroty.gitlab.io/vscodium-deb-rpm-repo/debs/ vscodium main' | sudo tee /etc/apt/sources.list.d/vscodium.list
                 sudo apt-get update && sudo apt-get -y install codium jq
                 
                 printf "${YELLOW}Installing vscodium MS marketplace CONFIG in ~/.config/VSCodium/product.json ...\n${NC}"
