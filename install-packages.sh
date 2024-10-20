@@ -271,6 +271,7 @@ then
                 then
                     sudo mkdir -p ${BRAVE_EXTENSIONS_PATH}
                     declare -A EXTlist=(
+                        ["ublock-origin"]="cjpalhdlnbpafiamejdnhcphjbkeiagm"
                         ["bypass-adblock-detection"]="lppagnomjcaohgkfljlebenbmbdmbkdj"
                         ["hls-downloader"]="hkbifmjmkohpemgdkknlbgmnpocooogp"
                         ["i-dont-care-about-cookies"]="fihnjjcciajhdojfnbdddfaoknhalnja"
