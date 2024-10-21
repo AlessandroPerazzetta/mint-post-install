@@ -374,6 +374,12 @@ then
                         codium --install-extension ${VSCODEEXTlistAdd[$i]} --log debug
                         printf "\n${NC}"
                     done
+
+                    printf "${LCYAN}Installing extension from file:\n${NC}"
+                    mkdir -p /tmp/vscodium_exts/ && cd /tmp/vscodium_exts/
+                    curl -s https://api.github.com/repos/jeanp413/open-remote-ssh/releases/latest | grep "browser_download_url.*vsix" | cut -d : -f 2,3 | tr -d \" | xargs curl -O -L
+                    find . -type f -name "*.vsix" -exec codium --install-extension {} --log debug \;
+
                     printf "${YELLOW}Uninstalling vscodium extensions ...\n${NC}"
                     declare -A VSCODEEXTlistDel=(
                         ["Jupyter: Jupyter notebook support, interactive programming and computing that supports Intellisense, debugging and more."]="ms-toolsai.jupyter"
