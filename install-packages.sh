@@ -281,7 +281,6 @@ then
                         ["the-marvellous-suspender"]="noogafoofpebimajpfpamcfhoaifemoa"
                         ["url-tracking-stripper-red"]="flnagcobkfofedknnnmofijmmkbgfamf"
                         ["video-downloader-plus"]="njgehaondchbmjmajphnhlojfnbfokng"
-                        ["stream-cleaner"]="lehcglgkjkamolcflammloedahjocbbg"
                         ["youtube-nonstop"]="nlkaejimjacpillmajjnopmpbkbnocid"
                     )
                     for i in "${!EXTlist[@]}"; do

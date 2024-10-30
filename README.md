@@ -48,8 +48,9 @@ wget -O - https://raw.githubusercontent.com/AlessandroPerazzetta/mint-post-insta
   * the-marvellous-suspender
   * url-tracking-stripper-red
   * video-downloader-plus
-  * stream-cleaner
   * youtube-nonstop
+- brave-browser extensions removed
+  * ~~stream-cleaner~~
 - remmina
 - remmina-plugin-rdp
 - remmina-plugin-secret
