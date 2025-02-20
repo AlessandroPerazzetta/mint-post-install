@@ -20,6 +20,21 @@ LGRAY='\033[0;37m'
 WHITE='\033[1;37m'
 NC='\033[0m' # No Color
 
+export NEWT_COLORS='
+    root=green,black
+    border=green,black
+    title=green,black
+    roottext=white,black
+    window=green,black
+    textbox=white,black
+    button=black,green
+    compactbutton=white,black
+    listbox=white,black
+    actlistbox=black,white
+    actsellistbox=black,green
+    checkbox=green,black
+    actcheckbox=black,green
+'
 
 printf "${YELLOW}------------------------------------------------------------------\n${NC}"
 printf "${YELLOW}Starting ...\n${NC}"
@@ -48,7 +63,7 @@ command_exists_apt() {
 }
 
 # sudo apt-get -y install build-essential apt-transport-https curl sshfs dialog git
-commands_to_check_exist=("build-essential" "apt-transport-https" "curl" "sshfs" "dialog" "git")
+commands_to_check_exist=("build-essential" "apt-transport-https" "curl" "sshfs" "git")
 for cmd in "${commands_to_check_exist[@]}"; do
     # if ! command_exists $cmd; then
     if ! command_exists $cmd && ! command_exists_apt $cmd; then
@@ -59,9 +74,15 @@ for cmd in "${commands_to_check_exist[@]}"; do
         printf "${LGREEN}Command ${cmd} is already installed.\n${NC}"
     fi
 done
-sleep 3
+sleep 1
 
-cmd=(dialog --title "Automated packages installation" --backtitle "Mint Post Install" --no-collapse --separate-output --checklist "Select options:" 22 76 16)
+read dialog <<< "$(which whiptail dialog 2> /dev/null)"
+[[ "$dialog" ]] || {
+    printf "${LRED}Neither whiptail nor dialog found\n${NC}"
+    exit 1
+}
+
+cmd=("$dialog" --title "Automated packages installation" --backtitle "Mint Post Install" --separate-output --checklist "Select options:" 22 76 16)
 options=(
 personal_res "Personal resources" on
 sys_serial "System Serial permission" on
@@ -119,7 +140,7 @@ then
         case $choice in
             personal_res)
                 printf "${YELLOW}Installing PERSONAL RESOURCES...\n${NC}"
-                printf "${YELLOW}Installing aliase resources...\n${NC}"
+                printf "${YELLOW}Installing aliases resources...\n${NC}"
                 printf "alias l='ls -lah'\nalias cls='clear'" >> ~/.bash_aliases
                 ;;
             sys_serial)
