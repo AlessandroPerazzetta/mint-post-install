@@ -494,7 +494,7 @@ then
                 ;;
             kicad)
                 printf "${YELLOW}Installing kicad...\n${NC}"
-                sudo apt-add-repository -y ppa:kicad/kicad-5.1-releases
+                sudo apt-add-repository -y ppa:kicad/kicad-8.0-releases
                 sudo apt-get update
                 sudo apt-get -y install --install-recommends kicad
                 ;;
