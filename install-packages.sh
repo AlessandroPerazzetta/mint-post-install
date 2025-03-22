@@ -90,6 +90,7 @@ xed_res "Xed theme resources" on
 gedit_res "Gedit theme resources" on
 sys_tweaks "System tewaks" on
 sys_utils "System utils" on
+tmux_res "tmux resources" on
 cinnamon_spices "cinnamon_spices" on
 nemo_actions "nemo_actions" on
 neovim "neovim" on
@@ -185,9 +186,13 @@ then
                 ;;
             sys_utils)
                 printf "${YELLOW}Installing system utils...\n${NC}"
-                sudo apt-get -y install bwm-ng screen htop 
+                sudo apt-get -y install bwm-ng screen htop tmux
                 mkdir -p ~/.local/bin
                 ln -s /usr/bin/batcat ~/.local/bin/cat
+                ;;
+            tmux_res)
+                printf "${YELLOW}Installing tmux resources...\n${NC}"
+                curl -fsSLo ~/.tmux.conf https://raw.githubusercontent.com/AlessandroPerazzetta/dotfiles/main/.tmux.conf
                 ;;
             cinnamon_spices)
                 printf "${YELLOW}Installing cinnamon applets and extensions...\n${NC}"
