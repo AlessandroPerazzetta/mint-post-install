@@ -79,7 +79,7 @@ wget -O - https://raw.githubusercontent.com/AlessandroPerazzetta/mint-post-insta
   * {MARKET} ["Prettier - Code formatter (Rust): Prettier Rust is a code formatter that autocorrects bad syntax"]="jinxdash.prettier-rust"
   * {MARKET} ["rust-analyzer: Rust language support for Visual Studio Code"]="rust-lang.rust-analyzer"
   * {MARKET} ["Dependi: Empowers developers to efficiently manage dependencies and address vulnerabilities in Rust, Go, JavaScript, Typescript, PHP and Python projects."]="fill-labs.dependi"
-  * {MARKET} ["crates: Helps Rust developers managing dependencies with Cargo.toml."]="serayuzgur.crates"
+  * ~~{MARKET} ["crates: Helps Rust developers managing dependencies with Cargo.toml."]="serayuzgur.crates"~~
   * {MARKET} ["Markdown Preview Enhanced: Markdown Preview Enhanced ported to vscode"]="shd101wyy.markdown-preview-enhanced"
   * ~~{MARKET} ["GitLens — Git supercharged: Supercharge Git within VS Code"]="eamodio.gitlens"~~
   * {MARKET} ["Error Lens: Improve highlighting of errors, warnings and other language diagnostics."]="usernamehw.errorlens"
