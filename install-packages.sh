@@ -290,7 +290,7 @@ then
                 sudo cp /usr/share/applications/kitty.desktop /usr/share/applications/kitty.desktop.ORI
 
                 sudo sed -i -e "s/Exec=kitty/Exec=kitty -e tmux/g" /usr/share/applications/kitty.desktop
-                dconf write /org/cinnamon/desktop/applications/terminal/exec "'/usr/bin/kitty -e tmux'"
+                # dconf write /org/cinnamon/desktop/applications/terminal/exec "'/usr/bin/kitty -e tmux'"
                 ;;
             brave)
                 printf "${YELLOW}Installing brave-browser...\n${NC}"
