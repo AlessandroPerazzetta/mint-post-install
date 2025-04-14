@@ -298,10 +298,15 @@ then
                 # gsettings set org.gnome.desktop.default-applications.terminal exec '/usr/bin/kitty'
                 # gsettings set org.gnome.desktop.default-applications.terminal exec-arg '-e tmux'
                 
-                gsettings set org.cinnamon.desktop.default-applications.terminal exec '/usr/bin/kitty -e tmux'
+                ##### exec not working on cinnamon 21.3, need to create a bash to call full command #####
+                ##### TOODO check on next cinnamon version #####
+                # gsettings set org.cinnamon.desktop.default-applications.terminal exec '/usr/bin/kitty -e tmux'
                 ##### exec-arg not working on cinnamon, need to pass full command and args on exec #####
                 # gsettings set org.cinnamon.desktop.default-applications.terminal exec-arg '-e tmux'
                 
+                sudo bash -c "echo -e '' > /usr/bin/kitty-tmux"
+                sudo chmod +x /usr/bin/kitty-tmux
+                gsettings set org.cinnamon.desktop.default-applications.terminal exec '/usr/bin/kitty-tmux'
                 ;;
             brave)
                 printf "${YELLOW}Installing brave-browser...\n${NC}"
