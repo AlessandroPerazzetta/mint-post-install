@@ -291,16 +291,17 @@ then
                 printf "${LCYAN}--------------------------------------------------------------------------------\n${GREEN}"
                 sudo cp /usr/share/applications/kitty.desktop /usr/share/applications/kitty.desktop.ORI
 
-                # sudo sed -i -e "s/Exec=kitty/Exec=kitty -e tmux/g" /usr/share/applications/kitty.desktop
                 ##### NOT needed due to global gsettings config #####
-             
+                # sudo sed -i -e "s/Exec=kitty/Exec=kitty -e tmux/g" /usr/share/applications/kitty.desktop
+
+                ##### Original GNOME command #####
                 # gsettings set org.gnome.desktop.default-applications.terminal exec '/usr/bin/kitty'
                 # gsettings set org.gnome.desktop.default-applications.terminal exec-arg '-e tmux'
-                ##### Original GNOME command #####
-
+                
                 gsettings set org.cinnamon.desktop.default-applications.terminal exec '/usr/bin/kitty -e tmux'
-                # gsettings set org.cinnamon.desktop.default-applications.terminal exec-arg '-e tmux'
                 ##### exec-arg not working on cinnamon, need to pass full command and args on exec #####
+                # gsettings set org.cinnamon.desktop.default-applications.terminal exec-arg '-e tmux'
+                
                 ;;
             brave)
                 printf "${YELLOW}Installing brave-browser...\n${NC}"
