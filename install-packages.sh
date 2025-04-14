@@ -193,6 +193,14 @@ then
             tmux_res)
                 printf "${YELLOW}Installing tmux resources...\n${NC}"
                 curl -fsSLo ~/.tmux.conf https://raw.githubusercontent.com/AlessandroPerazzetta/dotfiles/main/.tmux.conf
+                
+                printf "${YELLOW}Fix system binding to run tmux on all terminals...\n${NC}"
+                printf "${LCYAN}--------------------------------------------------------------------------------\n${LRED}"
+                printf "Backing up /usr/share/applications/kitty.desktop to /usr/share/applications/kitty.desktop.ORI : \n"
+                printf "${LCYAN}--------------------------------------------------------------------------------\n${GREEN}"
+                sudo cp /usr/share/applications/kitty.desktop /usr/share/applications/kitty.desktop.ORI
+
+                sudo sed -i -e "s/Exec=kitty/Exec=kitty -e tmux/g" /usr/share/applications/kitty.desktop
                 ;;
             cinnamon_spices)
                 printf "${YELLOW}Installing cinnamon applets and extensions...\n${NC}"
