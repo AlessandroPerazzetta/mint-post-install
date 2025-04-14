@@ -90,7 +90,6 @@ xed_res "Xed theme resources" on
 gedit_res "Gedit theme resources" on
 sys_tweaks "System tewaks" on
 sys_utils "System utils" on
-tmux_res "tmux resources" on
 cinnamon_spices "cinnamon_spices" on
 nemo_actions "nemo_actions" on
 neovim "neovim" on
@@ -98,6 +97,7 @@ filezilla "filezilla" on
 meld "meld" on
 vlc "vlc" on
 kitty "kitty" on
+tmux_res "tmux resources" on
 brave "brave-browser" on
 brave_ext "brave-browser extensions" on
 remmina "remmina" on
@@ -190,18 +190,6 @@ then
                 mkdir -p ~/.local/bin
                 ln -s /usr/bin/batcat ~/.local/bin/cat
                 ;;
-            tmux_res)
-                printf "${YELLOW}Installing tmux resources...\n${NC}"
-                curl -fsSLo ~/.tmux.conf https://raw.githubusercontent.com/AlessandroPerazzetta/dotfiles/main/.tmux.conf
-                
-                printf "${YELLOW}Fix system binding to run tmux on all terminals...\n${NC}"
-                printf "${LCYAN}--------------------------------------------------------------------------------\n${LRED}"
-                printf "Backing up /usr/share/applications/kitty.desktop to /usr/share/applications/kitty.desktop.ORI : \n"
-                printf "${LCYAN}--------------------------------------------------------------------------------\n${GREEN}"
-                sudo cp /usr/share/applications/kitty.desktop /usr/share/applications/kitty.desktop.ORI
-
-                sudo sed -i -e "s/Exec=kitty/Exec=kitty -e tmux/g" /usr/share/applications/kitty.desktop
-                ;;
             cinnamon_spices)
                 printf "${YELLOW}Installing cinnamon applets and extensions...\n${NC}"
                 # cinnamon applet installer
@@ -290,6 +278,19 @@ then
 
                 printf "${YELLOW}Set kitty as default terminal on cinnamon...\n${NC}"
                 dconf write /org/cinnamon/desktop/applications/terminal/exec "'/usr/bin/kitty'"
+                ;;
+            tmux_res)
+                printf "${YELLOW}Installing tmux resources...\n${NC}"
+                curl -fsSLo ~/.tmux.conf https://raw.githubusercontent.com/AlessandroPerazzetta/dotfiles/main/.tmux.conf
+                
+                printf "${YELLOW}Fix system binding to run tmux on all terminals...\n${NC}"
+                printf "${LCYAN}--------------------------------------------------------------------------------\n${LRED}"
+                printf "Backing up /usr/share/applications/kitty.desktop to /usr/share/applications/kitty.desktop.ORI : \n"
+                printf "${LCYAN}--------------------------------------------------------------------------------\n${GREEN}"
+                sudo cp /usr/share/applications/kitty.desktop /usr/share/applications/kitty.desktop.ORI
+
+                sudo sed -i -e "s/Exec=kitty/Exec=kitty -e tmux/g" /usr/share/applications/kitty.desktop
+                dconf write /org/cinnamon/desktop/applications/terminal/exec "'/usr/bin/kitty -e tmux'"
                 ;;
             brave)
                 printf "${YELLOW}Installing brave-browser...\n${NC}"
