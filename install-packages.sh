@@ -278,6 +278,8 @@ then
 
                 printf "${YELLOW}Set kitty as default terminal on cinnamon...\n${NC}"
                 dconf write /org/cinnamon/desktop/applications/terminal/exec "'/usr/bin/kitty'"
+
+                sudo update-alternatives --set x-terminal-emulator /usr/bin/kitty
                 ;;
             tmux_res)
                 printf "${YELLOW}Installing tmux resources...\n${NC}"
