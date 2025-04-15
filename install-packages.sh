@@ -706,10 +706,24 @@ then
                 printf "New settings can be made with pwmconfig\n"
                 printf "${LCYAN}--------------------------------------------------------------------------------\n${NC}"
                 sudo apt-get -y install fancontrol
+
+
+                printf "${YELLOW}Adding restart on failure to fancontrol service...\n${NC}"
+                if [[ -f /lib/systemd/system/fancontrol.service ]]; then
+                    sudo cp /lib/systemd/system/fancontrol.service /lib/systemd/system/fancontrol.service.bak
+                    sudo sed -i '/\[Service\]/a Restart=on-failure\nRestartSec=5s' /lib/systemd/system/fancontrol.service
+                    sudo systemctl daemon-reload
+                else
+                    printf "${RED}Fancontrol service file not found\n${NC}"
+                fi
+
+                printf "${YELLOW}Backup fancontrol config...\n${NC}"
                 if [[ -f /etc/fancontrol ]]; then
                     printf "/etc/fancontrol exists. Backup to /etc/fancontrol.ORIGINAL"
                     sudo mv /etc/fancontrol /etc/fancontrol.ORIGINAL
                 fi
+                
+                printf "${YELLOW}Generating new fancontrol config...\n${NC}"
                 release_number="$(cat /etc/issue | cut -d ' ' -f3|cut -f1 -d".")"
                 if [[ ${release_number} -eq "20" ]]; then
                     printf "${LCYAN}--------------------------------------------------------------------------------\n${PURPLE}"
