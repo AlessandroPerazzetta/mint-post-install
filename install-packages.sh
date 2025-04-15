@@ -304,9 +304,29 @@ then
                 ##### exec-arg not working on cinnamon, need to pass full command and args on exec #####
                 # gsettings set org.cinnamon.desktop.default-applications.terminal exec-arg '-e tmux'
                 
-                sudo bash -c "echo -e '' > /usr/bin/kitty-tmux"
-                sudo chmod +x /usr/bin/kitty-tmux
-                gsettings set org.cinnamon.desktop.default-applications.terminal exec '/usr/bin/kitty-tmux'
+                # sudo bash -c "echo -e '' > /usr/bin/kitty-tmux"
+                # sudo chmod +x /usr/bin/kitty-tmux
+                # gsettings set org.cinnamon.desktop.default-applications.terminal exec '/usr/bin/kitty-tmux'
+
+                release_number="$(cat /etc/issue | cut -d ' ' -f3|cut -f1 -d".")"
+                if [[ ${release_number} -le 21 ]]; then
+                    printf "${LCYAN}--------------------------------------------------------------------------------\n${PURPLE}"
+                    printf "Writing kitty tmux wrapper and set as default terminal application v21 and prior...\n"
+                    printf "${LCYAN}--------------------------------------------------------------------------------\n${GREEN}"
+                    sudo bash -c "echo -e '' > /usr/bin/kitty-tmux"
+                    sudo chmod +x /usr/bin/kitty-tmux
+                    gsettings set org.cinnamon.desktop.default-applications.terminal exec '/usr/bin/kitty-tmux'
+                elif [[ ${release_number} -ge 22 ]]; then
+                    printf "${LCYAN}--------------------------------------------------------------------------------\n${PURPLE}"
+                    printf "Set kitty tmux gsettings as default terminal application v22 and later...\n"
+                    printf "${LCYAN}--------------------------------------------------------------------------------\n${GREEN}"
+                    gsettings set org.cinnamon.desktop.default-applications.terminal exec '/usr/bin/kitty -e tmux'
+                else
+                    printf "${LCYAN}--------------------------------------------------------------------------------\n${LRED}"
+                    printf "Release number not recognized, skipping tmux wrapper/binding...\n"
+                    printf "${LCYAN}--------------------------------------------------------------------------------\n${GREEN}"
+                    sleep 5
+                fi
                 ;;
             brave)
                 printf "${YELLOW}Installing brave-browser...\n${NC}"
