@@ -427,7 +427,6 @@ then
                         ["Pylint: Linting support for Python files using Pylint."]="ms-python.pylint"
                         ["Python: Python language support with extension access points for IntelliSense (Pylance), Debugging (Python Debugger), linting, formatting, refactoring, unit tests, "]="ms-python.python"
                         ["Pylance: A performant, feature-rich language server for Python in VS Code"]="ms-python.vscode-pylance"
-                        ["C/C++: C/C++ IntelliSense, debugging, and code browsing."]="ms-vscode.cpptools"
                         ["CodeLLDB: A native debugger powered by LLDB. Debug C++, Rust and other compiled languages."]="vadimcn.vscode-lldb"
                         ["Prettier - Code formatter (Rust): Prettier Rust is a code formatter that autocorrects bad syntax"]="jinxdash.prettier-rust"
                         ["rust-analyzer: Rust language support for Visual Studio Code"]="rust-lang.rust-analyzer"
@@ -437,6 +436,12 @@ then
                         ["Todo Tree: Show TODO, FIXME, etc. comment tags in a tree view"]="Gruntfuggly.todo-tree"
                         ["Shades of Purple: 🦄 A professional theme suite with hand-picked & bold shades of purple for your VS Code editor and terminal apps."]="ahmadawais.shades-of-purple"
                     )
+
+                    # Extension removed from array:
+                    #     Temporary removed, installed from file (v1.24.5) due to errors:
+                    #     - https://github.com/VSCodium/vscodium/issues/2300
+                    #     - https://github.com/getcursor/cursor/issues/2976
+                    #    ["C/C++: C/C++ IntelliSense, debugging, and code browsing."]="ms-vscode.cpptools"
 
                     for i in "${!VSCODEEXTlistAdd[@]}"; do
                         #echo "Key: $i value: ${VSCODEEXTlistAdd[$i]}"
@@ -448,6 +453,7 @@ then
                     printf "${LCYAN}Installing extension from file:\n${NC}"
                     mkdir -p /tmp/vscodium_exts/ && cd /tmp/vscodium_exts/
                     curl -s https://api.github.com/repos/jeanp413/open-remote-ssh/releases/latest | grep "browser_download_url.*vsix" | cut -d : -f 2,3 | tr -d \" | xargs curl -O -L
+                    curl -s https://api.github.com/repos/microsoft/vscode-cpptools/releases/tags/v1.24.5 | grep "browser_download_url.*vsix"|grep "linux-x64" | cut -d : -f 2,3 | tr -d \" | xargs curl -O -L
                     find . -type f -name "*.vsix" -exec codium --install-extension {} --log debug \;
 
                     printf "${YELLOW}Uninstalling vscodium extensions ...\n${NC}"
