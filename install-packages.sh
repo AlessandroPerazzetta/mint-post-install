@@ -678,7 +678,8 @@ then
                 sudo apt-get -y install borgbackup
                 sudo apt-get -y install libxcb-cursor0
                 # sudo -H pip3 install vorta
-                sudo apt-get -y install vorta
+                # sudo apt-get -y install vorta
+                sudo pip3 install vorta --break-system-packages
                 ;;
             spotify_spicetify)
                 printf "${YELLOW}Installing spotify and spicetify...\n${NC}"
