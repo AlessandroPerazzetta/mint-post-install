@@ -376,7 +376,7 @@ then
                 ;;
             vscodium)
                 printf "${YELLOW}Installing vscodium...\n${NC}"
-                wget -qO - https://gitlab.com/paulcarroty/vscodium-deb-rpm-repo/-/raw/master/pub.gpg | gpg --dearmor | sudo dd of=/etc/apt/trusted.gpg.d/vscodium.gpg
+                curl -fsSL https://gitlab.com/paulcarroty/vscodium-deb-rpm-repo/-/raw/master/pub.gpg | gpg --dearmor | sudo dd of=/etc/apt/trusted.gpg.d/vscodium.gpg
                 echo 'deb [arch=amd64] https://paulcarroty.gitlab.io/vscodium-deb-rpm-repo/debs/ vscodium main' | sudo tee /etc/apt/sources.list.d/vscodium.list
                 sudo apt-get update && sudo apt-get -y install codium jq
                 
@@ -398,7 +398,6 @@ then
                 ;;
             vscode_nemo_actions)
                 printf "${YELLOW}Installing nemo action for vscodium...\n${NC}"
-                #sudo wget https://raw.githubusercontent.com/AlessandroPerazzetta/nemo-actions-vscodium-launcher/main/codium.nemo_action -O ~/.local/share/nemo/actions/codium.nemo_action
                 mkdir -p ~/.local/share/nemo/actions/
                 curl -fsSLo ~/.local/share/nemo/actions/codium.nemo_action https://raw.githubusercontent.com/AlessandroPerazzetta/nemo-actions-vscodium-launcher/main/codium.nemo_action
                 ;;
@@ -539,7 +538,6 @@ then
                 ;;
             virtualbox)
                 printf "${YELLOW}Installing virtualbox...\n${NC}"
-                # sudo wget -q https://www.virtualbox.org/download/oracle_vbox_2016.asc -O- | sudo apt-key add -
                 curl -fSsL https://www.virtualbox.org/download/oracle_vbox_2016.asc | gpg --dearmor | sudo tee /usr/share/keyrings/virtualbox.gpg > /dev/null
                 # echo "deb [arch=amd64] http://download.virtualbox.org/virtualbox/debian focal contrib" | sudo tee /etc/apt/sources.list.d/virtualbox.list
                 # Fixed codename
@@ -599,7 +597,7 @@ then
                 sudo apt-get -y install build-essential checkinstall virtualenv
                 sudo apt-get -y install libncurses-dev libncursesw5-dev libssl-dev libsqlite3-dev tk-dev libgdbm-dev libc6-dev libbz2-dev libffi-dev zlib1g-dev
                 cd /tmp
-                sudo wget https://www.python.org/ftp/python/3.6.15/Python-3.6.15.tgz
+                sudo curl -O https://www.python.org/ftp/python/3.6.15/Python-3.6.15.tgz
                 sudo tar xzf Python-3.6.15.tgz
                 cd Python-3.6.15
                 sudo ./configure --enable-optimizations
@@ -613,7 +611,7 @@ then
                 sudo apt-get -y install build-essential checkinstall virtualenv
                 sudo apt-get -y install libncurses-dev libncursesw5-dev libssl-dev libsqlite3-dev tk-dev libgdbm-dev libc6-dev libbz2-dev libffi-dev zlib1g-dev
                 cd /tmp
-                sudo wget https://www.python.org/ftp/python/3.8.19/Python-3.8.19.tgz
+                sudo curl -O https://www.python.org/ftp/python/3.8.19/Python-3.8.19.tgz
                 sudo tar xzf Python-3.8.19.tgz
                 cd Python-3.8.19
                 sudo ./configure --enable-optimizations
