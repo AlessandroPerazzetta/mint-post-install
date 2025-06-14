@@ -412,6 +412,13 @@ then
                     export VSCODE_GALLERY_ITEM_URL='https://marketplace.visualstudio.com/items'
                     export VSCODE_GALLERY_CACHE_URL='https://vscode.blob.core.windows.net/gallery/index'
                     export VSCODE_GALLERY_CONTROL_URL=''
+
+                    printf "${LCYAN}Installing extension from file:\n${NC}"
+                    mkdir -p /tmp/vscodium_exts/ && cd /tmp/vscodium_exts/
+                    curl -s https://api.github.com/repos/jeanp413/open-remote-ssh/releases/latest | grep "browser_download_url.*vsix" | cut -d : -f 2,3 | tr -d \" | xargs curl -O -L
+                    curl -s https://api.github.com/repos/microsoft/vscode-cpptools/releases/tags/v1.24.5 | grep "browser_download_url.*vsix"|grep "linux-x64" | cut -d : -f 2,3 | tr -d \" | xargs curl -O -L
+                    find . -type f -name "*.vsix" -exec codium --install-extension {} --log debug \;
+
                     declare -A VSCODEEXTlistAdd=(
                         ["Better Comments: Improve your code commenting by annotating with alert, informational, TODOs, and more!"]="aaron-bond.better-comments"
                         ["Even Better TOML: Fully-featured TOML support"]="tamasfe.even-better-toml"
@@ -448,12 +455,6 @@ then
                         codium --install-extension ${VSCODEEXTlistAdd[$i]} --log debug
                         printf "\n${NC}"
                     done
-
-                    printf "${LCYAN}Installing extension from file:\n${NC}"
-                    mkdir -p /tmp/vscodium_exts/ && cd /tmp/vscodium_exts/
-                    curl -s https://api.github.com/repos/jeanp413/open-remote-ssh/releases/latest | grep "browser_download_url.*vsix" | cut -d : -f 2,3 | tr -d \" | xargs curl -O -L
-                    curl -s https://api.github.com/repos/microsoft/vscode-cpptools/releases/tags/v1.24.5 | grep "browser_download_url.*vsix"|grep "linux-x64" | cut -d : -f 2,3 | tr -d \" | xargs curl -O -L
-                    find . -type f -name "*.vsix" -exec codium --install-extension {} --log debug \;
 
                     printf "${YELLOW}Uninstalling vscodium extensions ...\n${NC}"
                     declare -A VSCODEEXTlistDel=(
