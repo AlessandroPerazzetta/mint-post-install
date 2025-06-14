@@ -412,7 +412,12 @@ then
                     export VSCODE_GALLERY_ITEM_URL='https://marketplace.visualstudio.com/items'
                     export VSCODE_GALLERY_CACHE_URL='https://vscode.blob.core.windows.net/gallery/index'
                     export VSCODE_GALLERY_CONTROL_URL=''
-
+                    
+                    # Extension removed from array:
+                    #     Temporary removed, installed from file (v1.24.5) due to errors:
+                    #     - https://github.com/VSCodium/vscodium/issues/2300
+                    #     - https://github.com/getcursor/cursor/issues/2976
+                    #    ["C/C++: C/C++ IntelliSense, debugging, and code browsing."]="ms-vscode.cpptools"
                     printf "${LCYAN}Installing extension from file:\n${NC}"
                     mkdir -p /tmp/vscodium_exts/ && cd /tmp/vscodium_exts/
                     curl -s https://api.github.com/repos/jeanp413/open-remote-ssh/releases/latest | grep "browser_download_url.*vsix" | cut -d : -f 2,3 | tr -d \" | xargs curl -O -L
@@ -443,11 +448,7 @@ then
                         ["Shades of Purple: 🦄 A professional theme suite with hand-picked & bold shades of purple for your VS Code editor and terminal apps."]="ahmadawais.shades-of-purple"
                     )
 
-                    # Extension removed from array:
-                    #     Temporary removed, installed from file (v1.24.5) due to errors:
-                    #     - https://github.com/VSCodium/vscodium/issues/2300
-                    #     - https://github.com/getcursor/cursor/issues/2976
-                    #    ["C/C++: C/C++ IntelliSense, debugging, and code browsing."]="ms-vscode.cpptools"
+
 
                     for i in "${!VSCODEEXTlistAdd[@]}"; do
                         #echo "Key: $i value: ${VSCODEEXTlistAdd[$i]}"
