@@ -96,8 +96,6 @@ curl -s https://raw.githubusercontent.com/AlessandroPerazzetta/mint-post-install
   * REP>["Arduino: Arduino for Visual Studio Code"]="vsciot-vscode.vscode-arduino"
   * REP>["Better TOML: Better TOML Language support"]="bungcip.better-toml"
   * REM>["GitLens — Git supercharged: Supercharge Git within VS Code"]="eamodio.gitlens"
-
-
 - marktext
 - dbeaver-ce_latest_amd64
 - smartgit-23_1_2

@@ -447,9 +447,6 @@ then
                         ["Todo Tree: Show TODO, FIXME, etc. comment tags in a tree view"]="Gruntfuggly.todo-tree"
                         ["Shades of Purple: 🦄 A professional theme suite with hand-picked & bold shades of purple for your VS Code editor and terminal apps."]="ahmadawais.shades-of-purple"
                     )
-
-
-
                     for i in "${!VSCODEEXTlistAdd[@]}"; do
                         #echo "Key: $i value: ${VSCODEEXTlistAdd[$i]}"
                         printf "${LCYAN}- Extension: ${i}\n${NC}"
