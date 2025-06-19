@@ -353,6 +353,7 @@ then
                         ["url-tracking-stripper-red"]="flnagcobkfofedknnnmofijmmkbgfamf"
                         ["video-downloader-plus"]="njgehaondchbmjmajphnhlojfnbfokng"
                         ["youtube-nonstop"]="nlkaejimjacpillmajjnopmpbkbnocid"
+                        ["user-agent-switcher-for-c"]="djflhoibgkdhkhhcedjiklpkjnoahfmg"
                     )
                     for i in "${!EXTlist[@]}"; do
                         # echo "Key: $i value: ${EXTlist[$i]}"
