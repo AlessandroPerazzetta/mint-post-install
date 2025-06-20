@@ -120,6 +120,7 @@ curl -s https://raw.githubusercontent.com/AlessandroPerazzetta/mint-post-install
 - spotify + spicetify
 - spotube
 - fancontrol (with custom config)
+- fastfetch latest deb from github
 
 # List uninstalled packages:
 
