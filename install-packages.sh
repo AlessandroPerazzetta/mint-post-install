@@ -82,56 +82,75 @@ read dialog <<< "$(which whiptail dialog 2> /dev/null)"
     exit 1
 }
 
-cmd=("$dialog" --title "Automated packages installation" --backtitle "Mint Post Install" --separate-output --checklist "Select options:" 22 76 16)
-options=(
-personal_res "Personal resources" on
-sys_serial "System Serial permission" on
-xed_res "Xed theme resources" on
-gedit_res "Gedit theme resources" on
-sys_tweaks "System tewaks" on
-sys_utils "System utils" on
-cinnamon_spices "cinnamon_spices" on
-nemo_actions "nemo_actions" on
-neovim "neovim" on
-filezilla "filezilla" on
-meld "meld" on
-vlc "vlc" on
-kitty "kitty" on
-tmux_res "tmux resources" on
-brave "brave-browser" on
-brave_ext "brave-browser extensions" on
-remmina "remmina" on
-vscodium "vscodium" on
-vscode_nemo_actions "vscode_nemo_actions" on
-vscodium_ext "vscodium extensions" on
-marktext "marktext" on
-dbeaver "dbeaver" on
-smartgit "smartgit" off
-mqtt_explorer "mqtt-explorer" on
-arduino_cli "arduino-cli" on
-keepassxc "keepassxc" on
-qownnotes "qownnotes" on
-virtualbox "virtualbox" on
-kicad "kicad" off
-freecad "freecad" off
-telegram "telegram" on
-rust "rust" on
-py_36 "python 3.6.15 (src install)" off
-py_38 "python 3.8.19 (src install)" off
-py_dev_pkgs "python dev packages" on
-latest_pip "latest python pip" on
-qt_stuff "qtcreator + qt5" off
-imwheel "imwheel" off
-bt_restart "bt-restart" off
-ssh_alive "ssh-alive-settings" on
-ssh_skip_hosts_check "ssh-skip-hosts-check-settings" on
-solaar "solaar" on
-borgbackup_vorta "borgbackup + vorta gui" on
-spotify_spicetify "spotify + spicetify" off
-spotube "spotube" off
-fancontrol "fancontrol + config" on
-fastfetch "fastfetch" on)
+# Define all options and their default status in an array of "key|desc|default"
+ALL_OPTIONS=(
+    "personal_res|Personal resources|on"
+    "sys_serial|System Serial permission|on"
+    "xed_res|Xed theme resources|on"
+    "gedit_res|Gedit theme resources|on"
+    "sys_tweaks|System tewaks|on"
+    "sys_utils|System utils|on"
+    "cinnamon_spices|cinnamon_spices|on"
+    "nemo_actions|nemo_actions|on"
+    "neovim|neovim|on"
+    "filezilla|filezilla|on"
+    "meld|meld|on"
+    "vlc|vlc|on"
+    "kitty|kitty|on"
+    "tmux_res|tmux resources|on"
+    "brave|brave-browser|on"
+    "brave_ext|brave-browser extensions|on"
+    "remmina|remmina|on"
+    "vscodium|vscodium|on"
+    "vscode_nemo_actions|vscode_nemo_actions|on"
+    "vscodium_ext|vscodium extensions|on"
+    "marktext|marktext|on"
+    "dbeaver|dbeaver|on"
+    "smartgit|smartgit|off"
+    "mqtt_explorer|mqtt-explorer|on"
+    "arduino_cli|arduino-cli|on"
+    "keepassxc|keepassxc|on"
+    "qownnotes|qownnotes|on"
+    "virtualbox|virtualbox|on"
+    "kicad|kicad|off"
+    "freecad|freecad|off"
+    "telegram|telegram|on"
+    "rust|rust|on"
+    "py_36|python 3.6.15 (src install)|off"
+    "py_38|python 3.8.19 (src install)|off"
+    "py_dev_pkgs|python dev packages|on"
+    "latest_pip|latest python pip|on"
+    "qt_stuff|qtcreator + qt5|off"
+    "imwheel|imwheel|off"
+    "bt_restart|bt-restart|off"
+    "ssh_alive|ssh-alive-settings|on"
+    "ssh_skip_hosts_check|ssh-skip-hosts-check-settings|on"
+    "solaar|solaar|on"
+    "borgbackup_vorta|borgbackup + vorta gui|on"
+    "spotify_spicetify|spotify + spicetify|off"
+    "spotube|spotube|off"
+    "fancontrol|fancontrol + config|on"
+    "fastfetch|fastfetch|on"
+)
 
+# Parse arguments
+ALL_OFF=false
+for arg in "$@"; do
+    [[ "$arg" == "--none" ]] && ALL_OFF=true
+done
+
+# Build options array for dialog/whiptail
+options=()
+for opt in "${ALL_OPTIONS[@]}"; do
+    IFS='|' read -r key desc def <<< "$opt"
+    if $ALL_OFF; then
+        options+=("$key" "$desc" "off")
+    else
+        options+=("$key" "$desc" "$def")
+    fi
+done
+
+cmd=("$dialog" --title "Automated packages installation" --backtitle "Mint Post Install" --separate-output --checklist "Select options:" 22 76 16)
 choices=$("${cmd[@]}" "${options[@]}" 2>&1 >/dev/tty)
 clear
 
