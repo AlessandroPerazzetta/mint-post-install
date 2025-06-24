@@ -1,6 +1,13 @@
 # Mint post install flavour packages
 
+Run with predefined options:
+```bash
 curl -s https://raw.githubusercontent.com/AlessandroPerazzetta/mint-post-install/main/install-packages.sh | bash
+```
+Uncheck all options:
+```bash
+curl -s https://raw.githubusercontent.com/AlessandroPerazzetta/mint-post-install/main/install-packages.sh | bash
+```
 
 # List system tweaks:
 
