@@ -97,6 +97,7 @@ ALL_OPTIONS=(
     "meld|meld|on"
     "vlc|vlc|on"
     "kitty|kitty|on"
+    "kitty_res|kitty resources|on"
     "tmux_res|tmux resources|on"
     "brave|brave-browser|on"
     "brave_ext|brave-browser extensions|on"
@@ -206,7 +207,7 @@ then
                 ;;
             sys_utils)
                 printf "${YELLOW}Installing system utils...\n${NC}"
-                sudo apt-get -y install bwm-ng screen htop tmux
+                sudo apt-get -y install bwm-ng screen htop
                 mkdir -p ~/.local/bin
                 ln -s /usr/bin/batcat ~/.local/bin/cat
                 ;;
@@ -289,17 +290,28 @@ then
             kitty)
                 printf "${YELLOW}Installing kitty...\n${NC}"
                 sudo apt-get -y install kitty
-                
-                printf "${YELLOW}Installing kitty conf...\n${NC}"
-                mkdir -p ~/.config/kitty/
-                curl -fsSLo ~/.config/kitty/kitty.conf https://raw.githubusercontent.com/AlessandroPerazzetta/dotfiles/refs/heads/main/kitty/kitty.conf
-                curl -fsSLo ~/.config/kitty/current-theme.conf https://raw.githubusercontent.com/AlessandroPerazzetta/dotfiles/refs/heads/main/kitty/current-theme.conf
-                curl -fsSLo ~/.config/kitty/dracula-theme.conf https://raw.githubusercontent.com/AlessandroPerazzetta/dotfiles/refs/heads/main/kitty/dracula-theme.conf
 
                 printf "${YELLOW}Set kitty as default terminal on cinnamon...\n${NC}"
                 dconf write /org/cinnamon/desktop/applications/terminal/exec "'/usr/bin/kitty'"
 
                 sudo update-alternatives --set x-terminal-emulator /usr/bin/kitty
+                ;;
+            kitty_res)
+                printf "${YELLOW}Installing kitty resources...\n${NC}"
+                printf "${YELLOW}Installing kitty resources from git sparse checkout...\n${NC}"
+                mkdir -p /tmp/dotfiles-kitty.git
+                cd /tmp/dotfiles-kitty.git
+                git init
+                git remote add origin -f https://github.com/AlessandroPerazzetta/dotfiles
+                git sparse-checkout set kitty
+                git pull origin main
+                mv kitty ~/.config/
+                cd -
+                rm -rf /tmp/dotfiles-kitty.git
+                ;;
+            tmux)
+                printf "${YELLOW}Installing tmux...\n${NC}"
+                sudo apt-get -y install tmux
                 ;;
             tmux_res)
                 printf "${YELLOW}Installing tmux resources...\n${NC}"
