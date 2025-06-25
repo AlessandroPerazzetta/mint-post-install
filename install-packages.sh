@@ -303,8 +303,18 @@ then
                 ;;
             tmux_res)
                 printf "${YELLOW}Installing tmux resources...\n${NC}"
-                curl -fsSLo ~/.tmux.conf https://raw.githubusercontent.com/AlessandroPerazzetta/dotfiles/main/.tmux.conf
+                #curl -fsSLo ~/.tmux.conf https://raw.githubusercontent.com/AlessandroPerazzetta/dotfiles/main/.tmux.conf
                 
+                printf "${YELLOW}Installing tmux resources from git sparse checkout...\n${NC}"
+                mkdir -p /tmp/dotfiles-tmux.git
+                cd /tmp/dotfiles-tmux.git
+                git init
+                git remote add origin -f https://github.com/AlessandroPerazzetta/dotfiles
+                git sparse-checkout set tmux
+                git pull origin main
+                mv tmux ~/.config/
+                cd -
+
                 printf "${YELLOW}Fix system binding to run tmux on all terminals...\n${NC}"
                 printf "${LCYAN}--------------------------------------------------------------------------------\n${LRED}"
                 printf "Backing up /usr/share/applications/kitty.desktop to /usr/share/applications/kitty.desktop.ORI : \n"
