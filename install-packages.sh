@@ -98,6 +98,7 @@ ALL_OPTIONS=(
     "vlc|vlc|on"
     "kitty|kitty|on"
     "kitty_res|kitty resources|on"
+    "tmux|tmux|on"
     "tmux_res|tmux resources|on"
     "brave|brave-browser|on"
     "brave_ext|brave-browser extensions|on"
@@ -717,6 +718,7 @@ then
                 printf "${YELLOW}Installing borgbackup and vorta gui...\n${NC}"
                 sudo apt-get -y install borgbackup
                 sudo apt-get -y install libxcb-cursor0
+                sudo apt-get -y install python3-pyfuse3
                 # sudo -H pip3 install vorta
                 # sudo apt-get -y install vorta
                 sudo pip3 install vorta --break-system-packages
