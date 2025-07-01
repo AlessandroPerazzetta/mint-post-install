@@ -6,7 +6,7 @@ curl -s https://raw.githubusercontent.com/AlessandroPerazzetta/mint-post-install
 ```
 Uncheck all options:
 ```bash
-curl -s https://raw.githubusercontent.com/AlessandroPerazzetta/mint-post-install/main/install-packages.sh | bash
+curl -s https://raw.githubusercontent.com/AlessandroPerazzetta/mint-post-install/main/install-packages.sh | bash -s -- --none
 ```
 
 # List system tweaks:
