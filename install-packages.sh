@@ -397,6 +397,7 @@ then
                         ["video-downloader-plus"]="njgehaondchbmjmajphnhlojfnbfokng"
                         ["youtube-nonstop"]="nlkaejimjacpillmajjnopmpbkbnocid"
                         ["user-agent-switcher-for-c"]="djflhoibgkdhkhhcedjiklpkjnoahfmg"
+                        ["modheader-modify-http-hea"]="idgpnmonknjnojddfkpgkljpfnnfcklj"
                     )
                     for i in "${!EXTlist[@]}"; do
                         # echo "Key: $i value: ${EXTlist[$i]}"
