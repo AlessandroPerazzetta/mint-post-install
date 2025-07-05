@@ -57,6 +57,7 @@ curl -s https://raw.githubusercontent.com/AlessandroPerazzetta/mint-post-install
   * video-downloader-plus
   * youtube-nonstop
   * user-agent-switcher-for-c
+  * modheader-modify-http-hea
 - brave-browser extensions removed
   * ~~stream-cleaner~~
 - remmina
