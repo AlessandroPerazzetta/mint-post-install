@@ -58,6 +58,7 @@ curl -s https://raw.githubusercontent.com/AlessandroPerazzetta/mint-post-install
   * youtube-nonstop
   * user-agent-switcher-for-c
   * modheader-modify-http-hea
+  * enhancer-for-youtube
 - brave-browser extensions removed
   * ~~stream-cleaner~~
 - remmina
