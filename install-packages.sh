@@ -468,6 +468,8 @@ then
                     mkdir -p /tmp/vscodium_exts/ && cd /tmp/vscodium_exts/
                     curl -s https://api.github.com/repos/jeanp413/open-remote-ssh/releases/latest | grep "browser_download_url.*vsix" | cut -d : -f 2,3 | tr -d \" | xargs curl -O -L
                     curl -s https://api.github.com/repos/microsoft/vscode-cpptools/releases/tags/v1.24.5 | grep "browser_download_url.*vsix"|grep "linux-x64" | cut -d : -f 2,3 | tr -d \" | xargs curl -O -L
+                    curl -fsSLo GitHub.copilot-1.257.1316.vsix https://marketplace.visualstudio.com/_apis/public/gallery/publishers/GitHub/vsextensions/copilot/1.257.1316/vspackage
+                    curl -fsSLo GitHub.copilot-chat-0.23.2024120501.vsix https://marketplace.visualstudio.com/_apis/public/gallery/publishers/GitHub/vsextensions/copilot-chat/0.23.2024120501/vspackage
                     find . -type f -name "*.vsix" -exec codium --install-extension {} --log debug \;
 
                     declare -A VSCODEEXTlistAdd=(
