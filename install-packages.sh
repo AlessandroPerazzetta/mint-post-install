@@ -468,9 +468,9 @@ then
                     mkdir -p /tmp/vscodium_exts/ && cd /tmp/vscodium_exts/
                     curl -s https://api.github.com/repos/jeanp413/open-remote-ssh/releases/latest | grep "browser_download_url.*vsix" | cut -d : -f 2,3 | tr -d \" | xargs curl -O -L
                     curl -s https://api.github.com/repos/microsoft/vscode-cpptools/releases/tags/v1.24.5 | grep "browser_download_url.*vsix"|grep "linux-x64" | cut -d : -f 2,3 | tr -d \" | xargs curl -O -L
-                    curl -fsSLo GitHub.copilot-1.257.1316.vsix https://marketplace.visualstudio.com/_apis/public/gallery/publishers/GitHub/vsextensions/copilot/1.257.1316/vspackage
-                    curl -fsSLo GitHub.copilot-chat-0.23.2024120501.vsix https://marketplace.visualstudio.com/_apis/public/gallery/publishers/GitHub/vsextensions/copilot-chat/0.23.2024120501/vspackage
-                    find . -type f -name "*.vsix" -exec codium --install-extension {} --log debug \;
+                    curl --compressed -fsSLo GitHub.copilot-1.257.1316.vsix https://marketplace.visualstudio.com/_apis/public/gallery/publishers/GitHub/vsextensions/copilot/1.257.1316/vspackage
+                    curl --compressed -fsSLo GitHub.copilot-chat-0.23.2024120501.vsix https://marketplace.visualstudio.com/_apis/public/gallery/publishers/GitHub/vsextensions/copilot-chat/0.23.2024120501/vspackage
+                    find . -type f -name "*.vsix" -exec codium --install-extension {} --force --log debug \;
 
                     declare -A VSCODEEXTlistAdd=(
                         ["Better Comments: Improve your code commenting by annotating with alert, informational, TODOs, and more!"]="aaron-bond.better-comments"
@@ -499,7 +499,7 @@ then
                     for i in "${!VSCODEEXTlistAdd[@]}"; do
                         #echo "Key: $i value: ${VSCODEEXTlistAdd[$i]}"
                         printf "${LCYAN}- Extension: ${i}\n${NC}"
-                        codium --install-extension ${VSCODEEXTlistAdd[$i]} --log debug
+                        codium --install-extension ${VSCODEEXTlistAdd[$i]} --force --log debug
                         printf "\n${NC}"
                     done
 
