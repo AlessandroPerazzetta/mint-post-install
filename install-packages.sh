@@ -49,29 +49,29 @@ printf "${YELLOW}Install required packages...\n${NC}"
 sleep 1
 
 # Function to check if a command exists
+# The command_exists function checks if a given command is available in the system's PATH. It uses the command -v command, 
+# which returns the path to the executable if it exists, or nothing if it doesn't. 
+# The function returns 0 (success) if the command exists, and 1 (failure) if it does not.
 command_exists() {
     command -v $1 >/dev/null 2>&1
 }
+
 # Function to check if a command exists using APT
+# This will return 0 if the package is installed, 1 otherwise.
 command_exists_apt() {
-    # if apt list --installed | grep -q -w $1; then
-    if apt list --installed 2>/dev/null | grep -q -w $1; then
-        return 0
-    else
-        return 1
-    fi
+    dpkg -s "$1" 2>/dev/null | grep -q "Status: install ok installed"
 }
 
 # sudo apt-get -y install build-essential apt-transport-https curl sshfs dialog git
 commands_to_check_exist=("build-essential" "apt-transport-https" "curl" "sshfs" "git")
 for cmd in "${commands_to_check_exist[@]}"; do
     # if ! command_exists $cmd; then
-    if ! command_exists $cmd && ! command_exists_apt $cmd; then
+    if command_exists $cmd && command_exists_apt $cmd; then
+        printf "${LGREEN}Command ${cmd} is already installed.\n${NC}"
+    else
         printf "${LCYAN}Command ${cmd} not found. Installing... \n${NC}"
         sudo apt-get -y install $cmd
-        printf "\n${NC}"       
-    else
-        printf "${LGREEN}Command ${cmd} is already installed.\n${NC}"
+        printf "\n${NC}"
     fi
 done
 sleep 1
