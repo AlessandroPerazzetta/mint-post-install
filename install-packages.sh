@@ -1,5 +1,6 @@
 #!/bin/bash
 CURRENT_USER=$(whoami)
+RELEASE_NUMBER="$(lsb_release -rs | cut -d. -f1|tr -d '\r\n')"
 
 # Colors definition
 BLACK='\033[0;30m'
@@ -63,7 +64,7 @@ command_exists_apt() {
 }
 
 # sudo apt-get -y install build-essential apt-transport-https curl sshfs dialog git
-commands_to_check_exist=("build-essential" "apt-transport-https" "curl" "sshfs" "git")
+commands_to_check_exist=("build-essential" "apt-transport-https" "curl" "sshfs" "git" "jq")
 for cmd in "${commands_to_check_exist[@]}"; do
     # if ! command_exists $cmd; then
     if command_exists $cmd && command_exists_apt $cmd; then
@@ -352,16 +353,16 @@ then
                 # gsettings set org.cinnamon.desktop.default-applications.terminal exec '/usr/bin/kitty-tmux'
 
                 # release_number="$(cat /etc/issue | cut -d ' ' -f3|cut -f1 -d".")"
-                release_number="$(lsb_release -rs | cut -d. -f1|tr -d '\r\n')"
+                # release_number="$(lsb_release -rs | cut -d. -f1|tr -d '\r\n')"
 
-                if [[ ${release_number} -le 21 ]]; then
+                if [[ ${RELEASE_NUMBER} -le 21 ]]; then
                     printf "${LCYAN}--------------------------------------------------------------------------------\n${PURPLE}"
                     printf "Writing kitty tmux wrapper and set as default terminal application v21 and prior...\n"
                     printf "${LCYAN}--------------------------------------------------------------------------------\n${GREEN}"
                     sudo bash -c "echo -e '' > /usr/bin/kitty-tmux"
                     sudo chmod +x /usr/bin/kitty-tmux
                     gsettings set org.cinnamon.desktop.default-applications.terminal exec '/usr/bin/kitty-tmux'
-                elif [[ ${release_number} -ge 22 ]]; then
+                elif [[ ${RELEASE_NUMBER} -ge 22 ]]; then
                     printf "${LCYAN}--------------------------------------------------------------------------------\n${PURPLE}"
                     printf "Set kitty tmux gsettings as default terminal application v22 and later...\n"
                     printf "${LCYAN}--------------------------------------------------------------------------------\n${GREEN}"
@@ -424,9 +425,30 @@ then
                 ;;
             vscodium)
                 printf "${YELLOW}Installing vscodium...\n${NC}"
-                curl -fsSL https://gitlab.com/paulcarroty/vscodium-deb-rpm-repo/-/raw/master/pub.gpg | gpg --dearmor | sudo dd of=/etc/apt/trusted.gpg.d/vscodium.gpg
-                echo 'deb [arch=amd64] https://paulcarroty.gitlab.io/vscodium-deb-rpm-repo/debs/ vscodium main' | sudo tee /etc/apt/sources.list.d/vscodium.list
-                sudo apt-get update && sudo apt-get -y install codium jq
+                # curl -fsSL https://gitlab.com/paulcarroty/vscodium-deb-rpm-repo/-/raw/master/pub.gpg | gpg --dearmor | sudo dd of=/etc/apt/trusted.gpg.d/vscodium.gpg
+                # echo 'deb [arch=amd64] https://paulcarroty.gitlab.io/vscodium-deb-rpm-repo/debs/ vscodium main' | sudo tee /etc/apt/sources.list.d/vscodium.list
+
+                if [[ ${RELEASE_NUMBER} -le 23 ]]; then
+                    printf "${LCYAN}--------------------------------------------------------------------------------\n${PURPLE}"
+                    printf "Writing vscode repository for v23 or older...\n"
+                    printf "${LCYAN}--------------------------------------------------------------------------------\n${GREEN}"
+                    
+                    curl -fsSL https://gitlab.com/paulcarroty/vscodium-deb-rpm-repo/raw/master/pub.gpg | gpg --dearmor | sudo dd of=/etc/apt/trusted.gpg.d/vscodium.gpg
+                    echo 'deb [arch=amd64] https://paulcarroty.gitlab.io/vscodium-deb-rpm-repo/debs/ vscodium main' | sudo tee /etc/apt/sources.list.d/vscodium.list
+                elif [[ ${RELEASE_NUMBER} -ge 24 ]]; then
+                    printf "${LCYAN}--------------------------------------------------------------------------------\n${PURPLE}"
+                    printf "Writing vscode repository for v24 or newer ...\n"
+                    printf "${LCYAN}--------------------------------------------------------------------------------\n${GREEN}"
+                    
+                    curl -fsSL https://gitlab.com/paulcarroty/vscodium-deb-rpm-repo/raw/master/pub.gpg | gpg --dearmor | sudo dd of=/usr/share/keyrings/vscodium-archive-keyring.gpg
+                    echo -e 'Types: deb\nURIs: https://download.vscodium.com/debs\nSuites: vscodium\nComponents: main\nArchitectures: amd64 arm64\nSigned-by: /usr/share/keyrings/vscodium-archive-keyring.gpg' | sudo tee /etc/apt/sources.list.d/vscodium.sources
+                else
+                    printf "${LCYAN}--------------------------------------------------------------------------------\n${LRED}"
+                    printf "Release number not recognized, vscode repository not installed...\n"
+                    printf "${LCYAN}--------------------------------------------------------------------------------\n${GREEN}"
+                    sleep 5
+                fi
+                sudo apt-get update && sudo apt-get -y install codium
                 
                 printf "${YELLOW}Installing vscodium MS marketplace CONFIG in ~/.config/VSCodium/product.json ...\n${NC}"
                 # --------------------------------------------------------------------------------------------------
