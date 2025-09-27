@@ -23,6 +23,7 @@ curl -s https://raw.githubusercontent.com/AlessandroPerazzetta/mint-post-install
 - python3-pip
 - sshfs
 - git
+- jq
 
 # Cinnamon spices
 ## Applets
