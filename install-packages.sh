@@ -99,6 +99,7 @@ ALL_OPTIONS=(
     "vlc|vlc|on"
     "kitty|kitty|on"
     "kitty_res|kitty resources|on"
+    "kitty_libgl_fix|kitty libgl fix|off"
     "tmux|tmux|on"
     "tmux_res|tmux resources|on"
     "brave|brave-browser|on"
@@ -310,6 +311,11 @@ then
                 mv kitty ~/.config/
                 cd -
                 rm -rf /tmp/dotfiles-kitty.git
+                ;;
+            kitty libgl fix)
+                printf "${YELLOW}Installing kitty libgl fix to allow kitty on OPENGL < 2/3 on /etc/profile.d/kitty.sh...\n${NC}"
+                sudo bash -c "echo -e 'export LIBGL_ALWAYS_SOFTWARE=1' > /etc/profile.d/kitty.sh"
+                sudo chmod +x /etc/profile.d/kitty.sh
                 ;;
             tmux)
                 printf "${YELLOW}Installing tmux...\n${NC}"
