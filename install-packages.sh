@@ -105,6 +105,7 @@ ALL_OPTIONS=(
     "brave|brave-browser|on"
     "brave_ext|brave-browser extensions|on"
     "remmina|remmina|on"
+    "tabby|tabby|on"
     "vscodium|vscodium|on"
     "vscode_nemo_actions|vscode_nemo_actions|on"
     "vscodium_ext|vscodium extensions|on"
@@ -428,6 +429,11 @@ then
                 sudo apt-add-repository -y ppa:remmina-ppa-team/remmina-next
                 sudo apt-get update
                 sudo apt-get -y install remmina remmina-plugin-rdp remmina-plugin-secret
+                ;;
+            tabby)
+                printf "${YELLOW}Installing tabby...\n${NC}"
+                curl -s https://api.github.com/repos/Eugeny/tabby/releases/latest |grep "browser_download_url.*linux-x64.deb" |cut -d : -f 2,3 |tr -d \"| xargs -n 1 sudo curl -L -o /tmp/tabby-latest-linux-x64.deb
+                sudo dpkg -i /tmp/tabby-latest-linux-x64.deb
                 ;;
             vscodium)
                 printf "${YELLOW}Installing vscodium...\n${NC}"
