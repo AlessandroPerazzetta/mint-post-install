@@ -313,7 +313,7 @@ then
                 cd -
                 rm -rf /tmp/dotfiles-kitty.git
                 ;;
-            kitty libgl fix)
+            kitty_libgl_fix)
                 printf "${YELLOW}Installing kitty libgl fix to allow kitty on OPENGL < 2/3 on /etc/profile.d/kitty.sh...\n${NC}"
                 sudo bash -c "echo -e 'export LIBGL_ALWAYS_SOFTWARE=1' > /etc/profile.d/kitty.sh"
                 sudo chmod +x /etc/profile.d/kitty.sh
