@@ -65,8 +65,8 @@ curl -s https://raw.githubusercontent.com/AlessandroPerazzetta/mint-post-install
 - remmina
 - remmina-plugin-rdp
 - remmina-plugin-secret
-- codium
 - tabby
+- codium
 - codium nemo actions
 - codium marketplace replacement (local config)
 - codium marketplace replacement (env variables)
