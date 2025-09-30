@@ -106,6 +106,7 @@ ALL_OPTIONS=(
     "brave_ext|brave-browser extensions|on"
     "remmina|remmina|on"
     "tabby|tabby|on"
+    "tabby_libgl_fix|tabby libgl fix|off"
     "vscodium|vscodium|on"
     "vscode_nemo_actions|vscode_nemo_actions|on"
     "vscodium_ext|vscodium extensions|on"
@@ -314,9 +315,16 @@ then
                 rm -rf /tmp/dotfiles-kitty.git
                 ;;
             kitty_libgl_fix)
-                printf "${YELLOW}Installing kitty libgl fix to allow kitty on OPENGL < 2/3 on /etc/profile.d/kitty.sh...\n${NC}"
-                sudo bash -c "echo -e 'export LIBGL_ALWAYS_SOFTWARE=1' > /etc/profile.d/kitty.sh"
-                sudo chmod +x /etc/profile.d/kitty.sh
+                # printf "${YELLOW}Installing kitty libgl fix to allow kitty on OPENGL < 2/3 on /etc/profile.d/kitty.sh...\n${NC}"
+                # sudo bash -c "echo -e 'export LIBGL_ALWAYS_SOFTWARE=1' > /etc/profile.d/kitty.sh"
+                # sudo chmod +x /etc/profile.d/kitty.sh
+
+                TARGET_FILE="/usr/bin/kitty-terminal"
+                printf "${YELLOW}Installing kitty-terminal with libgl fix to allow kitty on OPENGL < 2/3 on $TARGET_FILE...\n${NC}"
+                # Use sudo and tee to write lines to the file
+                echo -e '#!/usr/bin/env bash\nLIBGL_ALWAYS_SOFTWARE=1 kitty'       | sudo tee "$TARGET_FILE" > /dev/null
+                # Make the file executable
+                sudo chmod +x "$TARGET_FILE"
                 ;;
             tmux)
                 printf "${YELLOW}Installing tmux...\n${NC}"
@@ -436,6 +444,14 @@ then
                 printf "${YELLOW}Installing tabby...\n${NC}"
                 curl -s https://api.github.com/repos/Eugeny/tabby/releases/latest |grep "browser_download_url.*linux-x64.deb" |cut -d : -f 2,3 |tr -d \"| xargs -n 1 sudo curl -L -o /tmp/tabby-latest-linux-x64.deb
                 sudo dpkg -i /tmp/tabby-latest-linux-x64.deb
+                ;;
+            tabby_libgl_fix)
+                TARGET_FILE="/usr/bin/tabby-terminal"
+                printf "${YELLOW}Installing tabby-terminal with libgl fix to allow tabby on OPENGL < 2/3 on $TARGET_FILE...\n${NC}"
+                # Use sudo and tee to write lines to the file
+                echo -e '#!/usr/bin/env bash\nLIBGL_ALWAYS_SOFTWARE=1 tabby'       | sudo tee "$TARGET_FILE" > /dev/null
+                # Make the file executable
+                sudo chmod +x "$TARGET_FILE"
                 ;;
             vscodium)
                 printf "${YELLOW}Installing vscodium...\n${NC}"
