@@ -41,10 +41,11 @@ curl -s https://raw.githubusercontent.com/AlessandroPerazzetta/mint-post-install
 # List of selectable installed packages:
 
 - bwm-ng, screen, htop, batcat
-- neovim 
-- filezilla 
-- meld 
-- vlc 
+- neovim
+- filezilla
+- meld
+- lazygit
+- vlc
 - brave-browser
 - brave-browser extensions
   * ublock-origin
