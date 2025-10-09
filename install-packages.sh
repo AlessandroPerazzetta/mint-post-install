@@ -308,10 +308,12 @@ then
                 url="https://github.com/jesseduffield/lazygit/releases/download/${latest_version}/${filename}"
 
                 echo "Downloading $url"
-                curl -LO "/tmp/$url"
+                # curl -LO "$url"
+                curl -fsSLo /tmp/${filename} $url
 
                 # Extract the tar.gz file (replace with your actual filename if different)
-                tar -xzf /tmp/lazygit_*.tar.gz
+                # tar -xzf /tmp/lazygit_*.tar.gz
+                tar -xzf /tmp/${filename} -C /tmp/
 
                 # Move the binary to /usr/local/bin (you may need sudo)
                 sudo mv /tmp/lazygit /usr/local/bin/
