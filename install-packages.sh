@@ -286,9 +286,9 @@ then
                 sudo apt-get -y install meld
                 ;;
             lazygit)
-                printf "${YELLOW}Installing lazygit latest from Github sources...\n${NC}"
+                printf "${YELLOW}Installing lazygit latest from Github...\n${NC}"
                 # Install dependencies
-                printf "${YELLOW}Installing dependencies for lazygit...\n${NC}"
+                printf "${YELLOW}Installing dependencies for lazygit..\n${NC}"
                 sudo apt-get install build-essential libssl-dev libreadline-dev zlib1g-dev curl
 
                 # Get the latest release tag for Lazygit from GitHub API
