@@ -287,6 +287,8 @@ then
                 ;;
             lazygit)
                 printf "${YELLOW}Installing lazygit latest from Github sources...\n${NC}"
+                # Install dependencies
+                printf "${YELLOW}Installing dependencies for lazygit...\n${NC}"
                 sudo apt-get install build-essential libssl-dev libreadline-dev zlib1g-dev curl
 
                 # Get the latest release tag for Lazygit from GitHub API
@@ -308,11 +310,9 @@ then
                 url="https://github.com/jesseduffield/lazygit/releases/download/${latest_version}/${filename}"
 
                 echo "Downloading $url"
-                # curl -LO "$url"
                 curl -fsSLo /tmp/${filename} $url
 
                 # Extract the tar.gz file (replace with your actual filename if different)
-                # tar -xzf /tmp/lazygit_*.tar.gz
                 tar -xzf /tmp/${filename} -C /tmp/
 
                 # Move the binary to /usr/local/bin (you may need sudo)
