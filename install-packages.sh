@@ -803,10 +803,9 @@ then
                 ;;
             spotube)
                 printf "${YELLOW}Installing spotube...\n${NC}"
-                sudo apt-get -y install mpv libjsoncpp25
-                sudo curl -fsSLo /tmp/Spotube-linux-x86_64.deb https://github.com/KRTirtho/spotube/releases/download/v3.5.0/Spotube-linux-x86_64.deb
-                sudo dpkg -i /tmp/Spotube-linux-x86_64.deb
-                ;;     
+                curl -s https://api.github.com/repos/KRTirtho/spotube/releases/latest |grep "browser_download_url.*linux-x86_64.deb" |cut -d : -f 2,3 |tr -d \"| xargs -n 1 curl -L -o /tmp/spotube-latest-linux-x86_64.deb
+                sudo dpkg -i /tmp/spotube-latest-linux-x86_64.deb
+                ;;
             fancontrol)
                 printf "${YELLOW}Installing fancontrol and config...\n${NC}"
                 printf "${LCYAN}--------------------------------------------------------------------------------\n${LRED}"
