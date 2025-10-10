@@ -288,8 +288,8 @@ then
             lazygit)
                 printf "${YELLOW}Installing lazygit latest from Github...\n${NC}"
                 # Install dependencies
-                printf "${YELLOW}Installing dependencies for lazygit..\n${NC}"
-                sudo apt-get install build-essential libssl-dev libreadline-dev zlib1g-dev curl
+                # printf "${YELLOW}Installing dependencies for lazygit..\n${NC}"
+                # sudo apt-get install build-essential libssl-dev libreadline-dev zlib1g-dev curl
 
                 # Get the latest release tag for Lazygit from GitHub API
                 latest_version=$(curl -s https://api.github.com/repos/jesseduffield/lazygit/releases/latest | grep '"tag_name":' | sed -E 's/.*"([^"]+)".*/\1/')
