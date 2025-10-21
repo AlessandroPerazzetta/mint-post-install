@@ -658,7 +658,7 @@ then
                         }
                     }
                 fi
-                
+
                 # Check if we have write permissions
                 if [ ! -w "$installation_path/zed-${channel}" ]; then
                     printf "${RED}No write permissions for $installation_path/zed-${channel}. Trying to change ownership with sudo.\n${NC}"
@@ -668,7 +668,7 @@ then
                     }
                 fi
                 # Extract tarball to installation_path/zed-${channel} getting rid of the top-level directory
-                tar -xzf "$temp/$tarball" -C "$installation_path/zed-${channel}" --strip-components=1
+                tar -xzf "/tmp/$tarball" -C "$installation_path/zed-${channel}" --strip-components=1
 
                 printf "Zed has been installed to $installation_path/zed-${channel}"
                 printf "To run Zed from your terminal, add $installation_path/zed-${channel}/bin to your PATH"
