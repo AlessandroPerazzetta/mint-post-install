@@ -165,3 +165,24 @@ curl -s https://raw.githubusercontent.com/AlessandroPerazzetta/mint-post-install
 - add user to dialout group
 - add bash aliases
 - install imwheel
+
+# Fonts:
+- https://www.nerdfonts.com/font-downloads
+  * ~~BitstreamVeraSansMono~~
+  * ~~CodeNewRoman~~
+  * ~~DroidSansMono~~
+  * FiraCode
+  * ~~FiraMono~~
+  * ~~Go-Mono~~
+  * ~~Hack~~
+  * ~~Hermit~~
+  * JetBrainsMono
+  * ~~Meslo~~
+  * ~~Noto~~
+  * ~~Overpass~~
+  * ~~ProggyClean~~
+  * ~~RobotoMono~~
+  * ~~SourceCodeP~~ro
+  * ~~SpaceMono~~
+  * ~~Ubuntu~~
+  * ~~UbuntuMono~~
