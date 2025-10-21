@@ -667,7 +667,9 @@ then
                         exit 1
                     }
                 fi
+                
                 # Extract tarball to installation_path/zed-${channel} getting rid of the top-level directory
+                printf "${YELLOW}Extracting Zed to $installation_path/zed-${channel}...\n${NC}"
                 tar -xzf "/tmp/$tarball" -C "$installation_path/zed-${channel}" --strip-components=1
 
                 printf "Zed has been installed to $installation_path/zed-${channel}"
