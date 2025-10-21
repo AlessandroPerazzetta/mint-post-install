@@ -113,6 +113,7 @@ curl -s https://raw.githubusercontent.com/AlessandroPerazzetta/mint-post-install
   * REP>["Better TOML: Better TOML Language support"]="bungcip.better-toml"
   * REM>["GitLens — Git supercharged: Supercharge Git within VS Code"]="eamodio.gitlens"
 - zed editor
+- zed editor nemo actions
 - marktext
 - dbeaver-ce_latest_amd64
 - smartgit-23_1_2

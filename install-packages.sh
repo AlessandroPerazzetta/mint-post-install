@@ -111,6 +111,8 @@ ALL_OPTIONS=(
     "vscodium|vscodium|on"
     "vscode_nemo_actions|vscode_nemo_actions|on"
     "vscodium_ext|vscodium extensions|on"
+    "zed_editor|zed editor|on"
+    "zed_editor_nemo_actions|zed editor nemo actions|on"
     "marktext|marktext|on"
     "dbeaver|dbeaver|on"
     "smartgit|smartgit|off"
@@ -611,7 +613,7 @@ then
                     done
                 fi
                 ;;
-            zed-editor)
+            zed_editor)
                 printf "${YELLOW}Installing Zed editor...\n${NC}"
 
                 installation_path="/opt"
@@ -656,7 +658,6 @@ then
                         }
                     }
                 fi
-
                 # Check if we have write permissions
                 if [ ! -w "$installation_path/zed-${channel}" ]; then
                     echo "No write permissions for $installation_path/zed-${channel}. Trying to change ownership with sudo."
@@ -665,15 +666,12 @@ then
                         exit 1
                     }
                 fi
-
                 # Extract tarball to installation_path/zed-${channel} getting rid of the top-level directory
                 tar -xzf "$temp/$tarball" -C "$installation_path/zed-${channel}" --strip-components=1
-
                 echo "Zed has been installed to $installation_path/zed-${channel}"
                 echo "To run Zed from your terminal, add $installation_path/zed-${channel}/bin to your PATH"
                 echo "For example, you can add the following line to your shell profile:"
                 echo 'export PATH="$HOME/.local/bin:$PATH"'
-
                 # Install .desktop file and icons for desktop integration
                 if [ "$platform" = "linux" ]; then
                     if [ -n "${XDG_DATA_HOME:-}" ]; then
@@ -681,11 +679,15 @@ then
                     else
                         data_home="$HOME/.local/share"
                     fi
-
                     cp "$installation_path/zed-${channel}/share/applications/zed.desktop" "$data_home/applications/dev.zed.Zed.desktop"
                     sed -i "s|Icon=zed|Icon=$installation_path/zed-${channel}/share/icons/hicolor/512x512/apps/zed.png|g" "$data_home/applications/dev.zed.Zed.desktop"
                     sed -i "s|Exec=zed|Exec=$installation_path/zed-${channel}/libexec/zed-editor|g" "$data_home/applications/dev.zed.Zed.desktop"
                 fi
+                ;;
+            zed_editor_nemo_actions)
+                printf "${YELLOW}Installing nemo action for zed...\n${NC}"
+                mkdir -p ~/.local/share/nemo/actions/
+                sudo bash -c "echo -e '[Nemo Action]\nActive=true\nName=Zed here\nComment=Launch Zed on this folder\nExec=/opt/zed-stable/libexec/zed-editor %U\nIcon-Name=zim\nSelection=none\nExtensions=any;\nQuote=double\nDependencies=zed;' >> ~/.local/share/nemo/actions/zed.nemo_action"
                 ;;
             marktext)
                 printf "${YELLOW}Installing Marktext editor...\n${NC}"
