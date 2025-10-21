@@ -611,6 +611,82 @@ then
                     done
                 fi
                 ;;
+            zed-editor)
+                printf "${YELLOW}Installing Zed editor...\n${NC}"
+
+                installation_path="/opt"
+                channel="stable"
+                platform="$(uname -s)"
+                arch="$(uname -m)"
+                if [ "$platform" = "Darwin" ]; then
+                    platform="macos"
+                elif [ "$platform" = "Linux" ]; then
+                    platform="linux"
+                else
+                    echo "Unsupported platform $platform"
+                    exit 1
+                fi
+
+                case "$platform-$arch" in
+                    macos-arm64* | linux-arm64* | linux-armhf | linux-aarch64)
+                        arch="aarch64"
+                        ;;
+                    macos-x86* | linux-x86* | linux-i686*)
+                        arch="x86_64"
+                        ;;
+                    *)
+                        echo "Unsupported platform or architecture"
+                        exit 1
+                        ;;
+                esac
+
+                echo "${LCYAN}* Zed ($channel) for $platform-$arch to $installation_path/zed-${channel}\n${NC}"
+                tarball="zed-${platform}-${arch}.tar.gz"
+                url="https://zed.dev/api/releases/${channel}/latest/${tarball}"
+                curl -fL "$url" -o "/tmp/$tarball"
+
+                # Check if $installation_path/zed-${channel} exists, if not try to create it, if fails try to create with sudo and grant permissions for the user
+                if [ ! -d "$installation_path/zed-${channel}" ]; then
+                    echo "$installation_path/zed-${channel} does not exist. Creating it."
+                    mkdir -p "$installation_path/zed-${channel}" || {
+                        echo "Failed to create $installation_path/zed-${channel}. Trying with sudo."
+                        sudo mkdir -p "$installation_path/zed-${channel}" || {
+                            echo "Failed to create $installation_path/zed-${channel} even with sudo. Exiting."
+                            exit 1
+                        }
+                    }
+                fi
+
+                # Check if we have write permissions
+                if [ ! -w "$installation_path/zed-${channel}" ]; then
+                    echo "No write permissions for $installation_path/zed-${channel}. Trying to change ownership with sudo."
+                    sudo chown -R "$(whoami)":"$(whoami)" "$installation_path/zed-${channel}" || {
+                        echo "Failed to change ownership of $installation_path/zed-${channel}. Exiting."
+                        exit 1
+                    }
+                fi
+
+                # Extract tarball to installation_path/zed-${channel} getting rid of the top-level directory
+                tar -xzf "$temp/$tarball" -C "$installation_path/zed-${channel}" --strip-components=1
+
+                echo "Zed has been installed to $installation_path/zed-${channel}"
+                echo "To run Zed from your terminal, add $installation_path/zed-${channel}/bin to your PATH"
+                echo "For example, you can add the following line to your shell profile:"
+                echo 'export PATH="$HOME/.local/bin:$PATH"'
+
+                # Install .desktop file and icons for desktop integration
+                if [ "$platform" = "linux" ]; then
+                    if [ -n "${XDG_DATA_HOME:-}" ]; then
+                        data_home="$XDG_DATA_HOME"
+                    else
+                        data_home="$HOME/.local/share"
+                    fi
+
+                    cp "$installation_path/zed-${channel}/share/applications/zed.desktop" "$data_home/applications/dev.zed.Zed.desktop"
+                    sed -i "s|Icon=zed|Icon=$installation_path/zed-${channel}/share/icons/hicolor/512x512/apps/zed.png|g" "$data_home/applications/dev.zed.Zed.desktop"
+                    sed -i "s|Exec=zed|Exec=$installation_path/zed-${channel}/libexec/zed-editor|g" "$data_home/applications/dev.zed.Zed.desktop"
+                fi
+                ;;
             marktext)
                 printf "${YELLOW}Installing Marktext editor...\n${NC}"
                 sudo mkdir -p /opt/marktext/
