@@ -625,7 +625,7 @@ then
                 elif [ "$platform" = "Linux" ]; then
                     platform="linux"
                 else
-                    echo "Unsupported platform $platform"
+                    printf "${RED}Unsupported platform $platform\n${NC}"
                     exit 1
                 fi
 
@@ -637,41 +637,44 @@ then
                         arch="x86_64"
                         ;;
                     *)
-                        echo "Unsupported platform or architecture"
+                        printf "${RED}Unsupported platform or architecture\n${NC}"
                         exit 1
                         ;;
                 esac
 
-                echo "${LCYAN}* Zed ($channel) for $platform-$arch to $installation_path/zed-${channel}\n${NC}"
+                printf "${LCYAN}* Zed ($channel) for $platform-$arch to $installation_path/zed-${channel}\n${NC}"
                 tarball="zed-${platform}-${arch}.tar.gz"
                 url="https://zed.dev/api/releases/${channel}/latest/${tarball}"
                 curl -fL "$url" -o "/tmp/$tarball"
 
                 # Check if $installation_path/zed-${channel} exists, if not try to create it, if fails try to create with sudo and grant permissions for the user
                 if [ ! -d "$installation_path/zed-${channel}" ]; then
-                    echo "$installation_path/zed-${channel} does not exist. Creating it."
+                    printf "${YELLOW}$installation_path/zed-${channel} does not exist. Creating it.\n${NC}"
                     mkdir -p "$installation_path/zed-${channel}" || {
                         echo "Failed to create $installation_path/zed-${channel}. Trying with sudo."
                         sudo mkdir -p "$installation_path/zed-${channel}" || {
-                            echo "Failed to create $installation_path/zed-${channel} even with sudo. Exiting."
+                            printf "${RED}Failed to create $installation_path/zed-${channel} even with sudo. Exiting.\n${NC}"
                             exit 1
                         }
                     }
                 fi
+                
                 # Check if we have write permissions
                 if [ ! -w "$installation_path/zed-${channel}" ]; then
-                    echo "No write permissions for $installation_path/zed-${channel}. Trying to change ownership with sudo."
+                    printf "${RED}No write permissions for $installation_path/zed-${channel}. Trying to change ownership with sudo.\n${NC}"
                     sudo chown -R "$(whoami)":"$(whoami)" "$installation_path/zed-${channel}" || {
-                        echo "Failed to change ownership of $installation_path/zed-${channel}. Exiting."
+                        printf "${RED}Failed to change ownership of $installation_path/zed-${channel}. Exiting.\n${NC}"
                         exit 1
                     }
                 fi
                 # Extract tarball to installation_path/zed-${channel} getting rid of the top-level directory
                 tar -xzf "$temp/$tarball" -C "$installation_path/zed-${channel}" --strip-components=1
-                echo "Zed has been installed to $installation_path/zed-${channel}"
-                echo "To run Zed from your terminal, add $installation_path/zed-${channel}/bin to your PATH"
-                echo "For example, you can add the following line to your shell profile:"
-                echo 'export PATH="$HOME/.local/bin:$PATH"'
+
+                printf "Zed has been installed to $installation_path/zed-${channel}"
+                printf "To run Zed from your terminal, add $installation_path/zed-${channel}/bin to your PATH"
+                printf "For example, you can add the following line to your shell profile:"
+                printf 'export PATH="$HOME/.local/bin:$PATH"'
+
                 # Install .desktop file and icons for desktop integration
                 if [ "$platform" = "linux" ]; then
                     if [ -n "${XDG_DATA_HOME:-}" ]; then
