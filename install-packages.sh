@@ -14,7 +14,7 @@ YELLOW='\033[1;33m'
 BLUE='\033[0;34m'
 LBLUE='\033[1;34m'
 PURPLE='\033[0;35m'
-LPURPLE='\033[1;35m'     
+LPURPLE='\033[1;35m'
 CYAN='\033[0;36m'
 LCYAN='\033[1;36m'
 LGRAY='\033[0;37m'
@@ -50,8 +50,8 @@ printf "${YELLOW}Install required packages...\n${NC}"
 sleep 1
 
 # Function to check if a command exists
-# The command_exists function checks if a given command is available in the system's PATH. It uses the command -v command, 
-# which returns the path to the executable if it exists, or nothing if it doesn't. 
+# The command_exists function checks if a given command is available in the system's PATH. It uses the command -v command,
+# which returns the path to the executable if it exists, or nothing if it doesn't.
 # The function returns 0 (success) if the command exists, and 1 (failure) if it does not.
 command_exists() {
     command -v $1 >/dev/null 2>&1
@@ -232,7 +232,7 @@ then
                 # QRedShift
                 # This version is currently outdated and will no longer receive updates from the original author.
                 # Using author official repository
-                curl https://github.com/raphaelquintao/QRedshiftCinnamon/raw/master/install.sh -sSfL | bash 
+                curl https://github.com/raphaelquintao/QRedshiftCinnamon/raw/master/install.sh -sSfL | bash
 
                 printf "${LCYAN}- Applet Bash Sensors:\n${NC}"
                 # Bash Sensors
@@ -266,7 +266,7 @@ then
                 printf "\n${NC}"
                 ;;
             nemo_actions)
-                printf "${YELLOW}Installing custom Nemo Actions...\n${NC}"                
+                printf "${YELLOW}Installing custom Nemo Actions...\n${NC}"
                 mkdir -p ~/.local/share/nemo/actions/
                 printf "${LCYAN}- Action: MKDTS\n${NC}"
                 #bash -c "echo -e '# Custom action to create a dir with current timestamp\n[Nemo Action]\nName=MKDTS dir here\nComment=Create a dir with timestamp name\nExec=bash -c \"mkdir %F/$(date +%Y%m%d_%H%M)\"\nIcon-Name=inode-directory\nSelection=none\nExtensions=none\nDependencies=mkdir\nEscapeSpaces=true\nQuote=double' >> ~/.local/share/nemo/actions/mkdts.nemo_action"
@@ -330,7 +330,7 @@ then
             vlc)
                 printf "${YELLOW}Installing vlc...\n${NC}"
                 sudo apt-get -y install vlc
-                
+
                 printf "${YELLOW}Installing vlc media library...\n${NC}"
                 mkdir -p ~/.local/share/vlc/
                 curl -fsSLo ~/.local/share/vlc/ml.xspf https://raw.githubusercontent.com/AlessandroPerazzetta/vlc-media-library/main/ml.xspf
@@ -376,7 +376,7 @@ then
             tmux_res)
                 printf "${YELLOW}Installing tmux resources...\n${NC}"
                 #curl -fsSLo ~/.tmux.conf https://raw.githubusercontent.com/AlessandroPerazzetta/dotfiles/main/.tmux.conf
-                
+
                 printf "${YELLOW}Installing tmux resources from git sparse checkout...\n${NC}"
                 mkdir -p /tmp/dotfiles-tmux.git
                 cd /tmp/dotfiles-tmux.git
@@ -399,13 +399,13 @@ then
                 ##### Original GNOME command #####
                 # gsettings set org.gnome.desktop.default-applications.terminal exec '/usr/bin/kitty'
                 # gsettings set org.gnome.desktop.default-applications.terminal exec-arg '-e tmux'
-                
+
                 ##### exec not working on cinnamon 21.3, need to create a bash to call full command #####
                 ##### TOODO check on next cinnamon version #####
                 # gsettings set org.cinnamon.desktop.default-applications.terminal exec '/usr/bin/kitty -e tmux'
                 ##### exec-arg not working on cinnamon, need to pass full command and args on exec #####
                 # gsettings set org.cinnamon.desktop.default-applications.terminal exec-arg '-e tmux'
-                
+
                 # sudo bash -c "echo -e '' > /usr/bin/kitty-tmux"
                 # sudo chmod +x /usr/bin/kitty-tmux
                 # gsettings set org.cinnamon.desktop.default-applications.terminal exec '/usr/bin/kitty-tmux'
@@ -480,7 +480,7 @@ then
                 if [[ ${RELEASE_NUMBER} -le 24 ]]; then
                     sudo apt-add-repository -y ppa:remmina-ppa-team/remmina-next
                     sudo apt-get update
-                fi                
+                fi
                 sudo apt-get -y install remmina remmina-plugin-rdp remmina-plugin-secret
                 ;;
             tabby)
@@ -505,14 +505,14 @@ then
                     printf "${LCYAN}--------------------------------------------------------------------------------\n${PURPLE}"
                     printf "Writing vscode repository for v23 or older...\n"
                     printf "${LCYAN}--------------------------------------------------------------------------------\n${GREEN}"
-                    
+
                     curl -fsSL https://gitlab.com/paulcarroty/vscodium-deb-rpm-repo/raw/master/pub.gpg | gpg --dearmor | sudo dd of=/etc/apt/trusted.gpg.d/vscodium.gpg
                     echo 'deb [arch=amd64] https://paulcarroty.gitlab.io/vscodium-deb-rpm-repo/debs/ vscodium main' | sudo tee /etc/apt/sources.list.d/vscodium.list
                 elif [[ ${RELEASE_NUMBER} -ge 24 ]]; then
                     printf "${LCYAN}--------------------------------------------------------------------------------\n${PURPLE}"
                     printf "Writing vscode repository for v24 or newer ...\n"
                     printf "${LCYAN}--------------------------------------------------------------------------------\n${GREEN}"
-                    
+
                     curl -fsSL https://gitlab.com/paulcarroty/vscodium-deb-rpm-repo/raw/master/pub.gpg | gpg --dearmor | sudo dd of=/usr/share/keyrings/vscodium-archive-keyring.gpg
                     echo -e 'Types: deb\nURIs: https://download.vscodium.com/debs\nSuites: vscodium\nComponents: main\nArchitectures: amd64 arm64\nSigned-by: /usr/share/keyrings/vscodium-archive-keyring.gpg' | sudo tee /etc/apt/sources.list.d/vscodium.sources
                 else
@@ -522,7 +522,7 @@ then
                     sleep 5
                 fi
                 sudo apt-get update && sudo apt-get -y install codium
-                
+
                 printf "${YELLOW}Installing vscodium MS marketplace CONFIG in ~/.config/VSCodium/product.json ...\n${NC}"
                 # --------------------------------------------------------------------------------------------------
                 # OLD Script to replace marketplace in extensionsGallery on products.json
@@ -555,7 +555,7 @@ then
                     export VSCODE_GALLERY_ITEM_URL='https://marketplace.visualstudio.com/items'
                     export VSCODE_GALLERY_CACHE_URL='https://vscode.blob.core.windows.net/gallery/index'
                     export VSCODE_GALLERY_CONTROL_URL=''
-                    
+
                     # Extension removed from array:
                     #     Temporary removed, installed from file (v1.24.5) due to errors:
                     #     - https://github.com/VSCodium/vscodium/issues/2300
@@ -621,13 +621,13 @@ then
                 printf "${LCYAN}--------------------------------------------------------------------------------\n${PURPLE}"
                 printf "Writing vscode repository ...\n"
                 printf "${LCYAN}--------------------------------------------------------------------------------\n${GREEN}"
-                
+
                 echo "code code/add-microsoft-repo boolean true" | sudo debconf-set-selections
                 curl -fsSL https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > microsoft.gpg
                 sudo install -D -o root -g root -m 644 microsoft.gpg /usr/share/keyrings/microsoft.gpg
                 rm -f microsoft.gpg
                 echo -e 'Types: deb\nURIs: https://packages.microsoft.com/repos/code\nSuites: stable\nComponents: main\nArchitectures: amd64,arm64,armhf\nSigned-By: /usr/share/keyrings/microsoft.gpg' | sudo tee /etc/apt/sources.list.d/vscode.sources
-                
+
                 sudo apt-get update && sudo apt-get -y install code
                 ;;
             vscode_nemo_actions)
@@ -641,15 +641,15 @@ then
                 then
                     printf "${RED}Installing/Uninstalling vscode extensions failed, code could not be found...\n${NC}"
                 else
-                    printf "${YELLOW}Installing vscodium extensions ...\n${NC}"
-                    
+                    printf "${YELLOW}Installing vscode extensions ...\n${NC}"
+
                     # Extension removed from array:
                     #     Temporary removed, installed from file (v1.24.5) due to errors:
                     #     - https://github.com/VSCodium/vscodium/issues/2300
                     #     - https://github.com/getcursor/cursor/issues/2976
                     #    ["C/C++: C/C++ IntelliSense, debugging, and code browsing."]="ms-vscode.cpptools"
                     printf "${LCYAN}Installing extension from file:\n${NC}"
-                    mkdir -p /tmp/vscodium_exts/ && cd /tmp/vscodium_exts/
+                    mkdir -p /tmp/vscode_exts/ && cd /tmp/vscode_exts/
                     curl -s https://api.github.com/repos/jeanp413/open-remote-ssh/releases/latest | grep "browser_download_url.*vsix" | cut -d : -f 2,3 | tr -d \" | xargs curl -O -L
                     # curl -s https://api.github.com/repos/microsoft/vscode-cpptools/releases/tags/v1.24.5 | grep "browser_download_url.*vsix"|grep "linux-x64" | cut -d : -f 2,3 | tr -d \" | xargs curl -O -L
                     find . -type f -name "*.vsix" -exec code --install-extension {} --force --log debug \;
@@ -756,7 +756,7 @@ then
                         exit 1
                     }
                 fi
-                
+
                 # Extract tarball to installation_path/zed-${channel} getting rid of the top-level directory
                 printf "${LCYAN} * Extracting Zed to $installation_path/zed-${channel}...\n${NC}"
                 tar -xzf "/tmp/$tarball" -C "$installation_path/zed-${channel}" --strip-components=1
@@ -837,7 +837,7 @@ then
                 sudo chown "$CURRENT_USER":"$CURRENT_USER" /opt/arduino-cli
                 curl -fsSL https://raw.githubusercontent.com/arduino/arduino-cli/master/install.sh | BINDIR=/opt/arduino-cli sh
                 sudo ln -s /usr/bin/python3 /usr/bin/python
-                ;;                
+                ;;
             keepassxc)
                 printf "${YELLOW}Installing keepassxc...\n${NC}"
                 sudo apt-add-repository -y ppa:phoerious/keepassxc
@@ -867,7 +867,7 @@ then
                 sudo apt-get -y install virtualbox-7.1
                 sudo adduser $CURRENT_USER vboxusers
                 sudo adduser $CURRENT_USER disk
-                
+
                 # printf "${LCYAN}--------------------------------------------------------------------------------\n${LRED}"
                 # printf "Please download virtualbox extension pack from here: \n"
                 # printf "https://www.virtualbox.org/wiki/Downloads\n"
@@ -875,7 +875,7 @@ then
                 # printf "${LCYAN}--------------------------------------------------------------------------------\n${GREEN}"
                 # read -n 1 -s -r -p "Press any key to continue"
                 # printf "\n${NC}"
-                
+
                 printf "${YELLOW}Installing virtualbox extension...\n${NC}"
                 curl -O https://download.virtualbox.org/virtualbox/$(vboxmanage -v | cut -dr -f1)/Oracle_VirtualBox_Extension_Pack-$(vboxmanage -v | cut -dr -f1).vbox-extpack
                 echo "y" | sudo vboxmanage extpack install Oracle_VirtualBox_Extension_Pack-$(vboxmanage -v | cut -dr -f1).vbox-extpack
@@ -1041,7 +1041,7 @@ then
                     printf "/etc/fancontrol exists. Backup to /etc/fancontrol.ORIGINAL"
                     sudo mv /etc/fancontrol /etc/fancontrol.ORIGINAL
                 fi
-                
+
                 printf "${YELLOW}Generating new fancontrol config...\n${NC}"
                 release_number="$(cat /etc/issue | cut -d ' ' -f3|cut -f1 -d".")"
                 if [[ ${release_number} -le "20" ]]; then
@@ -1064,7 +1064,7 @@ then
                     printf "Generating /etc/fancontrol files (Release number: Mint 21) \n"
                     printf "${LCYAN}--------------------------------------------------------------------------------\n${GREEN}"
                     # ----> OUT mint21
-                    
+
                     # New settings for Mint >=21 Asus P8Z77-V-LX2 Motherboard
 
                     ####################################################
@@ -1168,7 +1168,7 @@ then
                 )
                 mkdir -p ~/.local/share/fonts/
                 cd /tmp
-                
+
                 # curl -s https://api.github.com/repos/ryanoasis/nerd-fonts/releases/latest |grep "browser_download_url.*FiraCode.zip" |cut -d : -f 2,3 |tr -d \"| xargs -n 1 curl -L -o FiraCodeNerdFont.zip
                 # unzip FiraCodeNerdFont.zip -d ~/.local/share/fonts/
                 for font in "${fonts[@]}"; do
