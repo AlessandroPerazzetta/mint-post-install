@@ -635,7 +635,7 @@ then
                 mkdir -p ~/.local/share/nemo/actions/
                 bash -c "echo -e '[Nemo Action]\nActive=true\nName=Code here\nComment=Launch Code on this folder\nExec=code %P\nIcon-Name=vscode\nSelection=none\nExtensions=any;\nQuote=double\nDependencies=code;' > ~/.local/share/nemo/actions/code.nemo_action"
                 ;;
-            vscodium_ext)
+            vscod_ext)
                 printf "${YELLOW}VSCode extensions ...\n${NC}"
                 if ! command -v code &> /dev/null
                 then
