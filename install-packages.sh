@@ -652,7 +652,7 @@ then
                     mkdir -p /tmp/vscodium_exts/ && cd /tmp/vscodium_exts/
                     curl -s https://api.github.com/repos/jeanp413/open-remote-ssh/releases/latest | grep "browser_download_url.*vsix" | cut -d : -f 2,3 | tr -d \" | xargs curl -O -L
                     # curl -s https://api.github.com/repos/microsoft/vscode-cpptools/releases/tags/v1.24.5 | grep "browser_download_url.*vsix"|grep "linux-x64" | cut -d : -f 2,3 | tr -d \" | xargs curl -O -L
-                    find . -type f -name "*.vsix" -exec codium --install-extension {} --force --log debug \;
+                    find . -type f -name "*.vsix" -exec code --install-extension {} --force --log debug \;
 
                     declare -A VSCODEEXTlistAdd=(
                         ["C/C++: C/C++ IntelliSense, debugging, and code browsing."]="ms-vscode.cpptools"
@@ -682,7 +682,7 @@ then
                     for i in "${!VSCODEEXTlistAdd[@]}"; do
                         #echo "Key: $i value: ${VSCODEEXTlistAdd[$i]}"
                         printf "${LCYAN}- Extension: ${i}\n${NC}"
-                        codium --install-extension ${VSCODEEXTlistAdd[$i]} --force --log debug
+                        code --install-extension ${VSCODEEXTlistAdd[$i]} --force --log debug
                         printf "\n${NC}"
                     done
 
