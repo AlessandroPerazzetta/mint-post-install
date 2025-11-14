@@ -592,6 +592,7 @@ then
                         ["Todo Tree: Show TODO, FIXME, etc. comment tags in a tree view"]="Gruntfuggly.todo-tree"
                         ["Shades of Purple: 🦄 A professional theme suite with hand-picked & bold shades of purple for your VS Code editor and terminal apps."]="ahmadawais.shades-of-purple"
                         ["Readable Indent"]="cnojima.readable-indent"
+                        ["VSCode Great Icons"]="emmanuelbeziat.vscode-great-icons"
                     )
                     for i in "${!VSCODEEXTlistAdd[@]}"; do
                         #echo "Key: $i value: ${VSCODEEXTlistAdd[$i]}"
@@ -678,6 +679,7 @@ then
                         ["Todo Tree: Show TODO, FIXME, etc. comment tags in a tree view"]="Gruntfuggly.todo-tree"
                         ["Shades of Purple: 🦄 A professional theme suite with hand-picked & bold shades of purple for your VS Code editor and terminal apps."]="ahmadawais.shades-of-purple"
                         ["Readable Indent"]="cnojima.readable-indent"
+                        ["VSCode Great Icons"]="emmanuelbeziat.vscode-great-icons"
                     )
                     for i in "${!VSCODEEXTlistAdd[@]}"; do
                         #echo "Key: $i value: ${VSCODEEXTlistAdd[$i]}"
