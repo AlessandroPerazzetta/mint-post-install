@@ -593,6 +593,7 @@ then
                         ["Shades of Purple: 🦄 A professional theme suite with hand-picked & bold shades of purple for your VS Code editor and terminal apps."]="ahmadawais.shades-of-purple"
                         ["Readable Indent"]="cnojima.readable-indent"
                         ["VSCode Great Icons"]="emmanuelbeziat.vscode-great-icons"
+                        ["vscode-proto3"]="zxh404.vscode-proto3"
                     )
                     for i in "${!VSCODEEXTlistAdd[@]}"; do
                         #echo "Key: $i value: ${VSCODEEXTlistAdd[$i]}"
@@ -680,6 +681,7 @@ then
                         ["Shades of Purple: 🦄 A professional theme suite with hand-picked & bold shades of purple for your VS Code editor and terminal apps."]="ahmadawais.shades-of-purple"
                         ["Readable Indent"]="cnojima.readable-indent"
                         ["VSCode Great Icons"]="emmanuelbeziat.vscode-great-icons"
+                        ["vscode-proto3"]="zxh404.vscode-proto3"
                     )
                     for i in "${!VSCODEEXTlistAdd[@]}"; do
                         #echo "Key: $i value: ${VSCODEEXTlistAdd[$i]}"

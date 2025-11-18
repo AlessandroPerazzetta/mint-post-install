@@ -99,6 +99,7 @@ curl -s https://raw.githubusercontent.com/AlessandroPerazzetta/mint-post-install
   * {MARKET} ["Shades of Purple: 🦄 A professional theme suite with hand-picked & bold shades of purple for your VS Code editor and terminal apps."]="ahmadawais.shades-of-purple"
   * {MARKET} ["Readable Indent"]="cnojima.readable-indent"
   * {MARKET} ["VSCode Great Icons"]="emmanuelbeziat.vscode-great-icons"
+  * {MARKET} ["vscode-proto3"]="zxh404.vscode-proto3"
   * {GITHUB} ["SSH Host Requirements"]="https://github.com/jeanp413/open-remote-ssh"
   * {GITHUB} ["C/C++: C/C++ IntelliSense, debugging, and code browsing."]="ms-vscode.cpptools"
   * {GITHUB} ["GitHub Copilot - 1.257.1316"]="GitHub.copilot"
@@ -144,6 +145,7 @@ curl -s https://raw.githubusercontent.com/AlessandroPerazzetta/mint-post-install
   * {MARKET} ["Readable Indent"]="cnojima.readable-indent"
   * {MARKET} ["Readable Indent"]="cnojima.readable-indent"
   * {MARKET} ["C/C++: C/C++ IntelliSense, debugging, and code browsing."]="ms-vscode.cpptools"
+  * {MARKET} ["vscode-proto3"]="zxh404.vscode-proto3"
   * {GITHUB} ["SSH Host Requirements"]="https://github.com/jeanp413/open-remote-ssh"
 - code extensions uninstalled
   * ["Jupyter: Jupyter notebook support, interactive programming and computing that supports Intellisense, debugging and more."]="ms-toolsai.jupyter"
