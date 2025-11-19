@@ -146,7 +146,8 @@ curl -s https://raw.githubusercontent.com/AlessandroPerazzetta/mint-post-install
   * {MARKET} ["Readable Indent"]="cnojima.readable-indent"
   * {MARKET} ["C/C++: C/C++ IntelliSense, debugging, and code browsing."]="ms-vscode.cpptools"
   * {MARKET} ["vscode-proto3"]="zxh404.vscode-proto3"
-  * {GITHUB} ["SSH Host Requirements"]="https://github.com/jeanp413/open-remote-ssh"
+  * {MARKET} ["Remote - SSH"]="ms-vscode-remote.remote-ssh"
+  * ~~{GITHUB} ["SSH Host Requirements"]="https://github.com/jeanp413/open-remote-ssh"~~
 - code extensions uninstalled
   * ["Jupyter: Jupyter notebook support, interactive programming and computing that supports Intellisense, debugging and more."]="ms-toolsai.jupyter"
   * ["Jupyter Keymap: Jupyter keymaps for notebooks"]="ms-toolsai.jupyter-keymap"

@@ -652,7 +652,7 @@ then
                     #    ["C/C++: C/C++ IntelliSense, debugging, and code browsing."]="ms-vscode.cpptools"
                     printf "${LCYAN}Installing extension from file:\n${NC}"
                     mkdir -p /tmp/vscode_exts/ && cd /tmp/vscode_exts/
-                    curl -s https://api.github.com/repos/jeanp413/open-remote-ssh/releases/latest | grep "browser_download_url.*vsix" | cut -d : -f 2,3 | tr -d \" | xargs curl -O -L
+                    # curl -s https://api.github.com/repos/jeanp413/open-remote-ssh/releases/latest | grep "browser_download_url.*vsix" | cut -d : -f 2,3 | tr -d \" | xargs curl -O -L
                     # curl -s https://api.github.com/repos/microsoft/vscode-cpptools/releases/tags/v1.24.5 | grep "browser_download_url.*vsix"|grep "linux-x64" | cut -d : -f 2,3 | tr -d \" | xargs curl -O -L
                     find . -type f -name "*.vsix" -exec code --install-extension {} --force --log debug \;
 
@@ -682,6 +682,7 @@ then
                         ["Readable Indent"]="cnojima.readable-indent"
                         ["VSCode Great Icons"]="emmanuelbeziat.vscode-great-icons"
                         ["vscode-proto3"]="zxh404.vscode-proto3"
+                        ["Remote - SSH"]="ms-vscode-remote.remote-ssh"
                     )
                     for i in "${!VSCODEEXTlistAdd[@]}"; do
                         #echo "Key: $i value: ${VSCODEEXTlistAdd[$i]}"
