@@ -162,6 +162,7 @@ curl -s https://raw.githubusercontent.com/AlessandroPerazzetta/mint-post-install
   * REM> (Integrated)["GitHub Copilot Chat - 0.23.2024120501"]="GitHub.copilot-chat"
 - zed editor
 - zed editor nemo actions
+- grpcurl
 - marktext
 - dbeaver-ce_latest_amd64
 - smartgit-23_1_2

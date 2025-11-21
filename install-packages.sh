@@ -116,6 +116,7 @@ ALL_OPTIONS=(
     "vscode_ext|vscode extensions|on"
     "zed_editor|zed editor|on"
     "zed_editor_nemo_actions|zed editor nemo actions|on"
+    "grpcurl|grpcurl|on"
     "marktext|marktext|on"
     "dbeaver|dbeaver|on"
     "smartgit|smartgit|off"
@@ -789,6 +790,11 @@ then
                 printf "${YELLOW}Installing nemo action for zed...\n${NC}"
                 mkdir -p ~/.local/share/nemo/actions/
                 bash -c "echo -e '[Nemo Action]\nActive=true\nName=Zed here\nComment=Launch Zed on this folder\nExec=/opt/zed-stable/libexec/zed-editor %U\nIcon-Name=zim\nSelection=none\nExtensions=any\nQuote=double\nDependencies=/opt/zed-stable/libexec/zed-editor\n' > ~/.local/share/nemo/actions/zed.nemo_action"
+                ;;
+            grpcurl)
+                printf "${YELLOW}Installing grpcurl...\n${NC}"
+                curl -s https://api.github.com/repos/fullstorydev/grpcurl/releases/latest |grep "browser_download_url.*linux_amd64.deb" |cut -d : -f 2,3 |tr -d \"| xargs -n 1 curl -L -o /tmp/grpcurl_latest_linux_amd64.deb
+                sudo dpkg -i /tmp/grpcurl_latest_linux_amd64.deb
                 ;;
             marktext)
                 printf "${YELLOW}Installing Marktext editor...\n${NC}"
