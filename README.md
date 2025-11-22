@@ -41,6 +41,8 @@ curl -s https://raw.githubusercontent.com/AlessandroPerazzetta/mint-post-install
 # List of selectable installed packages:
 
 - bwm-ng, screen, htop, batcat
+- vim
+- vim resources
 - neovim
 - filezilla
 - meld

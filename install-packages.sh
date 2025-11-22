@@ -93,6 +93,8 @@ ALL_OPTIONS=(
     "sys_utils|System utils|on"
     "cinnamon_spices|cinnamon_spices|on"
     "nemo_actions|nemo_actions|on"
+    "vim|vim|off"
+    "vim_res|vim_res|off"
     "neovim|neovim|on"
     "filezilla|filezilla|on"
     "meld|meld|on"
@@ -272,6 +274,23 @@ then
                 printf "${LCYAN}- Action: MKDTS\n${NC}"
                 #bash -c "echo -e '# Custom action to create a dir with current timestamp\n[Nemo Action]\nName=MKDTS dir here\nComment=Create a dir with timestamp name\nExec=bash -c \"mkdir %F/$(date +%Y%m%d_%H%M)\"\nIcon-Name=inode-directory\nSelection=none\nExtensions=none\nDependencies=mkdir\nEscapeSpaces=true\nQuote=double' >> ~/.local/share/nemo/actions/mkdts.nemo_action"
                 curl -fsSLo ~/.local/share/nemo/actions/mkdts.nemo_action https://raw.githubusercontent.com/AlessandroPerazzetta/mint-post-install/main/nemo_actions/mkdts.nemo_action
+                ;;
+            vim)
+                printf "${YELLOW}Installing vim...\n${NC}"
+                sudo apt-get -y install vim
+                ;;
+            vim_res)
+                printf "${YELLOW}Installing vim resources...\n${NC}"
+                printf "${YELLOW}Installing vim resources from git sparse checkout...\n${NC}"
+                mkdir -p /tmp/dotfiles-vim.git
+                cd /tmp/dotfiles-vim.git
+                git init
+                git remote add origin -f https://github.com/AlessandroPerazzetta/dotfiles
+                git sparse-checkout set vim
+                git pull origin main
+                mv vim/.vimrc ~/
+                cd -
+                rm -rf /tmp/dotfiles-vim.git
                 ;;
             neovim)
                 printf "${YELLOW}Installing neovim...\n${NC}"
