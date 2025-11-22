@@ -288,7 +288,7 @@ then
                 git remote add origin -f https://github.com/AlessandroPerazzetta/dotfiles
                 git sparse-checkout set vim
                 git pull origin main
-                mv vim/vimrc ~/
+                mv vim/vimrc ~/.vimrc
                 cd -
                 rm -rf /tmp/dotfiles-vim.git
                 ;;
