@@ -119,6 +119,7 @@ ALL_OPTIONS=(
     "zed_editor|zed editor|on"
     "zed_editor_nemo_actions|zed editor nemo actions|on"
     "grpcurl|grpcurl|on"
+    "unison|unison|on"
     "marktext|marktext|on"
     "dbeaver|dbeaver|on"
     "smartgit|smartgit|off"
@@ -814,6 +815,10 @@ then
                 printf "${YELLOW}Installing grpcurl...\n${NC}"
                 curl -s https://api.github.com/repos/fullstorydev/grpcurl/releases/latest |grep "browser_download_url.*linux_amd64.deb" |cut -d : -f 2,3 |tr -d \"| xargs -n 1 curl -L -o /tmp/grpcurl_latest_linux_amd64.deb
                 sudo dpkg -i /tmp/grpcurl_latest_linux_amd64.deb
+                ;;
+            unison)
+                printf "${YELLOW}Installing unison and unison-gtk...\n${NC}"
+                sudo apt-get -y install unison unison-gtk
                 ;;
             marktext)
                 printf "${YELLOW}Installing Marktext editor...\n${NC}"

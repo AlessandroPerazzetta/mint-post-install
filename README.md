@@ -165,6 +165,7 @@ curl -s https://raw.githubusercontent.com/AlessandroPerazzetta/mint-post-install
 - zed editor
 - zed editor nemo actions
 - grpcurl
+- unison + unison-gtk
 - marktext
 - dbeaver-ce_latest_amd64
 - smartgit-23_1_2
