@@ -103,6 +103,7 @@ ALL_OPTIONS=(
     "kitty|kitty|on"
     "kitty_res|kitty resources|on"
     "kitty_libgl_fix|kitty libgl fix|off"
+    "alacritty|alacritty|off"
     "tmux|tmux|on"
     "tmux_res|tmux resources|on"
     "brave|brave-browser|on"
@@ -389,6 +390,25 @@ then
                 echo -e '#!/usr/bin/env bash\nLIBGL_ALWAYS_SOFTWARE=1 kitty'       | sudo tee "$TARGET_FILE" > /dev/null
                 # Make the file executable
                 sudo chmod +x "$TARGET_FILE"
+                ;;
+            alacritty)
+                printf "${YELLOW}Installing alacritty...\n${NC}"
+                # Check if rust is installed, required to build alacritty
+                if ! command_exists rustc; then
+                    printf "${YELLOW}Rust not found, installing rust...\n${NC}"
+                    curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
+                    source $HOME/.cargo/env
+                fi
+                cd /tmp/
+                git clone https://github.com/alacritty/alacritty.git
+                cd alacritty
+                cargo build --release
+                sudo cp target/release/alacritty /usr/local/bin/
+                cp extra/logo/alacritty-term.svg /usr/share/pixmaps/Alacritty.svg
+                sudo cp extra/logo/alacritty-term.svg /usr/share/pixmaps/Alacritty.svg
+                sudo dekstop-file-install extra/linux/Alacritty.desktop
+                sudo desktop-file-install extra/linux/Alacritty.desktop
+                sudo update-desktop-database
                 ;;
             tmux)
                 printf "${YELLOW}Installing tmux...\n${NC}"

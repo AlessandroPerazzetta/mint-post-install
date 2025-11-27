@@ -48,6 +48,9 @@ curl -s https://raw.githubusercontent.com/AlessandroPerazzetta/mint-post-install
 - meld
 - lazygit
 - vlc
+- kitty + kitty resources + kitty libgl fix
+- alacritty
+- tmux + tmux resources
 - brave-browser
 - brave-browser extensions
   * ublock-origin
