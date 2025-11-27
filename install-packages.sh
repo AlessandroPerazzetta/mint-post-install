@@ -64,7 +64,7 @@ command_exists_apt() {
 }
 
 # sudo apt-get -y install build-essential apt-transport-https curl sshfs dialog git
-commands_to_check_exist=("build-essential" "apt-transport-https" "curl" "sshfs" "git" "jq" "pigz" "pbzip2" "pxz" "zip" "unzip")
+commands_to_check_exist=("build-essential" "apt-transport-https" "curl" "sshfs" "git" "jq" "pigz" "pbzip2" "pxz" "zip" "unzip" "ripgrep")
 for cmd in "${commands_to_check_exist[@]}"; do
     # if ! command_exists $cmd; then
     if command_exists $cmd && command_exists_apt $cmd; then
