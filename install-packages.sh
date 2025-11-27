@@ -100,10 +100,11 @@ ALL_OPTIONS=(
     "meld|meld|on"
     "lazygit|lazygit|off"
     "vlc|vlc|on"
-    "kitty|kitty|on"
-    "kitty_res|kitty resources|on"
+    "kitty|kitty|off"
+    "kitty_res|kitty resources|off"
     "kitty_libgl_fix|kitty libgl fix|off"
-    "alacritty|alacritty|off"
+    "alacritty|alacritty|on"
+    "alacritty_res|alacritty resources|on"
     "tmux|tmux|on"
     "tmux_res|tmux resources|on"
     "brave|brave-browser|on"
@@ -412,8 +413,20 @@ then
 
                 printf "${YELLOW}Set alacritty as default terminal on cinnamon...\n${NC}"
                 dconf write /org/cinnamon/desktop/applications/terminal/exec "'/usr/local/bin/alacritty'"
-
                 sudo update-alternatives --set x-terminal-emulator /usr/local/bin/alacritty
+                ;;
+            alacritty_res)
+                printf "${YELLOW}Installing alacritty resources...\n${NC}"
+                printf "${YELLOW}Installing alacritty resources from git sparse checkout...\n${NC}"
+                mkdir -p /tmp/dotfiles-alacritty.git
+                cd /tmp/dotfiles-alacritty.git
+                git init
+                git remote add origin -f https://github.com/AlessandroPerazzetta/dotfiles
+                git sparse-checkout set alacritty
+                git pull origin main
+                mv alacritty ~/.config/
+                cd -
+                rm -rf /tmp/dotfiles-alacritty.git
                 ;;
             tmux)
                 printf "${YELLOW}Installing tmux...\n${NC}"
