@@ -802,9 +802,9 @@ then
 
                 # Check if $installation_path/zed-${channel} exists, if not try to create it, if fails try to create with sudo and grant permissions for the user
                 if [ ! -d "$installation_path/zed-${channel}" ]; then
-                    printf "${LCYAN}$installation_path/zed-${channel} does not exist. Creating it.\n${NC}"
+                    printf "${LCYAN}> $installation_path/zed-${channel} does not exist. Creating it.\n${NC}"
                     mkdir -p "$installation_path/zed-${channel}" || {
-                        printf "${LRED} Failed to create $installation_path/zed-${channel}. Trying with sudo."
+                        printf "${LRED} °°° Failed to create $installation_path/zed-${channel}. Trying with sudo."
                         sudo mkdir -p "$installation_path/zed-${channel}" || {
                             printf "${RED} °°° Failed to create $installation_path/zed-${channel} even with sudo. Exiting.\n${NC}"
                             exit 1
@@ -814,7 +814,7 @@ then
 
                 # Check if we have write permissions
                 if [ ! -w "$installation_path/zed-${channel}" ]; then
-                    printf "${LRED} No write permissions for $installation_path/zed-${channel}. Trying to change ownership with sudo.\n${NC}"
+                    printf "${LYELLOW}* No write permissions for $installation_path/zed-${channel}. Trying to change ownership with sudo.\n${NC}"
                     sudo chown -R "$(whoami)":"$(whoami)" "$installation_path/zed-${channel}" || {
                         printf "${RED} °°° Failed to change ownership of $installation_path/zed-${channel}. Exiting.\n${NC}"
                         exit 1
