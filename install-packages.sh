@@ -409,6 +409,11 @@ then
                 sudo dekstop-file-install extra/linux/Alacritty.desktop
                 sudo desktop-file-install extra/linux/Alacritty.desktop
                 sudo update-desktop-database
+
+                printf "${YELLOW}Set alacritty as default terminal on cinnamon...\n${NC}"
+                dconf write /org/cinnamon/desktop/applications/terminal/exec "'/usr/bin/alacritty'"
+
+                sudo update-alternatives --set x-terminal-emulator /usr/bin/alacritty
                 ;;
             tmux)
                 printf "${YELLOW}Installing tmux...\n${NC}"
