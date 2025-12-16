@@ -400,12 +400,12 @@ then
                     curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
                     source $HOME/.cargo/env
                 fi
+                sudo apt install pkg-config libfreetype6-dev libfontconfig1-dev
                 cd /tmp/
                 git clone https://github.com/alacritty/alacritty.git
                 cd alacritty
                 cargo build --release
                 sudo cp target/release/alacritty /usr/local/bin/
-                cp extra/logo/alacritty-term.svg /usr/share/pixmaps/Alacritty.svg
                 sudo cp extra/logo/alacritty-term.svg /usr/share/pixmaps/Alacritty.svg
                 sudo dekstop-file-install extra/linux/Alacritty.desktop
                 sudo desktop-file-install extra/linux/Alacritty.desktop
