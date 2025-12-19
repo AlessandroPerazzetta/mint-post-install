@@ -800,17 +800,15 @@ then
                 url="https://zed.dev/api/releases/${channel}/latest/${tarball}"
                 curl -fL "$url" -o "/tmp/$tarball"
 
-                # Check if $installation_path/zed-${channel} exists, if not try to create it, if fails try to create with sudo and grant permissions for the user
-                if [ ! -d "$installation_path/zed-${channel}" ]; then
-                    printf "${LCYAN}> $installation_path/zed-${channel} does not exist. Creating it.\n${NC}"
-                    mkdir -p "$installation_path/zed-${channel}" || {
-                        printf "${LRED} °°° Failed to create $installation_path/zed-${channel}. Trying with sudo."
-                        sudo mkdir -p "$installation_path/zed-${channel}" || {
-                            printf "${RED} °°° Failed to create $installation_path/zed-${channel} even with sudo. Exiting.\n${NC}"
-                            exit 1
-                        }
+                # Ensure $installation_path/zed-${channel} exists, try as user first, then with sudo if needed
+                printf "${LCYAN}> Ensuring $installation_path/zed-${channel} exists.\n${NC}"
+                mkdir -p "$installation_path/zed-${channel}" || {
+                    printf "${LRED} °°° Failed to create $installation_path/zed-${channel}. Trying with sudo."
+                    sudo mkdir -p "$installation_path/zed-${channel}" || {
+                        printf "${RED} °°° Failed to create $installation_path/zed-${channel} even with sudo. Exiting.\n${NC}"
+                        exit 1
                     }
-                fi
+                }
 
                 # Check if we have write permissions
                 if [ ! -w "$installation_path/zed-${channel}" ]; then
