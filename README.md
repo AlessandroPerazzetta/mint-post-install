@@ -173,6 +173,7 @@ curl -s https://raw.githubusercontent.com/AlessandroPerazzetta/mint-post-install
 - unison + unison-gtk
 - marktext
 - dbeaver-ce_latest_amd64
+- dbgate-ce_latest_amd64
 - smartgit-23_1_2
 - MQTT-Explorer
 - arduino-cli

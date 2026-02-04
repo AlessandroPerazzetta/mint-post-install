@@ -124,6 +124,7 @@ ALL_OPTIONS=(
     "unison|unison|on"
     "marktext|marktext|on"
     "dbeaver|dbeaver|on"
+    "dbgate|dbgate|on"
     "smartgit|smartgit|off"
     "mqtt_explorer|mqtt-explorer|on"
     "arduino_cli|arduino-cli|on"
@@ -872,6 +873,11 @@ then
                 printf "${YELLOW}Installing dbeaver...\n${NC}"
                 sudo curl -fsSLo /tmp/dbeaver-ce_latest_amd64.deb https://dbeaver.io/files/dbeaver-ce_latest_amd64.deb
                 sudo dpkg -i /tmp/dbeaver-ce_latest_amd64.deb
+                ;;
+            dbgate)
+                printf "${YELLOW}Installing dbgate...\n${NC}"
+                curl -s https://api.github.com/repos/dbgate/dbgate/releases/latest |grep "browser_download_url.*linux_amd64.deb" |cut -d : -f 2,3 |tr -d \"| xargs -n 1 sudo curl -L -o /tmp/dbgate-latest-linux_amd64.deb
+                sudo dpkg -i /tmp/dbgate-latest-linux_amd64.deb
                 ;;
             smartgit)
                 printf "${YELLOW}Installing smartgit...\n${NC}"
