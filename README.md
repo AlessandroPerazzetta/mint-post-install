@@ -200,6 +200,7 @@ curl -s https://raw.githubusercontent.com/AlessandroPerazzetta/mint-post-install
 - fastfetch latest deb from github
 - nerd-fonts latest deb from github
 - yt-dlp latest deb from github
+- cliamp latest install script from github
 
 # List uninstalled packages:
 

@@ -152,6 +152,7 @@ ALL_OPTIONS=(
     "fastfetch|fastfetch|on"
     "nerd-fonts|nerd-fonts|on"
     "yt-dlp|yt-dlp|on"
+    "cliamp|cli-amp|on"
 )
 
 # Parse arguments
@@ -1264,6 +1265,10 @@ then
                 sudo curl -L https://github.com/yt-dlp/yt-dlp/releases/latest/download/yt-dlp -o /usr/local/bin/yt-dlp
                 sudo chmod a+rx /usr/local/bin/yt-dlp
                 sudo ln -s /usr/local/bin/yt-dlp /usr/bin/yt-dlp
+                ;;
+            cliamp)
+                printf "${YELLOW}Installing cliamp...\n${NC}"
+                curl -fsSL https://raw.githubusercontent.com/bjarneo/cliamp/HEAD/install.sh | sh
                 ;;
         esac
     done
