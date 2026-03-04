@@ -198,6 +198,8 @@ curl -s https://raw.githubusercontent.com/AlessandroPerazzetta/mint-post-install
 - spotube
 - fancontrol (with custom config)
 - fastfetch latest deb from github
+- nerd-fonts latest deb from github
+- yt-dlp latest deb from github
 
 # List uninstalled packages:
 
