@@ -522,6 +522,7 @@ then
                         ["user-agent-switcher-for-c"]="djflhoibgkdhkhhcedjiklpkjnoahfmg"
                         ["modheader-modify-http-hea"]="idgpnmonknjnojddfkpgkljpfnnfcklj"
                         ["enhancer-for-youtube"]="ponfpcnoihfmfllpaingbgckeeldkhle"
+                        ["disable-twitch-extensions"]="nmogopjdbhhnbkiklkdahphkdpbjfine"
                     )
                     for i in "${!EXTlist[@]}"; do
                         # echo "Key: $i value: ${EXTlist[$i]}"
