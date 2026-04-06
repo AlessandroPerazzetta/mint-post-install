@@ -127,6 +127,7 @@ ALL_OPTIONS=(
     "dbgate|dbgate|on"
     "smartgit|smartgit|off"
     "mqtt_explorer|mqtt-explorer|on"
+    "bruno|bruno|on"
     "arduino_cli|arduino-cli|on"
     "keepassxc|keepassxc|on"
     "qownnotes|qownnotes|on"
@@ -912,6 +913,11 @@ then
                 # Keywords=MQTT
                 # Icon=/opt/mqtt-explorer/icon.png
                 sudo bash -c "echo -e '[Desktop Entry]\nName=MQTT Explorer\nGenericName=MQTT client\nComment=An all-round MQTT client that provides a structured topic overviewCategories=Development;\nTerminal=false\nType=Application\nPath=/opt/mqtt-explorer/\nExec=/opt/mqtt-explorer/mqtt-explorer\nStartupWMClass=mqtt-explorer\nStartupNotify=true\nKeywords=MQTT\nIcon=/opt/mqtt-explorer/icon.png' >> /usr/share/applications/mqtt-explorer.desktop"
+                ;;
+            bruno)
+                printf "${YELLOW}Installing Bruno The Git-native API client...\n${NC}"
+                curl -s https://api.github.com/repos/usebruno/bruno/releases/latest |grep "browser_download_url.*amd64_linux.deb" |cut -d : -f 2,3 |tr -d \"| xargs -n 1 sudo curl -L -o /tmp/bruno-latest-amd64_linux.deb
+                sudo dpkg -i /tmp/bruno-latest-amd64_linux.deb
                 ;;
             arduino_cli)
                 printf "${YELLOW}Installing arduino-cli...\n${NC}"
