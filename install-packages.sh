@@ -1224,7 +1224,7 @@ then
                 printf "${YELLOW}Fix kernel modules load order for fancontrol...\n${NC}"
                 # Define the modules we are looking for (coretemp, nct6775) and the config file we want to write to
                 # Note: nct6775 is the driver name for nct6779 chips
-                MODULES=("coretemp" "nct6775")
+                MODULES=("coretemp" "nct6775", "asus")
                 CONF_FILE="/etc/modules-load.d/fancontrol.conf"
                 # Check if the config file already exists and back it up if it does
                 if [[ -f "$CONF_FILE" ]]; then
