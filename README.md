@@ -52,6 +52,7 @@ curl -s https://raw.githubusercontent.com/AlessandroPerazzetta/mint-post-install
 - alacritty
 - tmux + tmux resources
 - brave-browser
+- brave-origin-browser
 - brave-browser extensions
   * ublock-origin
   * bypass-adblock-detection
