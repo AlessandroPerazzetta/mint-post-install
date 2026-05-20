@@ -7,7 +7,8 @@ if [[ -n "${BASH_SOURCE[0]:-}" && -f "${BASH_SOURCE[0]}" ]]; then
     SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 else
     SCRIPT_DIR="$(mktemp -d /tmp/mint-post-install.XXXXXX)"
-    REMOTE_BASE="https://raw.githubusercontent.com/AlessandroPerazzetta/mint-post-install/main"
+    REMOTE_BRANCH="${MINT_BRANCH:-main}"
+    REMOTE_BASE="https://raw.githubusercontent.com/AlessandroPerazzetta/mint-post-install/${REMOTE_BRANCH}"
     REMOTE_API_BASE="https://api.github.com/repos/AlessandroPerazzetta/mint-post-install"
     _remote_mode=true
 fi
@@ -19,7 +20,7 @@ if [[ "${_remote_mode:-false}" == "true" ]]; then
     for f in colors.sh helpers.sh; do
         curl -fsSLo "${LIB_DIR}/${f}" "${REMOTE_BASE}/lib/${f}"
     done
-    _api_url="${REMOTE_API_BASE}/contents/modules"
+    _api_url="${REMOTE_API_BASE}/contents/modules?ref=${REMOTE_BRANCH}"
     _module_keys="$(curl -fsSL "${_api_url}" \
         | python3 -c "import json,sys; [print(f['name'][:-3]) for f in json.load(sys.stdin) if f['name'].endswith('.sh')]" \
         2>/dev/null)"
