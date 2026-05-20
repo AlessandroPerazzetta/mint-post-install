@@ -38,7 +38,7 @@ Each module carries its own metadata:
 # REQUIRE: <dep-key>      # omit if no dependency
 ```
 
-- `ORDER` controls installation sequence. Use multiples of 10 to leave room for future modules.
+- `ORDER` controls both the checklist display sequence and the installation sequence. Use multiples of 10 to leave room for future modules.
 - `REQUIRE` names a module that must run first. The orchestrator auto-includes it if the user didn't select it.
 
 Dropping a new `.sh` file into `modules/` is all that is needed to add it to the menu.
