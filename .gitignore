@@ -1,5 +1,8 @@
 # Ignore Visual Studio Code settings
 .vscode
 
+# Ignore .github directory
+.github
+
 # Ignore ref directory
 ref/
