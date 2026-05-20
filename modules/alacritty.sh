@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 # Module: alacritty
+# DESC: alacritty
+# DEFAULT: on
 # Called by install-packages.sh orchestrator
 
 install_alacritty() {

@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 # Module: virtualbox
+# DESC: VirtualBox
+# DEFAULT: on
 # Called by install-packages.sh orchestrator
 
 install_virtualbox() {

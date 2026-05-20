@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 # Module: sys_serial
+# DESC: System serial permission
+# DEFAULT: on
 # Called by install-packages.sh orchestrator
 
 install_sys_serial() {

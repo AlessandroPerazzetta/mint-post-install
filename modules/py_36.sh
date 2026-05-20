@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 # Module: py_36
+# DESC: python 3.6.15 (src install)
+# DEFAULT: off
 # Called by install-packages.sh orchestrator
 
 install_py_36() {

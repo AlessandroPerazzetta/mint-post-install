@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 # Module: lazygit
+# DESC: lazygit
+# DEFAULT: off
 # Called by install-packages.sh orchestrator
 
 install_lazygit() {

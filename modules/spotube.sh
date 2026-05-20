@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 # Module: spotube
+# DESC: Spotube
+# DEFAULT: off
 # Called by install-packages.sh orchestrator
 
 install_spotube() {

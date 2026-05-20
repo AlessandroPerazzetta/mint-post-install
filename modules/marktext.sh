@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 # Module: marktext
+# DESC: marktext
+# DEFAULT: off
 # Called by install-packages.sh orchestrator
 
 install_marktext() {

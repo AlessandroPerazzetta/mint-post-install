@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 # Module: kitty_libgl_fix
+# DESC: kitty libgl fix
+# DEFAULT: off
 # Called by install-packages.sh orchestrator
 
 install_kitty_libgl_fix() {

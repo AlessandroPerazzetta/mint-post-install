@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 # Module: dbeaver
+# DESC: DBeaver
+# DEFAULT: on
 # Called by install-packages.sh orchestrator
 
 install_dbeaver() {

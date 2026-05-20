@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 # Module: bt_restart
+# DESC: bt-restart
+# DEFAULT: off
 # Called by install-packages.sh orchestrator
 
 install_bt_restart() {

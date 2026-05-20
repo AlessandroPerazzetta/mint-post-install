@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 # Module: telegram
+# DESC: Telegram
+# DEFAULT: on
 # Called by install-packages.sh orchestrator
 
 install_telegram() {

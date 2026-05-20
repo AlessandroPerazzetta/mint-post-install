@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 # Module: zed_editor
+# DESC: Zed editor
+# DEFAULT: on
 # Called by install-packages.sh orchestrator
 
 install_zed_editor() {

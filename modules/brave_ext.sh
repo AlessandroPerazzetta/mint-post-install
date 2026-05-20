@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 # Module: brave_ext
+# DESC: brave-browser extensions
+# DEFAULT: on
 # Called by install-packages.sh orchestrator
 
 install_brave_ext() {

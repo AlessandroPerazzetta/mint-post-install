@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 # Module: remmina
+# DESC: Remmina
+# DEFAULT: on
 # Called by install-packages.sh orchestrator
 
 install_remmina() {

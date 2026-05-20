@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 # Module: kicad
+# DESC: KiCad
+# DEFAULT: off
 # Called by install-packages.sh orchestrator
 
 install_kicad() {

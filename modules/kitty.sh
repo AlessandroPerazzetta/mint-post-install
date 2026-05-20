@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 # Module: kitty
+# DESC: kitty
+# DEFAULT: off
 # Called by install-packages.sh orchestrator
 
 install_kitty() {

@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 # Module: filezilla
+# DESC: FileZilla
+# DEFAULT: on
 # Called by install-packages.sh orchestrator
 
 install_filezilla() {

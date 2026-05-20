@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 # Module: vim_res
+# DESC: vim resources
+# DEFAULT: off
 # Called by install-packages.sh orchestrator
 
 install_vim_res() {

@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 # Module: smartgit
+# DESC: SmartGit
+# DEFAULT: off
 # Called by install-packages.sh orchestrator
 
 install_smartgit() {

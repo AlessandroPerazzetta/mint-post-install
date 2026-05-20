@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 # Module: arduino_cli
+# DESC: arduino-cli
+# DEFAULT: on
 # Called by install-packages.sh orchestrator
 
 install_arduino_cli() {

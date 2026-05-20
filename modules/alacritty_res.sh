@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 # Module: alacritty_res
+# DESC: alacritty resources
+# DEFAULT: on
 # Called by install-packages.sh orchestrator
 
 install_alacritty_res() {

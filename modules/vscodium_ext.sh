@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 # Module: vscodium_ext
+# DESC: VSCodium extensions
+# DEFAULT: off
 # Called by install-packages.sh orchestrator
 
 install_vscodium_ext() {

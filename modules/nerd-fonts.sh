@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 # Module: nerd-fonts
+# DESC: nerd-fonts
+# DEFAULT: on
 # Called by install-packages.sh orchestrator
 
 install_nerd_fonts() {

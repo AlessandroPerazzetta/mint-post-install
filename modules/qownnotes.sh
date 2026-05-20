@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 # Module: qownnotes
+# DESC: QOwnNotes
+# DEFAULT: on
 # Called by install-packages.sh orchestrator
 
 install_qownnotes() {

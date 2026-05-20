@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 # Module: borgbackup_vorta
+# DESC: borgbackup + vorta gui
+# DEFAULT: on
 # Called by install-packages.sh orchestrator
 
 install_borgbackup_vorta() {

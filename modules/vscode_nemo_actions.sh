@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 # Module: vscode_nemo_actions
+# DESC: VS Code nemo actions
+# DEFAULT: on
 # Called by install-packages.sh orchestrator
 
 install_vscode_nemo_actions() {

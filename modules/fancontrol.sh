@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 # Module: fancontrol
+# DESC: fancontrol + config
+# DEFAULT: on
 # Called by install-packages.sh orchestrator
 
 install_fancontrol() {

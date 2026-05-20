@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 # Module: py_dev_pkgs
+# DESC: python dev packages
+# DEFAULT: on
 # Called by install-packages.sh orchestrator
 
 install_py_dev_pkgs() {

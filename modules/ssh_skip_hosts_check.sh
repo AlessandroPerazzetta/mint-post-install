@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 # Module: ssh_skip_hosts_check
+# DESC: ssh skip hosts check
+# DEFAULT: on
 # Called by install-packages.sh orchestrator
 
 install_ssh_skip_hosts_check() {

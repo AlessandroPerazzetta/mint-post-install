@@ -8,6 +8,7 @@ if [[ -n "${BASH_SOURCE[0]:-}" && -f "${BASH_SOURCE[0]}" ]]; then
 else
     SCRIPT_DIR="$(mktemp -d /tmp/mint-post-install.XXXXXX)"
     REMOTE_BASE="https://raw.githubusercontent.com/AlessandroPerazzetta/mint-post-install/main"
+    REMOTE_API_BASE="https://api.github.com/repos/AlessandroPerazzetta/mint-post-install"
     _remote_mode=true
 fi
 LIB_DIR="${SCRIPT_DIR}/lib"
@@ -18,20 +19,17 @@ if [[ "${_remote_mode:-false}" == "true" ]]; then
     for f in colors.sh helpers.sh; do
         curl -fsSLo "${LIB_DIR}/${f}" "${REMOTE_BASE}/lib/${f}"
     done
-    for key in personal_res sys_serial xed_res gedit_res sys_tweaks sys_utils \
-                cinnamon_spices nemo_actions vim vim_res neovim filezilla meld \
-                lazygit vlc kitty kitty_res kitty_libgl_fix alacritty alacritty_res \
-                tmux tmux_res brave brave_ext brave-origin brave-origin_ext remmina \
-                tabby tabby_libgl_fix vscodium vscodium_nemo_actions vscodium_ext \
-                vscode vscode_nemo_actions vscode_ext zed_editor zed_editor_nemo_actions \
-                grpcurl unison marktext dbeaver dbgate smartgit mqtt_explorer \
-                bruno arduino_cli keepassxc qownnotes virtualbox kicad freecad \
-                telegram rust py_36 py_38 py_dev_pkgs latest_pip qt_stuff \
-                imwheel bt_restart ssh_alive ssh_skip_hosts_check solaar \
-                borgbackup_vorta spotify_spicetify spotube fancontrol fastfetch \
-                nerd-fonts yt-dlp cliamp; do
+    _api_url="${REMOTE_API_BASE}/contents/modules"
+    _module_keys="$(curl -fsSL "${_api_url}" \
+        | python3 -c "import json,sys; [print(f['name'][:-3]) for f in json.load(sys.stdin) if f['name'].endswith('.sh')]" \
+        2>/dev/null)"
+    if [[ -z "$_module_keys" ]]; then
+        printf "ERROR: Failed to fetch module list from %s\n" "${_api_url}" >&2
+        exit 1
+    fi
+    while IFS= read -r key; do
         curl -fsSLo "${MODULES_DIR}/${key}.sh" "${REMOTE_BASE}/modules/${key}.sh"
-    done
+    done <<< "$_module_keys"
 fi
 
 # shellcheck source=lib/colors.sh
@@ -76,81 +74,17 @@ read dialog <<< "$(which whiptail dialog 2> /dev/null)"
     exit 1
 }
 
-# Define all options and their default status in an array of "key|desc|default"
-ALL_OPTIONS=(
-    "personal_res|Personal resources|on"
-    "sys_serial|System Serial permission|on"
-    "xed_res|Xed theme resources|on"
-    "gedit_res|Gedit theme resources|on"
-    "sys_tweaks|System tewaks|on"
-    "sys_utils|System utils|on"
-    "cinnamon_spices|cinnamon_spices|on"
-    "nemo_actions|nemo_actions|on"
-    "vim|vim|off"
-    "vim_res|vim_res|off"
-    "neovim|neovim|on"
-    "filezilla|filezilla|on"
-    "meld|meld|on"
-    "lazygit|lazygit|off"
-    "vlc|vlc|on"
-    "kitty|kitty|off"
-    "kitty_res|kitty resources|off"
-    "kitty_libgl_fix|kitty libgl fix|off"
-    "alacritty|alacritty|on"
-    "alacritty_res|alacritty resources|on"
-    "tmux|tmux|on"
-    "tmux_res|tmux resources|on"
-    "brave|brave-browser|on"
-    "brave_ext|brave-browser extensions|on"
-    "brave-origin|brave-origin-browser|off"
-    "brave-origin_ext|brave-origin-browser extensions|off"
-    "remmina|remmina|on"
-    "tabby|tabby|on"
-    "tabby_libgl_fix|tabby libgl fix|off"
-    "vscodium|vscodium|off"
-    "vscodium_nemo_actions|vscodium_nemo_actions|off"
-    "vscodium_ext|vscodium extensions|off"
-    "vscode|vscode|on"
-    "vscode_nemo_actions|vscode_nemo_actions|on"
-    "vscode_ext|vscode extensions|on"
-    "zed_editor|zed editor|on"
-    "zed_editor_nemo_actions|zed editor nemo actions|on"
-    "grpcurl|grpcurl|on"
-    "unison|unison|on"
-    "marktext|marktext|off"
-    "ferrite|ferrite editor|on"
-    "dbeaver|dbeaver|on"
-    "dbgate|dbgate|on"
-    "smartgit|smartgit|off"
-    "mqtt_explorer|mqtt-explorer|on"
-    "bruno|bruno|on"
-    "arduino_cli|arduino-cli|on"
-    "keepassxc|keepassxc|on"
-    "qownnotes|qownnotes|on"
-    "virtualbox|virtualbox|on"
-    "kicad|kicad|off"
-    "freecad|freecad|off"
-    "telegram|telegram|on"
-    "rust|rust|on"
-    "py_36|python 3.6.15 (src install)|off"
-    "py_38|python 3.8.19 (src install)|off"
-    "py_dev_pkgs|python dev packages|on"
-    "latest_pip|latest python pip|on"
-    "qt_stuff|qtcreator + qt5|off"
-    "imwheel|imwheel|off"
-    "bt_restart|bt-restart|off"
-    "ssh_alive|ssh-alive-settings|on"
-    "ssh_skip_hosts_check|ssh-skip-hosts-check-settings|on"
-    "solaar|solaar|on"
-    "borgbackup_vorta|borgbackup + vorta gui|on"
-    "spotify_spicetify|spotify + spicetify|off"
-    "spotube|spotube|off"
-    "fancontrol|fancontrol + config|on"
-    "fastfetch|fastfetch|on"
-    "nerd-fonts|nerd-fonts|on"
-    "yt-dlp|yt-dlp|on"
-    "cliamp|cli-amp|on"
-)
+# Build ALL_OPTIONS dynamically from module metadata (# DESC / # DEFAULT headers)
+ALL_OPTIONS=()
+for _mod_file in "${MODULES_DIR}"/*.sh; do
+    [[ -f "$_mod_file" ]] || continue
+    _key="$(basename "${_mod_file}" .sh)"
+    _desc="$(grep -m1 '^# DESC:' "${_mod_file}" | sed 's/^# DESC:[[:space:]]*//')"
+    _default="$(grep -m1 '^# DEFAULT:' "${_mod_file}" | sed 's/^# DEFAULT:[[:space:]]*//')"
+    [[ -z "$_desc" ]] && _desc="$_key"
+    [[ "$_default" != "on" && "$_default" != "off" ]] && _default="off"
+    ALL_OPTIONS+=("${_key}|${_desc}|${_default}")
+done
 
 # Parse arguments
 ALL_OFF=false

@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 # Module: neovim
+# DESC: neovim
+# DEFAULT: on
 # Called by install-packages.sh orchestrator
 
 install_neovim() {

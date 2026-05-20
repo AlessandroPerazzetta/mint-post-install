@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 # Module: nemo_actions
+# DESC: nemo actions
+# DEFAULT: on
 # Called by install-packages.sh orchestrator
 
 install_nemo_actions() {

@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 # Module: dbgate
+# DESC: DBgate
+# DEFAULT: on
 # Called by install-packages.sh orchestrator
 
 install_dbgate() {

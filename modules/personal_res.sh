@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 # Module: personal_res
+# DESC: Personal resources
+# DEFAULT: on
 # Called by install-packages.sh orchestrator
 
 install_personal_res() {

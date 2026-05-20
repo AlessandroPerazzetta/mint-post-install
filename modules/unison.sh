@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 # Module: unison
+# DESC: Unison
+# DEFAULT: on
 # Called by install-packages.sh orchestrator
 
 install_unison() {

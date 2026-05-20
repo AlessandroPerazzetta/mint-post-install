@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 # Module: kitty_res
+# DESC: kitty resources
+# DEFAULT: off
 # Called by install-packages.sh orchestrator
 
 install_kitty_res() {

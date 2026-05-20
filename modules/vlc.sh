@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 # Module: vlc
+# DESC: VLC
+# DEFAULT: on
 # Called by install-packages.sh orchestrator
 
 install_vlc() {

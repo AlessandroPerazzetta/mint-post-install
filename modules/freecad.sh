@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 # Module: freecad
+# DESC: FreeCAD
+# DEFAULT: off
 # Called by install-packages.sh orchestrator
 
 install_freecad() {

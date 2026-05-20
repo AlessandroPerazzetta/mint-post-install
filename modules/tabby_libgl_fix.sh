@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 # Module: tabby_libgl_fix
+# DESC: tabby libgl fix
+# DEFAULT: off
 # Called by install-packages.sh orchestrator
 
 install_tabby_libgl_fix() {

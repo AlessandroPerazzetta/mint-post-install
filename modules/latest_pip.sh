@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 # Module: latest_pip
+# DESC: latest python pip
+# DEFAULT: on
 # Called by install-packages.sh orchestrator
 
 install_latest_pip() {

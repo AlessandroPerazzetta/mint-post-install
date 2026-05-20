@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 # Module: yt-dlp
+# DESC: yt-dlp
+# DEFAULT: on
 # Called by install-packages.sh orchestrator
 
 install_yt_dlp() {

@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 # Module: vscodium
+# DESC: VSCodium
+# DEFAULT: off
 # Called by install-packages.sh orchestrator
 
 install_vscodium() {

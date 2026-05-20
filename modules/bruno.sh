@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 # Module: bruno
+# DESC: bruno
+# DEFAULT: on
 # Called by install-packages.sh orchestrator
 
 install_bruno() {

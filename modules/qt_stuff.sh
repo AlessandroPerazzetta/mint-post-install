@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 # Module: qt_stuff
+# DESC: qtcreator + qt5
+# DEFAULT: off
 # Called by install-packages.sh orchestrator
 
 install_qt_stuff() {

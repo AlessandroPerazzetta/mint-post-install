@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 # Module: brave-origin_ext
+# DESC: brave-origin-browser extensions
+# DEFAULT: off
 # Called by install-packages.sh orchestrator
 
 install_brave_origin_ext() {

@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 # Module: vscodium_nemo_actions
+# DESC: VSCodium nemo actions
+# DEFAULT: off
 # Called by install-packages.sh orchestrator
 
 install_vscodium_nemo_actions() {

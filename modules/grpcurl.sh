@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 # Module: grpcurl
+# DESC: grpcurl
+# DEFAULT: on
 # Called by install-packages.sh orchestrator
 
 install_grpcurl() {

@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 # Module: vscode
+# DESC: VS Code
+# DEFAULT: on
 # Called by install-packages.sh orchestrator
 
 install_vscode() {

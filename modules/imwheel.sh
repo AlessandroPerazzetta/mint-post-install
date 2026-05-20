@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 # Module: imwheel
+# DESC: imwheel
+# DEFAULT: off
 # Called by install-packages.sh orchestrator
 
 install_imwheel() {

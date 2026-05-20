@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 # Module: py_38
+# DESC: python 3.8.19 (src install)
+# DEFAULT: off
 # Called by install-packages.sh orchestrator
 
 install_py_38() {

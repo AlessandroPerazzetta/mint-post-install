@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 # Module: sys_utils
+# DESC: System utils
+# DEFAULT: on
 # Called by install-packages.sh orchestrator
 
 install_sys_utils() {

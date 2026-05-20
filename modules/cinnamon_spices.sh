@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 # Module: cinnamon_spices
+# DESC: Cinnamon spices
+# DEFAULT: on
 # Called by install-packages.sh orchestrator
 
 install_cinnamon_spices() {

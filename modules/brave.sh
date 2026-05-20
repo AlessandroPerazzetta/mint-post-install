@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 # Module: brave
+# DESC: brave-browser
+# DEFAULT: on
 # Called by install-packages.sh orchestrator
 
 install_brave() {

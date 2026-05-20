@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 # Module: fastfetch
+# DESC: fastfetch
+# DEFAULT: on
 # Called by install-packages.sh orchestrator
 
 install_fastfetch() {

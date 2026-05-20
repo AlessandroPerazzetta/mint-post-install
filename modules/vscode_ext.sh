@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 # Module: vscode_ext
+# DESC: VS Code extensions
+# DEFAULT: on
 # Called by install-packages.sh orchestrator
 
 install_vscode_ext() {

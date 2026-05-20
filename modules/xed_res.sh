@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 # Module: xed_res
+# DESC: Xed theme resources
+# DEFAULT: on
 # Called by install-packages.sh orchestrator
 
 install_xed_res() {

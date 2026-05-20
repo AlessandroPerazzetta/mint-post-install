@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 # Module: cliamp
+# DESC: cli-amp
+# DEFAULT: on
 # Called by install-packages.sh orchestrator
 
 install_cliamp() {

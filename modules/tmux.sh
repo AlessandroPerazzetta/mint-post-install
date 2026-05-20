@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 # Module: tmux
+# DESC: tmux
+# DEFAULT: on
 # Called by install-packages.sh orchestrator
 
 install_tmux() {

@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 # Module: ssh_alive
+# DESC: ssh alive settings
+# DEFAULT: on
 # Called by install-packages.sh orchestrator
 
 install_ssh_alive() {

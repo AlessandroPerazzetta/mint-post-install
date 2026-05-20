@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 # Module: mqtt_explorer
+# DESC: mqtt-explorer
+# DEFAULT: on
 # Called by install-packages.sh orchestrator
 
 install_mqtt_explorer() {

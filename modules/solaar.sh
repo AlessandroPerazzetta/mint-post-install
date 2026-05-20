@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 # Module: solaar
+# DESC: Solaar
+# DEFAULT: on
 # Called by install-packages.sh orchestrator
 
 install_solaar() {

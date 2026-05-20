@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 # Module: spotify_spicetify
+# DESC: spotify + spicetify
+# DEFAULT: off
 # Called by install-packages.sh orchestrator
 
 install_spotify_spicetify() {
