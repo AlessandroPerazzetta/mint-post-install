@@ -2,6 +2,7 @@
 # Module: nerd-fonts
 # DESC: nerd-fonts
 # DEFAULT: on
+# ORDER: 600
 # Called by install-packages.sh orchestrator
 
 install_nerd_fonts() {

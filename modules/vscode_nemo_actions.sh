@@ -2,6 +2,8 @@
 # Module: vscode_nemo_actions
 # DESC: VS Code nemo actions
 # DEFAULT: on
+# REQUIRE: vscode
+# ORDER: 210
 # Called by install-packages.sh orchestrator
 
 install_vscode_nemo_actions() {

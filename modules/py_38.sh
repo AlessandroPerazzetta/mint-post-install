@@ -2,6 +2,7 @@
 # Module: py_38
 # DESC: python 3.8.19 (src install)
 # DEFAULT: off
+# ORDER: 430
 # Called by install-packages.sh orchestrator
 
 install_py_38() {

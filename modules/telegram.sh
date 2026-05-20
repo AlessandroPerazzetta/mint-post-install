@@ -2,6 +2,7 @@
 # Module: telegram
 # DESC: Telegram
 # DEFAULT: on
+# ORDER: 670
 # Called by install-packages.sh orchestrator
 
 install_telegram() {

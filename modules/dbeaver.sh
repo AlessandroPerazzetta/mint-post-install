@@ -2,6 +2,7 @@
 # Module: dbeaver
 # DESC: DBeaver
 # DEFAULT: on
+# ORDER: 340
 # Called by install-packages.sh orchestrator
 
 install_dbeaver() {

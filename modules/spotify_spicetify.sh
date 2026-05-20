@@ -2,6 +2,7 @@
 # Module: spotify_spicetify
 # DESC: spotify + spicetify
 # DEFAULT: off
+# ORDER: 680
 # Called by install-packages.sh orchestrator
 
 install_spotify_spicetify() {

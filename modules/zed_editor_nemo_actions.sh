@@ -2,6 +2,8 @@
 # Module: zed_editor_nemo_actions
 # DESC: Zed editor nemo actions
 # DEFAULT: on
+# REQUIRE: zed_editor
+# ORDER: 270
 # Called by install-packages.sh orchestrator
 
 install_zed_editor_nemo_actions() {

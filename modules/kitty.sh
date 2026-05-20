@@ -2,6 +2,7 @@
 # Module: kitty
 # DESC: kitty
 # DEFAULT: off
+# ORDER: 60
 # Called by install-packages.sh orchestrator
 
 install_kitty() {

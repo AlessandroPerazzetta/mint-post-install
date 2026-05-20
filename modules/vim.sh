@@ -2,6 +2,7 @@
 # Module: vim
 # DESC: vim
 # DEFAULT: off
+# ORDER: 110
 # Called by install-packages.sh orchestrator
 
 install_vim() {

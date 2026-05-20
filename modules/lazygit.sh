@@ -2,6 +2,7 @@
 # Module: lazygit
 # DESC: lazygit
 # DEFAULT: off
+# ORDER: 310
 # Called by install-packages.sh orchestrator
 
 install_lazygit() {

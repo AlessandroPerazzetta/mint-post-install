@@ -2,6 +2,7 @@
 # Module: fancontrol
 # DESC: fancontrol + config
 # DEFAULT: on
+# ORDER: 580
 # Called by install-packages.sh orchestrator
 
 install_fancontrol() {

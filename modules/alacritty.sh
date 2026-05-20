@@ -2,6 +2,7 @@
 # Module: alacritty
 # DESC: alacritty
 # DEFAULT: on
+# ORDER: 40
 # Called by install-packages.sh orchestrator
 
 install_alacritty() {

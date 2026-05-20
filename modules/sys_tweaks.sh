@@ -2,6 +2,7 @@
 # Module: sys_tweaks
 # DESC: System tweaks
 # DEFAULT: on
+# ORDER: 20
 # Called by install-packages.sh orchestrator
 
 install_sys_tweaks() {

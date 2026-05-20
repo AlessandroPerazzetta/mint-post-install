@@ -2,6 +2,8 @@
 # Module: vscode_ext
 # DESC: VS Code extensions
 # DEFAULT: on
+# REQUIRE: vscode
+# ORDER: 220
 # Called by install-packages.sh orchestrator
 
 install_vscode_ext() {

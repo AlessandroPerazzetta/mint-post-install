@@ -2,6 +2,8 @@
 # Module: kitty_res
 # DESC: kitty resources
 # DEFAULT: off
+# REQUIRE: kitty
+# ORDER: 70
 # Called by install-packages.sh orchestrator
 
 install_kitty_res() {

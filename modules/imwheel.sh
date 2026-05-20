@@ -2,6 +2,7 @@
 # Module: imwheel
 # DESC: imwheel
 # DEFAULT: off
+# ORDER: 630
 # Called by install-packages.sh orchestrator
 
 install_imwheel() {

@@ -2,6 +2,7 @@
 # Module: tabby
 # DESC: tabby
 # DEFAULT: on
+# ORDER: 90
 # Called by install-packages.sh orchestrator
 
 install_tabby() {

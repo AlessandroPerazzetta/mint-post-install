@@ -86,16 +86,23 @@ read dialog <<< "$(which whiptail dialog 2> /dev/null)"
     exit 1
 }
 
-# Build ALL_OPTIONS dynamically from module metadata (# DESC / # DEFAULT headers)
+# Build ALL_OPTIONS dynamically from module metadata (# DESC / # DEFAULT / # ORDER / # REQUIRE headers)
 ALL_OPTIONS=()
+declare -A _mod_order=()
+declare -A _mod_require=()
 for _mod_file in "${MODULES_DIR}"/*.sh; do
     [[ -f "$_mod_file" ]] || continue
     _key="$(basename "${_mod_file}" .sh)"
     _desc="$(grep -m1 '^# DESC:' "${_mod_file}" | sed 's/^# DESC:[[:space:]]*//')"
     _default="$(grep -m1 '^# DEFAULT:' "${_mod_file}" | sed 's/^# DEFAULT:[[:space:]]*//')"
+    _order="$(grep -m1 '^# ORDER:' "${_mod_file}" | sed 's/^# ORDER:[[:space:]]*//')"
+    _require="$(grep -m1 '^# REQUIRE:' "${_mod_file}" | sed 's/^# REQUIRE:[[:space:]]*//')"
     [[ -z "$_desc" ]] && _desc="$_key"
     [[ "$_default" != "on" && "$_default" != "off" ]] && _default="off"
+    [[ "$_order" =~ ^[0-9]+$ ]] || _order="999"
     ALL_OPTIONS+=("${_key}|${_desc}|${_default}")
+    _mod_order["$_key"]="$_order"
+    _mod_require["$_key"]="$_require"
 done
 
 # Parse arguments
@@ -121,22 +128,47 @@ clear
 
 if [ ${#choices} -gt 0 ]
 then
-    for choice in $choices
-    do
-        module_file="${MODULES_DIR}/${choice}.sh"
+    # Build a set of selected keys
+    declare -A _selected=()
+    for choice in $choices; do
+        _selected["$choice"]=1
+    done
+
+    # Auto-include any REQUIRE dependencies not explicitly selected
+    _changed=true
+    while $_changed; do
+        _changed=false
+        for _key in "${!_selected[@]}"; do
+            for _dep in ${_mod_require[$_key]:-}; do
+                if [[ -z "${_selected[$_dep]:-}" ]]; then
+                    printf "${YELLOW}Auto-including '${_dep}' required by '${_key}'.\n${NC}"
+                    _selected["$_dep"]=1
+                    _changed=true
+                fi
+            done
+        done
+    done
+
+    # Sort selected keys by # ORDER value, then execute
+    while IFS=' ' read -r _order _key; do
+        module_file="${MODULES_DIR}/${_key}.sh"
         if [[ -f "${module_file}" ]]; then
             # shellcheck source=/dev/null
             source "${module_file}"
-            fn_name="install_${choice//-/_}"
+            fn_name="install_${_key//-/_}"
             if declare -f "${fn_name}" > /dev/null; then
                 "${fn_name}"
             else
-                printf "${RED}Module ${choice}: function ${fn_name} not found.\n${NC}"
+                printf "${RED}Module ${_key}: function ${fn_name} not found.\n${NC}"
             fi
         else
             printf "${RED}Module not found: ${module_file}\n${NC}"
         fi
-    done
+    done < <(
+        for _key in "${!_selected[@]}"; do
+            printf '%s %s\n' "${_mod_order[$_key]:-999}" "$_key"
+        done | sort -n
+    )
 else
-        exit 0
+    exit 0
 fi

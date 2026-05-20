@@ -2,6 +2,7 @@
 # Module: remmina
 # DESC: Remmina
 # DEFAULT: on
+# ORDER: 500
 # Called by install-packages.sh orchestrator
 
 install_remmina() {

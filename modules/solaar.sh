@@ -2,6 +2,7 @@
 # Module: solaar
 # DESC: Solaar
 # DEFAULT: on
+# ORDER: 560
 # Called by install-packages.sh orchestrator
 
 install_solaar() {

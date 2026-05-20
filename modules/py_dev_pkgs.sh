@@ -2,6 +2,7 @@
 # Module: py_dev_pkgs
 # DESC: python dev packages
 # DEFAULT: on
+# ORDER: 440
 # Called by install-packages.sh orchestrator
 
 install_py_dev_pkgs() {

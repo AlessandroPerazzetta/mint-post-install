@@ -2,6 +2,7 @@
 # Module: ferrite
 # DESC: Ferrite editor
 # DEFAULT: on
+# ORDER: 300
 # Called by install-packages.sh orchestrator
 
 install_ferrite() {

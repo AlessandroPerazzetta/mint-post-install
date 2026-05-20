@@ -2,6 +2,7 @@
 # Module: unison
 # DESC: Unison
 # DEFAULT: on
+# ORDER: 490
 # Called by install-packages.sh orchestrator
 
 install_unison() {

@@ -2,6 +2,7 @@
 # Module: brave
 # DESC: brave-browser
 # DEFAULT: on
+# ORDER: 160
 # Called by install-packages.sh orchestrator
 
 install_brave() {

@@ -2,6 +2,7 @@
 # Module: yt-dlp
 # DESC: yt-dlp
 # DEFAULT: on
+# ORDER: 610
 # Called by install-packages.sh orchestrator
 
 install_yt_dlp() {

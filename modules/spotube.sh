@@ -2,6 +2,7 @@
 # Module: spotube
 # DESC: Spotube
 # DEFAULT: off
+# ORDER: 690
 # Called by install-packages.sh orchestrator
 
 install_spotube() {

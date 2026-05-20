@@ -2,6 +2,7 @@
 # Module: personal_res
 # DESC: Personal resources
 # DEFAULT: on
+# ORDER: 720
 # Called by install-packages.sh orchestrator
 
 install_personal_res() {

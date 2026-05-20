@@ -2,6 +2,7 @@
 # Module: ssh_skip_hosts_check
 # DESC: ssh skip hosts check
 # DEFAULT: on
+# ORDER: 650
 # Called by install-packages.sh orchestrator
 
 install_ssh_skip_hosts_check() {

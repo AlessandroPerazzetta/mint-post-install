@@ -2,6 +2,7 @@
 # Module: qownnotes
 # DESC: QOwnNotes
 # DEFAULT: on
+# ORDER: 290
 # Called by install-packages.sh orchestrator
 
 install_qownnotes() {

@@ -2,6 +2,7 @@
 # Module: smartgit
 # DESC: SmartGit
 # DEFAULT: off
+# ORDER: 320
 # Called by install-packages.sh orchestrator
 
 install_smartgit() {

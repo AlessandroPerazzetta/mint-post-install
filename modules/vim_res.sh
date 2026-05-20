@@ -2,6 +2,8 @@
 # Module: vim_res
 # DESC: vim resources
 # DEFAULT: off
+# REQUIRE: vim
+# ORDER: 120
 # Called by install-packages.sh orchestrator
 
 install_vim_res() {

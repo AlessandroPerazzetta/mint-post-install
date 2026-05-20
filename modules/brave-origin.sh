@@ -2,6 +2,7 @@
 # Module: brave-origin
 # DESC: brave-origin-browser
 # DEFAULT: off
+# ORDER: 180
 # Called by install-packages.sh orchestrator
 
 install_brave_origin() {

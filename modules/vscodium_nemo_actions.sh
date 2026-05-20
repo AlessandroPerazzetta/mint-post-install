@@ -2,6 +2,8 @@
 # Module: vscodium_nemo_actions
 # DESC: VSCodium nemo actions
 # DEFAULT: off
+# REQUIRE: vscodium
+# ORDER: 240
 # Called by install-packages.sh orchestrator
 
 install_vscodium_nemo_actions() {

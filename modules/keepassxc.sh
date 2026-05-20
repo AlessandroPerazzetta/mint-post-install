@@ -2,6 +2,7 @@
 # Module: keepassxc
 # DESC: KeePassXC
 # DEFAULT: on
+# ORDER: 540
 # Called by install-packages.sh orchestrator
 
 install_keepassxc() {

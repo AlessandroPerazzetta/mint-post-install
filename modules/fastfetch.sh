@@ -2,6 +2,7 @@
 # Module: fastfetch
 # DESC: fastfetch
 # DEFAULT: on
+# ORDER: 590
 # Called by install-packages.sh orchestrator
 
 install_fastfetch() {

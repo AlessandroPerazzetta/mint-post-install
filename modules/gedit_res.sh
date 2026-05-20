@@ -2,6 +2,7 @@
 # Module: gedit_res
 # DESC: Gedit theme resources
 # DEFAULT: on
+# ORDER: 150
 # Called by install-packages.sh orchestrator
 
 install_gedit_res() {

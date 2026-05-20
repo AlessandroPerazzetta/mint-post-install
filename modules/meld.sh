@@ -2,6 +2,7 @@
 # Module: meld
 # DESC: meld
 # DEFAULT: on
+# ORDER: 480
 # Called by install-packages.sh orchestrator
 
 install_meld() {

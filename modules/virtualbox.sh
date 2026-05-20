@@ -2,6 +2,7 @@
 # Module: virtualbox
 # DESC: VirtualBox
 # DEFAULT: on
+# ORDER: 550
 # Called by install-packages.sh orchestrator
 
 install_virtualbox() {

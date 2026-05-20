@@ -2,6 +2,7 @@
 # Module: grpcurl
 # DESC: grpcurl
 # DEFAULT: on
+# ORDER: 330
 # Called by install-packages.sh orchestrator
 
 install_grpcurl() {

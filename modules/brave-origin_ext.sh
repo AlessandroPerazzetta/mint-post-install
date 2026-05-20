@@ -2,6 +2,8 @@
 # Module: brave-origin_ext
 # DESC: brave-origin-browser extensions
 # DEFAULT: off
+# REQUIRE: brave-origin
+# ORDER: 190
 # Called by install-packages.sh orchestrator
 
 install_brave_origin_ext() {

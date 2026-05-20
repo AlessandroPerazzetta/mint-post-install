@@ -2,6 +2,7 @@
 # Module: py_36
 # DESC: python 3.6.15 (src install)
 # DEFAULT: off
+# ORDER: 420
 # Called by install-packages.sh orchestrator
 
 install_py_36() {

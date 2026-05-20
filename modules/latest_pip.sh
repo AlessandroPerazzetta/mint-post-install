@@ -2,6 +2,7 @@
 # Module: latest_pip
 # DESC: latest python pip
 # DEFAULT: on
+# ORDER: 450
 # Called by install-packages.sh orchestrator
 
 install_latest_pip() {

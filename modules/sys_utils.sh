@@ -2,6 +2,7 @@
 # Module: sys_utils
 # DESC: System utils
 # DEFAULT: on
+# ORDER: 30
 # Called by install-packages.sh orchestrator
 
 install_sys_utils() {

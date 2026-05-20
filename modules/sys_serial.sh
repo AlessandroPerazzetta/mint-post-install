@@ -2,6 +2,7 @@
 # Module: sys_serial
 # DESC: System serial permission
 # DEFAULT: on
+# ORDER: 10
 # Called by install-packages.sh orchestrator
 
 install_sys_serial() {

@@ -2,6 +2,7 @@
 # Module: kicad
 # DESC: KiCad
 # DEFAULT: off
+# ORDER: 390
 # Called by install-packages.sh orchestrator
 
 install_kicad() {

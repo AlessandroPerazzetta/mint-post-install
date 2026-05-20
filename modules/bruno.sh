@@ -2,6 +2,7 @@
 # Module: bruno
 # DESC: bruno
 # DEFAULT: on
+# ORDER: 360
 # Called by install-packages.sh orchestrator
 
 install_bruno() {

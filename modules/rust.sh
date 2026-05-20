@@ -2,6 +2,7 @@
 # Module: rust
 # DESC: Rust
 # DEFAULT: on
+# ORDER: 410
 # Called by install-packages.sh orchestrator
 
 install_rust() {

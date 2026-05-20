@@ -2,6 +2,7 @@
 # Module: vscodium
 # DESC: VSCodium
 # DEFAULT: off
+# ORDER: 230
 # Called by install-packages.sh orchestrator
 
 install_vscodium() {

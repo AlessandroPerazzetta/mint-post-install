@@ -2,6 +2,7 @@
 # Module: cinnamon_spices
 # DESC: Cinnamon spices
 # DEFAULT: on
+# ORDER: 700
 # Called by install-packages.sh orchestrator
 
 install_cinnamon_spices() {

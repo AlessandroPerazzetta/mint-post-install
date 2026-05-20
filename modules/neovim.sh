@@ -2,6 +2,7 @@
 # Module: neovim
 # DESC: neovim
 # DEFAULT: on
+# ORDER: 130
 # Called by install-packages.sh orchestrator
 
 install_neovim() {

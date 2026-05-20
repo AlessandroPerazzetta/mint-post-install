@@ -2,6 +2,7 @@
 # Module: nemo_actions
 # DESC: nemo actions
 # DEFAULT: on
+# ORDER: 710
 # Called by install-packages.sh orchestrator
 
 install_nemo_actions() {

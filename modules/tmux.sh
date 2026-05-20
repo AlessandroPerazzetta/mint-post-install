@@ -2,6 +2,7 @@
 # Module: tmux
 # DESC: tmux
 # DEFAULT: on
+# ORDER: 520
 # Called by install-packages.sh orchestrator
 
 install_tmux() {

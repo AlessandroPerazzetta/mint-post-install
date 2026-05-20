@@ -2,6 +2,7 @@
 # Module: bt_restart
 # DESC: bt-restart
 # DEFAULT: off
+# ORDER: 660
 # Called by install-packages.sh orchestrator
 
 install_bt_restart() {

@@ -2,6 +2,8 @@
 # Module: tabby_libgl_fix
 # DESC: tabby libgl fix
 # DEFAULT: off
+# REQUIRE: tabby
+# ORDER: 100
 # Called by install-packages.sh orchestrator
 
 install_tabby_libgl_fix() {

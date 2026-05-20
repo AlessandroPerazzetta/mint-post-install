@@ -2,6 +2,8 @@
 # Module: brave_ext
 # DESC: brave-browser extensions
 # DEFAULT: on
+# REQUIRE: brave
+# ORDER: 170
 # Called by install-packages.sh orchestrator
 
 install_brave_ext() {

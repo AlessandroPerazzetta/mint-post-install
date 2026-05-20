@@ -2,6 +2,7 @@
 # Module: xed_res
 # DESC: Xed theme resources
 # DEFAULT: on
+# ORDER: 140
 # Called by install-packages.sh orchestrator
 
 install_xed_res() {

@@ -2,6 +2,7 @@
 # Module: ssh_alive
 # DESC: ssh alive settings
 # DEFAULT: on
+# ORDER: 640
 # Called by install-packages.sh orchestrator
 
 install_ssh_alive() {

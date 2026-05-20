@@ -2,6 +2,7 @@
 # Module: mqtt_explorer
 # DESC: mqtt-explorer
 # DEFAULT: on
+# ORDER: 370
 # Called by install-packages.sh orchestrator
 
 install_mqtt_explorer() {

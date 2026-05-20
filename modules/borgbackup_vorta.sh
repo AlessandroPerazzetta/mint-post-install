@@ -2,6 +2,7 @@
 # Module: borgbackup_vorta
 # DESC: borgbackup + vorta gui
 # DEFAULT: on
+# ORDER: 570
 # Called by install-packages.sh orchestrator
 
 install_borgbackup_vorta() {

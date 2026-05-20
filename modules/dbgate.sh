@@ -2,6 +2,7 @@
 # Module: dbgate
 # DESC: DBgate
 # DEFAULT: on
+# ORDER: 350
 # Called by install-packages.sh orchestrator
 
 install_dbgate() {

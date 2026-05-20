@@ -2,6 +2,8 @@
 # Module: kitty_libgl_fix
 # DESC: kitty libgl fix
 # DEFAULT: off
+# REQUIRE: kitty
+# ORDER: 80
 # Called by install-packages.sh orchestrator
 
 install_kitty_libgl_fix() {

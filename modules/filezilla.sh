@@ -2,6 +2,7 @@
 # Module: filezilla
 # DESC: FileZilla
 # DEFAULT: on
+# ORDER: 470
 # Called by install-packages.sh orchestrator
 
 install_filezilla() {

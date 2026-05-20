@@ -2,6 +2,7 @@
 # Module: freecad
 # DESC: FreeCAD
 # DEFAULT: off
+# ORDER: 400
 # Called by install-packages.sh orchestrator
 
 install_freecad() {

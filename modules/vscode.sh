@@ -2,6 +2,7 @@
 # Module: vscode
 # DESC: VS Code
 # DEFAULT: on
+# ORDER: 200
 # Called by install-packages.sh orchestrator
 
 install_vscode() {

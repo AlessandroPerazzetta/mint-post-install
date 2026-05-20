@@ -2,6 +2,8 @@
 # Module: vscodium_ext
 # DESC: VSCodium extensions
 # DEFAULT: off
+# REQUIRE: vscodium
+# ORDER: 250
 # Called by install-packages.sh orchestrator
 
 install_vscodium_ext() {
