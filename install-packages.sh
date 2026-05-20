@@ -45,14 +45,22 @@ sleep 1
 
 
 # sudo apt-get -y install build-essential apt-transport-https curl sshfs dialog git
-commands_to_check_exist=("build-essential" "apt-transport-https" "curl" "sshfs" "git" "jq" "pigz" "pbzip2" "pxz" "zip" "unzip" "ripgrep")
-for cmd in "${commands_to_check_exist[@]}"; do
-    # if ! command_exists $cmd; then
-    if command_exists $cmd && command_exists_apt $cmd; then
-        printf "${LGREEN}Command ${cmd} is already installed.\n${NC}"
+# Entries can be "package" (binary==package) or "binary:package" when they differ
+commands_to_check_exist=("build-essential" "apt-transport-https" "curl" "sshfs" "git" "jq" "pigz" "pbzip2" "pxz" "zip" "unzip" "rg:ripgrep")
+for entry in "${commands_to_check_exist[@]}"; do
+    if [[ "$entry" == *:* ]]; then
+        cmd="${entry%%:*}"
+        pkg="${entry##*:}"
     else
-        printf "${LCYAN}Command ${cmd} not found. Installing... \n${NC}"
-        sudo apt-get -y install $cmd
+        cmd="$entry"
+        pkg="$entry"
+    fi
+    # if ! command_exists $cmd; then
+    if command_exists "$cmd" && command_exists_apt "$pkg"; then
+        printf "${LGREEN}Command ${pkg} is already installed.\n${NC}"
+    else
+        printf "${LCYAN}Command ${pkg} not found. Installing... \n${NC}"
+        sudo apt-get -y install "$pkg"
         printf "\n${NC}"
     fi
 done
