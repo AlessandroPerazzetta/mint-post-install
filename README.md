@@ -34,7 +34,12 @@ Each module carries its own metadata:
 ```bash
 # DESC: Human readable label shown in the checklist
 # DEFAULT: on|off
+# ORDER: <number>          # execution priority — lower runs first
+# REQUIRE: <dep-key>      # omit if no dependency
 ```
+
+- `ORDER` controls installation sequence. Use multiples of 10 to leave room for future modules.
+- `REQUIRE` names a module that must run first. The orchestrator auto-includes it if the user didn't select it.
 
 Dropping a new `.sh` file into `modules/` is all that is needed to add it to the menu.
 
@@ -165,6 +170,8 @@ Installed by the `nerd-fonts` module from [nerdfonts.com](https://www.nerdfonts.
 # Module: <key>
 # DESC: Description shown in the checklist
 # DEFAULT: on|off
+# ORDER: <number>          # pick a value relative to its neighbors
+# REQUIRE: <dep-key>      # omit if no dependency
 # Called by install-packages.sh orchestrator
 
 install_<key>() {
