@@ -20,17 +20,6 @@ if [[ "${_remote_mode:-false}" == "true" ]]; then
     for f in colors.sh helpers.sh; do
         curl -fsSLo "${LIB_DIR}/${f}" "${REMOTE_BASE}/lib/${f}"
     done
-    _api_url="${REMOTE_API_BASE}/contents/modules?ref=${REMOTE_BRANCH}"
-    _module_keys="$(curl -fsSL "${_api_url}" \
-        | python3 -c "import json,sys; [print(f['name'][:-3]) for f in json.load(sys.stdin) if f['name'].endswith('.sh')]" \
-        2>/dev/null)"
-    if [[ -z "$_module_keys" ]]; then
-        printf "ERROR: Failed to fetch module list from %s\n" "${_api_url}" >&2
-        exit 1
-    fi
-    while IFS= read -r key; do
-        curl -fsSLo "${MODULES_DIR}/${key}.sh" "${REMOTE_BASE}/modules/${key}.sh"
-    done <<< "$_module_keys"
 fi
 
 # shellcheck source=lib/colors.sh
@@ -68,6 +57,20 @@ for cmd in "${commands_to_check_exist[@]}"; do
     fi
 done
 sleep 1
+
+# Remote module discovery — deferred until curl and jq are guaranteed available
+if [[ "${_remote_mode:-false}" == "true" ]]; then
+    _api_url="${REMOTE_API_BASE}/contents/modules?ref=${REMOTE_BRANCH}"
+    _module_keys="$(curl -fsSL "${_api_url}" \
+        | jq -r '.[] | select(.name | endswith(".sh")) | .name[:-3]')"
+    if [[ -z "$_module_keys" ]]; then
+        printf "${RED}ERROR: Failed to fetch module list from %s\n${NC}" "${_api_url}" >&2
+        exit 1
+    fi
+    while IFS= read -r key; do
+        curl -fsSLo "${MODULES_DIR}/${key}.sh" "${REMOTE_BASE}/modules/${key}.sh"
+    done <<< "$_module_keys"
+fi
 
 read dialog <<< "$(which whiptail dialog 2> /dev/null)"
 [[ "$dialog" ]] || {
