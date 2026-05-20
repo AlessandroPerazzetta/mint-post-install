@@ -160,7 +160,8 @@ ALL_OPTIONS=(
     "zed_editor_nemo_actions|zed editor nemo actions|on"
     "grpcurl|grpcurl|on"
     "unison|unison|on"
-    "marktext|marktext|on"
+    "marktext|marktext|off"
+    "ferrite|ferrite editor|on"
     "dbeaver|dbeaver|on"
     "dbgate|dbgate|on"
     "smartgit|smartgit|off"
@@ -890,6 +891,11 @@ then
                 sed -i -e "s/Exec=marktext/Exec=\/opt\/marktext\/marktext/g" ~/.local/share/applications/marktext.desktop
                 sed -i -e "s/Icon=marktext/Icon=\/opt\/marktext\/marktext/g" ~/.local/share/applications/marktext.desktop
                 update-desktop-database ~/.local/share/applications/
+                ;;
+            ferrite)
+                printf "${YELLOW}Installing Ferrite editor...\n${NC}"
+                curl -s https://api.github.com/repos/OlaProeis/Ferrite/releases/latest | grep -oP '"browser_download_url": "\K[^"]+\.deb' | xargs curl -LO -o /tmp/ferrite-editor_amd64.deb
+                sudo dpkg -i /tmp/ferrite-editor_amd64.deb
                 ;;
             dbeaver)
                 printf "${YELLOW}Installing dbeaver...\n${NC}"

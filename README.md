@@ -176,6 +176,7 @@ curl -s https://raw.githubusercontent.com/AlessandroPerazzetta/mint-post-install
 - grpcurl
 - unison + unison-gtk
 - marktext
+- ferrite
 - dbeaver-ce_latest_amd64
 - dbgate-ce_latest_amd64
 - smartgit-23_1_2
