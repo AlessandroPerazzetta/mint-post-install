@@ -1,1 +1,5 @@
+# Ignore Visual Studio Code settings
 .vscode
+
+# Ignore ref directory
+ref/
