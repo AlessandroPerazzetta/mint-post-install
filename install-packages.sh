@@ -90,6 +90,7 @@ read dialog <<< "$(which whiptail dialog 2> /dev/null)"
 ALL_OPTIONS=()
 declare -A _mod_order=()
 declare -A _mod_require=()
+_opts_unsorted=()
 for _mod_file in "${MODULES_DIR}"/*.sh; do
     [[ -f "$_mod_file" ]] || continue
     _key="$(basename "${_mod_file}" .sh)"
@@ -100,10 +101,15 @@ for _mod_file in "${MODULES_DIR}"/*.sh; do
     [[ -z "$_desc" ]] && _desc="$_key"
     [[ "$_default" != "on" && "$_default" != "off" ]] && _default="off"
     [[ "$_order" =~ ^[0-9]+$ ]] || _order="999"
-    ALL_OPTIONS+=("${_key}|${_desc}|${_default}")
+    _opts_unsorted+=("${_order}|${_key}|${_desc}|${_default}")
     _mod_order["$_key"]="$_order"
     _mod_require["$_key"]="$_require"
 done
+
+# Sort menu entries by ORDER so the checklist reflects installation sequence
+while IFS= read -r _line; do
+    ALL_OPTIONS+=("${_line#*|}")   # strip leading "ORDER|"
+done < <(printf '%s\n' "${_opts_unsorted[@]}" | sort -t'|' -k1,1n)
 
 # Parse arguments
 ALL_OFF=false
