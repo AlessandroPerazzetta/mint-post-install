@@ -1,257 +1,175 @@
-# Mint post install flavour packages
+# mint-post-install
 
-Run with predefined options:
+Post-install automation for Linux Mint. Runs system tweaks, installs required
+tooling, and presents an interactive checklist of optional packages — all from a
+single `curl | bash` one-liner.
+
+## Quick Start
+
 ```bash
+# Run with defaults
 curl -s https://raw.githubusercontent.com/AlessandroPerazzetta/mint-post-install/main/install-packages.sh | bash
-```
-Uncheck all options:
-```bash
+
+# Run with all options pre-deselected
 curl -s https://raw.githubusercontent.com/AlessandroPerazzetta/mint-post-install/main/install-packages.sh | bash -s -- --none
 ```
 
-# List system tweaks:
+For branch testing and advanced usage see [ref/instructions.md](ref/instructions.md).
 
-- system Serial permission for user
-- mount/umount: allow all user to run commands without pass
+## Project Structure
 
-# List of required installed packages:
+```
+install-packages.sh     # thin orchestrator
+lib/
+  colors.sh             # terminal color variables
+  helpers.sh            # shared functions (command_exists, install_brave_extensions)
+modules/
+  <key>.sh              # one module per selectable item — auto-discovered at runtime
+ref/
+  instructions.md       # testing and branch usage guide
+```
 
-- build-essential
-- apt-transport-https
-- curl
-- python3-serial
-- python3-pip
-- sshfs
-- git
-- jq
+Each module carries its own metadata:
 
-# Cinnamon spices
-## Applets
-- QRedShift (Using author official repository)
-- Bash Sensors
-- Sensors Monitor
+```bash
+# DESC: Human readable label shown in the checklist
+# DEFAULT: on|off
+```
 
-## Extensions
-- Back to Monitor
-- Cinnamon Dynamic Wallpaper
+Dropping a new `.sh` file into `modules/` is all that is needed to add it to the menu.
 
-# Nemo Actions
-- MKDTS: create a dir with current timestamp
+## What Gets Installed
 
-# List of selectable installed packages:
+### Always — system setup
 
-- bwm-ng, screen, htop, batcat
-- vim
-- vim resources
+| Item | Description |
+|---|---|
+| System serial permission | Adds user to `dialout` group |
+| System tweaks | mount/umount without password, misc tweaks |
+| Required packages | `build-essential` `apt-transport-https` `curl` `sshfs` `git` `jq` `pigz` `pbzip2` `pxz` `zip` `unzip` `ripgrep` |
+
+### Selectable modules (interactive checklist)
+
+#### Desktop
+- Cinnamon spices: QRedShift, Bash Sensors, Sensors Monitor (applets) · Back to Monitor, Cinnamon Dynamic Wallpaper (extensions)
+- Nemo actions: MKDTS (create dir with current timestamp)
+- Xed theme resources, Gedit theme resources
+
+#### Terminals
+- alacritty + resources
+- kitty + resources + libgl fix
+- tabby + libgl fix
+- tmux + resources
+
+#### Editors & IDEs
+- vim + resources
 - neovim
-- filezilla
-- meld
-- lazygit
-- vlc
-- kitty + kitty resources + kitty libgl fix
-- alacritty
-- tmux + tmux resources
-- brave-browser
-- brave-origin-browser
-- brave-browser extensions
-  * ublock-origin
-  * bypass-adblock-detection
-  * hls-downloader
-  * i-dont-care-about-cookies
-  * keepassxc-browser
-  * session-buddy
-  * the-marvellous-suspender
-  * url-tracking-stripper-red
-  * video-downloader-plus
-  * youtube-nonstop
-  * user-agent-switcher-for-c
-  * modheader-modify-http-hea
-  * enhancer-for-youtube
-  * disable-twitch-extensions
-- brave-browser extensions removed
-  * ~~stream-cleaner~~
-- remmina
-- remmina-plugin-rdp
-- remmina-plugin-secret
-- tabby
-- codium
-- codium nemo actions
-- codium marketplace replacement (local config)
-- codium marketplace replacement (env variables)
-- codium extensions installed
-  * {MARKET} ["Better Comments: Improve your code commenting by annotating with alert, informational, TODOs, and more!"]="aaron-bond.better-comments"
-  * ~~{MARKET} ["Better TOML: Better TOML Language support"]="bungcip.better-toml"~~
-  * {MARKET} ["Even Better TOML: Fully-featured TOML support"]="tamasfe.even-better-toml"
-  * {MARKET} ["Prettier - Code formatter: Code formatter using prettier"]="esbenp.prettier-vscode"
-  * {MARKET} ["Syntax Highlighter: Syntax highlighting based on Tree-sitter"]="evgeniypeshkov.syntax-highlighter"
-  * {MARKET} ["Better C++ Syntax: The bleeding edge of the C++ syntax"]="jeff-hykin.better-cpp-syntax"
-  * {MARKET} ["colorize: A vscode extension to help visualize css colors in files."]="kamikillerto.vscode-colorize"
-  * {MARKET} ["indent-rainbow: Makes indentation easier to read"]="oderwat.indent-rainbow"
-  * {MARKET} ["Serial Monitor: Send and receive text from serial ports."]="ms-vscode.vscode-serial-monitor"
-  * ~~{MARKET} ["Arduino: Arduino for Visual Studio Code"]="vsciot-vscode.vscode-arduino"~~
-  * {MARKET} ["Arduino: Arduino for Visual Studio Code Community Edition fork"]="vscode-arduino.vscode-arduino-community"
-  * {MARKET} ["isort: Import organization support for Python files using isort."]="ms-python.isort"
-  * {MARKET} ["Pylint: Linting support for Python files using Pylint."]="ms-python.pylint"
-  * {MARKET} ["Python: Python language support with extension access points for IntelliSense (Pylance), Debugging (Python Debugger), linting, formatting, refactoring, unit tests, "]="ms-python.python"
-  * {MARKET} ["Pylance: A performant, feature-rich language server for Python in VS Code"]="ms-python.vscode-pylance"
-    * {MARKET} ["CodeLLDB: A native debugger powered by LLDB. Debug C++, Rust and other compiled languages."]="vadimcn.vscode-lldb"
-  * {MARKET} ["Prettier - Code formatter (Rust): Prettier Rust is a code formatter that autocorrects bad syntax"]="jinxdash.prettier-rust"
-  * {MARKET} ["rust-analyzer: Rust language support for Visual Studio Code"]="rust-lang.rust-analyzer"
-  * {MARKET} ["Dependi: Empowers developers to efficiently manage dependencies and address vulnerabilities in Rust, Go, JavaScript, Typescript, PHP and Python projects."]="fill-labs.dependi"
-  * ~~{MARKET} ["crates: Helps Rust developers managing dependencies with Cargo.toml."]="serayuzgur.crates"~~
-  * {MARKET} ["Markdown Preview Enhanced: Markdown Preview Enhanced ported to vscode"]="shd101wyy.markdown-preview-enhanced"
-  * ~~{MARKET} ["GitLens — Git supercharged: Supercharge Git within VS Code"]="eamodio.gitlens"~~
-  * {MARKET} ["Error Lens: Improve highlighting of errors, warnings and other language diagnostics."]="usernamehw.errorlens"
-  * {MARKET} ["Todo Tree: Show TODO, FIXME, etc. comment tags in a tree view"]="Gruntfuggly.todo-tree"
-  * {MARKET} ["Shades of Purple: 🦄 A professional theme suite with hand-picked & bold shades of purple for your VS Code editor and terminal apps."]="ahmadawais.shades-of-purple"
-  * {MARKET} ["Readable Indent"]="cnojima.readable-indent"
-  * {MARKET} ["VSCode Great Icons"]="emmanuelbeziat.vscode-great-icons"
-  * ~~{MARKET} ["vscode-proto3"]="zxh404.vscode-proto3"~~
-  * {MARKET} ["Protobuf VSC"]="DrBlury.protobuf-vsc"
-  * {MARKET} ["JSON Beautify JSON"]="Meezilla.json"
-  * {GITHUB} ["SSH Host Requirements"]="https://github.com/jeanp413/open-remote-ssh"
-  * {GITHUB} ["C/C++: C/C++ IntelliSense, debugging, and code browsing."]="ms-vscode.cpptools"
-  * {GITHUB} ["GitHub Copilot - 1.257.1316"]="GitHub.copilot"
-  * {GITHUB} ["GitHub Copilot Chat - 0.23.2024120501"]="GitHub.copilot-chat"
-- codium extensions uninstalled
-  * ["Jupyter: Jupyter notebook support, interactive programming and computing that supports Intellisense, debugging and more."]="ms-toolsai.jupyter"
-  * ["Jupyter Keymap: Jupyter keymaps for notebooks"]="ms-toolsai.jupyter-keymap"
-  * ["Jupyter Notebook Renderers: Renderers for Jupyter Notebooks (with plotly, vega, gif, png, svg, jpeg and other such outputs)"]="ms-toolsai.jupyter-renderers"
-  * ["Jupyter Cell Tags: Jupyter Cell Tags support for VS Code"]="ms-toolsai.vscode-jupyter-cell-tags"
-  * ["Jupyter Slide Show: Jupyter Slide Show support for VS Code"]="ms-toolsai.vscode-jupyter-slideshow"
-- codium extensions replaced/removed
-  * REP>["Arduino: Arduino for Visual Studio Code"]="vsciot-vscode.vscode-arduino"
-  * REP>["Better TOML: Better TOML Language support"]="bungcip.better-toml"
-  * REM>["GitLens — Git supercharged: Supercharge Git within VS Code"]="eamodio.gitlens"
-- code
-- code nemo actions
-- code extensions installed
-  * {MARKET} ["Better Comments: Improve your code commenting by annotating with alert, informational, TODOs, and more!"]="aaron-bond.better-comments"
-  * ~~{MARKET} ["Better TOML: Better TOML Language support"]="bungcip.better-toml"~~
-  * {MARKET} ["Even Better TOML: Fully-featured TOML support"]="tamasfe.even-better-toml"
-  * {MARKET} ["Prettier - Code formatter: Code formatter using prettier"]="esbenp.prettier-vscode"
-  * {MARKET} ["Syntax Highlighter: Syntax highlighting based on Tree-sitter"]="evgeniypeshkov.syntax-highlighter"
-  * {MARKET} ["Better C++ Syntax: The bleeding edge of the C++ syntax"]="jeff-hykin.better-cpp-syntax"
-  * {MARKET} ["colorize: A vscode extension to help visualize css colors in files."]="kamikillerto.vscode-colorize"
-  * {MARKET} ["indent-rainbow: Makes indentation easier to read"]="oderwat.indent-rainbow"
-  * {MARKET} ["Serial Monitor: Send and receive text from serial ports."]="ms-vscode.vscode-serial-monitor"
-  * ~~{MARKET} ["Arduino: Arduino for Visual Studio Code"]="vsciot-vscode.vscode-arduino"~~
-  * {MARKET} ["Arduino: Arduino for Visual Studio Code Community Edition fork"]="vscode-arduino.vscode-arduino-community"
-  * {MARKET} ["isort: Import organization support for Python files using isort."]="ms-python.isort"
-  * {MARKET} ["Pylint: Linting support for Python files using Pylint."]="ms-python.pylint"
-  * {MARKET} ["Python: Python language support with extension access points for IntelliSense (Pylance), Debugging (Python Debugger), linting, formatting, refactoring, unit tests, "]="ms-python.python"
-  * {MARKET} ["Pylance: A performant, feature-rich language server for Python in VS Code"]="ms-python.vscode-pylance"
-    * {MARKET} ["CodeLLDB: A native debugger powered by LLDB. Debug C++, Rust and other compiled languages."]="vadimcn.vscode-lldb"
-  * {MARKET} ["Prettier - Code formatter (Rust): Prettier Rust is a code formatter that autocorrects bad syntax"]="jinxdash.prettier-rust"
-  * {MARKET} ["rust-analyzer: Rust language support for Visual Studio Code"]="rust-lang.rust-analyzer"
-  * {MARKET} ["Dependi: Empowers developers to efficiently manage dependencies and address vulnerabilities in Rust, Go, JavaScript, Typescript, PHP and Python projects."]="fill-labs.dependi"
-  * ~~{MARKET} ["crates: Helps Rust developers managing dependencies with Cargo.toml."]="serayuzgur.crates"~~
-  * {MARKET} ["Markdown Preview Enhanced: Markdown Preview Enhanced ported to vscode"]="shd101wyy.markdown-preview-enhanced"
-  * ~~{MARKET} ["GitLens — Git supercharged: Supercharge Git within VS Code"]="eamodio.gitlens"~~
-  * {MARKET} ["Error Lens: Improve highlighting of errors, warnings and other language diagnostics."]="usernamehw.errorlens"
-  * {MARKET} ["Todo Tree: Show TODO, FIXME, etc. comment tags in a tree view"]="Gruntfuggly.todo-tree"
-  * {MARKET} ["Shades of Purple: 🦄 A professional theme suite with hand-picked & bold shades of purple for your VS Code editor and terminal apps."]="ahmadawais.shades-of-purple"
-  * {MARKET} ["Readable Indent"]="cnojima.readable-indent"
-  * {MARKET} ["Readable Indent"]="cnojima.readable-indent"
-  * {MARKET} ["C/C++: C/C++ IntelliSense, debugging, and code browsing."]="ms-vscode.cpptools"
-  * ~~{MARKET} ["vscode-proto3"]="zxh404.vscode-proto3"~~
-  * {MARKET} ["Protobuf VSC"]="DrBlury.protobuf-vsc"
-  * {MARKET} ["JSON Beautify JSON"]="Meezilla.json"
-  * {MARKET} ["Remote - SSH"]="ms-vscode-remote.remote-ssh"
-  * ~~{GITHUB} ["SSH Host Requirements"]="https://github.com/jeanp413/open-remote-ssh"~~
-- code extensions uninstalled
-  * ["Jupyter: Jupyter notebook support, interactive programming and computing that supports Intellisense, debugging and more."]="ms-toolsai.jupyter"
-  * ["Jupyter Keymap: Jupyter keymaps for notebooks"]="ms-toolsai.jupyter-keymap"
-  * ["Jupyter Notebook Renderers: Renderers for Jupyter Notebooks (with plotly, vega, gif, png, svg, jpeg and other such outputs)"]="ms-toolsai.jupyter-renderers"
-  * ["Jupyter Cell Tags: Jupyter Cell Tags support for VS Code"]="ms-toolsai.vscode-jupyter-cell-tags"
-  * ["Jupyter Slide Show: Jupyter Slide Show support for VS Code"]="ms-toolsai.vscode-jupyter-slideshow"
-- code extensions replaced/removed
-  * REP>["Arduino: Arduino for Visual Studio Code"]="vsciot-vscode.vscode-arduino"
-  * REP>["Better TOML: Better TOML Language support"]="bungcip.better-toml"
-  * REM>["GitLens — Git supercharged: Supercharge Git within VS Code"]="eamodio.gitlens"
-  * REM> (Integrated)["GitHub Copilot - 1.257.1316"]="GitHub.copilot"
-  * REM> (Integrated)["GitHub Copilot Chat - 0.23.2024120501"]="GitHub.copilot-chat"
-- zed editor
-- zed editor nemo actions
-- grpcurl
-- unison + unison-gtk
+- VS Code + nemo actions + extensions
+- VSCodium + nemo actions + extensions
+- Zed editor + nemo actions
 - marktext
-- ferrite
-- dbeaver-ce_latest_amd64
-- dbgate-ce_latest_amd64
-- smartgit-23_1_2
-- MQTT-Explorer
+- QOwnNotes
+- Ferrite editor
+
+#### Browsers
+- Brave browser + extensions
+- Brave Origin browser + extensions
+
+#### Development tools
+- lazygit, SmartGit
+- grpcurl
+- DBeaver, DBgate
 - bruno
+- MQTT Explorer
 - arduino-cli
-- keepassxc
-- qownnotes
-- virtualbox
-- kicad
-- freecad
-- telegram
-- rust
-- python 3.6.15 (source install)
-- python 3.8.19 (source install)
-- python dev packages
-- qtcreator + qt5 + qt5 lib + cmake
-- bluetooth restart after sleep
-- SSH alive interval (15) and count (1)
-- SSH skip check hosts
-- borgbackup + vorta gui
-- spotify + spicetify
-- spotube
+- KiCad, FreeCAD
+- Rust
+- Python 3.6.15 (source build), Python 3.8.19 (source build)
+- Python dev packages, latest pip
+- qtcreator + Qt5
+
+#### System & utilities
+- FileZilla, meld, unison
+- remmina (RDP/VNC client)
+- VLC
+- KeePassXC
+- VirtualBox
+- Solaar (Logitech device manager)
+- borgbackup + Vorta GUI
 - fancontrol (with custom config)
-- fastfetch latest deb from github
-- nerd-fonts latest deb from github
-- yt-dlp latest deb from github
-- cliamp latest install script from github
+- fastfetch, nerd-fonts, yt-dlp, cli-amp
+- imwheel
+- SSH alive settings, SSH skip hosts check
+- Bluetooth restart after sleep
 
-# List uninstalled packages:
+#### Messaging & media
+- Telegram
+- Spotify + Spicetify
+- Spotube
 
-- nano
-- ed
+### Browser extensions
 
-# ~~List installed scripts:~~
+#### Brave / Brave Origin
+- ublock-origin, bypass-adblock-detection, hls-downloader
+- i-dont-care-about-cookies, keepassxc-browser
+- session-buddy, the-marvellous-suspender
+- url-tracking-stripper-red, video-downloader-plus
+- youtube-nonstop, user-agent-switcher-for-c
+- modheader-modify-http-hea, enhancer-for-youtube, disable-twitch-extensions
 
-- vscodium-json-updater.sh
+### VS Code / VSCodium extensions
 
-> Replaced with local user .config custom product.json file
+Both editors install the same extension set. Exceptions are noted.
 
- 
-# List selectable programming languages:
+**Installed:**
+- Better Comments, Even Better TOML, Prettier
+- Syntax Highlighter, Better C++ Syntax
+- colorize, indent-rainbow, Readable Indent, VSCode Great Icons
+- Serial Monitor
+- Arduino Community Edition
+- isort, Pylint, Python, Pylance, CodeLLDB
+- Prettier (Rust), rust-analyzer, Dependi
+- Markdown Preview Enhanced
+- Error Lens, Todo Tree
+- Shades of Purple
+- Protobuf VSC, JSON Beautify
+- C/C++
+- Remote - SSH *(VS Code only — built-in SSH available)*
+- GitHub Copilot + Copilot Chat *(VS Code only — not on Open VSX)*
 
-- rust
-- python 3.6.15
-- python 3.8.19
+**Removed / replaced:**
 
-# Extra:
+| Removed | Replacement |
+|---|---|
+| Better TOML | Even Better TOML |
+| vscode-arduino | Arduino Community Edition |
+| crates | Dependi |
+| vscode-proto3 | Protobuf VSC |
+| SSH Host Requirements (jeanp413) | Remote - SSH (VS Code) |
+| GitLens | — |
+| Jupyter suite (5 extensions) | — |
+| GitHub Copilot *(VSCodium only)* | — |
 
-- install neovim res
-- install xed theme
-- install gedit theme
-- install tmux res
-- install VLC Media Library
-- add user to dialout group
-- add bash aliases
-- install imwheel
+## Fonts
 
-# Fonts:
-- https://www.nerdfonts.com/font-downloads
-  * ~~BitstreamVeraSansMono~~
-  * ~~CodeNewRoman~~
-  * ~~DroidSansMono~~
-  * FiraCode
-  * ~~FiraMono~~
-  * ~~Go-Mono~~
-  * ~~Hack~~
-  * ~~Hermit~~
-  * JetBrainsMono
-  * ~~Meslo~~
-  * ~~Noto~~
-  * ~~Overpass~~
-  * ~~ProggyClean~~
-  * ~~RobotoMono~~
-  * ~~SourceCodeP~~ro
-  * ~~SpaceMono~~
-  * ~~Ubuntu~~
-  * ~~UbuntuMono~~
+Installed by the `nerd-fonts` module from [nerdfonts.com](https://www.nerdfonts.com/font-downloads):
+- FiraCode
+- JetBrainsMono
+
+## Adding a New Module
+
+1. Create `modules/<key>.sh`:
+
+```bash
+#!/usr/bin/env bash
+# Module: <key>
+# DESC: Description shown in the checklist
+# DEFAULT: on|off
+# Called by install-packages.sh orchestrator
+
+install_<key>() {
+    # install logic
+}
+```
+
+2. The module is auto-discovered — no changes to any other file are needed.
