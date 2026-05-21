@@ -56,7 +56,7 @@ for entry in "${commands_to_check_exist[@]}"; do
         pkg="$entry"
     fi
     # if ! command_exists $cmd; then
-    if command_exists "$cmd" && command_exists_apt "$pkg"; then
+    if command_exists "$cmd" || command_exists_apt "$pkg"; then
         printf "${LGREEN}Command ${pkg} is already installed.\n${NC}"
     else
         printf "${LCYAN}Command ${pkg} not found. Installing... \n${NC}"
