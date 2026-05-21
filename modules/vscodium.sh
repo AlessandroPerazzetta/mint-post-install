@@ -13,21 +13,21 @@ install_vscodium() {
     if [[ ${RELEASE_NUMBER} -le 23 ]]; then
         printf "${LCYAN}--------------------------------------------------------------------------------\n${PURPLE}"
         printf "Writing vscode repository for v23 or older...\n"
-        printf "${LCYAN}--------------------------------------------------------------------------------\n${GREEN}"
+        printf "${LCYAN}--------------------------------------------------------------------------------\n${NC}"
 
         curl -fsSL https://gitlab.com/paulcarroty/vscodium-deb-rpm-repo/raw/master/pub.gpg | gpg --dearmor | sudo dd of=/etc/apt/trusted.gpg.d/vscodium.gpg
         echo 'deb [arch=amd64] https://paulcarroty.gitlab.io/vscodium-deb-rpm-repo/debs/ vscodium main' | sudo tee /etc/apt/sources.list.d/vscodium.list
     elif [[ ${RELEASE_NUMBER} -ge 24 ]]; then
         printf "${LCYAN}--------------------------------------------------------------------------------\n${PURPLE}"
         printf "Writing vscode repository for v24 or newer ...\n"
-        printf "${LCYAN}--------------------------------------------------------------------------------\n${GREEN}"
+        printf "${LCYAN}--------------------------------------------------------------------------------\n${NC}"
 
         curl -fsSL https://gitlab.com/paulcarroty/vscodium-deb-rpm-repo/raw/master/pub.gpg | gpg --dearmor | sudo dd of=/usr/share/keyrings/vscodium-archive-keyring.gpg
         echo -e 'Types: deb\nURIs: https://download.vscodium.com/debs\nSuites: vscodium\nComponents: main\nArchitectures: amd64 arm64\nSigned-by: /usr/share/keyrings/vscodium-archive-keyring.gpg' | sudo tee /etc/apt/sources.list.d/vscodium.sources
     else
         printf "${LCYAN}--------------------------------------------------------------------------------\n${LRED}"
         printf "Release number not recognized, vscode repository not installed...\n"
-        printf "${LCYAN}--------------------------------------------------------------------------------\n${GREEN}"
+        printf "${LCYAN}--------------------------------------------------------------------------------\n${NC}"
         sleep 5
     fi
     sudo apt-get update && sudo apt-get -y install codium

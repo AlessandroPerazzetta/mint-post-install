@@ -9,7 +9,7 @@ install_vscode() {
     printf "${YELLOW}Installing vscode...\n${NC}"
     printf "${LCYAN}--------------------------------------------------------------------------------\n${PURPLE}"
     printf "Writing vscode repository ...\n"
-    printf "${LCYAN}--------------------------------------------------------------------------------\n${GREEN}"
+    printf "${LCYAN}--------------------------------------------------------------------------------\n${NC}"
 
     echo "code code/add-microsoft-repo boolean true" | sudo debconf-set-selections
     curl -fsSL https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > microsoft.gpg
