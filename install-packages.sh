@@ -28,7 +28,7 @@ source "${LIB_DIR}/colors.sh"
 source "${LIB_DIR}/helpers.sh"
 
 CURRENT_USER=$(whoami)
-RELEASE_NUMBER="$(lsb_release -rs | cut -d. -f1|tr -d '\r\n')"
+detect_mint_version
 
 printf "${YELLOW}------------------------------------------------------------------\n${NC}"
 printf "${YELLOW}Starting ...\n${NC}"

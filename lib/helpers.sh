@@ -16,6 +16,29 @@ command_exists_apt() {
     dpkg -s "$1" 2>/dev/null | grep -q "Status: install ok installed"
 }
 
+# Version Matrix
+# Linux Mint Version,Mint Codename,Underlying Ubuntu Base,Ubuntu Codename
+# "Mint 23, 23.1, 23.2","Vanessa, Vera, Victoria"   ->  Ubuntu 26.04 LTS,Resolut
+# "Mint 22, 22.1, 22.2","Wilma, Xia, ..."   ->  Ubuntu 24.04 LTS,Noble Numbat
+# "Mint 21, 21.1, 21.2, 21.3","Vanessa, Vera, Victoria, Virginia"   ->  Ubuntu 22.04 LTS,Jammy Jellyfish
+# "Mint 20, 20.1, 20.2, 20.3","Ulyana, Ulyssa, Uma, Una"    ->  Ubuntu 20.04 LTS,Focal Fossa
+# "Mint 19, 19.1, 19.2, 19.3","Tara, Tessa, Tina, Tricia"   ->  Ubuntu 18.04 LTS,Bionic Beaver
+# "Mint 17 to 17.3,"Qiana, Rebecca, Rafaela, Rosa"  ->  Ubuntu 14.04 LTS,Trusty Tahr
+
+# Detect Linux Mint version and set the following globals:
+#   MINT_VERSION        full release string  (e.g. "22.1")
+#   MINT_MAJOR_VERSION  major number         (e.g. "22")
+#   MINT_MINOR_VERSION  minor number         (e.g. "1")
+#   RELEASE_NUMBER      alias for MINT_MAJOR_VERSION (kept for compatibility)
+#   UBUNTU_CODENAME     underlying Ubuntu codename (e.g. "noble")
+detect_mint_version() {
+    MINT_VERSION="$(lsb_release -rs | tr -d '\r\n')"
+    MINT_MAJOR_VERSION="$(echo "$MINT_VERSION" | cut -d. -f1)"
+    MINT_MINOR_VERSION="$(echo "$MINT_VERSION" | cut -d. -f2)"
+    RELEASE_NUMBER="$MINT_MAJOR_VERSION"
+    UBUNTU_CODENAME="$(. /etc/os-release 2>/dev/null && echo "${UBUNTU_CODENAME:-}")"
+}
+
 # Function to install Brave browser extensions into a given Brave installation path.
 # Usage: install_brave_extensions <brave_install_path>
 install_brave_extensions() {

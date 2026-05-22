@@ -43,9 +43,6 @@ install_tmux_res() {
     # sudo chmod +x /usr/bin/kitty-tmux
     # gsettings set org.cinnamon.desktop.default-applications.terminal exec '/usr/bin/kitty-tmux'
 
-    # release_number="$(cat /etc/issue | cut -d ' ' -f3|cut -f1 -d".")"
-    # release_number="$(lsb_release -rs | cut -d. -f1|tr -d '\r\n')"
-
     if [[ ${RELEASE_NUMBER} -le 21 ]]; then
         printf "${LCYAN}--------------------------------------------------------------------------------\n${PURPLE}"
         printf "Writing kitty tmux wrapper and set as default terminal application v21 and prior...\n"
