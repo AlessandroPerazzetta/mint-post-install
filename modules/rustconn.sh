@@ -2,7 +2,7 @@
 # Module: rustconn
 # DESC: Rust connection manager
 # DEFAULT: on
-# ORDER: 680
+# ORDER: 501
 # Called by install-packages.sh orchestrator
 
 install_rustconn() {
