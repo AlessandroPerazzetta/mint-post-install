@@ -51,66 +51,95 @@ Dropping a new `.sh` file into `modules/` is all that is needed to add it to the
 |---|---|
 | System serial permission | Adds user to `dialout` group |
 | System tweaks | mount/umount without password, misc tweaks |
+| System utils | `bwm-ng` `screen` `htop` `bat` |
 | Required packages | `build-essential` `apt-transport-https` `curl` `sshfs` `git` `jq` `pigz` `pbzip2` `pxz` `zip` `unzip` `ripgrep` |
 
 ### Selectable modules (interactive checklist)
 
+> **Default** column reflects the pre-selected state when running without `--none`.
+
 #### Desktop
-- Cinnamon spices: QRedShift, Bash Sensors, Sensors Monitor (applets) · Back to Monitor, Cinnamon Dynamic Wallpaper (extensions)
-- Nemo actions: MKDTS (create dir with current timestamp)
-- Xed theme resources, Gedit theme resources
+
+| Module | Default |
+|---|---|
+| Xed theme resources | on |
+| Gedit theme resources | on |
+| Cinnamon spices: QRedShift, Bash Sensors, Sensors Monitor (applets) · Back to Monitor, Cinnamon Dynamic Wallpaper (extensions) | on |
+| Nemo actions: MKDTS (create dir with current timestamp) | on |
+| Personal resources: bash aliases (`l`, `cls`) | on |
 
 #### Terminals
-- alacritty + resources
-- kitty + resources + libgl fix
-- tabby + libgl fix
-- tmux + resources
+
+| Module | Default |
+|---|---|
+| alacritty + resources | on |
+| tabby | on |
+| tmux + resources | on |
+| kitty + resources + libgl fix | off |
+| tabby libgl fix | off |
 
 #### Editors & IDEs
-- vim + resources
-- neovim
-- VS Code + nemo actions + extensions
-- VSCodium + nemo actions + extensions
-- Zed editor + nemo actions
-- marktext
-- QOwnNotes
-- Ferrite editor
+
+| Module | Default |
+|---|---|
+| neovim | on |
+| VS Code + nemo actions + extensions | on |
+| Zed editor + nemo actions | on |
+| QOwnNotes | on |
+| Ferrite editor | on |
+| vim + resources | off |
+| VSCodium + nemo actions + extensions | off |
+| marktext | off |
 
 #### Browsers
-- Brave browser + extensions
-- Brave Origin browser + extensions
+
+| Module | Default |
+|---|---|
+| Brave browser + extensions | on |
+| Brave Origin browser + extensions | off |
 
 #### Development tools
-- lazygit, SmartGit
-- grpcurl
-- DBeaver, DBgate
-- bruno
-- MQTT Explorer
-- arduino-cli
-- KiCad, FreeCAD
-- Rust
-- Python 3.6.15 (source build), Python 3.8.19 (source build)
-- Python dev packages, latest pip
-- qtcreator + Qt5
+
+| Module | Default |
+|---|---|
+| grpcurl | on |
+| DBeaver, DBgate | on |
+| bruno | on |
+| MQTT Explorer | on |
+| arduino-cli | on |
+| Rust | on |
+| Python dev packages, latest pip | on |
+| lazygit | off |
+| SmartGit | off |
+| KiCad, FreeCAD | off |
+| Python 3.6.15 (source build), Python 3.8.19 (source build) | off |
+| qtcreator + Qt5 | off |
 
 #### System & utilities
-- FileZilla, meld, unison
-- remmina (RDP/VNC client)
-- VLC
-- KeePassXC
-- VirtualBox
-- Solaar (Logitech device manager)
-- borgbackup + Vorta GUI
-- fancontrol (with custom config)
-- fastfetch, nerd-fonts, yt-dlp, cli-amp
-- imwheel
-- SSH alive settings, SSH skip hosts check
-- Bluetooth restart after sleep
+
+| Module | Default |
+|---|---|
+| FileZilla, meld, unison | on |
+| remmina (RDP/VNC client) | on |
+| Rust connection manager | on |
+| VLC | on |
+| KeePassXC | on |
+| VirtualBox | on |
+| Solaar (Logitech device manager) | on |
+| borgbackup + Vorta GUI | on |
+| fancontrol (with custom config) | on |
+| fastfetch, nerd-fonts, yt-dlp, cli-amp | on |
+| SSH alive settings, SSH skip hosts check | on |
+| imwheel | off |
+| Bluetooth restart after sleep | off |
 
 #### Messaging & media
-- Telegram
-- Spotify + Spicetify
-- Spotube
+
+| Module | Default |
+|---|---|
+| Telegram | on |
+| Spotify + Spicetify | off |
+| Spotube | off |
 
 ### Browser extensions
 
