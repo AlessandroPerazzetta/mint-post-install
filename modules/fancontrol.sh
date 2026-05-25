@@ -152,7 +152,7 @@ install_fancontrol() {
             for mod in "${FOUND_MODULES[@]}"; do
                 echo "$mod"
             done
-        } > "$CONF_FILE"
+        } | sudo tee "$CONF_FILE" > /dev/null
         printf "${GREEN}Done. Please reboot your system for the order to take effect.${NC}\n\n"
     fi
 
