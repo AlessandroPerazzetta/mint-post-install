@@ -3,7 +3,7 @@
 # DESC: alacritty resources
 # DEFAULT: on
 # REQUIRE: alacritty
-# ORDER: 50
+# ORDER: 41
 # Called by install-packages.sh orchestrator
 
 install_alacritty_res() {
