@@ -2,7 +2,7 @@
 # Module: vlc
 # DESC: VLC
 # DEFAULT: on
-# ORDER: 510
+# ORDER: 530
 # Called by install-packages.sh orchestrator
 
 install_vlc() {

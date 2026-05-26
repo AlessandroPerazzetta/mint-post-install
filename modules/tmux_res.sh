@@ -3,7 +3,7 @@
 # DESC: tmux resources
 # DEFAULT: on
 # REQUIRE: tmux
-# ORDER: 530
+# ORDER: 520
 # Called by install-packages.sh orchestrator
 
 install_tmux_res() {
