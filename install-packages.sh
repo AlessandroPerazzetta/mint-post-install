@@ -68,6 +68,7 @@ sleep 1
 
 # Remote module discovery — deferred until curl and jq are guaranteed available
 if [[ "${_remote_mode:-false}" == "true" ]]; then
+    printf "${YELLOW}Fetching module list from remote...\n${NC}"
     _api_url="${REMOTE_API_BASE}/contents/modules?ref=${REMOTE_BRANCH}"
     _module_keys="$(curl -fsSL "${_api_url}" \
         | jq -r '.[] | select(.name | endswith(".sh")) | .name[:-3]')"
@@ -75,9 +76,15 @@ if [[ "${_remote_mode:-false}" == "true" ]]; then
         printf "${RED}ERROR: Failed to fetch module list from %s\n${NC}" "${_api_url}" >&2
         exit 1
     fi
+    _total_modules=$(wc -l <<< "$_module_keys")
+    _current_module=0
+    printf "${YELLOW}Downloading %d modules...\n${NC}" "${_total_modules}"
     while IFS= read -r key; do
+        _current_module=$(( _current_module + 1 ))
+        printf "${LCYAN}[%d/%d] Downloading module: %s\n${NC}" "${_current_module}" "${_total_modules}" "${key}"
         curl -fsSLo "${MODULES_DIR}/${key}.sh" "${REMOTE_BASE}/modules/${key}.sh"
     done <<< "$_module_keys"
+    printf "${LGREEN}All modules downloaded.\n${NC}"
 fi
 
 read dialog <<< "$(which whiptail dialog 2> /dev/null)"
