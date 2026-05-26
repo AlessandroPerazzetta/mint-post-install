@@ -14,7 +14,6 @@ curl -s https://raw.githubusercontent.com/AlessandroPerazzetta/mint-post-install
 curl -s https://raw.githubusercontent.com/AlessandroPerazzetta/mint-post-install/main/install-packages.sh | bash -s -- --none
 ```
 
-For branch testing and advanced usage see [ref/instructions.md](ref/instructions.md).
 
 ## Project Structure
 
@@ -120,8 +119,8 @@ Dropping a new `.sh` file into `modules/` is all that is needed to add it to the
 | Module | Default |
 |---|---|
 | FileZilla, meld, unison | on |
-| remmina (RDP/VNC client) | on |
-| Rust connection manager | on |
+| Remmina (RDP/VNC client) | on |
+| RustConn (Rust connection manager) | on |
 | VLC | on |
 | KeePassXC | on |
 | VirtualBox | on |
