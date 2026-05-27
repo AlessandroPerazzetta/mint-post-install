@@ -24,8 +24,6 @@ lib/
   helpers.sh            # shared functions (command_exists, install_brave_extensions)
 modules/
   <key>.sh              # one module per selectable item — auto-discovered at runtime
-ref/
-  instructions.md       # testing and branch usage guide
 ```
 
 Each module carries its own metadata:
