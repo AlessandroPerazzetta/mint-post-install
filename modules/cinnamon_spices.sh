@@ -43,7 +43,7 @@ install_cinnamon_spices() {
         # Detect cinnamon version and if >= 6.6.0 ask user to install classic menu. 
         #Detect cinnamon version using cinnamon --version (if command exists) and extract version number using regex    
         cinnamon_version=$(cinnamon --version | grep -oP '\d+\.\d+\.\d+')
-        if [[ $(printf '%s\n' "6.6.0" "$cinnamon_version" | sort -V -c) ]]; then
+        if printf '%s\n' "6.6.0" "$cinnamon_version" | sort -V -c 2>/dev/null; then
             # Ask user if they want to install the classic menu applet extension, yes as default if they just press enter
             read -n 1 -s -r -p "Cinnamon version ${cinnamon_version} detected. Do you want to install the Classic Menu applet extension? [Y/n] " response
             printf "\n"
