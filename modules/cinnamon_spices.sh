@@ -21,36 +21,36 @@ install_cinnamon_spices() {
 
         printf "${LCYAN}- Applet Bash Sensors:\n${NC}"
         # Bash Sensors
-        curl -O https://cinnamon-spices.linuxmint.com/files/applets/bash-sensors@pkkk.zip && unzip bash-sensors@pkkk.zip && rm -rf bash-sensors@pkkk.zip
+        curl -O https://cinnamon-spices.linuxmint.com/files/applets/bash-sensors@pkkk.zip && unzip -o bash-sensors@pkkk.zip && rm -rf bash-sensors@pkkk.zip
         sudo curl -fsSLo /usr/local/sbin/get-temps.sh https://raw.githubusercontent.com/AlessandroPerazzetta/cinnamon-applet-bash_sensors/main/get-temps.sh
         sudo chmod +x /usr/local/sbin/get-temps.sh
 
         printf "${LCYAN}- Applet Sensors Monitor:\n${NC}"
         # Sensors Monitor
-        curl -O https://cinnamon-spices.linuxmint.com/files/applets/Sensors@claudiux.zip && unzip Sensors@claudiux.zip && rm -rf Sensors@claudiux.zip
+        curl -O https://cinnamon-spices.linuxmint.com/files/applets/Sensors@claudiux.zip && unzip -o Sensors@claudiux.zip && rm -rf Sensors@claudiux.zip
 
         # cinnamon extensions installer
         cd ~/.local/share/cinnamon/extensions/
 
         printf "${LCYAN}- Applet Extension Back to Monitor:\n${NC}"
         # Back to Monitor
-        curl -O https://cinnamon-spices.linuxmint.com/files/extensions/back-to-monitor@nathan818fr.zip && unzip back-to-monitor@nathan818fr.zip && rm -rf back-to-monitor@nathan818fr.zip
+        curl -O https://cinnamon-spices.linuxmint.com/files/extensions/back-to-monitor@nathan818fr.zip && unzip -o back-to-monitor@nathan818fr.zip && rm -rf back-to-monitor@nathan818fr.zip
 
         printf "${LCYAN}- Applet Extension Cinnamon Dynamic Wallpaper:\n${NC}"
         # Cinnamon Dynamic Wallpaper
-        curl -O https://cinnamon-spices.linuxmint.com/files/extensions/cinnamon-dynamic-wallpaper@TobiZog.zip && unzip cinnamon-dynamic-wallpaper@TobiZog.zip && rm -rf innamon-dynamic-wallpaper@TobiZog.zip
+        curl -O https://cinnamon-spices.linuxmint.com/files/extensions/cinnamon-dynamic-wallpaper@TobiZog.zip && unzip -o cinnamon-dynamic-wallpaper@TobiZog.zip && rm -rf cinnamon-dynamic-wallpaper@TobiZog.zip
 
         # Detect cinnamon version and if >= 6.6.0 ask user to install classic menu. 
         #Detect cinnamon version using cinnamon --version (if command exists) and extract version number using regex    
         cinnamon_version=$(cinnamon --version | grep -oP '\d+\.\d+\.\d+')
         if printf '%s\n' "6.6.0" "$cinnamon_version" | sort -V -c 2>/dev/null; then
             # Ask user if they want to install the classic menu applet extension, yes as default if they just press enter
-            read -n 1 -s -r -p "Cinnamon version ${cinnamon_version} detected. Do you want to install the Classic Menu applet extension? [Y/n] " response
+            read -n 1 -s -r -p "Cinnamon version ${cinnamon_version} detected. Do you want to install the Classic Menu applet extension? [Y/n] " response </dev/tty
             printf "\n"
             if [[ "$response" =~ ^[Yy]$ || -z "$response" ]]; then                
                 printf "${LCYAN}- Applet Extension Classic Menu:\n${NC}"
                 # Define applet variables
-                APPLET_UUID="classic-menu@cinnamon.org"
+                APPLET_UUID="classic-menu@fredcw"
                 TARGET_DIR="$HOME/.local/share/cinnamon/applets/$APPLET_UUID"
                 DOWNLOAD_URL="https://cinnamon-spices.linuxmint.com/files/applets/$APPLET_UUID.zip"
                 TEMP_ZIP="/tmp/$APPLET_UUID.zip"
@@ -58,7 +58,11 @@ install_cinnamon_spices() {
                 mkdir -p "$HOME/.local/share/cinnamon/applets"
                 # 2. Download the applet zip file
                 printf "${LPURPLE}- Downloading applet from Cinnamon Spices...\n${NC}"
-                curl -sSL "$DOWNLOAD_URL" -o "$TEMP_ZIP"
+                if ! curl -fsSL "$DOWNLOAD_URL" -o "$TEMP_ZIP"; then
+                    printf "${LRED}- Failed to download applet (HTTP error). Skipping classic menu installation.\n${NC}"
+                    rm -f "$TEMP_ZIP"
+                    return 1
+                fi
                 # 3. Extract the applet
                 printf "${LPURPLE}- Extracting files...\n${NC}"
                 # Remove old folder if it exists to prevent conflicts
@@ -73,12 +77,15 @@ install_cinnamon_spices() {
 
                 # Check if the applet is already enabled to prevent duplicates
                 if [[ "$CURRENT_APPLETS" != *"$APPLET_UUID"* ]]; then
-                    # Appends the new applet to panel 0, left zone (position 1)
-                    NEW_APPLETS=$(echo "$CURRENT_APPLETS" | sed "s/\]$/, 'panelId': 0, 'order': 1, 'applet-id': 99, 'uuid': '$APPLET_UUID'}]/")
+                    # Find next available applet instance ID
+                    NEXT_ID=$(echo "$CURRENT_APPLETS" | grep -oP ":\K\d+(?=')" | sort -n | tail -1)
+                    NEXT_ID=$((NEXT_ID + 1))
+                    # Append the new applet to panel1, left zone, position 0
+                    NEW_APPLETS=$(echo "$CURRENT_APPLETS" | sed "s/]$/, 'panel1:left:0:${APPLET_UUID}:${NEXT_ID}']/")
                     gsettings set org.cinnamon enabled-applets "$NEW_APPLETS"
                     printf "${LGREEN}- Applet enabled successfully!\n${NC}"
                 else
-                    printf "${LORANGE}- Applet is already active on your panel.\n${NC}"
+                    printf "${ORANGE}- Applet is already active on your panel.\n${NC}"
                 fi
             fi
         else
