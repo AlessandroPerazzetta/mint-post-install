@@ -122,6 +122,7 @@ Dropping a new `.sh` file into `modules/` is all that is needed to add it to the
 | VLC | on |
 | KeePassXC | on |
 | VirtualBox | on |
+| QEMU + Virt-Manager | off |
 | Solaar (Logitech device manager) | on |
 | borgbackup + Vorta GUI | on |
 | fancontrol (with custom config) | on |
