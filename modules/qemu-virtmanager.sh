@@ -20,4 +20,9 @@ install_qemu_virtmanager() {
     printf "${CYAN}Configuring user (${CURRENT_USER}) permissions...\n${NC}"
     sudo usermod -aG libvirt $CURRENT_USER
     sudo usermod -aG kvm $CURRENT_USER
+
+    printf "${LCYAN}--------------------------------------------------------------------------------\n${GREEN}"
+    printf "QEMU and Virt-Manager installation complete. Please log out and log back in for the group changes to take effect.\n"
+    printf "${LCYAN}--------------------------------------------------------------------------------\n${NC}"
+
 }
