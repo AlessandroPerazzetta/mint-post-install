@@ -142,12 +142,22 @@ Dropping a new `.sh` file into `modules/` is all that is needed to add it to the
 ### Browser extensions
 
 #### Brave / Brave Origin
-- ublock-origin, bypass-adblock-detection, hls-downloader
-- i-dont-care-about-cookies, keepassxc-browser
-- session-buddy, the-marvellous-suspender
-- url-tracking-stripper-red, video-downloader-plus
-- youtube-nonstop, user-agent-switcher-for-c
-- modheader-modify-http-hea, enhancer-for-youtube, disable-twitch-extensions
+- ublock-origin
+- bypass-adblock-detection
+- hls-downloader
+- i-dont-care-about-cookies
+- keepassxc-browser
+- session-buddy
+- the-marvellous-suspender
+- url-tracking-stripper-red
+- video-downloader-plus
+- youtube-nonstop
+- user-agent-switcher-for-c
+- modheader-modify-http-hea
+- enhancer-for-youtube
+- disable-twitch-extensions
+- simple-color-picker
+- fetchv-video-downloader-f
 
 ### VS Code / VSCodium extensions
 
