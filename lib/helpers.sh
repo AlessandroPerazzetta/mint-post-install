@@ -63,6 +63,7 @@ install_brave_extensions() {
             ["disable-twitch-extensions"]="nmogopjdbhhnbkiklkdahphkdpbjfine"
             ["simple-color-picker"]="oekcgbklihkajpddgklkakahiabhcjhm"
             ["fetchv-video-downloader-f"]="nfmmmhanepmpifddlkkmihkalkoekpfd"
+            ["the-stream-detector"]="iakkmkmhhckcmoiibcfjnooibphlobak"
         )
         for i in "${!EXTlist[@]}"; do
             sudo bash -c "echo -e '{ \"external_update_url\": \"https://clients2.google.com/service/update2/crx\" }' > ${BRAVE_EXTENSIONS_PATH}/${EXTlist[$i]}.json"

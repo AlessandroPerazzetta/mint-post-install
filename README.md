@@ -158,6 +158,7 @@ Dropping a new `.sh` file into `modules/` is all that is needed to add it to the
 - disable-twitch-extensions
 - simple-color-picker
 - fetchv-video-downloader-f
+- the-stream-detector
 
 ### VS Code / VSCodium extensions
 
