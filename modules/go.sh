@@ -48,9 +48,9 @@ install_go() {
     # Download the latest Go release archive    curl -LO "$DOWNLOAD_URL"
     curl -L -o /tmp/"$LATEST_GO_RELEASE" "$DOWNLOAD_URL"
 
-    # Extract the archive to /usr/local, removing any existing Go installation
-    rm -rf /usr/local/go && tar -C /usr/local -xzf /tmp/"$LATEST_GO_RELEASE"
-
+    # Extract the archive to /usr/local, removing any existing Go installation as sudo to avoid permission issues on /usr/local/    
+    sudo rm -rf /usr/local/go && sudo tar -C /usr/local -xzf /tmp/"$LATEST_GO_RELEASE"
+    
     # Clean up the downloaded archive    rm /tmp/"$LATEST_GO_RELEASE"
     rm -f /tmp/"$LATEST_GO_RELEASE"
 
