@@ -76,7 +76,7 @@ install_zed_editor() {
         else
             data_home="$HOME/.local/share"
         fi
-        cp "$installation_path/zed-${channel}/share/applications/zed.desktop" "$data_home/applications/dev.zed.Zed.desktop"
+        cp "$installation_path/zed-${channel}/share/applications/dev.zed.Zed.desktop" "$data_home/applications/dev.zed.Zed.desktop"
         sed -i "s|Icon=zed|Icon=$installation_path/zed-${channel}/share/icons/hicolor/512x512/apps/zed.png|g" "$data_home/applications/dev.zed.Zed.desktop"
         sed -i "s|Exec=zed|Exec=$installation_path/zed-${channel}/libexec/zed-editor|g" "$data_home/applications/dev.zed.Zed.desktop"
     fi
