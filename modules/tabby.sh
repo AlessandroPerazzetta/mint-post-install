@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # Module: tabby
 # DESC: tabby
-# DEFAULT: on
+# DEFAULT: off
 # ORDER: 90
 # Called by install-packages.sh orchestrator
 
