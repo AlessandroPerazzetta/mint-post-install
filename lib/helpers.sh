@@ -58,7 +58,7 @@ install_brave_extensions() {
             ["video-downloader-plus"]="njgehaondchbmjmajphnhlojfnbfokng"
             ["youtube-nonstop"]="nlkaejimjacpillmajjnopmpbkbnocid"
             ["user-agent-switcher-for-c"]="djflhoibgkdhkhhcedjiklpkjnoahfmg"
-            ["modheader-modify-http-hea"]="idgpnmonknjnojddfkpgkljpfnnfcklj"
+            ["modheader-v2"]="lgicpjobihoieiojeighojeapefgogdp"
             ["enhancer-for-youtube"]="ponfpcnoihfmfllpaingbgckeeldkhle"
             ["disable-twitch-extensions"]="nmogopjdbhhnbkiklkdahphkdpbjfine"
             ["simple-color-picker"]="oekcgbklihkajpddgklkakahiabhcjhm"

@@ -153,7 +153,7 @@ Dropping a new `.sh` file into `modules/` is all that is needed to add it to the
 - video-downloader-plus
 - youtube-nonstop
 - user-agent-switcher-for-c
-- modheader-modify-http-hea
+- modheader-v2
 - enhancer-for-youtube
 - disable-twitch-extensions
 - simple-color-picker
