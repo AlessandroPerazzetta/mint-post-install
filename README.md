@@ -88,6 +88,12 @@ Dropping a new `.sh` file into `modules/` is all that is needed to add it to the
 | VSCodium + nemo actions + extensions | off |
 | marktext | off |
 
+#### Editors & IDEs tools
+
+| Module | Default |
+|---|---|
+| codebase-memory-mcp | on |
+
 #### Browsers
 
 | Module | Default |
