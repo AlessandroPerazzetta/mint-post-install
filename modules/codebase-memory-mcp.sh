@@ -25,7 +25,7 @@ install_codebase_memory_mcp() {
 
     # Create the installation directory with appropriate permissions
     sudo mkdir "$INSTALLATION_DIR"
-    sudo chown "$(whoami):$(whoami)" "$INSTALLATION_DIR"
+    sudo chown "$CURRENT_USER:$CURRENT_USER" "$INSTALLATION_DIR"
 
     # Detect Linux Architecture
     ARCH_RAW="$(uname -m)"

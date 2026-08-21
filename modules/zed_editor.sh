@@ -52,7 +52,7 @@ install_zed_editor() {
     # Check if we have write permissions
     if [ ! -w "$installation_path/zed-${channel}" ]; then
         printf "${LYELLOW}* No write permissions for $installation_path/zed-${channel}. Trying to change ownership with sudo.\n${NC}"
-        sudo chown -R "$(whoami)":"$(whoami)" "$installation_path/zed-${channel}" || {
+        sudo chown -R "$CURRENT_USER":"$CURRENT_USER" "$installation_path/zed-${channel}" || {
             printf "${RED} °°° Failed to change ownership of $installation_path/zed-${channel}. Exiting.\n${NC}"
             exit 1
         }
