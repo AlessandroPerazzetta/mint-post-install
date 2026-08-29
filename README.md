@@ -122,6 +122,7 @@ Dropping a new `.sh` file into `modules/` is all that is needed to add it to the
 
 | Module | Default |
 |---|---|
+| Fzf | on |
 | FileZilla, meld, unison | on |
 | Remmina (RDP/VNC client) | on |
 | RustConn (Rust connection manager) | on |
