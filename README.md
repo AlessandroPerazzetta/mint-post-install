@@ -154,8 +154,9 @@ Dropping a new `.sh` file into `modules/` is all that is needed to add it to the
 - hls-downloader
 - i-dont-care-about-cookies
 - keepassxc-browser
-- session-buddy
-- the-marvellous-suspender
+- tab-manager-session-manag
+- ~~session-buddy~~
+- ~~the-marvellous-suspender~~
 - url-tracking-stripper-red
 - video-downloader-plus
 - youtube-nonstop
