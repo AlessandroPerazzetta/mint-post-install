@@ -12,6 +12,9 @@ curl -s https://raw.githubusercontent.com/AlessandroPerazzetta/mint-post-install
 
 # Run with all options pre-deselected
 curl -s https://raw.githubusercontent.com/AlessandroPerazzetta/mint-post-install/main/install-packages.sh | bash -s -- --none
+
+# Also run the full system upgrade (skipped by default)
+curl -s https://raw.githubusercontent.com/AlessandroPerazzetta/mint-post-install/main/install-packages.sh | bash -s -- --upgrade
 ```
 
 

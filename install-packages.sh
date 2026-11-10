@@ -34,10 +34,22 @@ printf "${YELLOW}---------------------------------------------------------------
 printf "${YELLOW}Starting ...\n${NC}"
 printf "${YELLOW}------------------------------------------------------------------\n${NC}"
 
+# Parse global arguments (needed before system update runs)
+ALL_OFF=false
+DO_UPGRADE=false
+for arg in "$@"; do
+    [[ "$arg" == "--none" ]] && ALL_OFF=true
+    [[ "$arg" == "--upgrade" ]] && DO_UPGRADE=true
+done
+
 printf "${YELLOW}Updating system...\n${NC}"
 sleep 1
 sudo apt-get update
-sudo apt-get -y upgrade
+if $DO_UPGRADE; then
+    sudo apt-get -y upgrade
+else
+    printf "${YELLOW}Skipping 'apt-get upgrade' (run with --upgrade to enable).\n${NC}"
+fi
 
 printf "${YELLOW}Install required packages...\n${NC}"
 sleep 1
@@ -117,12 +129,6 @@ done
 while IFS= read -r _line; do
     ALL_OPTIONS+=("${_line#*|}")   # strip leading "ORDER|"
 done < <(printf '%s\n' "${_opts_unsorted[@]}" | sort -t'|' -k1,1n)
-
-# Parse arguments
-ALL_OFF=false
-for arg in "$@"; do
-    [[ "$arg" == "--none" ]] && ALL_OFF=true
-done
 
 # Build options array for dialog/whiptail
 options=()
